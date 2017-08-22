@@ -7,6 +7,14 @@
 
 Servers/
 
+soscanner/.settings
+
+soscanner/target/
+
+soscanner/.classpath
+
+soscanner/.project
+
 RemoteSystemsTempFiles/
 
 
