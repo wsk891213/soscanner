@@ -85,7 +85,7 @@ Message: <input type="text" id="message"/><br>
        });
    
        notify.onclick = function() {
-          location.href="/soscanner/";
+          location.href="/";
           notify.remove();
        }
     }else{

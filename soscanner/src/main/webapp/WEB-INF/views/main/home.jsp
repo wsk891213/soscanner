@@ -55,7 +55,7 @@ body {
 					<h1>SOScaner</h1>
 					<h3>위기의 순간 당신을 도와줄게요</h3>
 					</hgroup>
-					<button class="btn btn-hero btn-lg" role="button">SOScaner
+					<button id="sos" class="btn btn-hero btn-lg" role="button">SOScaner
 						바로가기</button>
 				</div>
 			</div>
@@ -154,5 +154,11 @@ body {
 <div>
 		<c:import url="/WEB-INF/views/include/footer.jsp" />
 	</div>
+	<script>
+		document.getElementById("sos")
+		sos.addEventListener("click", function(e) {
+			location.href="/soscan/main";
+		});
+	</script>
 </body>
 </html>
