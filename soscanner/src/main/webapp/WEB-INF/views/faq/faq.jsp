@@ -6,27 +6,6 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 <style>
-div {
-	position: center;
-	text-align: center;
-	display: block;
-}
-
-ul {
-    list-style:none;
-    margin:0;
-    padding:0;
-}
-
-#menu ul li {
-	width: 150px;
-	height: 60px;
-    margin: 0;
-    border : solid 1px black;
-    float: left;
-    font-size: 17px;
-    text-align: center;
-}
 
 </style>
 </head>
