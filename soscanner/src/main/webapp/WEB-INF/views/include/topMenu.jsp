@@ -26,7 +26,7 @@
         <div class="collapse navbar-collapse" id="navbar-collapse-1">
           <ul class="nav navbar-nav navbar-right">
             <li><a href="#">SOScan</a></li>
-            <li><a href="#">관광지 정보</a></li>
+            <li><a href="/tourGuide/seoulDiv">관광지 정보</a></li>
             <li><a href="/translate/translate">번역기</a></li>
             <li><a href="#">국가별 게시판</a></li>
             <li><a href="faq/faq">FAQ</a></li>
