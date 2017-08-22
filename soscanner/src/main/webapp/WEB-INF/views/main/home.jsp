@@ -117,9 +117,8 @@
                     <div class="item active">
                 	    <div class="col-md-4 col-sm-6">
         				    <div class="block-text rel zmin">
-						        <a title="" href="#">Hercules</a>
-							    <div></div>
-						        <p>Never before has there been a good film portrayal of ancient Greece's favourite myth. So why would Hollywood start now? This latest attempt at bringing the son of Zeus to the big screen is brought to us by X-Men: The last Stand director Brett Ratner. If the name of the director wasn't enough to dissuade ...</p>
+						        <a title="" href="#">한국좋아요</a>
+						        <p>하루 종일 붙어 다니자 길 고양이들처럼너는 매일 설레야 돼처음 만난 것처럼난 저 다른 놈들처럼가방 귀걸이 목걸이 반지그딴 건 뻔해서이 노래를 선물하지잘 맞아 우린 난리 났지안 닮아 내 마음 계속 새것 같지 </p>
 							    <ins class="ab zmin sprite sprite-i-triangle block"></ins>
 					        </div>
 							<div class="person-text rel">
@@ -131,8 +130,6 @@
             			<div class="col-md-4 col-sm-6 hidden-xs">
 						    <div class="block-text rel zmin">
 						        <a title="" href="#">The Purge: Anarchy</a>
-        						<div></div>
-        						<p>The 2013 movie "The Purge" left a bad taste in all of our mouths as nothing more than a pseudo-slasher with a hamfisted plot, poor pacing, and a desperate attempt at "horror." Upon seeing the first trailer for "The Purge: Anarchy," my first and most immediate thought was "we really don't need another one of these."  </p>
 					            <ins class="ab zmin sprite sprite-i-triangle block"></ins>
 				            </div>
 							<div class="person-text rel">
