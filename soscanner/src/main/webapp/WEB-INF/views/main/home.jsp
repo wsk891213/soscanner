@@ -344,18 +344,16 @@
 }
 
 .fade-carousel .slides .slide-1 {
-	background-image: url(resources/img/광화문.jpg);
+	background-image: url(resources/images/광화문.jpg);
 }
 
 .fade-carousel .slides .slide-2 {
-	background-image: url(resources/img/비상.jpg);
+	background-image: url(resources/images/비상.jpg);
 }
 .fade-carousel .slides .slide-3 {
-	background-image: url(resources/img/통역.jpg);
+	background-image: url(resources/images/통역.jpg);
 }
-.fade-carousel .slides .slide-4 {
-	background-image: url(resources/img/국기.jpg);
-}
+
 
 @media screen and (min-width: 980px) {
 	.hero {
