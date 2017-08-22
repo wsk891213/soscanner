@@ -6,13 +6,22 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+<style type="text/css">
+
+body {
+	background-color: black;
+	color: black;
+	background: black;
+}
+
+</style>
+<link rel="stylesheet"	href="/resources/css/home.css">
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-</head>
 </head>
 <body>
 	<div>
@@ -145,219 +154,5 @@
 <div>
 		<c:import url="/WEB-INF/views/include/footer.jsp" />
 	</div>
-</body>
-<style>
-}
-
-.fade-carousel {
-	position: relative;
-	height: 80vh;
-}
-
-.fade-carousel .carousel-inner .item {
-	height: 80vh;
-}
-
-.fade-carousel .carousel-indicators>li {
-	margin: 0 2px;
-	background-color: #f39c12;
-	border-color: #f39c12;
-	opacity: .7;
-}
-
-.fade-carousel .carousel-indicators>li.active {
-	width: 10px;
-	height: 10px;
-	opacity: 1;
-}
-
-.hero {
-	position: absolute;
-	top: 50%;
-	left: 50%;
-	z-index: 3;
-	color: #fff;
-	text-align: center;
-	text-transform: uppercase;
-	text-shadow: 1px 1px 0 rgba(0, 0, 0, .75);
-	-webkit-transform: translate3d(-50%, -50%, 0);
-	-moz-transform: translate3d(-50%, -50%, 0);
-	-ms-transform: translate3d(-50%, -50%, 0);
-	-o-transform: translate3d(-50%, -50%, 0);
-	transform: translate3d(-50%, -50%, 0);
-}
-
-.hero h1 {
-	font-size: 6em;
-	font-weight: bold;
-	margin: 0;
-	padding: 0;
-}
-
-.fade-carousel .carousel-inner .item .hero {
-	opacity: 0;
-	-webkit-transition: 2s all ease-in-out .1s;
-	-moz-transition: 2s all ease-in-out .1s;
-	-ms-transition: 2s all ease-in-out .1s;
-	-o-transition: 2s all ease-in-out .1s;
-	transition: 2s all ease-in-out .1s;
-}
-
-.fade-carousel .carousel-inner .item.active .hero {
-	opacity: 1;
-	-webkit-transition: 2s all ease-in-out .1s;
-	-moz-transition: 2s all ease-in-out .1s;
-	-ms-transition: 2s all ease-in-out .1s;
-	-o-transition: 2s all ease-in-out .1s;
-	transition: 2s all ease-in-out .1s;
-}
-
-.overlay {
-	position: absolute;
-	width: 100%;
-	height: 100%;
-	z-index: 2;
-	opacity: .7;
-}
-
-.btn.btn-lg {
-	padding: 10px 40px;
-}
-
-.btn.btn-hero, .btn.btn-hero:hover, .btn.btn-hero:focus {
-	color: #f5f5f5;
-	background-color: #1abc9c;
-	border-color: #1abc9c;
-	outline: none;
-	margin: 20px auto;
-}
-
-.fade-carousel .slides .slide-1, .fade-carousel .slides .slide-2,
-	.fade-carousel .slides .slide-3, .fade-carousel .slides .slide-4 {
-	height: 80vh;
-	background-size: cover;
-	background-position: center center;
-	background-repeat: no-repeat;
-}
-
-.fade-carousel .slides .slide-1 {
-	background-image: url(resources/images/광화문.jpg);
-}
-
-.fade-carousel .slides .slide-2 {
-	background-image: url(resources/images/비상.jpg);
-}
-.fade-carousel .slides .slide-3 {
-	background-image: url(resources/images/통역.jpg);
-}
-
-
-@media screen and (min-width: 980px) {
-	.hero {
-		width: 980px;
-	}
-}
-
-@media screen and (max-width: 640px) {
-	.hero h1 {
-		font-size: 4em;
-	}
-}
-
-body {
-	background-color: #f5f5f5;
-}
-
-
-
-
-
-
-
-
-
-.carousel-control.left,.carousel-control.right  {background:#f8f8f8;width:25px;}
-.carousel-control.left {left:-25px;}
-.carousel-control.right {right:-25px;}
-.broun-block {
-    padding-bottom: 34px;
-}
-.block-text {
-    background-color: #fff;
-    border-radius: 5px;
-    box-shadow: 0 3px 0 #2c2222;
-    color: #626262;
-    font-size: 14px;
-    margin-top: 27px;
-    padding: 15px 18px;
-}
-.block-text a {
- color: #7d4702;
-    font-size: 25px;
-    font-weight: bold;
-    line-height: 21px;
-    text-decoration: none;
-    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
-}
-.mark {
-    padding: 12px 0;background:none;
-}
-.block-text p {
-    color: #585858;
-    font-family: Georgia;
-    font-style: italic;
-    line-height: 20px;
-}
-
-.sprite-i-triangle {
-    background-position: 0 -1298px;
-    height: 44px;
-    width: 50px;
-}
-.block-text ins {
-    bottom: -44px;
-    left: 50%;
-    margin-left: -60px;
-}
-
-
-.block {
-    display: block;
-}
-.zmin {
-    z-index: 1;
-}
-.ab {
-    position: absolute;
-}
-
-.person-text {
-    padding: 10px 0 0;
-    text-align: center;
-    z-index: 2;
-}
-.person-text a {
-    color: #ffcc00;
-    display: block;
-    font-size: 14px;
-    margin-top: 3px;
-    text-decoration: underline;
-}
-.person-text i {
-    color: #fff;
-    font-family: Georgia;
-    font-size: 13px;
-}
-.rel {
-    position: relative;
-}
-
-div.row h1 {
-    margin-top: 70px;
-}
-
-
-</style>
-
 </body>
 </html>
