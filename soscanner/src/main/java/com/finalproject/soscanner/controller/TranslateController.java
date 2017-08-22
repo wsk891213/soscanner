@@ -23,7 +23,7 @@ public class TranslateController {
 	@RequestMapping(value = "/translate", method = RequestMethod.GET)
 	public void translateget() {}
 	
-	@RequestMapping(value = "/translate", produces = "application/text; charset=utf8")
+	@RequestMapping(value = "/translateok", produces = "application/text; charset=utf8")
 	@ResponseBody
 	public String translatepost(TransVO trans) {
 		String test = "";

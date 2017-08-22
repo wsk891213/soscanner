@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet" href="/resources/css/topmenu.css">
-<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+</head>
 </head>
 <body>
 	<div>
@@ -61,7 +61,7 @@ function eylem(){
       
       e.preventDefault();
       $.ajax({
-         url : '/translate',
+         url : '/translate/translateok',
          type :'POST',
          data :{
             text : $("#inputtext").val(),
