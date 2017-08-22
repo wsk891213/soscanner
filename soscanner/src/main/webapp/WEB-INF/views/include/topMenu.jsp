@@ -86,7 +86,7 @@
             <li><a href="#">관광지 정보</a></li>
             <li><a href="#">번역기</a></li>
             <li><a href="#">국가별 게시판</a></li>
-            <li><a href="#">FAQ</a></li>
+            <li><a href="faq/faq">FAQ</a></li>
             <li><a href="#">로그인</a></li>
             <li>
               <a class="btn btn-default btn-outline btn-circle collapsed"  data-toggle="collapse" href="#nav-collapse1" aria-expanded="false" aria-controls="nav-collapse1">언어</a>
