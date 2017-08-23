@@ -14,9 +14,22 @@ public class SoscanController {
 	
 	@RequestMapping("/main")
 	public void main () {
-		logger.info("���� ��Ʈ�ѷ� ");
+		logger.info("메인컨트롤러");
 	}
 	
+	@RequestMapping("/chat")
+	public void chat () {
+		logger.info("chat 컨트롤러");
+	}
 	
+	@RequestMapping("/token")
+	public void token () {
+		logger.info("token 컨트롤러 ");
+	}
+	
+	@RequestMapping("/message")
+	public void message () {
+		logger.info("message");
+	}
 	
 }
