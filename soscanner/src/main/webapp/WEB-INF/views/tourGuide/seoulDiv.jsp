@@ -27,7 +27,7 @@
     <script src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous"></script>
 </head>
 <body>
-<div id="map" style="width:100%;height:700px;"></div>
+<div id="map" style="width:80%;height:700px;"></div>
 
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=18cc25ec3391fb888265b35fbb20e3f8"></script>
 <script>
@@ -36,8 +36,6 @@ $(function () {
 		$.each(data.features, function (fIndex, fVals) {
 			var dataEach = fVals.geometry.coordinates[0];
 			var nameEach = fVals.properties.name;
-			//console.log(dataEach.length);
-			
 			var temp  = {name: nameEach, path:[] }
 			
 			for(var i = 0, len = dataEach.length; i< len;  i++){
@@ -52,7 +50,7 @@ $(function () {
 var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
     mapOption = { 
         center: new daum.maps.LatLng(37.566826, 126.9786567), // 지도의 중심좌표
-        level: 7 // 지도의 확대 레벨
+        level: 9 // 지도의 확대 레벨
     };
 
 var map = new daum.maps.Map(mapContainer, mapOption),
@@ -99,16 +97,18 @@ function displayArea(area) {
 
     // 다각형에 click 이벤트를 등록하고 이벤트가 발생하면 다각형의 이름과 면적을 인포윈도우에 표시합니다 
     daum.maps.event.addListener(polygon, 'click', function(mouseEvent) {
-        var content = '<div class="info">' + 
-                    '   <div class="title">' + area.name + '</div>' +
-                    '   <div class="size">총 면적 : 약 ' + Math.floor(polygon.getArea()) + ' m<sup>2</sup></area>' +
-                    '</div>';
-
-        infowindow.setContent(content); 
-        infowindow.setPosition(mouseEvent.latLng); 
-        infowindow.setMap(map);
+    	var location = {종로구: "jongro", 성동구: "sungdong", 동작구: "dongjak", 용산구: "yongsan", 강동구: "gangdong", 도봉구: "dobong", 금천구: "geumcheon", 은평구: "eunpyeong", 중랑구: "jungnang", 강남구: "gangnam", 마포구: "mapo", 광진구: "gwangjin", 서초구: "seocho", 구로구: "guro", 송파구: "songpa", 양천구: "yangcheon", 노원구: "nowon", 성북구: "seongbuk", 강서구: "gangseo", 관악구: "gwanak", 강북구: "gangbuk", 중구: "jungu", 영등포구: "yeongdeungpo", 서대문구: "seodaemun", 동대문구: "dongdaemun"};
+    	var dest = "tourInfo?location=" + location[area.name];
+    	console.log(dest);
+    	window.location.href = dest;
     });
 }
 </script>
 </body>
 </html>
+
+
+
+
+
+
