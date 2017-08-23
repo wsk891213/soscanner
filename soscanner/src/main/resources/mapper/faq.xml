@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.finalproject.soscanner.mapper.FaqMapper">
+	<resultMap id="faqMap" type="FaqVO">
+		<result column="FAQNO" property="faqNo" />
+		<result column="CONTENT" property="content" />
+		<result column="ANSWER" property="answer" />
+	</resultMap>
+	
+	<select id="selectFaq" resultMap="faqMap">
+		select *
+		  from FAQ
+		 order by FAQNO desc
+	</select>
+</mapper>

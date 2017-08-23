@@ -20,13 +20,13 @@
 	<div class="boxStyle question">
 		<div class="questArea">
 			<strong>
-				<img src="/soscanner/resources/images/tit_quest.gif" alt="자주 찾는 질문" />
+				<img src="/resources/images/tit_quest.gif" alt="자주 찾는 질문" />
 			</strong>
 		</div>
 		<div class="inpArea">
 			<input type="text" class="textInp01" name="searchValue" id="searchValue">
 			<a href="#" >
-				<img src="/soscanner/resources/images/btn_grSearch.gif" />
+				<img src="/resources/images/btn_grSearch.gif" alt="검색" />
 			</a>
 		</div>
 	</div>
@@ -43,7 +43,19 @@
 		
 		<div>
 			<table>
-				<th> 제목  </th>
+				<tr>
+					<td>번호</td>
+					<td>내용</td>
+					<td>답변</td>
+				</tr>
+				
+				<c:forEach var="faq" items="${faq}">
+				<tr>
+					<td><c:out value="${faq.faqNo}" /></td>
+					<td><c:out value="${faq.content}" /></td>
+					<td><c:out value="${faq.answer}" /></td>
+				</tr>
+				</c:forEach>
 			</table>
 		</div>
 	</div>
