@@ -6,8 +6,11 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 <style>
-
+	.ask {
+	
+	}
 </style>
+<script src="http://code.jquery.com/jquery-latest.js"></script>
 </head>
 <body>
 <div>
@@ -46,13 +49,15 @@
 				<tr>
 					<td>번호</td>
 					<td>내용</td>
-					<td>답변</td>
 				</tr>
 				
 				<c:forEach var="faq" items="${faq}">
 				<tr>
 					<td><c:out value="${faq.faqNo}" /></td>
-					<td><c:out value="${faq.content}" /></td>
+					<td class="ask" id="ask${faq.faqNo}" onclick="test(${faq.faqNo})"><c:out value="${faq.content}" /></td>
+				</tr>
+				<tr class="answer" id="answer${faq.faqNo}" style="display:none;">
+					<td>답변</td>
 					<td><c:out value="${faq.answer}" /></td>
 				</tr>
 				</c:forEach>
@@ -61,6 +66,12 @@
 	</div>
 	
 </div>
+
+<script>
+function test (no) {
+	$("#answer" + no).toggle();
+}
+</script>
 
 </body>
 </html>
