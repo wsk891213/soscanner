@@ -19,7 +19,9 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
+          <a href="/">
           <img id="logo" src="../../resources/images/soscannerLOGO.png">
+          </a>
         </div>
     
         <!-- Collect the nav links, forms, and other content for toggling -->
