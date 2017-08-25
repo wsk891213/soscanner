@@ -14,41 +14,81 @@
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <link rel="stylesheet" href="/resources/css/topmenu.css">
 <link rel="stylesheet" href="/resources/css/login.css">
-<script
-	src="/resources/js/login.js"></script>
+<script src="/resources/js/login.js"></script>
 </head>
 
-<body class="main">
+<body>
 	<div>
 		<c:import url="/WEB-INF/views/include/topMenu.jsp" />
 	</div>
-	
-<div class="container">
-    <div class="row vertical-offset-100">
-    	<div class="col-md-4 col-md-offset-4">
-    		<div class="panel panel-default">
-			  	<div class="panel-heading">
-			    	<h3 class="panel-title">Please sign in</h3>
-			 	</div>
-			  	<div class="panel-body">
-			    	<form accept-charset="UTF-8" role="form">
-                    <fieldset>
-			    	  	<div class="form-group">
-			    		    <input class="form-control" placeholder="E-mail" name="email" type="text">
-			    		</div>
-			    		<div class="form-group">
-			    			<input class="form-control" placeholder="Password" name="password" type="password" value="">
-			    		</div>
-			    		<div class="signup">
-			    			<a href="signup">Sign up</a>
-			    		</div>
-			    		<input class="btn btn-lg btn-success btn-block" type="submit" value="Login">
-			    	</fieldset>
-			      	</form>
-			    </div>
-			</div>
-		</div>
-	</div>
+	<div id="wrap" class="wrap">
+<div class="wrap-inner">
+
+<!--Login Section-->
+<div class="section" id="section1">
+  <div class="form form--login">
+    <h1 class="alpha">Login</h1>
+    <p>You already have an account? Great! Login here.</p>
+    <div>
+      <form class="form-wrap">
+        <input id="" class="inputbox email" type="text" placeholder="Email id" />
+        <input id="" class="inputbox password" type="password" placeholder="Password" />
+        <p><a href="#" class="button">Login <i class="icon-rocket"></i></a></p>
+      </form>
+      <p>Forget password? It's ok. <a class="scroll" href="#section3" data-section="3">Recover here &raquo;</a></p>
+    </div>
+    <hr />
+    <p>Or you can Login with one of the following</p>
+    <div class="social">
+      <a href="#" class="facebook"><i class="icon-facebook"></i></a>
+    </div>
+    <p>Don't have an account? <a class="scroll" href="#section2" data-section="2">Register Now &raquo;</a></p>
+  </div>
 </div>
+<!--END: Login Section-->
+ 
+<!--Signup Section-->
+<div class="section" id="section2">
+  <div class="form form--signup">
+    <h1 class="alpha">Sign Up in Seconds!</h1>
+    <p>Signup using your Email address</p>
+    <div>
+      <form class="form-wrap">
+        <input id="" class="inputbox name" type="text" placeholder="Your Name" />
+        <input id="" class="inputbox email" type="text" placeholder="Email id" />
+        <input id="" class="inputbox password" type="password" placeholder="Password" />
+        <input id="" class="inputbox password" type="password" placeholder="Confirm Password" />
+        <p><a href="#" class="button">Create my Account <i class="icon-rocket"></i></a></p>
+        <!--<input id="" type="button" class="button" value="Sign up" />-->
+      </form>
+    </div>
+    <hr />
+    <p>Or you can Signup with one of the following</p>
+    <div class="social">
+      <a href="#" class="facebook"><i class="icon-facebook"></i><span>Facebook</span></a>
+</div>
+<!--END: Signup Section-->
+ 
+<!--Forget Password Section-->
+<div class="section" id="section3">
+  <div class="form form--login">
+    <h1 class="alpha">Lost password?</h1>
+    <p>Ohk, don't panic. You can recover it here.</p>
+    <div>
+      <form class="form-wrap">
+        <input id="" class="inputbox email" type="text" placeholder="Email id" />
+        <p><a href="#" class="button">Send me <i class="icon-rocket"></i></a></p>
+      </form>
+    </div>
+    <hr />
+    <p>You remember your Password? Brilliant!</p>
+    <p><a class="scroll" href="#section1" data-section="1">&laquo; Login here</a></p>
+  </div>
+</div>
+<!--END: Forget Password Section-->
+
+</div>
+</div>
+			
 </body>
 </html>

@@ -1,11 +1,14 @@
-$(document).ready(function(){
-  $(document).mousemove(function(e){
-     TweenLite.to($('body'), 
-        .5, 
-        { css: 
-            {
-                'background-position':parseInt(event.pageX/8) + "px "+parseInt(event.pageY/12)+"px, "+parseInt(event.pageX/15)+"px "+parseInt(event.pageY/15)+"px, "+parseInt(event.pageX/30)+"px "+parseInt(event.pageY/30)+"px"
-            }
-        });
+$(function() {
+  $('a.scroll').on('click',function ( event ) {
+    event.preventDefault();
+
+    var $anchor  = $(this),
+        $section = $anchor.attr('data-section');
+    
+    if ( $section === '2' || $section === '3' ) {
+      $('#wrap .wrap-inner').addClass('goto-' + $section);
+    } else {
+      $('#wrap .wrap-inner').removeClass('goto-2 goto-3');
+    }
   });
 });
