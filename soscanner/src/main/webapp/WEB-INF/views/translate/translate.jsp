@@ -7,12 +7,8 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet" href="/resources/css/topmenu.css">
+<link rel="stylesheet"	href="/resources/css/translate.css">
 <style>
-#inputtext, #outputtext{
-	width: 400px;
-	height : 400px;
-}
-
 #jb-content {
 	width: 400px;
 	padding: 20px;
@@ -29,6 +25,7 @@
 	width: 100px;
 	padding: 20px;
 }
+
 #title {
 	text-align: center;
 }
@@ -45,67 +42,207 @@
 		float: none;
 		width: auto;
 	}
-	#inputtext, #outputtext  
-	{
+	#inputtext, #outputtext {
 		width: 100%;
 		height: 200px;
 	}
 }
+
+.note {
+	width: 600px;
+	height: 700px;
+	position: relative;
+	margin: 20px auto;
+}
+
+#options {
+	margin: 20px auto; width : 200px;
+	text-align: center;
+	width: 200px;
+}
+
+#card {
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	transform-style: preserve-3d;
+	transition: transform 1s;
+}
+
+#card figure {
+	margin: 0;
+	display: block;
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	backface-visibility: hidden;
+}
+
+#card .back {
+	transform: rotateY(180deg);
+}
+
+#card.flipped {
+	transform: rotateY(180deg);
+}
+
+/* .paper {
+	position: relative;
+	width: 90%;
+	max-width: 600px;
+	min-width: 50px;
+	height: 600px;
+	margin: 0 auto;
+	background: #ececec;
+	border-radius: 10px;
+	box-shadow: 0 2px 8px rgba(0, 0, 0, .3);
+	overflow: hidden;
+}
+
+.paper:before {
+	content: '';
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	width: 60px;
+	background: radial-gradient(#575450 6px, transparent 7px) repeat-y;
+	background-size: 30px 30px;
+	border-right: 3px solid #D44147;
+	box-sizing: border-box;
+}
+
+.paper-content {
+	position: absolute;
+	top: 30px;
+	right: 0;
+	bottom: 30px;
+	left: 60px;
+	background: linear-gradient(transparent, transparent 28px, #91D1D3 28px);
+	background-size: 30px 30px;
+}
+
+.paper-content textarea {
+	width: 100%;
+	max-width: 100%;
+	height: 100%;
+	max-height: 100%;
+	line-height: 30px;
+	padding: 0 10px;
+	border: 0;
+	outline: 0;
+	background: transparent;
+	color: mediumblue;
+	font-weight: bold;
+	font-size: 18px;
+	box-sizing: border-box;
+	z-index: 1;
+} */
+
+#inputtext, #outputtext {
+	width: 500px;
+	height: 500px;
+	border: none;
+	border-radius: 5px;
+	resize: none;
+	padding: 6px;
+	border: 1px solid black;
+}
+
+#outputtype {
+	margin-top: 5px;
+}
+
 </style>
-</head>
 </head>
 <body>
 	<div>
 		<c:import url="/WEB-INF/views/include/topMenu.jsp" />
 	</div>
 	<div class="container">
-		<div id="title">
-			<h1>번역</h1>
-		</div>
-	
-		<div id="jb-content">
-	
+	<div class="title">
+		<h1>번역</h1>
+	</div>
+	<!-- 
+	<form id="translate">
 		<div>
 			<select name="input" id="inputtype">
 				<option value="ko-KR">한국어</option>
 				<option value="en-US">영어</option>
 				<option value="cmn-Hans-CN">중국어</option>
-			</select>
-		</div>
-		
-		<div>
-			<textarea id="inputtext"></textarea>
-		</div>
-		
-		<div>
-			<button onclick="eylem()" type="button">
-				<img src="../../resources/images/mic.JPG">
-			</button>
-			<button type="submit" id="submit">
-				<img src="../../resources/images/번역.JPG">
-			</button>
-		</div>
-		</div>
-		
-		<div id="jb-sidebar">
-		<div>
-			<select name="output" id="outputtype">
+			</select> <img src="../../resources/images/번역.JPG"> <select
+				name="output" id="outputtype">
 				<option value="ko">한국어</option>
 				<option value="en">영어</option>
 				<option value="zh-CN">중국어</option>
 			</select>
+			<button onclick="eylem()" type="button">
+				<img src="../../resources/images/mic.JPG">
+			</button>
 		</div>
-		
-		<div>
-			<textarea id="outputtext"></textarea>
+		<div id="card">
+			<figure class="front">
+			<div class="paper">
+				<div class="paper-content">
+					<textarea autofocus id="inputtext"></textarea>
+				</div>
+			</div>
+			</figure>
+	</form>
+	<figure class="back">
+	<div class="paper">
+		<div class="paper-content">
+			<textarea autofocus id="outputtext"></textarea>
 		</div>
-	</div>
-	</div>
-		<form id="translate">
-										
-			
+	</figure> </section>
+	<button type="button" id="submit">
+		<img src="../../resources/images/번역.JPG">
+	</button>
+	 -->
+		<div id="jb-content">
+			<form id="translate">
+
+				<div class="paper">
+
+					<div class="paper-content">
+						<select name="input" id="inputtype">
+							<option value="ko-KR">한국어</option>
+							<option value="en-US">영어</option>
+							<option value="cmn-Hans-CN">중국어</option>
+						</select>
+						<button onclick="eylem()" type="button">
+							<img src="../../resources/images/mic.JPG">
+						</button>
+						<textarea autofocus id="inputtext"></textarea>
+					</div>
+				</div>
+
+				<div>
+					<button type="submit" id="submit">
+						<img src="../../resources/images/번역.JPG">
+					</button>
+				</div>
+		</div>
 		</form>
-										
+
+		<div id="jb-sidebar">
+			<div class="paper">
+				<div class="paper-content">
+					<select name="output" id="outputtype">
+						<option value="ko">한국어</option>
+						<option value="en">영어</option>
+						<option value="zh-CN">중국어</option>
+					</select>
+
+					<textarea autofocus id="outputtext"></textarea>
+				</div>
+			</div>
+		</div>
+	</div>
+	</div>
+	<div>
+		<c:import url="/WEB-INF/views/include/footer.jsp" />
+	</div>
 
 	<script>
 		function eylem() {
@@ -123,8 +260,8 @@
 			ses.start();
 			return false;
 		}
-		$("#translate").submit(function(e) {
-
+		$("#submit").on('click', function(e) {
+			$('#card').toggleClass('flipped');
 			e.preventDefault();
 			$.ajax({
 				url : '/translate/translateok',
@@ -136,7 +273,6 @@
 				},
 				datatype : 'text'
 			}).done(function(result) {
-
 				$("#outputtext").html(result);
 			})
 
