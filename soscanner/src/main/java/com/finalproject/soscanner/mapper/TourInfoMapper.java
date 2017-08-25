@@ -1,9 +1,9 @@
-package com.finalproject.soscanner.service;
+package com.finalproject.soscanner.mapper;
 
 import java.util.List;
 
 import com.finalproject.soscanner.vo.TourInfoVO;
 
-public interface TourGuideService {
+public interface TourInfoMapper {
 	public List<TourInfoVO> getTourInfoList(String location) throws Exception;
 }
