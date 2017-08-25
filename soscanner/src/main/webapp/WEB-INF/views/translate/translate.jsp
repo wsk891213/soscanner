@@ -88,7 +88,6 @@ label {
 	font-weight: bold;
 	line-height: 1.1;
 }
-
 #jb-content {
 	width: 400px;
 	padding: 20px;
@@ -167,70 +166,32 @@ label {
 	transform: rotateY(180deg);
 }
 
-/* .paper {
-	position: relative;
-	width: 90%;
-	max-width: 600px;
-	min-width: 50px;
-	height: 600px;
-	margin: 0 auto;
-	background: #ececec;
-	border-radius: 10px;
-	box-shadow: 0 2px 8px rgba(0, 0, 0, .3);
-	overflow: hidden;
-}
-
-.paper:before {
-	content: '';
-	position: absolute;
-	top: 0;
-	bottom: 0;
-	left: 0;
-	width: 60px;
-	background: radial-gradient(#575450 6px, transparent 7px) repeat-y;
-	background-size: 30px 30px;
-	border-right: 3px solid #D44147;
-	box-sizing: border-box;
-}
-
-.paper-content {
-	position: absolute;
-	top: 30px;
-	right: 0;
-	bottom: 30px;
-	left: 60px;
-	background: linear-gradient(transparent, transparent 28px, #91D1D3 28px);
-	background-size: 30px 30px;
-}
-
-.paper-content textarea {
-	width: 100%;
-	max-width: 100%;
-	height: 100%;
-	max-height: 100%;
-	line-height: 30px;
-	padding: 0 10px;
-	border: 0;
-	outline: 0;
-	background: transparent;
-	color: mediumblue;
-	font-weight: bold;
-	font-size: 18px;
-	box-sizing: border-box;
-	z-index: 1;
-} */
 #inputtext, #outputtext {
 	width: 500px;
 	height: 500px;
 	border: none;
+	background: #fffcdf;
 	border-radius: 5px;
 	resize: none;
 	padding: 6px;
-	border: 1px solid black;
+	border-radius: 5px;
+	resize: none;
+	padding: 6px;
+	box-shadow: 10px 10px 10px 0px lightgray;
+	resize: none;
+	padding: 6px;
+	border-radius: 5px;
+	resize: none;
+	padding: 6px;
 }
 
 #outputtype {
 	margin-top: 5px;
+}
+
+.backimage {
+	background: url("/resources/images/translatepic1.jpg");
+	background-size: cover;
 }
 </style>
 </head>
@@ -238,93 +199,50 @@ label {
 	<div>
 		<c:import url="/WEB-INF/views/include/topMenu.jsp" />
 	</div>
-	<div class="container">
-		<div class="title">
-			<h1>번역</h1>
-		</div>
-		<!-- 
-	<form id="translate">
-		<div>
-			<select name="input" id="inputtype">
-				<option value="ko-KR">한국어</option>
-				<option value="en-US">영어</option>
-				<option value="cmn-Hans-CN">중국어</option>
-			</select> <img src="../../resources/images/번역.JPG"> <select
-				name="output" id="outputtype">
-				<option value="ko">한국어</option>
-				<option value="en">영어</option>
-				<option value="zh-CN">중국어</option>
-			</select>
-			<button onclick="eylem()" type="button">
-				<img src="../../resources/images/mic.JPG">
-			</button>
-		</div>
-		<div id="card">
-			<figure class="front">
-			<div class="paper">
-				<div class="paper-content">
-					<textarea autofocus id="inputtext"></textarea>
-				</div>
-			</div>
-			</figure>
-	</form>
-	<figure class="back">
-	<div class="paper">
-		<div class="paper-content">
-			<textarea autofocus id="outputtext"></textarea>
-		</div>
-	</figure> </section>
-	<button type="button" id="submit">
-		<img src="../../resources/images/번역.JPG">
-	</button>
-	 -->
-		<div id="jb-content">
-			<form id="translate">
 
-				<div class="paper">
-
-					<div class="paper-content">
-						<label> <span class="plain-select">
-						 <select class="inp" name="input" id="inputtype">
-									<option value="ko-KR">한국어</option>
-									<option value="en-US">영어</option>
-									<option value="cmn-Hans-CN">중국어</option>
-							</select>
-						</span>
-						</label>
-						<button onclick="eylem()" type="button">
-							<img src="../../resources/images/mic.JPG">
-						</button>
-						<textarea autofocus id="inputtext"></textarea>
-					</div>
-				</div>
-
-				<div>
+	<div class="backimage">
+		<div class="container">
+			<div id="jb-content">
+				<form id="translate">
+					<label> <span class="plain-select"> <select
+							class="inp" name="input" id="inputtype">
+								<option value="ko-KR">한국어</option>
+								<option value="en-US">영어</option>
+								<option value="cmn-Hans-CN">중국어</option>
+						</select>
+					</span>
+					</label>
+					<button onclick="eylem()" type="button">
+						<img src="../../resources/images/mic.JPG">
+					</button>
 					<button type="submit" id="submit">
 						<img src="../../resources/images/번역.JPG">
 					</button>
-				</div>
-		</div>
-		</form>
-
-		<div id="jb-sidebar">
-			<div class="paper">
-				<div class="paper-content">
-					<label> <span class="plain-select"> <select
-							class="inp" name="output" id="outputtype">
-								<option value="ko">한국어</option>
-								<option value="en">영어</option>
-								<option value="zh-CN">중국어</option>
-						</select>
-					</span> <textarea autofocus id="outputtext"></textarea>
-				</div>
+					<br><br><br>
+					<textarea autofocus id="inputtext"></textarea>
+				</form>
 			</div>
+
+
+			<div id="jb-sidebar">
+				<label> <span class="plain-select"> <select
+						class="inp" name="output" id="outputtype">
+							<option value="ko">한국어</option>
+							<option value="en">영어</option>
+							<option value="zh-CN">중국어</option>
+					</select>
+				</span></label> 
+				<br><br><br>
+				<textarea autofocus id="outputtext"></textarea>
+			</div>
+
+		</div>
+		<br><br><br><br><br><br><br><br><br><br>
+		<div>
+			<c:import url="/WEB-INF/views/include/footer.jsp" />
 		</div>
 	</div>
-	</div>
-	<div>
-		<c:import url="/WEB-INF/views/include/footer.jsp" />
-	</div>
+
 
 	<script>
 		function eylem() {

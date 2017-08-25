@@ -9,20 +9,22 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.finalproject.soscanner.vo.UserVO;
 
 @Controller
-@RequestMapping("/login")
+@RequestMapping("/user")
 public class UserController {
 	private static final Logger logger = LoggerFactory.getLogger(UserController.class);
 	
 	@RequestMapping("/signup")
-	@ResponseBody
 	public void singUp(UserVO user) {
 		logger.info("singUp 컨트롤러");
 	}
 	
 	
 	@RequestMapping("/singin")
-	@ResponseBody
 	public void singIn(UserVO user) {
+		
+	}
+	@RequestMapping("/login")
+	public void login(UserVO user) {
 		
 	}
 	
