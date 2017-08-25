@@ -36,7 +36,7 @@
 	width: 100%;
 	border: 1px solid #c8c8c8;
 	background: #fff url(images/inpbg.png) repeat-x 0 0;
-	color: #9f9f9f;
+	color: black;
 	padding: 8px 20px 7px 10px;
 	margin: 0;
 	line-height: normal;
@@ -88,6 +88,7 @@ label {
 	font-weight: bold;
 	line-height: 1.1;
 }
+
 #jb-content {
 	width: 400px;
 	padding: 20px;
@@ -166,24 +167,23 @@ label {
 	transform: rotateY(180deg);
 }
 
+textarea:focus {
+	background: none repeat scroll 0 0 #FFFFFF;
+	outline-width: 0;
+}
+
 #inputtext, #outputtext {
 	width: 500px;
 	height: 500px;
 	border: none;
-	background: #fffcdf;
-	border-radius: 5px;
+	border-radius: 10px;
 	resize: none;
 	padding: 6px;
-	border-radius: 5px;
-	resize: none;
-	padding: 6px;
-	box-shadow: 10px 10px 10px 0px lightgray;
-	resize: none;
-	padding: 6px;
-	border-radius: 5px;
-	resize: none;
-	padding: 6px;
-}
+	background: rgba(145, 143, 141, 0.8);
+	color: black;
+	font-size: 20px;
+	box-shadow: 12px 12px 20px #000;
+} 
 
 #outputtype {
 	margin-top: 5px;
@@ -192,6 +192,29 @@ label {
 .backimage {
 	background: url("/resources/images/translatepic1.jpg");
 	background-size: cover;
+	width: 100%;
+	height: 600px;
+	text-align: center;
+	line-height: 550px;
+	font-size: 60px;
+	color: black;
+}
+.tBtn {
+    background-color: gray; /* Green */
+    border: none;
+    border-radius: 10px;
+    color: white;
+    padding: 10px 23px;
+    text-align: center;
+    font-size: 16px; 
+    margin: 4px 2px;
+    cursor: pointer;
+    float: left;
+    
+}
+#btndiv {
+display: inline;
+	float: left;
 }
 </style>
 </head>
@@ -199,48 +222,58 @@ label {
 	<div>
 		<c:import url="/WEB-INF/views/include/topMenu.jsp" />
 	</div>
-
-	<div class="backimage">
-		<div class="container">
-			<div id="jb-content">
-				<form id="translate">
-					<label> <span class="plain-select"> <select
-							class="inp" name="input" id="inputtype">
-								<option value="ko-KR">한국어</option>
-								<option value="en-US">영어</option>
-								<option value="cmn-Hans-CN">중국어</option>
-						</select>
-					</span>
-					</label>
-					<button onclick="eylem()" type="button">
-						<img src="../../resources/images/mic.JPG">
-					</button>
-					<button type="submit" id="submit">
-						<img src="../../resources/images/번역.JPG">
-					</button>
-					<br><br><br>
-					<textarea autofocus id="inputtext"></textarea>
-				</form>
-			</div>
-
-
-			<div id="jb-sidebar">
+	<div class="backimage"><i><b>Translation Service</b></i></div>
+	<div class="container">
+		<div id="jb-content">
+			<form id="translate">
 				<label> <span class="plain-select"> <select
-						class="inp" name="output" id="outputtype">
-							<option value="ko">한국어</option>
-							<option value="en">영어</option>
-							<option value="zh-CN">중국어</option>
+						class="inp" name="input" id="inputtype">
+							<option value="ko-KR">한국어</option>
+							<option value="en-US">영어</option>
+							<option value="cmn-Hans-CN">중국어</option>
 					</select>
-				</span></label> 
-				<br><br><br>
-				<textarea autofocus id="outputtext"></textarea>
-			</div>
+				</span>
+				</label>
+				<div class="btndiv">
+				<button onclick="eylem()" type="button" class="tBtn">
+					<b>Voice</b>
+				</button>
+				</div >
+				<div class="btndiv">
+				<button type="submit" id="submit" class="tBtn"><b>Translation</b></button> 
+				</div>
+				<br>
+				<br>
+				<br>
+				<textarea autofocus id="inputtext"></textarea>
+			</form>
+		</div>
 
+		<div id="jb-sidebar">
+			<label> <span class="plain-select"> <select
+					class="inp" name="output" id="outputtype">
+						<option value="ko">한국어</option>
+						<option value="en">영어</option>
+						<option value="zh-CN">중국어</option>
+				</select>
+			</span></label> <br>
+			<br>
+			<br>
+			<br>
+			<textarea autofocus id="outputtext"></textarea>
 		</div>
-		<br><br><br><br><br><br><br><br><br><br>
-		<div>
-			<c:import url="/WEB-INF/views/include/footer.jsp" />
-		</div>
+
+	</div>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<div>
+		<c:import url="/WEB-INF/views/include/footer.jsp" />
 	</div>
 
 
