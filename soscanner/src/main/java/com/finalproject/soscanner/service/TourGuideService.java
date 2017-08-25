@@ -5,5 +5,5 @@ import java.util.List;
 import com.finalproject.soscanner.vo.TourInfoVO;
 
 public interface TourGuideService {
-	public List<TourInfoVO> getTourInfoList(String location) throws Exception;
+	public List<TourInfoVO> getTourInfoList(TourInfoVO loc) throws Exception;
 }

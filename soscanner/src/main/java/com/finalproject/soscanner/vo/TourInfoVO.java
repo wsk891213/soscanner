@@ -9,7 +9,15 @@ public class TourInfoVO {
 	private String ti_mapy;
 	private String ti_time;
 	private String ti_lang;
+	private String slocation;
 	
+	
+	public String getSlocation() {
+		return slocation;
+	}
+	public void setSlocation(String slocation) {
+		this.slocation = slocation;
+	}
 	public int getTi_no() {
 		return ti_no;
 	}
