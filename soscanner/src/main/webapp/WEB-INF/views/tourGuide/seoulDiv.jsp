@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -27,14 +28,105 @@
 	display: inline-block;
 }
 
+body{
+  background-color:black;
+}
+
+#mapContainer{
+  border: 1px solid dashed #FFF;
+  height:700px;
+  width:700px;
+}
+
+
+body {
+  margin: 0;
+  padding: 0;
+  background: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/148422/screencap-wheel.png) #fff;
+  background-attachment: fixed;
+  background-size: cover;
+}
+
+
+#video-background {
+  position: fixed;
+  right: 0; 
+  bottom: 0;
+  min-width: 100%; 
+  min-height: 100%;
+  width: auto; 
+  height: auto;
+  z-index: -100;
+}
+
+article {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+h1 {
+  position: absolute;
+  top: 30%;
+  width: 100%;
+  font-size: 3.6rem;
+  letter-spacing: 3px;
+  color: #fff;
+  font-family: Oswald, sans-serif;
+  text-shadow: 1px 1px 1px #16a085, 1px 1px 4px #2980b9;
+  text-align: center;
+}
+
+button {
+  position: relative;
+  border-radius: 5px;
+  border: 0;
+  font-size: 1.5rem;
+  font-family: Oswald, sans-serif;
+  color: #fff;
+  background-color: #2980b9;
+  padding: .4em;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+}
+
+button:hover {
+  background-color: #3498db;
+}
+
 </style>
     <script src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous"></script>
 </head>
 <body>
-<div id="map" style="width:650px;height:525px;"></div>
+<div>
+	<c:import url="/WEB-INF/views/include/topMenu.jsp" />
+</div>
+
+<button id="switch">숨겨봐</button><br/>
+<div id="mapContainer">
+	<div id="map" style="width:650px;height:525px;"></div><br>
+</div>
+
+<link href='https://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
+
+<video autoplay loop id="video-background" poster="https://s3-us-west-2.amazonaws.com/s.cdpn.io/148422/screencap-wheel.png" muted>
+  <source src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/148422/Vienna-SD.mp4" type="video/mp4">
+</video>
 
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=18cc25ec3391fb888265b35fbb20e3f8"></script>
 <script>
+
+$(document).ready(function(){
+	 
+	  $("#switch").click(function(){
+	      $("#mapContainer").toggle("slide");
+	  });
+});
+
+
 $(function () {
 	$.getJSON("/resources/json/seoulMap.json", function (data) {
 		$.each(data.features, function (fIndex, fVals) {
