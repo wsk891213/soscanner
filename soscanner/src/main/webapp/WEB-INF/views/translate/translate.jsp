@@ -179,8 +179,8 @@ textarea:focus {
 	border-radius: 10px;
 	resize: none;
 	padding: 6px;
-	background: rgba(145, 143, 141, 0.8);
-	color: white;
+	background: #cccfd6;
+	color: black;
 	font-size: 20px;
 	box-shadow: 12px 12px 20px #000;
 	padding: 30px;
@@ -201,11 +201,16 @@ textarea:focus {
 	color: black;
 }
 
+
+
+
+
+
 .tH1 {
 	font-size: 60px;
 }
 .tBtn {
-	background-color: gray; /* Green */
+	background-color: #999999; /* Green */
 	border: none;
 	border-radius: 10px;
 	color: white;

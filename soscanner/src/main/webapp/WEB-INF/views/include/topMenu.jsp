@@ -7,7 +7,7 @@
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <link rel="stylesheet" href="/resources/css/topmenu.css">
-<div class="container-fluid">
+<div>
     <!-- Second navbar for categories -->
     <nav class="navbar navbar-default">
       <div class="container">
