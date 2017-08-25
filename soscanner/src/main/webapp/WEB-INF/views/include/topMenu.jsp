@@ -19,7 +19,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="/">SOSCANER</a>
+          <img id="logo" src="../../resources/images/soscannerLOGO.png">
         </div>
     
         <!-- Collect the nav links, forms, and other content for toggling -->

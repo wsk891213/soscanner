@@ -180,10 +180,11 @@ textarea:focus {
 	resize: none;
 	padding: 6px;
 	background: rgba(145, 143, 141, 0.8);
-	color: black;
+	color: white;
 	font-size: 20px;
 	box-shadow: 12px 12px 20px #000;
-} 
+	padding: 30px;
+}
 
 #outputtype {
 	margin-top: 5px;
@@ -193,36 +194,55 @@ textarea:focus {
 	background: url("/resources/images/translatepic1.jpg");
 	background-size: cover;
 	width: 100%;
-	height: 600px;
+	height: 250px;
 	text-align: center;
 	line-height: 550px;
 	font-size: 60px;
 	color: black;
 }
-.tBtn {
-    background-color: gray; /* Green */
-    border: none;
-    border-radius: 10px;
-    color: white;
-    padding: 10px 23px;
-    text-align: center;
-    font-size: 16px; 
-    margin: 4px 2px;
-    cursor: pointer;
-    float: left;
-    
+
+.tH1 {
+	font-size: 60px;
 }
-#btndiv {
-display: inline;
+.tBtn {
+	background-color: gray; /* Green */
+	border: none;
+	border-radius: 10px;
+	color: white;
+	padding: 10px 23px;
+	text-align: center;
+	font-size: 16px;
+	margin: 4px 2px;
+	cursor: pointer;
 	float: left;
 }
+
+#btndiv {
+	display: inline;
+	float: left;
+}
+
+div.backimage hgroup {
+    padding-top: 50px;
+}
+
+div.backimage {
+    margin-bottom: 30px;
+}
+
+
 </style>
 </head>
 <body>
 	<div>
 		<c:import url="/WEB-INF/views/include/topMenu.jsp" />
 	</div>
-	<div class="backimage"><i><b>Translation Service</b></i></div>
+	<div class="backimage">
+		<hgroup>
+		<h1 class="tH1"><i><b>Translation Service</b></i></h1>
+		<h3><b>Real-time interpreter</b></h3>
+		</hgroup>
+	</div>
 	<div class="container">
 		<div id="jb-content">
 			<form id="translate">
@@ -235,16 +255,16 @@ display: inline;
 				</span>
 				</label>
 				<div class="btndiv">
-				<button onclick="eylem()" type="button" class="tBtn">
-					<b>Voice</b>
-				</button>
-				</div >
-				<div class="btndiv">
-				<button type="submit" id="submit" class="tBtn"><b>Translation</b></button> 
+					<button onclick="eylem()" type="button" class="tBtn">
+						<b>Voice</b>
+					</button>
 				</div>
-				<br>
-				<br>
-				<br>
+				<div class="btndiv">
+					<button type="submit" id="submit" class="tBtn">
+						<b>Translation</b>
+					</button>
+				</div>
+				<br> <br> <br>
 				<textarea autofocus id="inputtext"></textarea>
 			</form>
 		</div>
@@ -256,10 +276,7 @@ display: inline;
 						<option value="en">영어</option>
 						<option value="zh-CN">중국어</option>
 				</select>
-			</span></label> <br>
-			<br>
-			<br>
-			<br>
+			</span></label> <br> <br> <br> <br>
 			<textarea autofocus id="outputtext"></textarea>
 		</div>
 
@@ -267,11 +284,8 @@ display: inline;
 	<br>
 	<br>
 	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
+	
+	
 	<div>
 		<c:import url="/WEB-INF/views/include/footer.jsp" />
 	</div>
