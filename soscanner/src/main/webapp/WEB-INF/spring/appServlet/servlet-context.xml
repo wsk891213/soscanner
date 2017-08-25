@@ -21,6 +21,7 @@
 	<resources mapping="/html/**" location="/resources/html/" />
 	<resources mapping="/images/**" location="/resources/images/" />
 	<resources mapping="/css/**" location="/resources/css/" />
+	<resources mapping="/videos/**" location="/resources/videos/" />
 	<resources mapping="/resources/**" location="/resources/" /> 
 
 	<beans:bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">

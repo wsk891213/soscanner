@@ -4,7 +4,7 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>다각형에 이벤트 등록하기2</title>
+    <title>관광지 정보</title>
     <style>
 .area {
     position: absolute;
@@ -38,47 +38,6 @@ body{
   width:700px;
 }
 
-
-body {
-  margin: 0;
-  padding: 0;
-  background: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/148422/screencap-wheel.png) #fff;
-  background-attachment: fixed;
-  background-size: cover;
-}
-
-
-#video-background {
-  position: fixed;
-  right: 0; 
-  bottom: 0;
-  min-width: 100%; 
-  min-height: 100%;
-  width: auto; 
-  height: auto;
-  z-index: -100;
-}
-
-article {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-}
-
-h1 {
-  position: absolute;
-  top: 30%;
-  width: 100%;
-  font-size: 3.6rem;
-  letter-spacing: 3px;
-  color: #fff;
-  font-family: Oswald, sans-serif;
-  text-shadow: 1px 1px 1px #16a085, 1px 1px 4px #2980b9;
-  text-align: center;
-}
-
 button {
   position: relative;
   border-radius: 5px;
@@ -110,12 +69,6 @@ button:hover {
 	<div id="map" style="width:650px;height:525px;"></div><br>
 </div>
 
-<link href='https://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
-
-<video autoplay loop id="video-background" poster="https://s3-us-west-2.amazonaws.com/s.cdpn.io/148422/screencap-wheel.png" muted>
-  <source src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/148422/Vienna-SD.mp4" type="video/mp4">
-</video>
-
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=18cc25ec3391fb888265b35fbb20e3f8"></script>
 <script>
 
@@ -125,7 +78,6 @@ $(document).ready(function(){
 	      $("#mapContainer").toggle("slide");
 	  });
 });
-
 
 $(function () {
 	$.getJSON("/resources/json/seoulMap.json", function (data) {
