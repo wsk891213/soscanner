@@ -6,6 +6,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.finalproject.soscanner.service.FaqService;
+import com.finalproject.soscanner.vo.FaqPageResultVO;
+import com.finalproject.soscanner.vo.FaqPageVO;
 
 @Controller
 @RequestMapping("faq")
@@ -22,7 +24,11 @@ public class FaqController {
 
 	
 	@RequestMapping("/faq")
-	public void list(Model model) throws Exception {
-		model.addAttribute("faq", faqService.selectFaq());
+	public void list(Model model, FaqPageVO page) throws Exception {
+		int pageNo = page.getPageNo();
+		int count = faqService.selectPage(page);
+		model.addAttribute("page", count);
+		model.addAttribute("faq", faqService.selectFaq(page));
+		model.addAttribute("pageResult", new FaqPageResultVO(pageNo, count));
 	}
 }

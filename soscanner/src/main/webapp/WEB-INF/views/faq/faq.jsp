@@ -9,6 +9,16 @@
 	.ask {
 	
 	}
+	input.btn{
+		background: url(/resources/images/btn_grSearch.gif);
+		width: 52px;
+		height: 34px;
+		border: none;
+		outline: 0;
+	}
+	.btn-img{
+
+	}
 </style>
 <script src="http://code.jquery.com/jquery-latest.js"></script>
 </head>
@@ -28,9 +38,8 @@
 		</div>
 		<div class="inpArea">
 			<input type="text" class="textInp01" name="searchValue" id="searchValue">
-			<a href="#" >
-				<img src="/resources/images/btn_grSearch.gif" alt="검색" />
-			</a>
+			<input type="submit" class="btn" value="">
+			<div style="display:none"><img class="btn-img" src="/resources/images/btn_grSearch.gif" /></div>
 		</div>
 	</div>
 	
@@ -67,10 +76,44 @@
 	
 </div>
 
+	<nav>
+	<c:if test="${pageResult.count != 0}">
+		<ul class="pagination">
+			<li class="<c:if test="${pageResult.prev eq false}">disabled</c:if>">
+			<a href="<c:if test="${pageResult.prev eq true}">javascript:goPage(${pageResult.beginPage - 1})</c:if>">
+				<span>&laquo;</span>
+			</a>
+			</li>
+
+			<c:forEach var="i" begin="${pageResult.beginPage}"
+				end="${pageResult.endPage}">
+				<c:choose>
+					<c:when test="${pageResult.pageNo eq i}">
+						<li class="active"><a href="#1">${i}</a></li>
+					</c:when>
+					<c:otherwise>
+						<li><a href="javascript:goPage(${i})">${i}</a></li>
+					</c:otherwise>
+				</c:choose>
+			</c:forEach>
+
+			<li class="<c:if test="${pageResult.next eq false}">disabled</c:if>">
+			<a href="<c:if test="${pageResult.next eq true}">javascript:goPage(${pageResult.endPage + 1})</c:if>">
+				<span>&raquo;</span>
+			</a>
+			</li>
+		</ul>
+	</c:if>
+	</nav>
+
 <script>
 function test (no) {
 	$("#answer" + no).toggle();
 }
+
+function goPage(pageNo) {
+    location.href = "faq?pageNo=" + pageNo;
+ }
 </script>
 
 </body>
