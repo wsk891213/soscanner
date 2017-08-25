@@ -7,8 +7,88 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet" href="/resources/css/topmenu.css">
-<link rel="stylesheet"	href="/resources/css/translate.css">
+<link rel="stylesheet" href="/resources/css/translate.css">
 <style>
+*:before, *:after {
+	-moz-box-sizing: inherit;
+	-webkit-box-sizing: inherit;
+	-ms-box-sizing: inherit;
+	box-sizing: inherit;
+}
+
+.plain-select {
+	display: inline-block;
+	vertical-align: middle;
+	position: relative;
+	width: 150px;
+}
+
+.plain-select select {
+	line-height: normal;
+	height: 38px;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	-ms-appearance: none;
+	appearance: none;
+	width: 200px;
+	border-radius: 6px;
+	display: block;
+	width: 100%;
+	border: 1px solid #c8c8c8;
+	background: #fff url(images/inpbg.png) repeat-x 0 0;
+	color: #9f9f9f;
+	padding: 8px 20px 7px 10px;
+	margin: 0;
+	line-height: normal;
+	-webkit-border-radius: 2px;
+	-moz-border-radius: 2px;
+	border-radius: 2px;
+}
+
+.ie8 .plain-select select {
+	padding-right: 3px
+}
+
+.plain-select select:focus {
+	background: #f9f9f9;
+	outline: none;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.3), inset 0 0 7px
+		rgba(100, 100, 100, 0.3);
+	border-color: #00c0f3;
+}
+
+.plain-select ::-ms-expand {
+	display: none;
+}
+
+.plain-select:after {
+	content: "";
+	position: absolute;
+	z-index: 2;
+	right: 8px;
+	top: 50%;
+	margin-top: -3px;
+	height: 0;
+	width: 0;
+	border-top: 6px solid #f99300;
+	border-left: 6px solid transparent;
+	border-right: 6px solid transparent;
+	pointer-events: none;
+}
+
+label {
+	display: block
+}
+
+.label-stacked {
+	display: block;
+	color: #505050;
+	padding: 10px 0 7px 2px;
+	font-size: 14px;
+	font-weight: bold;
+	line-height: 1.1;
+}
+
 #jb-content {
 	width: 400px;
 	padding: 20px;
@@ -56,7 +136,8 @@
 }
 
 #options {
-	margin: 20px auto; width : 200px;
+	margin: 20px auto;
+	width: 200px;
 	text-align: center;
 	width: 200px;
 }
@@ -138,7 +219,6 @@
 	box-sizing: border-box;
 	z-index: 1;
 } */
-
 #inputtext, #outputtext {
 	width: 500px;
 	height: 500px;
@@ -152,7 +232,6 @@
 #outputtype {
 	margin-top: 5px;
 }
-
 </style>
 </head>
 <body>
@@ -160,10 +239,10 @@
 		<c:import url="/WEB-INF/views/include/topMenu.jsp" />
 	</div>
 	<div class="container">
-	<div class="title">
-		<h1>번역</h1>
-	</div>
-	<!-- 
+		<div class="title">
+			<h1>번역</h1>
+		</div>
+		<!-- 
 	<form id="translate">
 		<div>
 			<select name="input" id="inputtype">
@@ -205,11 +284,14 @@
 				<div class="paper">
 
 					<div class="paper-content">
-						<select name="input" id="inputtype">
-							<option value="ko-KR">한국어</option>
-							<option value="en-US">영어</option>
-							<option value="cmn-Hans-CN">중국어</option>
-						</select>
+						<label> <span class="plain-select">
+						 <select class="inp" name="input" id="inputtype">
+									<option value="ko-KR">한국어</option>
+									<option value="en-US">영어</option>
+									<option value="cmn-Hans-CN">중국어</option>
+							</select>
+						</span>
+						</label>
 						<button onclick="eylem()" type="button">
 							<img src="../../resources/images/mic.JPG">
 						</button>
@@ -228,13 +310,13 @@
 		<div id="jb-sidebar">
 			<div class="paper">
 				<div class="paper-content">
-					<select name="output" id="outputtype">
-						<option value="ko">한국어</option>
-						<option value="en">영어</option>
-						<option value="zh-CN">중국어</option>
-					</select>
-
-					<textarea autofocus id="outputtext"></textarea>
+					<label> <span class="plain-select"> <select
+							class="inp" name="output" id="outputtype">
+								<option value="ko">한국어</option>
+								<option value="en">영어</option>
+								<option value="zh-CN">중국어</option>
+						</select>
+					</span> <textarea autofocus id="outputtext"></textarea>
 				</div>
 			</div>
 		</div>
