@@ -6,6 +6,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-
+	<h1>관광정보</h1>
 </body>
 </html>
