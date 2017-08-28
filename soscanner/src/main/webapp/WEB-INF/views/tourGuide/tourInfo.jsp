@@ -5,16 +5,16 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>관광정보</title>
-<script
-  src="https://code.jquery.com/jquery-3.2.1.js"
-  integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
-  crossorigin="anonymous"></script>
+<c:import url="/WEB-INF/views/include/basicIncludeTop.jsp"></c:import>
 </head>
 <body>
-	<h1>관광정보 페이지</h1>
+<!-- nav 메뉴 -->
+  <c:import url="/WEB-INF/views/include/navBar.jsp"></c:import>
+<!-- nav 메뉴 끝-->
 	<c:forEach var="list" items="${list}" >
 			<h1><c:out value="${list}.ti_title"></c:out></h1>
 			<h5><c:out value="${list}.ti.ovrvw"></c:out>  </h5>
 	</c:forEach>
+<c:import url="/WEB-INF/views/include/basicIncludeBottom.jsp"></c:import>
 </body>
 </html>

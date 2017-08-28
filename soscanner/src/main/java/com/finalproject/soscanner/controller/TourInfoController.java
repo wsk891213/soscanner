@@ -21,9 +21,8 @@ public class TourInfoController {
 	@Autowired
 	private TourGuideService tgService;
 	
-	@RequestMapping("/seoulDiv")
-	public void map() {
-		
+	@RequestMapping("/seoulMap")
+	public void seoulMap() {
 	}
 	
 	@RequestMapping("/tourInfo")

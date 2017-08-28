@@ -20,7 +20,7 @@ import com.google.gson.Gson;
 @RequestMapping("/translate")
 public class TranslateController {
 	private static final Logger logger = LoggerFactory.getLogger(TranslateController.class);
-	@RequestMapping(value = "/translate", method = RequestMethod.GET)
+	@RequestMapping(value = "/translator", method = RequestMethod.GET)
 	public void translateget() {}
 	
 	@RequestMapping(value = "/translateok", produces = "application/text; charset=utf8")
@@ -50,17 +50,14 @@ public class TranslateController {
 	            }
 			String postParams = "source=" + trans.getInput() + "&target=" + trans.getOutput() + "&text=" + text;
 			
-			
 			con.setDoOutput(true);
 			DataOutputStream wr = new DataOutputStream(con.getOutputStream());
 			wr.writeBytes(postParams);
-			
 			
 			wr.flush();
 			wr.close();
 			
 			System.out.println("wr : "+wr);
-			
 			
 			int responseCode = con.getResponseCode();
 			BufferedReader br;
@@ -71,11 +68,9 @@ public class TranslateController {
 			}
 			String inputLine;
 			
-			
 			while ((inputLine = br.readLine()) != null) {
 				response.append(inputLine);
 			}
-			
 			
 			br.close();
 			TranslateControllerVO tran = new Gson().fromJson(

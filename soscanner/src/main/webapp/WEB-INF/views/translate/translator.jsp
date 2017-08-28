@@ -237,10 +237,11 @@ div.backimage {
 
 
 </style>
+<c:import url="/WEB-INF/views/include/basicIncludeTop.jsp"></c:import>
 </head>
 <body>
 	<div>
-		<c:import url="/WEB-INF/views/include/topMenu.jsp" />
+		<c:import url="/WEB-INF/views/include/navBar.jsp" />
 	</div>
 	<div class="backimage">
 		<hgroup>
@@ -294,8 +295,7 @@ div.backimage {
 	<div>
 		<c:import url="/WEB-INF/views/include/footer.jsp" />
 	</div>
-
-
+<c:import url="/WEB-INF/views/include/basicIncludeBottom.jsp"></c:import>
 	<script>
 		function eylem() {
 			var lang = $("#inputtype").val();

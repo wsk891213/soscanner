@@ -24,13 +24,6 @@
 .info .title {
     font-weight: bold;
 }
-#map {
-	display: inline-block;
-}
-
-body{
-  background-color: black;
-}
 
 #mapContainer{
   border: 1px solid dashed #FFF;
@@ -38,40 +31,55 @@ body{
   width:700px;
 }
 
-button {
-  position: relative;
-  border-radius: 5px;
-  border: 0;
-  font-size: 1.5rem;
-  font-family: Oswald, sans-serif;
-  color: #fff;
-  background-color: #2980b9;
-  padding: .4em;
-  margin-left: auto;
-  margin-right: auto;
-  display: block;
-}
-
-button:hover {
-  background-color: #3498db;
-}
-
 </style>
-    <script src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous"></script>
+<c:import url="/WEB-INF/views/include/basicIncludeTop.jsp"></c:import>    
 </head>
 <body>
-<div>
-	<c:import url="/WEB-INF/views/include/topMenu.jsp" />
-</div>
+<!-- nav 메뉴 -->
+  <c:import url="/WEB-INF/views/include/navBar.jsp"></c:import>
+<!-- nav 메뉴 끝-->
 
-<button id="switch">숨겨봐</button><br/>
-<div id="mapContainer">
-	<div id="map" style="width:650px;height:525px;"></div><br>
-</div>
+<section class="section-wrap pb-100 blog-single">
+	<div class="container relative">
+        <div class="row">
+          
+          <!-- content -->
+          <div class="col-sm-12 blog-content">
+
+            <!-- standard post -->
+            <div class="entry-item">
+              <div class="row">
+                <div class="col-sm-10 col-sm-offset-1">
+                  
+                  <div class="entry-title">
+                    <h2>지역을 선택해 주세요</h2>
+                  </div>
+                  <ul class="entry-meta bottom-line">
+                  </ul>
+
+                  <div class="entry">
+                    <div class="entry-content">
+
+                    <blockquote class="blockquote-style-1 text-center">
+						<div id="mapContainer">
+							<div id="map" style="width: 650px; height: 525px;"></div>
+						</div>
+					</blockquote>
+                    </div>
+                  </div> <!-- end entry -->
+
+                </div>
+              </div> <!-- end row -->
+
+            </div> <!-- end entry item -->
+          </div> <!-- end col -->
+  
+        </div> <!-- end row -->
+	</div> <!-- end container -->
+</section>
 
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=18cc25ec3391fb888265b35fbb20e3f8"></script>
 <script>
-
 $(document).ready(function(){
 	 
 	  $("#switch").click(function(){
@@ -148,14 +156,18 @@ function displayArea(area) {
 
     // 다각형에 click 이벤트를 등록하고 이벤트가 발생하면 다각형의 이름과 면적을 인포윈도우에 표시합니다 
     daum.maps.event.addListener(polygon, 'click', function(mouseEvent) {
-//     	var location = {종로구: "jongro", 성동구: "sungdong", 동작구: "dongjak", 용산구: "yongsan", 강동구: "gangdong", 도봉구: "dobong", 금천구: "geumcheon", 은평구: "eunpyeong", 중랑구: "jungnang", 강남구: "gangnam", 마포구: "mapo", 광진구: "gwangjin", 서초구: "seocho", 구로구: "guro", 송파구: "songpa", 양천구: "yangcheon", 노원구: "nowon", 성북구: "seongbuk", 강서구: "gangseo", 관악구: "gwanak", 강북구: "gangbuk", 중구: "jungu", 영등포구: "yeongdeungpo", 서대문구: "seodaemun", 동대문구: "dongdaemun"};
     	var dest = "tourInfo?slocation=" + area.name;
     	window.location.href = dest;
     });
-    
-    		
 }
+
+
 </script>
+<!-- start of footer -->
+<c:import url="/WEB-INF/views/include/footer.jsp"></c:import>
+<!-- end of footer -->
+
+<c:import url="/WEB-INF/views/include/basicIncludeBottom.jsp"></c:import>
 </body>
 </html>
 

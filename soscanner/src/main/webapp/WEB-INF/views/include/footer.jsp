@@ -15,3 +15,7 @@
         </div>
       </div>
     </footer> 
+    
+    <div id="back-to-top">
+      <a href="#top"><i class="fa fa-angle-up"></i></a>
+    </div>
