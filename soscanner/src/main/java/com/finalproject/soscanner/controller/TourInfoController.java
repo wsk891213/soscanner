@@ -6,6 +6,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.finalproject.soscanner.service.TourGuideService;
@@ -26,10 +27,9 @@ public class TourInfoController {
 	}
 	
 	@RequestMapping("/tourInfo")
-	public List<TourInfoVO> tourInfo(TourInfoVO loc) throws Exception {
+	public void tourInfo(TourInfoVO loc, Model model) throws Exception {
 		System.out.println(loc.getSlocation());
-		List<TourInfoVO> list = tgService.getTourInfoList(loc);
-		
-		return null;
+		List<TourInfoVO> lists = tgService.getTourInfoList(loc);
+		model.addAttribute("lists", lists);
 	}
 }
