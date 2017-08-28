@@ -1,3 +1,4 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <footer class="footer minimal bg-dark" style="padding: 30px !important;">
       <div class="container">
         <div class="row">
@@ -8,7 +9,7 @@
               </h2>
             </div>
             <span class="copyright text-center" style="margin-top: 20px !important;">
-              ©2017 SOSCANNER  |  Development by <a href="#">SOSCANNER</a>
+              ï¿½2017 SOSCANNER  |  Development by <a href="#">SOSCANNER</a>
             </span>
           </div>
         </div>

@@ -1,6 +1,6 @@
 package com.finalproject.soscanner.vo;
 
-public class FaqPageResultVO {
+public class PageResultVO {
 	private int listSize = 10;
 	private int tabSize = 10;
 	private int pageNo;
@@ -12,7 +12,7 @@ public class FaqPageResultVO {
 	
 	private boolean prev, next;
 	
-	public FaqPageResultVO(int pageNo, int count) {
+	public PageResultVO(int pageNo, int count) {
 		this.pageNo = pageNo;
 		this.count = count;
 		this.lastPage = (int)Math.ceil(count / (double)listSize);

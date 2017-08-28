@@ -1,3 +1,4 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!-- Navigation -->
     <nav class="navbar navbar-fixed-top">
       <div class="navigation-overlay">
@@ -35,19 +36,19 @@
                     <a href="#">SOSCAN</a>
                   </li>
                   <li>
-                    <a href="#">관광지 정보</a>
+                    <a href="#">민중영</a>
                   </li>
                   <li>
-                    <a href="#">번역기</a>
+                    <a href="#">aa</a>
                   </li>                         
                   <li>
-                    <a href="#">국가별 게시판</a>
+                    <a href="#"></a>
                   </li>
                   <li>
-                    <a href="#">고객센터</a>
+                    <a href="#">FAQ</a>
                   </li>
                   <li>
-                    <a href="#">로그인</a>
+                    <a href="#">cc</a>
                   </li>
                   
                 </ul>

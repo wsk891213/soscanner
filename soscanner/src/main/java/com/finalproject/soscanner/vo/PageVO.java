@@ -1,9 +1,9 @@
 package com.finalproject.soscanner.vo;
 
-public class FaqPageVO {
+public class PageVO {
 	private int pageNo = 1;
 	private int pageCount = 10;
-	
+	private String searchValue;
 
 	public int getCount() {
 		return pageCount;
@@ -29,5 +29,13 @@ public class FaqPageVO {
 	
 	public void setPageCount(int pageCount) {
 		this.pageCount = pageCount;
+	}
+
+	public String getSearchValue() {
+		return searchValue;
+	}
+	
+	public void setSearchValue(String searchValue) {
+		this.searchValue = searchValue;
 	}
 }
