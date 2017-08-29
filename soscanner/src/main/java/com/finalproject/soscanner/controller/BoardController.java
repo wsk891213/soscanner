@@ -1,5 +1,7 @@
 package com.finalproject.soscanner.controller;
 
+import java.util.List;
+
 //import javax.swing.plaf.synth.SynthSeparatorUI;
 
 //import org.slf4j.Logger;
@@ -9,11 +11,15 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.finalproject.soscanner.service.BoardService;
+import com.finalproject.soscanner.service.CommentService;
 import com.finalproject.soscanner.vo.BoardVO;
+import com.finalproject.soscanner.vo.CommentVO;
 import com.finalproject.soscanner.vo.PageResultVO;
 import com.finalproject.soscanner.vo.PageVO;
+
 
 @Controller
 @RequestMapping("board")
@@ -23,6 +29,9 @@ public class BoardController {
 	
 	@Autowired
 	private BoardService boardService;
+	
+	@Autowired
+	private CommentService commentService;
 	
 	@RequestMapping("**/favicon.ico")
 	public String favicon() {
@@ -67,6 +76,31 @@ public class BoardController {
 		model.addAttribute("updateForm", boardService.detailBoard(boardNo));
 	}
 	
+	// 댓글 처리
+		@RequestMapping("/commentList")
+		@ResponseBody
+		public List<CommentVO> selComm(int boardNo) throws Exception {
+			return commentService.selectComm(boardNo);
+		}
+		
+		@RequestMapping("/detail2")
+		@ResponseBody
+		public void insComm() throws Exception {
+			
+		}
+		
+		@RequestMapping("/detail3")
+		@ResponseBody
+		public void delComm() throws Exception {
+			
+		}
+		
+		@RequestMapping("/detail4")
+		@ResponseBody
+		public List<CommentVO> updComm() throws Exception {
+		
+			return null;
+		}
 	
 	// FAQ 
 	@RequestMapping("/faq")

@@ -20,15 +20,15 @@
 
 	}
 </style>
-<script src="http://code.jquery.com/jquery-latest.js"></script>
+<c:import url="/WEB-INF/views/include/basicIncludeTop.jsp"></c:import>    
 </head>
 <body>
-<div>
-	<!-- 상단메뉴 -->
-	<div>
-		<c:import url="/WEB-INF/views/include/topMenu.jsp" />
-	</div>
+	<!-- nav 메뉴 -->
+	<c:import url="/WEB-INF/views/include/navBar.jsp"></c:import>
+	<!-- nav 메뉴 끝-->
+	<div class="main-wrapper-onepage main oh">
 	
+<div>
 	<!-- 본문 -->
 	<div class="boxStyle question">
 		<div class="questArea">
@@ -119,6 +119,10 @@ function goPage(pageNo) {
     location.href = "faq?pageNo=" + pageNo;
  }
 </script>
-
+    <!-- start of footer -->
+	<c:import url="/WEB-INF/views/include/footer.jsp"></c:import>
+	<!-- end of footer -->
+	</div> <!-- end main-wrapper -->
+	<c:import url="/WEB-INF/views/include/basicIncludeBottom.jsp"></c:import>
 </body>
 </html>
