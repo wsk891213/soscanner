@@ -2,9 +2,9 @@ package com.finalproject.soscanner.mapper;
 
 import java.util.List;
 
-import com.finalproject.soscanner.vo.PageVO;
 import com.finalproject.soscanner.vo.BoardVO;
 import com.finalproject.soscanner.vo.FaqVO;
+import com.finalproject.soscanner.vo.PageVO;
 
 public interface BoardMapper {
 	
@@ -17,7 +17,6 @@ public interface BoardMapper {
 	public BoardVO updateFormBoard(int boardNo) throws Exception;
 	// 페이징
 	public int selectBoradPage(PageVO page) throws Exception;
-
 	
 	// FAQ 
 	public List<FaqVO> selectFaq(PageVO page) throws Exception;

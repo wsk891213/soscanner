@@ -2,10 +2,16 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.finalproject.soscanner.mapper.TourInfoMapper">
 
-<select id="getTourInfoList" resultType="TourInfoVO">
+<select id="getInfos" resultType="TourInfoVO">
 	SELECT TI_NO, TI_TITLE, TI_OVRVW, TI_ADDR, TI_MAPX, TI_MAPY, TI_TIME, TI_LANG
 	  FROM TB_TOURINFO
 	 WHERE TI_ADDR LIKE '%'||#{slocation}||'%'
+</select>
+
+<select id="getInfo" resultType="TourInfoVO">
+	SELECT TI_NO, TI_TITLE, TI_OVRVW, TI_ADDR, TI_MAPX, TI_MAPY, TI_TIME, TI_LANG
+	  FROM TB_TOURINFO
+	 WHERE TI_NO = #{no}
 </select>
 
 </mapper>

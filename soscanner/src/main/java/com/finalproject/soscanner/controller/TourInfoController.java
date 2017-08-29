@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.finalproject.soscanner.service.TourGuideService;
 import com.finalproject.soscanner.vo.TourInfoVO;
@@ -25,15 +26,20 @@ public class TourInfoController {
 	public void seoulMap() {
 	}
 	
-	@RequestMapping("/tourInfo")
-	public void tourInfo(TourInfoVO loc, Model model) throws Exception {
-		System.out.println(loc.getSlocation());
-		List<TourInfoVO> lists = tgService.getTourInfoList(loc);
-		
-		for(TourInfoVO list : lists) {
-			System.out.println(list.getTi_title());
-			System.out.println(list.getTi_ovrvw());
-		}
+	@RequestMapping("/infoList")
+	public void infoList(TourInfoVO loc, Model model) throws Exception {
+		List<TourInfoVO> lists = tgService.getInfos(loc);
 		model.addAttribute("lists", lists);
 	}
+	
+	@RequestMapping("/infoDetail")
+	public void infoDetail(@RequestParam("ti_no") int no, Model model) throws Exception {
+		model.addAttribute(tgService.getInfo(no));
+	}
 }
+
+
+
+
+
+

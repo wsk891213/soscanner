@@ -41,22 +41,11 @@
 <div class="main-wrapper-onepage main oh">
 
  <!-- Page Title -->
-    <section class="page-title text-center" style="background-image: url(/resources/images/blog/blog_title_bg.jpg);">
+    <section class="page-title text-center" style="background-image: url(/resources/images/sTour.jpg);">
       <div class="container relative clearfix">
         <div class="title-holder">
           <div class="title-text">
-            <h1 class="color-white heading-frame">Blog Single</h1>
-            <ol class="breadcrumb">
-              <li>
-                <a href="index.html">Home</a>
-              </li>
-              <li>
-                <a href="index.html">Blog</a>
-              </li>
-              <li class="active">
-                Blog Single
-              </li>
-            </ol>
+            <h1 class="color-white heading-frame">관광지 정보</h1>
           </div>
         </div>
       </div>
@@ -180,7 +169,7 @@ function displayArea(area) {
 
     // 다각형에 click 이벤트를 등록하고 이벤트가 발생하면 다각형의 이름과 면적을 인포윈도우에 표시합니다 
     daum.maps.event.addListener(polygon, 'click', function(mouseEvent) {
-    	var dest = "tourInfo?slocation=" + area.name;
+    	var dest = "infoList?slocation=" + area.name;
     	window.location.href = dest;
     });
 }

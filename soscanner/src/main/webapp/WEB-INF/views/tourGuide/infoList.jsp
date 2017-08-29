@@ -8,19 +8,19 @@
 
 <body data-spy="scroll" data-offset="60" data-target=".navbar-fixed-top">
 
-    <!-- nav 메뉴 -->
-    <c:import url="/WEB-INF/views/include/navBar.jsp"></c:import>
-  <!-- nav 메뉴 끝-->
+<!-- nav 메뉴 -->
+<c:import url="/WEB-INF/views/include/navBar.jsp"></c:import>
+<!-- nav 메뉴 끝-->
 
 
   <div class="main-wrapper-onepage main oh">
 
     <!-- Page Title -->
-    <section class="page-title text-center" style="background-image: url(/resources/images/blog/blog_title_bg.jpg);">
+    <section class="page-title text-center" style="background-image: url(/resources/images/sTour.jpg);">
       <div class="container relative clearfix">
         <div class="title-holder">
           <div class="title-text">
-            <h1 class="color-white heading-frame">Blog Standard</h1>
+            <h1 class="color-white heading-frame">관광지 정보</h1>
           </div>
         </div>
       </div>
@@ -36,10 +36,12 @@
           <div class="col-sm-8 blog-content">
 
           <!-- gallery post -->
+          <c:choose>
+          <c:when test="${!empty lists}">
           <c:forEach var="list" items="${lists}" varStatus="status">
             <div class="entry-item">
               <div class="entry-img">
-                <a href="blog-single.html">
+                <a href="infoDetail?ti_no=${list.ti_no}">
                   <img src="/resources/images/blog/post_img_1.jpg" alt="">
                 </a>
               </div>
@@ -51,12 +53,12 @@
 
               <div class="entry-title">
                 <h2>
-                  <a href="blog-single.html">${list.ti_title}</a>
+                  <a href="infoDetail?ti_no=${list.ti_no}">${list.ti_title}</a>
                 </h2>
               </div>
               <ul class="entry-meta">
                 <li>
-                  <a href="blog-single.html">${list.ti_addr}</a>
+                  <a>${list.ti_addr}</a>
                 </li>               
               </ul>
 
@@ -64,12 +66,23 @@
 
                 <div class="entry-content">
                   <p>${list.ti_ovrvw}</p>
-                  <a href="blog-single.html" class="read-more">더보기</a>
+                  <a href="infoDetail?ti_no=${list.ti_no}" class="read-more">더보기</a>
                   <i class="icon arrow_right"></i>
                 </div>
               </div>
             </div>
             </c:forEach>
+            </c:when>
+            <c:otherwise>
+            <div class="entry-item">
+              <div class="entry-title">
+                <h2>
+                  <a href="blog-single.html">표시할 데이터가 없습니다</a>
+                </h2>
+              </div>
+            </div>
+            </c:otherwise>
+            </c:choose>
              <!-- end entry item -->
 
             <!-- blockquote post -->
@@ -136,13 +149,13 @@
       </div> <!-- end container -->
     </section> <!-- end blog standard -->
 
-   <!-- start of footer -->
-	<c:import url="/WEB-INF/views/include/footer.jsp"></c:import>
-    <!-- end of footer -->
-  </div> <!-- end main-wrapper -->
-  
-  <!-- jQuery Scripts -->
- <c:import url="/WEB-INF/views/include/basicIncludeBottom.jsp"></c:import>
+<!-- start of footer -->
+<c:import url="/WEB-INF/views/include/footer.jsp"></c:import>
+<!-- end of footer -->
+</div> <!-- end main-wrapper -->
+
+<!-- jQuery Scripts -->
+<c:import url="/WEB-INF/views/include/basicIncludeBottom.jsp"></c:import>
 
 </body>
 </html>

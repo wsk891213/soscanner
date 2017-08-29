@@ -15,8 +15,13 @@ public class TourGuideServiceImpl implements TourGuideService{
 	private TourInfoMapper mapper;
 	
 	@Override
-	public List<TourInfoVO> getTourInfoList(TourInfoVO loc) throws Exception {
-		return mapper.getTourInfoList(loc.getSlocation());
+	public List<TourInfoVO> getInfos(TourInfoVO loc) throws Exception {
+		return mapper.getInfos(loc.getSlocation());
+	}
+
+	@Override
+	public TourInfoVO getInfo(int no) throws Exception {
+		return mapper.getInfo(no);
 	}
 	
 }
