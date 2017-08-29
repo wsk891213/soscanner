@@ -29,6 +29,11 @@ public class TourInfoController {
 	public void tourInfo(TourInfoVO loc, Model model) throws Exception {
 		System.out.println(loc.getSlocation());
 		List<TourInfoVO> lists = tgService.getTourInfoList(loc);
+		
+		for(TourInfoVO list : lists) {
+			System.out.println(list.getTi_title());
+			System.out.println(list.getTi_ovrvw());
+		}
 		model.addAttribute("lists", lists);
 	}
 }

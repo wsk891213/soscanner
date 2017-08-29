@@ -9,7 +9,7 @@
               </h2>
             </div>
             <span class="copyright text-center" style="margin-top: 20px !important;">
-              �2017 SOSCANNER  |  Development by <a href="#">SOSCANNER</a>
+              2017 SOSCANNER  |  Development by <a href="#">SOSCANNER</a>
             </span>
           </div>
         </div>
