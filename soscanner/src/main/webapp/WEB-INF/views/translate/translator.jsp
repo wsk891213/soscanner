@@ -243,12 +243,26 @@ div.backimage {
 	<div>
 		<c:import url="/WEB-INF/views/include/navBar.jsp" />
 	</div>
-	<div class="backimage">
-		<hgroup>
-		<h1 class="tH1"><i><b>Translation Service</b></i></h1>
-		<h3><b>Real-time interpreter</b></h3>
-		</hgroup>
-	</div>
+	<section class="page-title text-center" style="background-image: url(/resources/images/blog/blog_title_bg.jpg);">
+      <div class="container relative clearfix">
+        <div class="title-holder">
+          <div class="title-text">
+            <h1 class="color-white heading-frame">Blog Single</h1>
+            <ol class="breadcrumb">
+              <li>
+                <a href="index.html">Home</a>
+              </li>
+              <li>
+                <a href="index.html">Blog</a>
+              </li>
+              <li class="active">
+                Blog Single
+              </li>
+            </ol>
+          </div>
+        </div>
+      </div>
+    </section> 
 	<div class="container">
 		<div id="jb-content">
 			<form id="translate">

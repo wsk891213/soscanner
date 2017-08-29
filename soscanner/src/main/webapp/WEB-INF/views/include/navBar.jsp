@@ -42,22 +42,22 @@
                 <ul class="nav navbar-nav navbar-right">
 
                   <li>
-                    <a href="#">Home</a>
+                    <a href="/" style="font-size: 20px;">Home</a>
                   </li>
                   <li>
-                    <a href="#">SOSCAN</a>
+                    <a href="#" style="font-size: 20px;">SOSCAN</a>
                   </li>
                   <li>
-                    <a href="/tourGuide/seoulMap">관광지 정보</a>
+                    <a href="/tourGuide/seoulMap" style="font-size: 20px;">관광지 정보</a>
                   </li>
                   <li>
-                    <a href="#">번역기</a>
+                    <a href="/translate/translator" style="font-size: 20px;">번역기</a>
                   </li>
                   <li>
-                    <a href="#">게시판</a>
+                    <a href="#" style="font-size: 20px;">게시판</a>
                   </li>
                   <li>
-                    <a href="#">FAQ</a>
+                    <a href="#" style="font-size: 20px;">FAQ</a>
                   </li>
                   
                   <li>
