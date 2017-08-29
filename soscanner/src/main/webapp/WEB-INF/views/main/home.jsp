@@ -27,7 +27,7 @@
               data-slotamount="default"
               data-saveperformance="off"
               data-masterspeed="1000"
-              data-delay="8000"
+              data-delay="5000"
               data-title="The Art of Design">
               <!-- 슬라이드 1 이미지 -->
               <img src="resources/images/mTour.jpg" alt="" data-bgrepeat="no-repeat" data-bgfit="cover" class="rev-slidebg">
@@ -72,7 +72,7 @@
             <li data-transition="cube"
               data-slotamount="1"
               data-masterspeed="1000"
-              data-delay="8000"
+              data-delay="5000"
               data-title="Creative &amp; Emotional">
               <!-- 슬라이드2 이미지 -->
               <img src="resources/images/mSoscan.jpg" alt="" data-bgrepeat="no-repeat" data-bgfit="cover" class="rev-slidebg">
@@ -118,7 +118,7 @@
             <li data-transition="cube"
               data-slotamount="1"
               data-masterspeed="1000"
-              data-delay="8000"
+              data-delay="5000"
               data-title="Amazing Agency">
               <!-- 슬라이드3 이미지 -->
               <img src="resources/images/mTranslate.jpg" alt="" data-bgrepeat="no-repeat" data-bgfit="cover" class="rev-slidebg">

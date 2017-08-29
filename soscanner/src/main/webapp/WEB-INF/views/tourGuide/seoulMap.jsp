@@ -5,7 +5,7 @@
 <head>
     <meta charset="utf-8">
     <title>관광지 정보</title>
-    <style>
+<style>
 .area {
     position: absolute;
     background: #fff;
@@ -38,6 +38,30 @@
 <!-- nav 메뉴 -->
   <c:import url="/WEB-INF/views/include/navBar.jsp"></c:import>
 <!-- nav 메뉴 끝-->
+<div class="main-wrapper-onepage main oh">
+
+ <!-- Page Title -->
+    <section class="page-title text-center" style="background-image: url(/resources/images/blog/blog_title_bg.jpg);">
+      <div class="container relative clearfix">
+        <div class="title-holder">
+          <div class="title-text">
+            <h1 class="color-white heading-frame">Blog Single</h1>
+            <ol class="breadcrumb">
+              <li>
+                <a href="index.html">Home</a>
+              </li>
+              <li>
+                <a href="index.html">Blog</a>
+              </li>
+              <li class="active">
+                Blog Single
+              </li>
+            </ol>
+          </div>
+        </div>
+      </div>
+    </section> 
+<!-- end page title -->
 
 <section class="section-wrap pb-100 blog-single">
 	<div class="container relative">
@@ -166,7 +190,7 @@ function displayArea(area) {
 <!-- start of footer -->
 <c:import url="/WEB-INF/views/include/footer.jsp"></c:import>
 <!-- end of footer -->
-
+ </div> <!-- end main-wrapper -->
 <c:import url="/WEB-INF/views/include/basicIncludeBottom.jsp"></c:import>
 </body>
 </html>
