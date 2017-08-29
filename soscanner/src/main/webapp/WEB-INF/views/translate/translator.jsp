@@ -243,7 +243,7 @@ div.backimage {
 	<div>
 		<c:import url="/WEB-INF/views/include/navBar.jsp" />
 	</div>
-	<section class="page-title text-center" style="background-image: url(/resources/images/blog/blog_title_bg.jpg);">
+	<section class="page-title text-center" style="background-image: url(/resources/images/mTranslate.jpg);">
       <div class="container relative clearfix">
         <div class="title-holder">
           <div class="title-text">

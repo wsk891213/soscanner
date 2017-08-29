@@ -42,17 +42,7 @@
                 data-start="1000"
                 data-splitout="none">관광정보
               </div>
-              
-              <!-- LAYER NR. 2 -->
-              <div class="tp-caption subheading_text"
-                data-x="center"
-                data-y="center"
-                data-voffset="84"
-                data-transform_idle="o:1;s:1500;"
-                data-transform_in="z:0;rX:0;rY:0;rZ:0;sX:0;sY:0;skX:0;skY:0;opacity:0;s:1000;e:Power3.easeOut;" 
-                data-transform_out="opacity:0;sX:0;sY:0;s:1200;e:Power3.easeInOut;"
-                data-start="1000">관광정보 설명
-              </div>
+            
               
               <div class="tp-caption tp-resizeme"
                 data-x="center"
@@ -88,16 +78,7 @@
                 data-splitout="none">SOSCAN
               </div>
 
-              <!-- LAYER NR. 2 -->
-              <div class="tp-caption subheading_text"
-                data-x="center"
-                data-y="center"
-                data-voffset="84"
-                data-transform_idle="o:1;s:1500;"
-                data-transform_in="z:0;rX:0;rY:0;rZ:0;sX:0;sY:0;skX:0;skY:0;opacity:0;s:1000;e:Power3.easeOut;" 
-                data-transform_out="opacity:0;sX:0;sY:0;s:1200;e:Power3.easeInOut;"
-                data-start="1000">SOSCAN 설명
-              </div>
+            
 
               <!-- LAYER NR. 3 -->
               <div class="tp-caption tp-resizeme"
@@ -131,19 +112,10 @@
                 data-transform_in="z:0;rX:0;rY:0;rZ:0;sX:0.1;sY:0.1;skX:0;skY:0;opacity:0;s:1000;e:Power3.easeOut;" 
                 data-transform_out="opacity:0;sX:0;sY:0;s:1200;e:Power3.easeInOut;"
                 data-start="1000"
-                data-splitout="none">번역기
+                data-splitout="none" style="color: black;">번역기
               </div>
 
-              <!-- LAYER NR. 2 -->
-              <div class="tp-caption subheading_text"
-                data-x="center"
-                data-y="center"
-                data-voffset="84"
-                data-transform_idle="o:1;s:1500;"
-                data-transform_in="z:0;rX:0;rY:0;rZ:0;sX:0;sY:0;skX:0;skY:0;opacity:0;s:1000;e:Power3.easeOut;" 
-                data-transform_out="opacity:0;sX:0;sY:0;s:1200;e:Power3.easeInOut;"
-                data-start="1000">번역기 설명
-              </div>
+             
 
               <!-- LAYER NR. 3 -->
               <div class="tp-caption tp-resizeme"
@@ -155,7 +127,7 @@
                 data-transform_in="z:0;rX:0;rY:0;rZ:0;sX:0;sY:0;skX:0;skY:0;opacity:0;s:1000;e:Power3.easeOut;" 
                 data-transform_out="opacity:0;sX:0;sY:0;s:1200;e:Power3.easeInOut;"
                 data-start="1000"
-                style="z-index: 12; max-width: auto; max-height: auto; white-space: nowrap;"><a href='#' class='btn btn-lg btn-transparent'>Learn More</a>
+                style="z-index: 12; max-width: auto; max-height: auto; white-space: nowrap;"><a href='#' class='btn btn-lg btn-stroke' style="color: black;">Learn More</a>
               </div>  
             </li> 
             <!-- end slide 3 -->
