@@ -6,16 +6,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" href="/resources/css/topmenu.css">
-<link rel="stylesheet" href="/resources/css/translate.css">
 <style>
-*:before, *:after {
-	-moz-box-sizing: inherit;
-	-webkit-box-sizing: inherit;
-	-ms-box-sizing: inherit;
-	box-sizing: inherit;
-}
-
 .plain-select {
 	display: inline-block;
 	vertical-align: middle;
@@ -35,7 +26,6 @@
 	display: block;
 	width: 100%;
 	border: 1px solid #c8c8c8;
-	background: #fff url(images/inpbg.png) repeat-x 0 0;
 	color: black;
 	padding: 8px 20px 7px 10px;
 	margin: 0;
@@ -80,162 +70,55 @@ label {
 	display: block
 }
 
-.label-stacked {
-	display: block;
-	color: #505050;
-	padding: 10px 0 7px 2px;
-	font-size: 14px;
-	font-weight: bold;
-	line-height: 1.1;
-}
-
-#jb-content {
-	width: 400px;
-	padding: 20px;
-	float: left;
-}
-
-#jb-sidebar {
-	width: 400px;
-	padding: 20px;
-	float: right;
-}
-
-#jb-center {
-	width: 100px;
-	padding: 20px;
-}
-
-#title {
-	text-align: center;
-}
-
 @media ( max-width : 900px ) {
-	#jb-container {
-		width: auto;
-	}
-	#jb-content {
-		float: none;
-		width: auto;
-	}
-	#jb-sidebar {
-		float: none;
-		width: auto;
-	}
 	#inputtext, #outputtext {
 		width: 100%;
 		height: 200px;
 	}
 }
 
-.note {
-	width: 600px;
-	height: 700px;
-	position: relative;
-	margin: 20px auto;
-}
-
-#options {
-	margin: 20px auto;
-	width: 200px;
-	text-align: center;
-	width: 200px;
-}
-
-#card {
-	width: 100%;
-	height: 100%;
-	position: absolute;
-	transform-style: preserve-3d;
-	transition: transform 1s;
-}
-
-#card figure {
-	margin: 0;
-	display: block;
-	position: absolute;
-	width: 100%;
-	height: 100%;
-	backface-visibility: hidden;
-}
-
-#card .back {
-	transform: rotateY(180deg);
-}
-
-#card.flipped {
-	transform: rotateY(180deg);
-}
-
-textarea:focus {
-	background: none repeat scroll 0 0 #FFFFFF;
-	outline-width: 0;
+#outputtype {
+	margin-top: 5px;
 }
 
 #inputtext, #outputtext {
-	width: 500px;
+	width: 460px;
 	height: 500px;
 	border: none;
 	border-radius: 10px;
 	resize: none;
 	padding: 6px;
-	background: #cccfd6;
 	color: black;
 	font-size: 20px;
-	box-shadow: 12px 12px 20px #000;
+	box-shadow: 6px 6px 6px #000;
 	padding: 30px;
+	border: 1px solid black;
 }
 
-#outputtype {
-	margin-top: 5px;
+#select {
+	width: 350px;
 }
 
-.backimage {
-	background: url("/resources/images/translatepic1.jpg");
-	background-size: cover;
-	width: 100%;
-	height: 250px;
-	text-align: center;
-	line-height: 550px;
-	font-size: 60px;
-	color: black;
+.fa-refresh {
+	font-size: 20px;
 }
 
-
-
-
-
-
-.tH1 {
-	font-size: 60px;
-}
-.tBtn {
-	background-color: #999999; /* Green */
-	border: none;
-	border-radius: 10px;
-	color: white;
-	padding: 10px 23px;
-	text-align: center;
-	font-size: 16px;
-	margin: 4px 2px;
-	cursor: pointer;
-	float: left;
+.fa-microphone {
+	font-size: 30px;
+	margin-left: 30px;
 }
 
-#btndiv {
-	display: inline;
-	float: left;
+.fa-exchange {
+	width: 50px;
+	height: 50px;
+	font-size: 50px;
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	margin: auto;
 }
-
-div.backimage hgroup {
-    padding-top: 50px;
-}
-
-div.backimage {
-    margin-bottom: 30px;
-}
-
-
 </style>
 <c:import url="/WEB-INF/views/include/basicIncludeTop.jsp"></c:import>
 </head>
@@ -243,73 +126,69 @@ div.backimage {
 	<div>
 		<c:import url="/WEB-INF/views/include/navBar.jsp" />
 	</div>
-	<section class="page-title text-center" style="background-image: url(/resources/images/sTranslate.jpg);">
-      <div class="container relative clearfix">
-        <div class="title-holder">
-          <div class="title-text">
-            <h1 class="color-white heading-frame">Blog Single</h1>
-            <ol class="breadcrumb">
-              <li>
-                <a href="index.html">Home</a>
-              </li>
-              <li>
-                <a href="index.html">Blog</a>
-              </li>
-              <li class="active">
-                Blog Single
-              </li>
-            </ol>
-          </div>
-        </div>
-      </div>
-    </section> 
-	<div class="container">
-		<div id="jb-content">
-			<form id="translate">
-				<label> <span class="plain-select"> <select
-						class="inp" name="input" id="inputtype">
-							<option value="ko-KR">한국어</option>
-							<option value="en-US">영어</option>
-							<option value="cmn-Hans-CN">중국어</option>
-					</select>
-				</span>
-				</label>
-				<div class="btndiv">
-					<button onclick="eylem()" type="button" class="tBtn">
-						<b>Voice</b>
-					</button>
-				</div>
-				<div class="btndiv">
-					<button type="submit" id="submit" class="tBtn">
-						<b>Translation</b>
-					</button>
-				</div>
-				<br> <br> <br>
-				<textarea autofocus id="inputtext"></textarea>
-			</form>
+	<section class="page-title text-center"
+		style="background-image: url(/resources/images/sTranslate.jpg);">
+	<div class="container relative clearfix">
+		<div class="title-holder">
+			<div class="title-text">
+				<h1 class="color-white heading-frame">Blog Single</h1>
+				<ol class="breadcrumb">
+					<li><a href="index.html">Home</a></li>
+					<li><a href="index.html">Blog</a></li>
+					<li class="active">Blog Single</li>
+				</ol>
+			</div>
 		</div>
-
-		<div id="jb-sidebar">
-			<label> <span class="plain-select"> <select
-					class="inp" name="output" id="outputtype">
-						<option value="ko">한국어</option>
-						<option value="en">영어</option>
-						<option value="zh-CN">중국어</option>
-				</select>
-			</span></label> <br> <br> <br> <br>
-			<textarea autofocus id="outputtext"></textarea>
-		</div>
-
 	</div>
-	<br>
-	<br>
-	<br>
-	
-	
+	</section>
+
+	<section class="section-wrap-mp pb-0">
+	<div class="container">
+		<form id="translate">
+			<div class="row">
+
+				<div class="col-sm-5">
+					<div>
+						<table>
+							<tr>
+								<td id="select"><label> <span class="plain-select">
+											<select class="inp" name="input" id="inputtype">
+												<option value="ko-KR">한국어</option>
+												<option value="en-US">영어</option>
+												<option value="cmn-Hans-CN">중국어</option>
+										</select>
+									</span>
+								</label> <span class="fa fa-microphone" aria-hidden="true"
+									onclick="eylem()" style="font-size: 30px;"></span></td>
+								<td><span class="fa fa-refresh" aria-hidden="true"
+									onclick="transalte()" style="font-size: 20px;"> Trnaslate</span></td>
+							</tr>
+						</table>
+					</div>
+					<textarea id="inputtext"></textarea>
+				</div>
+
+				<div class="col-sm-2" style="position: relative; height: 600px;">
+					<span class="fa fa-exchange fa-3" aria-hidden="true" style="font-size: 50px;" onclick="change()"></span>
+				</div>
+				<div class="col-sm-5">
+					<label> <span class="plain-select"> <select
+							class="inp" name="output" id="outputtype">
+								<option value="ko">한국어</option>
+								<option value="en" >영어</option>
+								<option value="zh-CN">중국어</option>
+						</select>
+					</span></label>
+		</form>
+		<textarea id="outputtext" readonly="readonly"></textarea>
+	</div>
+	</div>
+	</div>
+	</section>
 	<div>
 		<c:import url="/WEB-INF/views/include/footer.jsp" />
 	</div>
-<c:import url="/WEB-INF/views/include/basicIncludeBottom.jsp"></c:import>
+	<c:import url="/WEB-INF/views/include/basicIncludeBottom.jsp"></c:import>
 	<script>
 		function eylem() {
 			var lang = $("#inputtype").val();
@@ -326,9 +205,8 @@ div.backimage {
 			ses.start();
 			return false;
 		}
-		$("#submit").on('click', function(e) {
-			$('#card').toggleClass('flipped');
-			e.preventDefault();
+
+		function transalte() {
 			$.ajax({
 				url : '/translate/translateok',
 				type : 'POST',
@@ -342,7 +220,23 @@ div.backimage {
 				$("#outputtext").html(result);
 			})
 
-		});
+		}
+		
+		function change() {
+			$.ajax({
+				url: '/translate/change',
+				type : 'POST',
+				data : {
+					input : $("#inputtype").val(),
+					output : $("#outputtype").val()
+				},
+				datatype : 'text'
+			}).done(function(result) {
+				console.dir(result);
+				$("#inputtype").val(result.input); 
+				$("#outputtype").val(result.output); 
+			})
+		}
 	</script>
 </body>
 </html>

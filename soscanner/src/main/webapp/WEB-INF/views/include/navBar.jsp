@@ -57,7 +57,7 @@
                     <a href="#" style="font-size: 20px;">게시판</a>
                   </li>
                   <li>
-                    <a href="#" style="font-size: 20px;">FAQ</a>
+                    <a href="/board/faq" style="font-size: 20px;">FAQ</a>
                   </li>
                   
                   <li>
