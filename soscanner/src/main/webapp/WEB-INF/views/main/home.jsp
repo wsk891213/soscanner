@@ -143,10 +143,32 @@
         <div class="row">
           <div class="col-md-4 service-item">
             <a href="#">
-              <i class="icon icon-DesktopMonitor"></i>
+              <i class="fa fa-exclamation-triangle"></i>
             </a>
             <div class="service-item-box">
-              <h3>Great Design</h3>
+              <h3>SOSCAN</h3>
+              <p>Our web design team will spend time with our digital marketing team to ensure the core principles of effective websites.</p>
+            </div>
+          </div> 
+          <!-- end service item -->
+
+          <div class="col-md-4 service-item">
+            <a href="/tourGuide/seoulMap">
+              <i class="fa fa-map-signs"></i>
+            </a>
+            <div class="service-item-box">
+              <h3>광관지 정보</h3>
+              <p>Our web design team will spend time with our digital marketing team to ensure the core principles of effective websites.</p>
+            </div>
+          </div> 
+          <!-- end service item -->
+
+          <div class="col-md-4 service-item">
+            <a href="/translate/translator">
+              <i class="fa fa-refresh"></i>
+            </a>
+            <div class="service-item-box">
+              <h3>번역기</h3>
               <p>Our web design team will spend time with our digital marketing team to ensure the core principles of effective websites.</p>
             </div>
           </div> 
@@ -154,10 +176,10 @@
 
           <div class="col-md-4 service-item">
             <a href="#">
-              <i class="icon icon-Layers"></i>
+              <i class="fa fa-flag-o"></i>
             </a>
             <div class="service-item-box">
-              <h3>Perfect Coding</h3>
+              <h3>게시판</h3>
               <p>Our web design team will spend time with our digital marketing team to ensure the core principles of effective websites.</p>
             </div>
           </div> 
@@ -165,10 +187,10 @@
 
           <div class="col-md-4 service-item">
             <a href="#">
-              <i class="icon icon-Eye"></i>
+              <i class="fa fa-question-circle-o"></i>
             </a>
             <div class="service-item-box">
-              <h3>Retina Ready</h3>
+              <h3>FAQ</h3>
               <p>Our web design team will spend time with our digital marketing team to ensure the core principles of effective websites.</p>
             </div>
           </div> 
@@ -176,32 +198,10 @@
 
           <div class="col-md-4 service-item">
             <a href="#">
-              <i class="icon icon-User"></i>
+              <i class="fa fa-language"></i>
             </a>
             <div class="service-item-box">
-              <h3>5 Star Support</h3>
-              <p>Our web design team will spend time with our digital marketing team to ensure the core principles of effective websites.</p>
-            </div>
-          </div> 
-          <!-- end service item -->
-
-          <div class="col-md-4 service-item">
-            <a href="#">
-              <i class="icon icon-Settings"></i>
-            </a>
-            <div class="service-item-box">
-              <h3>Easy to Customize</h3>
-              <p>Our web design team will spend time with our digital marketing team to ensure the core principles of effective websites.</p>
-            </div>
-          </div> 
-          <!-- end service item -->
-
-          <div class="col-md-4 service-item">
-            <a href="#">
-              <i class="icon icon-Timer"></i>
-            </a>
-            <div class="service-item-box">
-              <h3>Fast Loading</h3>
+              <h3>Language</h3>
               <p>Our web design team will spend time with our digital marketing team to ensure the core principles of effective websites.</p>
             </div>
           </div> 
