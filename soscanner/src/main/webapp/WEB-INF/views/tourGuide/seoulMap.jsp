@@ -6,25 +6,20 @@
     <meta charset="utf-8">
     <title>관광지 정보</title>
 <style>
-/* 
 .area {
     position: absolute;
-    background: #fff;
+    background: #f9f9f9;
     border: 1px solid #888;
-    border-radius: 3px;
-    font-size: 12px;
-    top: -5px;
-    left: 15px;
+    border-radius: 20px;
+    color: black;
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+    top: -5px; left: 15px;
+    width: 100px; height: 36px;
     padding:2px;
 }
- */
-.area {position:relative;bottom:85px;border-radius:6px;border: 1px solid #ccc;border-bottom:2px solid #ddd;float:left;}
-/* 
-.area:nth-of-type(n) {border:0; box-shadow:0px 1px 2px #888;}
-.area a {display:block;text-decoration:none;color:#000;text-align:center;border-radius:6px;font-size:14px;font-weight:bold;overflow:hidden;background: #d95050;background: #d95050 url(http://t1.daumcdn.net/localimg/localimages/07/mapapidoc/arrow_white.png) no-repeat right 14px center;}
-.area .title {display:block;text-align:center;background:#fff;margin-right:35px;padding:10px 15px;font-size:14px;font-weight:bold;}
-.customoverlayarea {content:'';position:absolute;margin-left:-12px;left:50%;bottom:-12px;width:22px;height:12px;background:url('http://t1.daumcdn.net/localimg/localimages/07/mapapidoc/vertex_white.png')}
- */
+
 
 .info {
     font-size: 12px;
@@ -149,7 +144,6 @@ function displayArea(area) {
         polygon.setOptions({fillColor: '#09f'});
 
         customOverlay.setContent('<div class="area">' + area.name + '</div>');
-        
         customOverlay.setPosition(mouseEvent.latLng); 
         customOverlay.setMap(map);
     });
@@ -172,6 +166,7 @@ function displayArea(area) {
     	var dest = "infoList?slocation=" + area.name;
     	window.location.href = dest;
     });
+    
 }
 
 

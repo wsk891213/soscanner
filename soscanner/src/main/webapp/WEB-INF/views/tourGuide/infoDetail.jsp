@@ -15,12 +15,14 @@ var coords = function (){
 	var pr_4326 = new Tmap.Projection("EPSG:4326");
 	var coordX = ${tourInfoVO.ti_mapx};	// db에서 받아온 x좌표
 	var coordY = ${tourInfoVO.ti_mapy};	// db에서 받아온 y좌표
+	
 	return new Tmap.LonLat(coordX, coordY).transform(pr_4326, pr_3857);
-}
+};
 
-function setVariables(){    
+function setVariables(){
+	var coord = coords();
 	//EPSG3857 좌표계 형식
-    LonLat = new Tmap.LonLat(coords().lon, coords().lat);  
+    LonLat = new Tmap.LonLat(coord.lon, coord.lat);  
     zoom = 16;  // zoom level입니다.  0~19 레벨을 서비스 하고 있습니다. 
     mapW = '945px';  // 지도의 가로 크기 입니다. 
     mapH = '400px';  // 지도의 세로 크기 입니다. 
@@ -37,14 +39,15 @@ function addMarker(){
 	var markerLayer = new Tmap.Layer.Markers("marker");
     map.addLayer(markerLayer);
     
-    var size = new Tmap.Size(25,25);
+    var size = new Tmap.Size(30,30);
     var offset = new Tmap.Pixel(-(size.w/2), -size.h);
-    var icon = new Tmap.Icon('/resources/images/marker.png',size,offset);
+    var icon = new Tmap.IconHtml('<div><img src="/resources/images/marker.png"/></div>',size,offset);
+    
     var marker = new Tmap.Markers(LonLat,icon);
     markerLayer.addMarker(marker);
 }
 
-$(function () {
+$(function() {
 	init()
 })
 </script>
@@ -84,9 +87,6 @@ $(function () {
 							<div class="col-sm-10 col-sm-offset-1">
 								<div class="entry-title">
 									<h2>${tourInfoVO.ti_title}</h2>
-									<h1>${tourInfoVO.ti_mapx}</h1>
-									<h1>${tourInfoVO.ti_mapy}</h1>
-									<h1></h1>
 								</div>
 								<div class="entry-content">
 									<p style="text-align: justify;">${tourInfoVO.ti_ovrvw}</p>
@@ -97,6 +97,13 @@ $(function () {
 							<div class="col-sm-10 col-sm-offset-1">
 								<div class="entry-content" >
 									<div id="map_div" ></div>
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-sm-10 col-sm-offset-1">
+								<div class="entry-title" >
+									<a href="#" class="btn btn-lg btn-dark" id="findRoute">길찾기</a>
 								</div>
 							</div>
 						</div>
@@ -115,5 +122,13 @@ $(function () {
   
 <!-- jQuery Scripts -->
 <c:import url="/WEB-INF/views/include/basicIncludeBottom.jsp"></c:import>
+<script>
+$("#findRoute").click(function () {
+	var mapX = coords().lon;
+	var mapY = coords().lat;
+	var address = "/tourGuide/findRoute?ti_mapx=" + mapX + "&ti_mapy=" + mapY;
+	location.href = address;
+});
+</script>
 </body>
 </html>
