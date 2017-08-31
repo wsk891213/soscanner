@@ -175,12 +175,12 @@ label {
 					<label> <span class="plain-select"> <select
 							class="inp" name="output" id="outputtype">
 								<option value="ko">한국어</option>
-								<option value="en" >영어</option>
+								<option value="en" selected="selected">영어</option>
 								<option value="zh-CN">중국어</option>
 						</select>
 					</span></label>
-		</form>
 		<textarea id="outputtext" readonly="readonly"></textarea>
+		</form>
 	</div>
 	</div>
 	</div>
@@ -217,7 +217,8 @@ label {
 				},
 				datatype : 'text'
 			}).done(function(result) {
-				$("#outputtext").html(result);
+				console.dir(result);
+				$("#outputtext").val(result);
 			})
 
 		}
@@ -228,13 +229,16 @@ label {
 				type : 'POST',
 				data : {
 					input : $("#inputtype").val(),
-					output : $("#outputtype").val()
+					output : $("#outputtype").val(),
+					intext: $("#inputtext").val(),
+					outtext: $("#outputtext").val(),
 				},
 				datatype : 'text'
 			}).done(function(result) {
-				console.dir(result);
 				$("#inputtype").val(result.input); 
-				$("#outputtype").val(result.output); 
+				$("#outputtype").val(result.output);
+				$("#inputtext").val(result.intext);
+				$("#outputtext").val(result.outtext);
 			})
 		}
 	</script>

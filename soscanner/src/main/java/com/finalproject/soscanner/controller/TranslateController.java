@@ -136,9 +136,18 @@ public class TranslateController {
 			change.setOutput("zh-CN");
 			break;
 		}
+		if (change.getIntext() != null) {
+			String text = change.getIntext();
+			if (change.getOuttext() != null) {
+				change.setIntext(change.getOuttext());
+				change.setOuttext(text);
+			}
+		}
 		Map<String, String> map = new HashMap<String, String>();
 		map.put("input", change.getInput());
 		map.put("output", change.getOutput());
+		map.put("intext", change.getIntext());
+		map.put("outtext", change.getOuttext());
 		return map;
 	}
 }
