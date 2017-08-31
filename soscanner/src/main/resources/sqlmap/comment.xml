@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.finalproject.soscanner.mapper.CommentMapper">
+	<resultMap id="commentMap" type="CommentVO">
+		<result column="COMMENTNO;     " property="commentNo" />
+		<result column="COMMENTID;     " property="commentId" />
+		<result column="COMMENTCONTENT;" property="commentContent" />
+		<result column="COMMENTDATE;   " property="commentDate" />
+		<result column="BOARDNO;       " property="boardNo" />
+	</resultMap>
+	
+	<select id="selectComm" parameterType="int" resultMap="commentMap">
+		select *
+		  from KOR_BOARD_COMMENT
+		 where BOARDNO = #{boardNo}
+		 order by COMMENTNO
+	</select>
+	
+	<insert id="insertComm" parameterType="CommentVO">
+		insert into KOR_BOARD_COMMENT(
+			COMMENTNO, COMMENTID, COMMENTCONTENT, BOARDNO
+		) values (
+			KOR_BOARD_COMMENT_SEQ.NEXTVAL, #{commentId}, #{commentContent}, #{boardNo}
+		)
+	</insert>
+	
+	<delete id="deleteComm" parameterType="int">
+		delete
+		  from KOR_BOARD_COMMENT
+		 where COMMENTNO = #{commentNo}
+	</delete>
+	
+	<update id="updateComm" parameterType="CommentVO">
+		update KOR_BOARD_COMMENT
+		   set COMMENTCONTENT = #{commentContent}
+		 where COMMENTNO = #{commentNo}
+	</update>
+	
+</mapper>

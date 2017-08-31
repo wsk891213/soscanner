@@ -6,9 +6,9 @@ import com.finalproject.soscanner.vo.CommentVO;
 
 public interface CommentService {
 	public List<CommentVO> selectComm(int boardNo) throws Exception;
-	public void insertComm() throws Exception;
-	public void deleteComm() throws Exception;
-	public List<CommentVO> updateComm() throws Exception;
+	public List<CommentVO> insertComm(CommentVO comm) throws Exception;
+	public List<CommentVO> deleteComm(CommentVO comm) throws Exception;
+	public List<CommentVO> updateComm(CommentVO comm) throws Exception;
 	
 	public int selectCount(int boardNo) throws Exception;
 }

@@ -77,29 +77,32 @@ public class BoardController {
 	}
 	
 	// 댓글 처리
-		@RequestMapping("/commentList")
+		@RequestMapping("/commentList.do")
 		@ResponseBody
-		public List<CommentVO> selComm(int boardNo) throws Exception {
+		public List<CommentVO> commentListAjax(int boardNo) throws Exception {
+			
 			return commentService.selectComm(boardNo);
 		}
 		
-		@RequestMapping("/detail2")
+		@RequestMapping("/commentRegist.do")
 		@ResponseBody
-		public void insComm() throws Exception {
-			
+		public List<CommentVO> commentRegistAjax(CommentVO comm) throws Exception {
+			System.out.println("boardNo : " + comm.getBoardNo());
+			return commentService.insertComm(comm);
 		}
 		
-		@RequestMapping("/detail3")
+		@RequestMapping("/commentUpdate.do")
 		@ResponseBody
-		public void delComm() throws Exception {
+		public List<CommentVO> commentUpdateAjax(CommentVO comm) throws Exception {
 			
+			return commentService.updateComm(comm);
 		}
 		
-		@RequestMapping("/detail4")
+		@RequestMapping("/commentDelete.do")
 		@ResponseBody
-		public List<CommentVO> updComm() throws Exception {
-		
-			return null;
+		public List<CommentVO> commentDeleteAjax(CommentVO comm) throws Exception {
+			
+			return commentService.deleteComm(comm);
 		}
 	
 	// FAQ 

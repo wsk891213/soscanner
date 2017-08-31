@@ -20,16 +20,21 @@ public class CommentServiceImpl implements CommentService {
 	}
 
 	@Override
-	public void insertComm() throws Exception {
+	public List<CommentVO> insertComm(CommentVO comm) throws Exception {
+		commentMapper.insertComm(comm);
+		return commentMapper.selectComm(comm.getBoardNo());
 	}
 
 	@Override
-	public void deleteComm() throws Exception {
+	public List<CommentVO> deleteComm(CommentVO comm) throws Exception {
+		commentMapper.deleteComm(comm.getCommentNo());
+		return commentMapper.selectComm(comm.getBoardNo());
 	}
 
 	@Override
-	public List<CommentVO> updateComm() throws Exception {
-		return null;
+	public List<CommentVO> updateComm(CommentVO comm) throws Exception {
+		commentMapper.updateComm(comm);
+		return commentMapper.selectComm(comm.getBoardNo());
 	}
 
 	@Override
