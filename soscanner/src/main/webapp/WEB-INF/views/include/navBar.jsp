@@ -54,24 +54,20 @@
                     <a href="/translate/translator" style="font-size: 20px;">번역기</a>
                   </li>
                   <li>
-                    <a href="#" style="font-size: 20px;">게시판</a>
+                    <a href="/board/list" style="font-size: 20px;">게시판</a>
                   </li>
                   <li>
                     <a href="/board/faq" style="font-size: 20px;">FAQ</a>
                   </li>
+                  <li class="dropdown">
+                    <a href="#" class="dropdown-toggle">언어</a>
+                    <ul class="dropdown-menu menu-right">
+                      <li><a href="/">영어</a></li>
+                      <li><a href="/">한국어</a></li>
+                      <li><a href="/">중국어</a></li>
+                    </ul>
+                  </li>
                   
-                  <li>
-	                <a href="#">|</a>
-	              </li>
-	              <li>
-	                <a href="#">한국어</a>
-	              </li>
-	              <li>
-	                <a href="#">중국어</a>
-	              </li>
-	              <li>
-	                <a href="#">영어</a>
-	              </li>
                 </ul> <!-- end menu -->
                 
               </div> <!-- end collapse -->
