@@ -21,7 +21,7 @@
 	<div>
 		<c:import url="/WEB-INF/views/include/topMenu.jsp" />
 	</div>
-	<div id="wrap" class="wrap">
+<div id="wrap" class="wrap">
 <div class="wrap-inner">
 
 <!--Login Section-->

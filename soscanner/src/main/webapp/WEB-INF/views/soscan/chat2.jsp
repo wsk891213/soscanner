@@ -6,7 +6,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet"	href="/resources/css/chat.css"> 
+<link rel="stylesheet"	href="/resources/css/chat2.css"> 
 </head>
 <body>
 <div class="chat">
@@ -36,7 +36,7 @@
 	<script src="https://www.gstatic.com/firebasejs/4.1.1/firebase-app.js"></script>
 	<script src="https://www.gstatic.com/firebasejs/4.1.1/firebase-database.js"></script>
 	<script src="https://www.gstatic.com/firebasejs/4.2.0/firebase.js"></script>
-<!-- 	<script src="/resources/js/chat.js"></script> -->
+	<script src="/resources/js/chat.js"></script>
 	<script>
 
 	  var config = {
@@ -83,11 +83,11 @@
 			$(".chat_text").val("");
 		}
 		function writeMessage(content){
-			database.ref().child('message/'+$("#userId").val()).set({
+			database.ref().child('message/'+$("#fromId").val()).set({
 				message:content
 			})
 		}
-		var formref = database.ref().child('message/'+$("#fromId").val());
+		var formref = database.ref().child('message/'+$("#userId").val());
 		formref.on('child_changed', function(snap) {
 			document.getElementsByClassName('chat_s')[0].innerHTML += '<div class="chat_bubble-1">' + snap.val() + '</div>';
 			console.log(snap);

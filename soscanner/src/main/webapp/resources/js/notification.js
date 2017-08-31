@@ -67,7 +67,7 @@
    
        notify.onclick = function() {
           location.href="main";
-          database.remove().ref().child("/messages"+"/user2");
+          database.ref().child("/messages"+"/user2");
        }
     }else{
        alert('please allow');
