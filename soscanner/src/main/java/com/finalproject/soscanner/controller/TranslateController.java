@@ -45,18 +45,6 @@ public class TranslateController {
 			con.setRequestMethod("POST");
 			con.setRequestProperty("X-Naver-Client-Id", clientId);
 			con.setRequestProperty("X-Naver-Client-Secret", clientSecret);
-			// post request
-			switch (trans.getInput()) {
-			case "ko-KR":
-				trans.setInput("ko");
-				break;
-			case "en-US":
-				trans.setInput("en");
-				break;
-			case "cmn-Hans-CN":
-				trans.setInput("zh-CN");
-				break;
-			}
 			String postParams = "source=" + trans.getInput() + "&target=" + trans.getOutput() + "&text=" + text;
 
 			con.setDoOutput(true);
@@ -65,8 +53,6 @@ public class TranslateController {
 
 			wr.flush();
 			wr.close();
-
-			System.out.println("wr : " + wr);
 
 			int responseCode = con.getResponseCode();
 			BufferedReader br;
@@ -84,9 +70,7 @@ public class TranslateController {
 			br.close();
 			TranslateControllerVO tran = new Gson().fromJson(response.toString(), TranslateControllerVO.class);
 			test = tran.getMessage().getResult().getTranslatedText();
-			System.out.println("response : " + response.toString());
-			System.out.println("result : " + test);
-
+			
 			return test;
 
 		} catch (Exception e) {

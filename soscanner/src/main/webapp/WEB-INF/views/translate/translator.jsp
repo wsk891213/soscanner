@@ -131,11 +131,10 @@ label {
 	<div class="container relative clearfix">
 		<div class="title-holder">
 			<div class="title-text">
-				<h1 class="color-white heading-frame">Blog Single</h1>
+				<h1 class="color-white heading-frame">번역기</h1>
 				<ol class="breadcrumb">
-					<li><a href="index.html">Home</a></li>
-					<li><a href="index.html">Blog</a></li>
-					<li class="active">Blog Single</li>
+					<li><a href="/">Home</a></li>
+					<li class="active">번역기</li>
 				</ol>
 			</div>
 		</div>
@@ -207,12 +206,29 @@ label {
 		}
 
 		function transalte() {
+			var input = $("#inputtype").val();
+			
+			switch (input) {
+			case "ko-KR":
+				input = "ko";
+				break;
+			case "en-US":
+				input = "en";
+				break;
+			case "cmn-Hans-CN":
+				input = "zh-CN";
+				break;
+			}
+			if (input ==  $("#outputtype").val()){
+			    alert("같은 언어끼리는 번역이 불가능합니다.");
+				return false;
+			}
 			$.ajax({
 				url : '/translate/translateok',
 				type : 'POST',
 				data : {
 					text : $("#inputtext").val(),
-					input : $("#inputtype").val(),
+					input : input,
 					output : $("#outputtype").val()
 				},
 				datatype : 'text'
