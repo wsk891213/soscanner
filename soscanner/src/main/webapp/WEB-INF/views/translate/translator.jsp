@@ -72,7 +72,7 @@ label {
 
 @media ( max-width : 900px ) {
 	#inputtext, #outputtext {
-		width: 100%;
+		width: 50%;
 		height: 200px;
 	}
 }
@@ -119,6 +119,35 @@ label {
 	right: 0;
 	margin: auto;
 }
+
+
+
+
+
+/* The Modal (background) */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    padding-top: 100px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content */
+.modal-content {
+    background-color: #fefefe;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 30%;
+}
+
 </style>
 <c:import url="/WEB-INF/views/include/basicIncludeTop.jsp"></c:import>
 </head>
@@ -157,7 +186,7 @@ label {
 												<option value="cmn-Hans-CN">중국어</option>
 										</select>
 									</span>
-								</label> <span class="fa fa-microphone" aria-hidden="true"
+								</label> <span class="fa fa-microphone" id="mic" aria-hidden="true"
 									onclick="eylem()" style="font-size: 30px;"></span></td>
 								<td><span class="fa fa-refresh" aria-hidden="true"
 									onclick="transalte()" style="font-size: 20px;"> Trnaslate</span></td>
@@ -184,12 +213,36 @@ label {
 	</div>
 	</div>
 	</section>
+	
+	<!-- The Modal -->
+<div id="myModal" class="modal">
+
+  <!-- Modal content -->
+  <div class="modal-content">
+  <span class="close">&times;</span>
+    <p>말하세요</p>
+  </div>
+
+</div>
+	
+	
+	
+	
+	
+	
 	<div>
 		<c:import url="/WEB-INF/views/include/footer.jsp" />
 	</div>
 	<c:import url="/WEB-INF/views/include/basicIncludeBottom.jsp"></c:import>
 	<script>
+		var modal = document.getElementById('myModal');
+
+		var btn = document.getElementById("micd");
+		
+		var span = document.getElementsByClassName("close")[0];
+		
 		function eylem() {
+			 modal.style.display = "block";
 			var lang = $("#inputtype").val();
 			var ses = new webkitSpeechRecognition();
 			ses.lang = lang;
@@ -197,14 +250,20 @@ label {
 				if (event.results.length > 0) {
 					sonuc = event.results[event.results.length - 1];
 					if (sonuc.isFinal) {
-						$("textarea").val(sonuc[0].transcript);
+						$("#inputtext").val(sonuc[0].transcript);
 					}
+					modal.style.display = "none";
 				}
 			}
 			ses.start();
+			console.dir(ses);
+			span.onclick = function() {
+			    modal.style.display = "none";
+			}
 			return false;
 		}
-
+		
+		
 		function transalte() {
 			var input = $("#inputtype").val();
 			
@@ -257,6 +316,8 @@ label {
 				$("#outputtext").val(result.outtext);
 			})
 		}
+		
+	
 	</script>
 </body>
 </html>
