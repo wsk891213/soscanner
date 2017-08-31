@@ -5,6 +5,7 @@
 <head>
 <title>SOScan</title>
 <c:import url="/WEB-INF/views/include/basicIncludeTop.jsp"></c:import>
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 </head>
 
 <body data-spy="scroll" data-offset="60" data-target=".navbar-fixed-top">
@@ -37,7 +38,7 @@
         <div class="row">
           <!-- content -->
           <!-- 여기에 스타일 15%된거 변경해서 중간으로 맞춰야함 -->
-          <div class="col-sm-8 blog-content" style="margin-left: 15%">
+          <div class="col-sm-8 blog-content" style="margin-left: 15%" id="hDiv">
       		<h2 class="intro-heading heading-frame">Please choose someone to help you</h2>
 
           <!-- gallery post -->
@@ -104,6 +105,49 @@
 
 <!-- jQuery Scripts -->
 <c:import url="/WEB-INF/views/include/basicIncludeBottom.jsp"></c:import>
+
+
+
+	<script defer src="https://www.gstatic.com/firebasejs/4.3.0/firebase-app.js"></script>
+	<script defer src="https://www.gstatic.com/firebasejs/4.3.0/firebase-database.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/4.3.0/firebase.js"></script>
+<script>
+  // Initialize Firebase
+ var config = {
+			    apiKey: "AIzaSyCCz1QBgdGHOMtDsNBuVdP0vV4AEzMWSwQ",
+			    authDomain: "fmc-test-1efbc.firebaseapp.com",
+			    databaseURL: "https://fmc-test-1efbc.firebaseio.com",
+			    projectId: "fmc-test-1efbc",
+			    storageBucket: "fmc-test-1efbc.appspot.com",
+			    messagingSenderId: "117555202324"
+			  };
+			  firebase.initializeApp(config);
+  var database = firebase.database();
+  var hDiv = $("#hDiv");
+  var help = database.ref().child('help/user1');
+  help.on('child_added', function (snap) {
+	 var message = database.ref().child('help/user1/message');
+	 var userId = database.ref().child('help/user1/userId');
+	 var html = '';
+	 html +='<div class="entry-item">';
+	 html +='<div class="entry-date hidden-sm hidden-xs" style="padding: 0px 4px;">';
+	 html +='<img src="/resources/images/kara_4.png"></img>';
+	 html += '</div>' ;
+	 html +='<div class="entry-title">';
+	 html += '<h2>';
+	 html +=     '<a href="#">'+userId.val()+'</a>';
+	 html +=   '</h2>';
+	 html +='</div>';
+	 html += '<ul class="entry-meta">';
+	 html +=   '<li>';
+	 html +=     '<a>'+ message.val()+'</a>';
+	 html +=   '</li>';
+	 html +='</ul>';
+	 html +='</div>';
+	 hDiv.append(html);
+  });
+</script>
+
 
 </body>
 </html>

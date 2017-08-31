@@ -30,7 +30,7 @@
 	<br>
 	<br>
 	<div class="container" id="askdiv">
-		<h2 class="intro-heading heading-frame">Ask For Help</h2>
+		<h2 class="intro-heading heading-frame">I need your help</h2>
 		<form class="aForm" action="#" id="aForm">
 			<div class="row">
 				<div class="col-md-6">
@@ -39,7 +39,7 @@
 			</div>
 			<textarea name="content" id="content" placeholder="Message"
 				style="resize: none;"></textarea>
-			<input class="btn btn-lg btn-color btn-submit" type="submit" value="Send Message">
+			<input class="btn btn-lg btn-color btn-submit" type="submit" value="Help Message">
 			<div class="message" id="msg"></div>
 		</form>
 	</div>
@@ -54,33 +54,35 @@
 		<c:import url="/WEB-INF/views/include/footer.jsp" />
 	</div>
 	<c:import url="/WEB-INF/views/include/basicIncludeBottom.jsp"></c:import>
-
-
-
-
-<!-- 	<script src="https://www.gstatic.com/firebasejs/4.1.1/firebase-app.js"></script> -->
-<!-- 	<script --> 
-<!-- 		src="https://www.gstatic.com/firebasejs/4.1.1/firebase-database.js"></script> -->
-<!-- 	<script -->
-<!-- 		src="https://www.gstatic.com/firebasejs/4.1.1/firebase-messaging.js"></script> -->
-<!-- 	<script src="https://www.gstatic.com/firebasejs/4.2.0/firebase.js"></script> -->
-<!-- 	<script src="/resources/js/notification.js"></script> -->
+	
+	<script src="https://www.gstatic.com/firebasejs/4.3.0/firebase-app.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/4.3.0/firebase-database.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/4.3.0/firebase.js"></script>
+<!-- 	<script src="/resources/js/chat.js"></script> -->
 	<script>
-		
+
+	  var config = {
+			    apiKey: "AIzaSyCCz1QBgdGHOMtDsNBuVdP0vV4AEzMWSwQ",
+			    authDomain: "fmc-test-1efbc.firebaseapp.com",
+			    databaseURL: "https://fmc-test-1efbc.firebaseio.com",
+			    projectId: "fmc-test-1efbc",
+			    storageBucket: "fmc-test-1efbc.appspot.com",
+			    messagingSenderId: "117555202324"
+			  };
+			  firebase.initializeApp(config);
+			  var database = firebase.database();
+			  
 		$("#aForm").submit(function () {
+			database.ref().child('help/'+'user1').set({
+				message:$("#content").val(),
+				userId:$("#userId").val()
+			})
 			console.log($("#userId").val());
 			console.log($("#content").val());
-			$.ajax({
-				url: "helpsend",
-				data: {userId : $("#userId").val(), content : $("#content").val()}
-				
-			}).done(function () {
-				location.href="helper";
-				
-			});
-			
+			$("#userId").val("");
+			$("#content").val("");
 			return false;
-		})
+		});
 		
 		
 		

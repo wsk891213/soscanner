@@ -49,21 +49,23 @@ public class SoscanController {
 	public void helper () {
 		logger.info("helper");
 	}
+	@RequestMapping("/selecthelp")
+	public void selecthelp () {
+		logger.info("selecthelp");
+	}
 	@RequestMapping("/helpsend")
 	@ResponseBody
 	public ResponseEntity<String> helpSend (String userId, String content) {
 		logger.info("helpSend");
 		
 		
-		userId ="호민";
-		content = "준영이 병신";
 		
 		final String uri ="https://fcm.googleapis.com/fcm/send";
 		RestTemplate restTemplate = new RestTemplate();
 		
 		restTemplate.getMessageConverters().add(new MappingJackson2HttpMessageConverter());
 		
-		String input = "{ 	\"notification\": {	\"title\" : \""+ userId +"\", \"body\": \"" + content + "\",	\"click_action\": \"http://localhost:8000/soscan/main\" }, \"to\": \"cXUCkLY4G38:APA91bEQdxCn2FBXHYCgueZTBNcKmB6-MC6JXA6ltDgSmal7oD6uIyId7nXgo7rGLpiR9_peRXyqlPr5-aE0GLjXVf-29qrIiJcaIe7PRthyfC3uZcjiKeDZpuZKwitCbRrqKyI-7Gx0\" }";
+		String input = "{ 	\"notification\": {	\"title\" : \""+ userId +"\", \"body\": \"" + content + "\",	\"click_action\": \"http://192.168.0.18:8000/soscan/selecthelp\" }, \"to\": \"cjzHvSiyozE:APA91bFbNLDeAMWPWXi1Fobe1LI-EwQNP0pYCH-un-RSX2435eERKRFPk0oWxzQR-BB16WDaZ8gS7vCrqoIG8Ck5aREtY-pVH75q7Fa1OWQsvSZM5rgc9FOQCLu6-pAo964HxsghOcVe\" }";
 		
 		
 		System.out.println(input);
@@ -73,9 +75,7 @@ public class SoscanController {
 		HttpHeaders headers = new HttpHeaders();
 		
 		headers.add("Authorization", "key=AAAAC1XFO4Y:APA91bG0j44SLYGqa0aaw58EykUr9fz0Vqwv_X3Kn57NkhJg4yhObIj18fsO_NAmFcKUWNNkeZu0sQh-TUy45xspyQRFeA8bD3HaqalrikMgibfgdzMXsBAFNNct_Mak_mdFyXm-aXkf");
-		headers.add("Content-Type", "application/json");
-		//headers.setContentType(MediaType.APPLICATION_JSON);
-		//headers.set("Authorization", "key=AAAAC1XFO4Y:APA91bG0j44SLYGqa0aaw58EykUr9fz0Vqwv_X3Kn57NkhJg4yhObIj18fsO_NAmFcKUWNNkeZu0sQh-TUy45xspyQRFeA8bD3HaqalrikMgibfgdzMXsBAFNNct_Mak_mdFyXm-aXkf");
+		headers.add("Content-Type", "application/json; charset=utf-8");
 		
 		HttpEntity<String> entity = new HttpEntity<String>(input, headers);
 		logger.info("entity : ", entity);

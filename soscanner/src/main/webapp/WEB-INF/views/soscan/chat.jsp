@@ -33,9 +33,9 @@
 	
 	
 	<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-	<script src="https://www.gstatic.com/firebasejs/4.1.1/firebase-app.js"></script>
-	<script src="https://www.gstatic.com/firebasejs/4.1.1/firebase-database.js"></script>
-	<script src="https://www.gstatic.com/firebasejs/4.2.0/firebase.js"></script>
+	<script defer src="https://www.gstatic.com/firebasejs/4.3.0/firebase-app.js"></script>
+	<script defer src="https://www.gstatic.com/firebasejs/4.3.0/firebase-database.js"></script>
+	<script defer src="https://www.gstatic.com/firebasejs/4.3.0/firebase.js"></script>
 <!-- 	<script src="/resources/js/chat.js"></script> -->
 	<script>
 

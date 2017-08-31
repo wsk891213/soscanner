@@ -45,7 +45,7 @@
                     <a href="/" style="font-size: 20px;">Home</a>
                   </li>
                   <li>
-                    <a href="#" style="font-size: 20px;">SOSCAN</a>
+                    <a href="/soscan/main" style="font-size: 20px;">SOSCAN</a>
                   </li>
                   <li>
                     <a href="/tourGuide/seoulMap" style="font-size: 20px;">관광지 정보</a>
