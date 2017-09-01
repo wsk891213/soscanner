@@ -6,6 +6,23 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>SOScan</title>
+<style>
+	body {
+		text-align: center;
+	}
+	#askdiv {
+		height: 500px;
+		text-align: center;
+		box-shadow: 10px 10px 20px 6px gray;
+		display:inline-block;
+		margin: auto;
+		
+	}
+	#askH2 {
+	
+	}
+	
+</style>
 <!-- <script src="https://www.gstatic.com/firebasejs/4.2.0/firebase.js"></script> -->
 <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 <c:import url="/WEB-INF/views/include/basicIncludeTop.jsp"></c:import>
@@ -29,16 +46,17 @@
 	</section>
 	<br>
 	<br>
+	
 	<div class="container" id="askdiv">
-		<h2 class="intro-heading heading-frame">Ask For Help</h2>
 		<form class="aForm" action="#" id="aForm">
-			<div class="row">
-				<div class="col-md-6">
-					<input name="userId" id="userId" type="text" placeholder="Name*">
+		<br>
+		<h2 class="intro-heading heading-frame" id="askH2">Ask For Help</h2>
+			<div class="row" style="text-align: center;>
+				<div class="col-md-6"">
+					<input name="userId" id="userId" type="text" placeholder="Name*" style="width: 500px" >
 				</div>
-			</div>
-			<textarea name="content" id="content" placeholder="Message"
-				style="resize: none;"></textarea>
+			<textarea rows="3" name="content" id="content" placeholder="Message"
+				style="resize: none ; width: 500px; position: absolute;"></textarea> <br> 
 			<input class="btn btn-lg btn-color btn-submit" type="submit" value="Send Message">
 			<div class="message" id="msg"></div>
 		</form>
@@ -48,7 +66,7 @@
 	<br>
 	<br>
 	<br>
-
+ 
 
 	<div>
 		<c:import url="/WEB-INF/views/include/footer.jsp" />
