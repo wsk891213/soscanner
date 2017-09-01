@@ -1,20 +1,47 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<!-- Login Form Accordion -->
-<section id="LoginAccord" class="section-wrap process" style="background-image: url(/resources/images/process_bg.jpg); display: none;">
+
+<!-- register Form start -->
+<section id="registAccord" class="section-wrap process" style="background-image: url(/resources/images/process_bg.jpg); display: none;">
     <div class="container">
        <div class="row heading">
           <div class="col-md-6 col-md-offset-3">
-            <h2 class="text-center color-white bottom-line">로그인</h2>
-            <p class="subheading text-center color-white">That's How We Do It</p>
+            <h2 class="text-center color-white bottom-line">회원가입</h2>
           </div>
        </div>
        <div class="row">
 		  <div class="col-md-6 col-md-offset-3">
-			<form>
+			<form id="registForm">
+	            <input name="email" id="email" type="text" placeholder="Email">
+	            <input name="password" id="password" type="password" placeholder="Password">
+	            <input name="passwordChk" id="passwordChk" type="password" placeholder="Password Check">
+	            <input name="country" id="country" type="text" placeholder="Country">
+	            <input name="language" id="language" type="text" placeholder="Language">
+	            <a href="#" class="btn btn-lg btn-dark">회원가입</a>
+	            <a href="#" id="RegistCancelBtn" class="btn btn-lg btn-dark">취소</a><br><br>
+			</form>
+          </div>
+       </div>
+	</div>
+</section>
+<!-- register Form end -->
+
+
+<!-- Sign In Form Accordion start-->
+<section id="signInAccord" class="section-wrap process" style="background-image: url(/resources/images/process_bg.jpg); display: none;">
+    <div class="container">
+       <div class="row heading">
+          <div class="col-md-6 col-md-offset-3">
+            <h2 class="text-center color-white bottom-line">로그인</h2>
+          </div>
+       </div>
+       <div class="row">
+		  <div class="col-md-6 col-md-offset-3">
+			<form id="signInForm">
 	            <input name="name" id="name" type="text" placeholder="ID">
 	            <input name="password" id="password" type="password" placeholder="Password">
 	            <a href="#" class="btn btn-lg btn-dark">로그인</a>
-	            <a href="#" id="loginCancel" class="btn btn-lg btn-dark">취소</a>
+	            <a href="#" id="loginCancelBtn" class="btn btn-lg btn-dark">취소</a><br><br>
+	            <a href="#" id="registBtn">회원가입</a>
 			</form>
           </div>
        </div>
@@ -22,6 +49,7 @@
 </section>
 <section class="section-wrap-mp services style-2 pb-0 pb-mdm-50" style="padding: 1px !important;">
 </section>
+<!-- Sign In Form Accordion end-->
 
 <footer class="footer minimal bg-dark" style="padding: 30px !important;">
    <div class="container">

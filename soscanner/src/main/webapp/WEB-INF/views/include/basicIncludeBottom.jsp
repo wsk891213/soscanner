@@ -16,18 +16,42 @@
   <script type="text/javascript" src="/resources/revolution/js/extensions/revolution.extension.migration.min.js"></script>
   <script type="text/javascript" src="/resources/revolution/js/extensions/revolution.extension.parallax.min.js"></script>
   <script>
-   $("#loginButton").click(function () {
-	   if($("#LoginAccord").is(":visible")){
-            $("#LoginAccord").slideUp("slow");
+  
+   $("#loginButton").click(function (e) {
+	   if($("#registAccord").is(":visible")) {
+		   e.preventDefault();
+		   $('html, body').animate({scrollTop : 1219}, 1000);
+		   $("#registAccord").slideUp();
+       }
+	   
+	   if($("#signInAccord").is(":visible")){
+           $("#signInAccord").slideUp(1000);
        } 
 	   else {
-       		$("#LoginAccord").slideDown("slow");
-       		$("body").scrollTop($(document).height());
+       		$("#signInAccord").slideDown();
+       	 	$('html, body').animate({scrollTop : 1043}, 1000);
        }
 	   
    }) 
-   $("#loginCancel").click(function () {
-	   $("#LoginAccord").slideUp("slow");
+   
+   $("#registBtn").click(function (e) {
+	    e.preventDefault();
+	    $('html, body').animate({scrollTop : 1219}, 900);
+	    $("#signInAccord").slideUp(900);
+	    $("#registAccord").slideDown(1000)
+   })
+   
+   
+   $("#RegistCancelBtn").click(function (e) {
+	   e.preventDefault();
+	   $('html, body').animate({scrollTop : 1219}, 1000);
+	   $("#registAccord").slideUp();
+	   $("#signInAccord").slideDown();
+   })
+    $("#loginCancelBtn").click(function (e) {
+       e.preventDefault();
+       $('html, body').animate({scrollTop : 0}, 1000);
+	   $("#signInAccord").slideUp();
    })
    
   </script>
