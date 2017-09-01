@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <!-- jQuery Scripts -->
   <script type="text/javascript" src="/resources/js/jquery.min.js"></script>
   <script type="text/javascript" src="/resources/js/bootstrap.min.js"></script>
@@ -15,6 +17,7 @@
   <script type="text/javascript" src="/resources/revolution/js/extensions/revolution.extension.navigation.min.js"></script>
   <script type="text/javascript" src="/resources/revolution/js/extensions/revolution.extension.migration.min.js"></script>
   <script type="text/javascript" src="/resources/revolution/js/extensions/revolution.extension.parallax.min.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/4.3.0/firebase.js"></script>
   <script>
   
    $("#loginButton").click(function (e) {
@@ -53,5 +56,74 @@
        $('html, body').animate({scrollTop : 0}, 1000);
 	   $("#signInAccord").slideUp();
    })
+   
+   
+   // homin
+   
+        // Initialize Firebase
+    var config = {
+        apiKey: "AIzaSyB80FZkiKaOtvZYczEeb_5VV0S080TkDiY",
+        authDomain: "finaltest-aea39.firebaseapp.com",
+        databaseURL: "https://finaltest-aea39.firebaseio.com",
+        projectId: "finaltest-aea39",
+        storageBucket: "finaltest-aea39.appspot.com",
+        messagingSenderId: "48683629446"
+      };
+     firebase.initializeApp(config);
+    </script>
+
+    <script defer src="https://www.gstatic.com/firebasejs/4.3.0/firebase-app.js"></script>
+    <!-- include only the Firebase features as you need -->
+    <script defer src="https://www.gstatic.com/firebasejs/4.3.0/firebase-messaging.js"></script>
+    <script defer src="https://www.gstatic.com/firebasejs/4.3.0/firebase-storage.js"></script>
+    <!-- initialize the SDK after all desired features are loaded -->
+    <script defer>
+
+	$("#registForm").submit(function () {
+		console.log("email : ",$("#u_email").val());
+		$.ajax({
+			url: "/user/signup",
+			data: {
+				u_email: $("#u_email").val(),
+				u_pass: $("#u_pass").val(),
+				u_nationality: $("#u_nationality").val(),
+				u_language: $("#u_language").val(),
+				token: $("#token").val()
+			}
+		});
+		return false;
+	})
+    const messaging = firebase.messaging()
+  	function requestPermission() {
+	    console.log('Requesting permission...');
+	    // [START request_permission]
+	    messaging.requestPermission()
+	    .then(function() {
+	      console.log('Notification permission granted.');
+	      // TODO(developer): Retrieve an Instance ID token for use with FCM.
+	      // [START_EXCLUDE]
+	      // In many cases once an app has been granted notification permission, it
+	      // should update its UI reflecting this.
+	      resetUI();
+	      // [END_EXCLUDE]
+	    })
+	    .catch(function(err) {
+	      console.log('Unable to get permission to notify.', err);
+	    });
+	    // [END request_permission]
+	    
+	    messaging.getToken()
+	    .then(function(currentToken) {
+	        console.log(currentToken);
+	        $("#token").val(currentToken);
+	      
+	    })
+	    .catch(function(err) {
+	      console.log('An error occurred while retrieving token. ', err);
+	      setTokenSentToServer(false);
+	    });
+	  }
+    requestPermission();
+   
    
   </script>

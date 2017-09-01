@@ -18,7 +18,7 @@
 <link rel="stylesheet" href="/resources/css/spacings.css" />
 <link rel="stylesheet" href="/resources/css/animate.css" />
 <link rel="stylesheet" href="/resources/css/color.css" />
-
+<link rel="manifest" href="/resources/manifest.json">
 <!-- Favicons -->
 <link rel="shortcut icon" href="/resources/images/favicon.ico">
 <link rel="apple-touch-icon" href="/resources/images/apple-touch-icon.png">

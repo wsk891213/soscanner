@@ -19,8 +19,15 @@ public class UserController {
 	
 	
 	@RequestMapping("/signup")
-	public void singUp(UserVO user) {
+	@ResponseBody
+	public void singUp(UserVO user) throws Exception{
 		logger.info("singUp 컨트롤러");
+		
+		logger.info("email : ", user.getU_email());
+		logger.info("pass : ", user.getU_pass());
+		logger.info("token : ", user.getU_token());
+		
+		userService.insertUser(user);
 	}
 	
 	
