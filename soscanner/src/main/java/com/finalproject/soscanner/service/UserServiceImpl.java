@@ -1,5 +1,32 @@
 package com.finalproject.soscanner.service;
 
-public class UserServiceImpl {
+import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.finalproject.soscanner.mapper.UserMapper;
+import com.finalproject.soscanner.vo.UserVO;
+
+@Service("UserService")
+public class UserServiceImpl implements UserService{
+
+	@Autowired
+	private UserMapper userMapper;
+	
+	@Override
+	public List<UserVO> userList() throws Exception {
+		return userMapper.userList();
+	}
+
+	@Override
+	public List<UserVO> searchUser(String u_language) throws Exception {
+		return userMapper.searchUser(u_language);
+	}
+
+	@Override
+	public void insertUser(UserVO user) throws Exception {
+		userMapper.insertUser(user);
+	}
+	
 }

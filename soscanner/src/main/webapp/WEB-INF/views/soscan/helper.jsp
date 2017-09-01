@@ -41,41 +41,6 @@
           <div class="col-sm-8 blog-content" style="margin-left: 15%" id="hDiv">
       		<h2 class="intro-heading heading-frame">Please choose someone to help you</h2>
 
-          <!-- gallery post -->
-            <div class="entry-item">
-              <div class="entry-date hidden-sm hidden-xs" style="padding: 0px 4px;">
-              <img src="/resources/images/kara_4.png"></img>
-              </div> 
-
-              <div class="entry-title">
-                <h2>
-                  <a href="#">userId</a>
-                </h2>
-              </div>
-              <ul class="entry-meta">
-                <li>
-                  <a>여기에 내용</a>
-                </li>               
-              </ul>
-            </div>
-             <!-- end entry item -->
-          <!-- gallery post -->
-            <div class="entry-item">
-              <div class="entry-date hidden-sm hidden-xs" style="padding: 0px 4px;">
-              <img src="/resources/images/kara_4.png"></img>
-              </div> 
-
-              <div class="entry-title">
-                <h2>
-                  <a href="#">userId</a>
-                </h2>
-              </div>
-              <ul class="entry-meta">
-                <li>
-                  <a>여기에 내용</a>
-                </li>               
-              </ul>
-            </div>
              <!-- end entry item -->
 
 
@@ -97,7 +62,7 @@
         </div> <!-- end row -->
       </div> <!-- end container -->
     </section> <!-- end blog standard -->
-
+<a href="http://localhost:5000">이동</a>
 <!-- start of footer -->
 <c:import url="/WEB-INF/views/include/footer.jsp"></c:import>
 <!-- end of footer -->
@@ -124,28 +89,42 @@
 			  firebase.initializeApp(config);
   var database = firebase.database();
   var hDiv = $("#hDiv");
-  var help = database.ref().child('help/user1');
-  help.on('child_added', function (snap) {
-	 var message = database.ref().child('help/user1/message');
-	 var userId = database.ref().child('help/user1/userId');
+  var help = database.ref('help/user1/user2');
+  
+  help.on('value', function (snap) {
+	 console.log(snap.val());
 	 var html = '';
+	 
 	 html +='<div class="entry-item">';
 	 html +='<div class="entry-date hidden-sm hidden-xs" style="padding: 0px 4px;">';
 	 html +='<img src="/resources/images/kara_4.png"></img>';
 	 html += '</div>' ;
 	 html +='<div class="entry-title">';
 	 html += '<h2>';
-	 html +=     '<a href="#">'+userId.val()+'</a>';
+	 html +=     '<a href="#">user2</a>';
 	 html +=   '</h2>';
 	 html +='</div>';
 	 html += '<ul class="entry-meta">';
 	 html +=   '<li>';
-	 html +=     '<a>'+ message.val()+'</a>';
+	 html +=     '<a>'+ snap.val().message+'</a>';
 	 html +=   '</li>';
 	 html +='</ul>';
+	 html +='&emsp;<button onclick="deleteUser();">거절하기</button>&emsp;';
+	 html +='<button onclick="chat()">채팅하기</button>';
 	 html +='</div>';
 	 hDiv.append(html);
   });
+  	
+  function deleteUser(result){
+	  console.log("들어옴")
+	  database.ref('/help/user1/user2').remove();
+	  location.href="helper";
+  }
+  function chat(result){
+	  
+  }
+  
+  
 </script>
 
 

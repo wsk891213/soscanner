@@ -73,9 +73,8 @@
 			  var database = firebase.database();
 			  
 		$("#aForm").submit(function () {
-			database.ref().child('help/'+'user1').set({
+			database.ref().child('help/'+'user1/'+$("#userId").val()).set({
 				message:$("#content").val(),
-				userId:$("#userId").val()
 			})
 			console.log($("#userId").val());
 			console.log($("#content").val());
