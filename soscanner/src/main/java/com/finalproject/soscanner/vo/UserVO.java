@@ -5,10 +5,19 @@ public class UserVO {
 	private int u_uno;
 	private String u_email;
 	private String u_pass;
+	private String u_passChk;
 	private String u_nationality;
 	private String u_language;
 	private String u_token;
 	
+	
+	
+	public String getU_passChk() {
+		return u_passChk;
+	}
+	public void setU_passChk(String u_passChk) {
+		this.u_passChk = u_passChk;
+	}
 	public int getU_uno() {
 		return u_uno;
 	}

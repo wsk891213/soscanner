@@ -79,19 +79,26 @@
     <!-- initialize the SDK after all desired features are loaded -->
     <script defer>
 
-	$("#registForm").submit(function () {
+    
+	$("#registForm").submit(function (e) {
+		e.preventDefault();
 		console.log("email : ",$("#u_email").val());
+		var registData = $("#registForm").serialize();
+		console.log("registData : ",registData);
 		$.ajax({
+			type: "POST",
 			url: "/user/signup",
-			data: {
-				u_email: $("#u_email").val(),
-				u_pass: $("#u_pass").val(),
-				u_nationality: $("#u_nationality").val(),
-				u_language: $("#u_language").val(),
-				token: $("#token").val()
+			data: registData
+		}).done(function (answer) {
+			var text = "비번 불일치";
+			if(answer == "2") {
+				text = "회원가입 완료";
+				$('html, body').animate({scrollTop : 0}, 4000);
+				$("#registAccord").slideUp();
 			}
+			alert(text);
 		});
-		return false;
+		
 	})
     const messaging = firebase.messaging()
   	function requestPermission() {

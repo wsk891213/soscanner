@@ -12,10 +12,10 @@
 		</div>
 		<div class="row">
 			<div class="col-md-6 col-md-offset-3">
-				<form id="registForm" action="#" onclick="RF();">
+				<form id="registForm" method="post">
 					<input name="u_email" id="u_email" type="text" placeholder="Email">
 					<input name="u_pass" id="u_pass" type="password" placeholder="Password">
-					<input name="u_pass" id="u_pass" type="password" placeholder="Password Check">
+					<input name="u_passChk" id="u_passChk" type="password" placeholder="Password Check">
 	    			<select name="u_nationality" id="u_nationality" >
    						<option value="Argentina">Argentina</option>
    						<option value="Australia">Australia</option>
@@ -116,7 +116,7 @@
 		                <option value="chinese">중국어</option>
 		            </select>
 					<input name="token" id="token" type="hidden">
-					<a href="#"class="btn btn-lg btn-dark">회원가입</a> <a href="#" id="RegistCancelBtn" class="btn btn-lg btn-dark">취소</a>
+					<input type="submit" class="btn btn-lg btn-dark" value="회원가입"> <a href="#" id="RegistCancelBtn" class="btn btn-lg btn-dark">취소</a>
 					<br>
 					<br>
 				</form>
