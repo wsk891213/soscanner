@@ -59,6 +59,9 @@
                   <li>
                     <a href="/board/faq" style="font-size: 20px;">FAQ</a>
                   </li>
+                  <li>
+                    <a href="#" id="loginButton" style="font-size: 20px;">로그인</a>
+                  </li>
                   <li class="dropdown">
                     <a href="#" class="dropdown-toggle">언어</a>
                     <ul class="dropdown-menu menu-right">

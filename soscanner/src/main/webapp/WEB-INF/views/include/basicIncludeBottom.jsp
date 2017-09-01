@@ -15,3 +15,19 @@
   <script type="text/javascript" src="/resources/revolution/js/extensions/revolution.extension.navigation.min.js"></script>
   <script type="text/javascript" src="/resources/revolution/js/extensions/revolution.extension.migration.min.js"></script>
   <script type="text/javascript" src="/resources/revolution/js/extensions/revolution.extension.parallax.min.js"></script>
+  <script>
+   $("#loginButton").click(function () {
+	   if($("#LoginAccord").is(":visible")){
+            $("#LoginAccord").slideUp("slow");
+       } 
+	   else {
+       		$("#LoginAccord").slideDown("slow");
+       		$("body").scrollTop($(document).height());
+       }
+	   
+   }) 
+   $("#loginCancel").click(function () {
+	   $("#LoginAccord").slideUp("slow");
+   })
+   
+  </script>

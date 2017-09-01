@@ -6,7 +6,6 @@
   <title>SOSCANNER</title>
   <c:import url="/WEB-INF/views/include/basicIncludeTop.jsp"></c:import>
 </head>
-
 <body style="font-family: 'Open Sans', sans-serif;">
   <!-- nav 메뉴 -->
     <c:import url="/WEB-INF/views/include/navBar.jsp"></c:import>
@@ -78,8 +77,6 @@
                 data-splitout="none">SOSCAN
               </div>
 
-            
-
               <!-- LAYER NR. 3 -->
               <div class="tp-caption tp-resizeme"
                 data-x="center"
@@ -114,8 +111,6 @@
                 data-start="1000"
                 data-splitout="none" style="color: black;">번역기
               </div>
-
-             
 
               <!-- LAYER NR. 3 -->
               <div class="tp-caption tp-resizeme"

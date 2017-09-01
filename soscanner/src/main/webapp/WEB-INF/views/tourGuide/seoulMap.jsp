@@ -86,6 +86,12 @@
 	</div> <!-- end container -->
 </section>
 
+
+<!-- start of footer -->
+<c:import url="/WEB-INF/views/include/footer.jsp"></c:import>
+<!-- end of footer -->
+ </div> <!-- end main-wrapper -->
+<c:import url="/WEB-INF/views/include/basicIncludeBottom.jsp"></c:import>
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=18cc25ec3391fb888265b35fbb20e3f8"></script>
 <script>
 $(document).ready(function(){
@@ -169,13 +175,7 @@ function displayArea(area) {
     
 }
 
-
 </script>
-<!-- start of footer -->
-<c:import url="/WEB-INF/views/include/footer.jsp"></c:import>
-<!-- end of footer -->
- </div> <!-- end main-wrapper -->
-<c:import url="/WEB-INF/views/include/basicIncludeBottom.jsp"></c:import>
 </body>
 </html>
 

@@ -156,10 +156,9 @@ getMyLocation();
 <c:import url="/WEB-INF/views/include/footer.jsp"></c:import>
 <!-- end of footer -->
  </div> <!-- end main-wrapper -->
-<c:import url="/WEB-INF/views/include/basicIncludeBottom.jsp"></c:import>
-
 <input type="hidden" id="coordinateX"/>
 <input type="hidden" id="coordinateY"/>
+<c:import url="/WEB-INF/views/include/basicIncludeBottom.jsp"></c:import>
 </body>
 </html>
 
