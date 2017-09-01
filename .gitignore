@@ -7,13 +7,17 @@
 
 Servers/
 
-soscanner/.settings
+.classpath
+.settings/
+target/
+
+soscanner/.settings/
 
 soscanner/target/
 
-soscanner/.classpath
+soscanner/*.classpath
 
-soscanner/.project
+soscanner/*.project
 
 RemoteSystemsTempFiles/
 
