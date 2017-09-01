@@ -20,7 +20,7 @@
 
 		<!-- Page Title -->
 		<section class="page-title text-center"
-			style="background-image: url(/resources/images/blog/blog_title_bg.jpg);">
+			style="background-image: url(/resources/images/resized-board-img.jpg);">
 			<div class="container relative clearfix">
 				<div class="title-holder">
 					<div class="title-text">
@@ -80,14 +80,43 @@
 
 						<!-- Pagination -->
 						<nav class="pagination clear text-center">
-							<i class="icon arrow_left"></i> <a href="#">Prev</a> <span
-								class="page-numbers current">1</span> <a href="#">2</a> <a
-								href="#">3</a> <span class="pagination-dots">...</span> <a
-								href="#">10</a> <a href="#">Next</a> <i class="icon arrow_right"></i>
-						</nav>
+							<c:if test="${pageResult.count != 0}">
+								<ul class="pagination">
+									<li	class="<c:if test="${pageResult.prev eq false}">disabled</c:if>">
+										<a href="<c:if test="${pageResult.prev eq true}">javascript:goPage(${pageResult.beginPage - 1})</c:if>">
+										<i class="icon arrow_left"></i> 
+										<span>Prev</span>
+										</a>
+									</li>
 
+							<c:forEach var="i" begin="${pageResult.beginPage}" end="${pageResult.endPage}">
+								<c:choose>
+									<c:when test="${pageResult.pageNo eq i}">
+										<li class="active"><a href="#1">${i}</a></li>
+									</c:when>
+									<c:otherwise>
+										<li><a href="javascript:goPage(${i})">${i}</a></li>
+									</c:otherwise>
+								</c:choose>
+							</c:forEach>
+
+									<li	class="<c:if test="${pageResult.next eq false}">disabled</c:if>">
+										<a href="<c:if test="${pageResult.next eq true}">javascript:goPage(${pageResult.endPage + 1})</c:if>">
+										<span>Next</span>
+										<i class="icon arrow_right"></i>
+										</a>
+									</li>
+								</ul>
+							</c:if>
+						</nav>
 					</div>
 					<!-- end col -->
+
+<script>
+	function goPage(pageNo) {
+	    location.href = "list?pageNo=" + pageNo;
+	 }
+</script>
 
 					<!-- sidebar -->
 					<div class="col-sm-4 sidebar blog-sidebar">
