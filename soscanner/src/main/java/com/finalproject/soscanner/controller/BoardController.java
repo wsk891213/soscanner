@@ -122,4 +122,8 @@ public class BoardController {
 		model.addAttribute("page", count);
 		model.addAttribute("pageResult", new PageResultVO(pageNo, count));
 	}
+	
+	@RequestMapping("/faq_main")
+	public void faq_main() {
+	}
 }
