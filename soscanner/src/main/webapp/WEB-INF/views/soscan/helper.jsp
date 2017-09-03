@@ -6,6 +6,12 @@
 <title>SOScan</title>
 <c:import url="/WEB-INF/views/include/basicIncludeTop.jsp"></c:import>
 <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<style>
+	#hDiv {
+		box-shadow: 10px 10px 15px 15px gray;
+		height: 400px;
+	}
+</style>
 </head>
 
 <body data-spy="scroll" data-offset="60" data-target=".navbar-fixed-top">
@@ -41,28 +47,12 @@
           <div class="col-sm-8 blog-content" style="margin-left: 15%" id="hDiv">
       		<h2 class="intro-heading heading-frame">Please choose someone to help you</h2>
 
-             <!-- end entry item -->
-
-
-<!--             Pagination -->
-<!--             <nav class="pagination clear text-center"> -->
-<!--               <i class="icon arrow_left"></i> -->
-<!--                 <a href="#">Prev</a> -->
-<!--               <span class="page-numbers current">1</span> -->
-<!--                 <a href="#">2</a> -->
-<!--                 <a href="#">3</a> -->
-<!--                 <span class="pagination-dots">...</span> -->
-<!--                 <a href="#">10</a> -->
-<!--                 <a href="#">Next</a> -->
-<!--                 <i class="icon arrow_right"></i> -->
-<!--             </nav> -->
 
           </div> <!-- end col -->
   
         </div> <!-- end row -->
       </div> <!-- end container -->
     </section> <!-- end blog standard -->
-<a href="http://localhost:5000">이동</a>
 <!-- start of footer -->
 <c:import url="/WEB-INF/views/include/footer.jsp"></c:import>
 <!-- end of footer -->
@@ -101,7 +91,7 @@
 	 html += '</div>' ;
 	 html +='<div class="entry-title">';
 	 html += '<h2>';
-	 html +=     '<a href="#">user2</a>';
+	 html +=     '<a href="#" id="userId">user2</a>';
 	 html +=   '</h2>';
 	 html +='</div>';
 	 html += '<ul class="entry-meta">';
@@ -110,7 +100,7 @@
 	 html +=   '</li>';
 	 html +='</ul>';
 	 html +='&emsp;<button onclick="deleteUser();">거절하기</button>&emsp;';
-	 html +='<button onclick="chat()">채팅하기</button>';
+	 html +='<button onclick="chat($("#userId").html())">채팅하기</button>';
 	 html +='</div>';
 	 hDiv.append(html);
   });
