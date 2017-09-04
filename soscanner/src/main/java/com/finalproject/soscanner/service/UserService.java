@@ -11,4 +11,6 @@ public interface UserService {
 	public List<UserVO> searchUser (String u_language) throws Exception;
 	
 	public void insertUser (UserVO user) throws Exception;
+	
+	public UserVO loginChk (UserVO user) throws Exception;
 }

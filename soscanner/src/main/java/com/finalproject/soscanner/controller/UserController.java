@@ -1,12 +1,16 @@
 package com.finalproject.soscanner.controller;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.finalproject.soscanner.service.UserService;
 import com.finalproject.soscanner.vo.UserVO;
@@ -38,13 +42,31 @@ public class UserController {
 	}
 	
 	
-	@RequestMapping("/singin")
-	public void singIn(UserVO user) {
-		
-	}
 	@RequestMapping("/login")
-	public void login(UserVO user) {
+	public ModelAndView login(UserVO user, HttpServletRequest req) throws Exception {
+		UserVO login = userService.loginChk(user);
+		ModelAndView mav = new ModelAndView();
+		String msg = null;
+		HttpSession session = req.getSession();
+		if (login != null) {
+			session.setAttribute("user", login);
 		
+			msg = "로그인 되셨습니다.";
+			mav.setViewName("user/loginForm");
+			mav.addObject("msg",msg);
+		}
+		else {
+			mav.setViewName("user/login");
+			msg = "아이디와 비밀번호를 확인해 주세요";
+			mav.addObject("msg", msg);
+			session.invalidate();
+		}
+		return mav;
 	}
 	
+	@RequestMapping("/singin")
+	public String singIn(UserVO user, HttpSession session, HttpServletResponse res, HttpServletRequest req) {
+		session.invalidate();
+		return "redirect:/";
+	}
 }

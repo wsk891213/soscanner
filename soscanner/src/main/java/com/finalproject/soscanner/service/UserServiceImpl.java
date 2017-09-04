@@ -28,5 +28,10 @@ public class UserServiceImpl implements UserService{
 	public void insertUser(UserVO user) throws Exception {
 		userMapper.insertUser(user);
 	}
+
+	@Override
+	public UserVO loginChk(UserVO user) throws Exception {
+		return userMapper.loginChk(user);
+	}
 	
 }

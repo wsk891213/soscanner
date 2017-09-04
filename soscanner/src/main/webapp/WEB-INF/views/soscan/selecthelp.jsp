@@ -53,7 +53,7 @@
 			<div id="containers">
 				<div class="col-md-6 col-md-offset-3">
 					<form id="registForm">
-			            <input name="Email" id="email" type="text" placeholder="Name" >
+			            <input name="Email" id="email" type="text" placeholder="Name" value="${user.userId}">
 			            <textarea placeholder="Textarea" rows="3" style="resize: none;"></textarea>
 			            <a href="#" class="btn btn-lg btn-dark">Send Message</a>
 					</form>

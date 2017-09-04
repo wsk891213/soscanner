@@ -18,7 +18,13 @@
 		INSERT INTO TB_USER (U_UNO, U_EMAIL, U_PASS, U_NATIONALITY, U_LANGUAGE, U_TOKEN)
 		VALUES (SEQ_U_UNO.NEXTVAL, #{u_email}, #{u_pass}, #{u_nationality}, #{u_language}, #{u_token})
 	</insert>
-
+	
+	<select id="loginChk" parameterType="UserVO" resultType="UserVO">
+		SELECT U_UNO, U_EMAIL, U_PASS, U_NATIONALITY, U_LANGUAGE, U_TOKEN
+		  FROM TB_USER
+		 WHERE U_UNO = #{u_uno}
+		   AND U_PASS = #{u_pass}
+	</select>
 
 
 </mapper>

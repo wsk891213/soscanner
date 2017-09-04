@@ -61,7 +61,7 @@ border-radius:50px;
 			<div id="containers">
 				<div class="col-md-6 col-md-offset-3">
 					<form id="helpForm">
-			            <input name="userId" id="userId" type="text" placeholder="Name" >
+			            <input name="userId" id="userId" type="text" placeholder="Name" value="${user.userId}" readonly="readonly">
 			            <textarea placeholder="Textarea" id="content" name="content" rows="3" style="resize: none;"></textarea>
 			            <input type="submit" class="btn btn-lg btn-dark" value="Send Message">
 					</form>
