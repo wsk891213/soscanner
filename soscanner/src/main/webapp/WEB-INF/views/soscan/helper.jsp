@@ -79,7 +79,7 @@
 			  firebase.initializeApp(config);
   var database = firebase.database();
   var hDiv = $("#hDiv");
-  var help = database.ref('help/'+sosId+'/user2');
+  var help = database.ref('help/'+'${user.u_email}'+'/'+'${sosId}');
   
   help.on('value', function (snap) {
 	 console.log(snap.val());
@@ -107,7 +107,7 @@
   	
   function deleteUser(result){
 	  console.log("들어옴")
-	  database.ref('/help/user1/user2').remove();
+	  database.ref('/help/'+'${user.u_email}'+'/'+'${sosId}').remove();
 	  location.href="helper";
   }
   function chat(result){

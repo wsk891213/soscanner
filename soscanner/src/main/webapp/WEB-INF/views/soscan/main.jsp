@@ -87,7 +87,8 @@ border-radius:50px;
 			url: "helpsend",
 			data: {
 				userId: sosId,
-				content: $("#content").val()
+				content: $("#content").val(),
+				u_language: "${user.u_language}"
 			}
 		}).done(function (result) {
 			console.log(result);

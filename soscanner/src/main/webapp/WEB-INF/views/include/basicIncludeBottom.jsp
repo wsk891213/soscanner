@@ -82,11 +82,11 @@
     
     const messaging = firebase.messaging()
   	function requestPermission() {
-	    console.log('Requesting permission...');
+// 	    console.log('Requesting permission...');
 	    // [START request_permission]
 	    messaging.requestPermission()
 	    .then(function() {
-	      console.log('Notification permission granted.');
+// 	      console.log('Notification permission granted.');
 	      // TODO(developer): Retrieve an Instance ID token for use with FCM.
 	      // [START_EXCLUDE]
 	      // In many cases once an app has been granted notification permission, it
@@ -95,18 +95,18 @@
 	      // [END_EXCLUDE]
 	    })
 	    .catch(function(err) {
-	      console.log('Unable to get permission to notify.', err);
+// 	      console.log('Unable to get permission to notify.', err);
 	    });
 	    // [END request_permission]
 	    
 	    messaging.getToken()
 	    .then(function(currentToken) {
-	        console.log(currentToken);
+// 	        console.log(currentToken);
 	        $("#u_token").val(currentToken);
 	      
 	    })
 	    .catch(function(err) {
-	      console.log('An error occurred while retrieving token. ', err);
+// 	      console.log('An error occurred while retrieving token. ', err);
 	      setTokenSentToServer(false);
 	    });
 	  }
@@ -114,9 +114,9 @@
    
 	$("#registForm").submit(function (e) {
 		e.preventDefault();
-		console.log("email : ",$("#u_email").val());
+// 		console.log("email : ",$("#u_email").val());
 		var registData = $("#registForm").serialize();
-		console.log("registData : ",registData);
+// 		console.log("registData : ",registData);
 		$.ajax({
 			type: "POST",
 			url: "/user/signup",

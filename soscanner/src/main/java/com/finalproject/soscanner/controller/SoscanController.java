@@ -1,6 +1,8 @@
 package com.finalproject.soscanner.controller;
 
 
+import java.util.List;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +19,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.client.RestTemplate;
 
 import com.finalproject.soscanner.service.UserService;
+import com.finalproject.soscanner.vo.UserVO;
 
 
 @Controller
@@ -54,39 +57,44 @@ public class SoscanController {
 	}
 	@RequestMapping("/helpsend")
 	@ResponseBody
-	public ResponseEntity<String> helpSend (String userId, String content) {
+	public ResponseEntity<String> helpSend (String u_language,String userId, String content) throws Exception{
 		logger.info("helpSend");
 		
-		
-		
+		String input= "";
+		List<UserVO> user = userService.searchUser(u_language);
 		final String uri ="https://fcm.googleapis.com/fcm/send";
 		RestTemplate restTemplate = new RestTemplate();
 		
 		restTemplate.getMessageConverters().add(new MappingJackson2HttpMessageConverter());
+		if (user != null) {
+			for (UserVO list : user) {
+				input = "{ 	\"notification\": {	\"title\" : \""+ userId +"\", \"body\": \"" + content + "\",	\"click_action\": \"http://192.168.0.18:8000/soscan/selecthelp?userId=" + userId + "\" }, \"to\": \""+list.getU_token()+"\" }";
+				
+			}
+			
+			System.out.println(input);
+			//set headers
+			
+			logger.info("input : ", input);
+			HttpHeaders headers = new HttpHeaders();
+			
+			headers.add("Authorization", "key=AAAAC1XFO4Y:APA91bG0j44SLYGqa0aaw58EykUr9fz0Vqwv_X3Kn57NkhJg4yhObIj18fsO_NAmFcKUWNNkeZu0sQh-TUy45xspyQRFeA8bD3HaqalrikMgibfgdzMXsBAFNNct_Mak_mdFyXm-aXkf");
+			headers.add("Content-Type", "application/json; charset=utf-8");
+			
+			HttpEntity<String> entity = new HttpEntity<String>(input, headers);
+			logger.info("entity : ", entity);
+			System.out.println(entity);
+			
+			
+			ResponseEntity<String> response = restTemplate.exchange(uri, HttpMethod.POST, entity, String.class);
+			System.out.println(response);
+			
+			logger.info("response : ", response);
+			
+			return response;
+		}
+		return null;
 		
-		String input = "{ 	\"notification\": {	\"title\" : \""+ userId +"\", \"body\": \"" + content + "\",	\"click_action\": \"http://192.168.0.18:8000/soscan/selecthelp?="+userId+"\" }, \"registration_ids\": [\"fY0ySamuyto:APA91bFGA8JPq_vYO2ajmN5aNa3WkvUcjiUY0U6JsvsNTNLkuVSrmagWH7F3SqefQ4F24HizaR3Xx1rEwTUg-13Vo4EJd8RIAmZbNcYQjKsKsZyJ_bGOO0Iid7lIAfV7giGFZk9HEyfn\", \"cXUCkLY4G38:APA91bEQdxCn2FBXHYCgueZTBNcKmB6-MC6JXA6ltDgSmal7oD6uIyId7nXgo7rGLpiR9_peRXyqlPr5-aE0GLjXVf-29qrIiJcaIe7PRthyfC3uZcjiKeDZpuZKwitCbRrqKyI-7Gx0\"] }";
-		
-		
-		System.out.println(input);
-		//set headers
-		
-		logger.info("input : ", input);
-		HttpHeaders headers = new HttpHeaders();
-		
-		headers.add("Authorization", "key=AAAAC1XFO4Y:APA91bG0j44SLYGqa0aaw58EykUr9fz0Vqwv_X3Kn57NkhJg4yhObIj18fsO_NAmFcKUWNNkeZu0sQh-TUy45xspyQRFeA8bD3HaqalrikMgibfgdzMXsBAFNNct_Mak_mdFyXm-aXkf");
-		headers.add("Content-Type", "application/json; charset=utf-8");
-		
-		HttpEntity<String> entity = new HttpEntity<String>(input, headers);
-		logger.info("entity : ", entity);
-		System.out.println(entity);
-		
-		
-		ResponseEntity<String> response = restTemplate.exchange(uri, HttpMethod.POST, entity, String.class);
-		System.out.println(response);
-		
-		logger.info("response : ", response);
-		
-		return response;
 	}
 	
 		
