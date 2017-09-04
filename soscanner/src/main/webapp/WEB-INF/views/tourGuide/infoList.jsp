@@ -98,52 +98,17 @@
                 </blockquote>
               </div>
             </div> <!-- end entry item -->
-
-
-            <!-- Pagination -->
-            <nav class="pagination clear text-center">
-              <i class="icon arrow_left"></i>
-                <a href="#">Prev</a>
-              <span class="page-numbers current">1</span>
-                <a href="#">2</a>
-                <a href="#">3</a>
-                <span class="pagination-dots">...</span>
-                <a href="#">10</a>
-                <a href="#">Next</a>
-                <i class="icon arrow_right"></i>
-            </nav>
-
+            
           </div> <!-- end col -->
           
           <!-- sidebar -->
           <div class="col-sm-4 sidebar blog-sidebar">
-
-            <form role="form" class="relative">
-              <input type="search" class="searchbox" placeholder="Search">
-                <button type="submit" class="search-button"><i class="icon icon_search"></i></button>
-              </form>
-
-              <!-- Categories -->
-              <div class="widget categories">
-                <h3 class="widget-title">Categories</h3>
-                <ul>
-                  <li>
-                    <a href="#">종로구</a>
-                  </li>
-                  <li>
-                    <a href="#">강남구</a>
-                  </li>
-                  <li>
-                    <a href="#">중구</a>
-                  </li>
-                  <li>
-                    <a href="#">영등포구</a>
-                  </li>
-                  <li>
-                    <a href="#">송파구</a>
-                  </li>
-                </ul>
-              </div>
+			<h3>원하시는 관광지를 검색 하세요</h3><br>
+            <form role="form" class="relative" id="tSearchForm" action="infoList">
+              <input type="text" name="sWord" class="searchbox" placeholder="Search">
+              <button type="submit" class="search-button"><i class="icon icon_search"></i></button>
+            </form><br>
+			<a href="/tourGuide/seoulMap">지도로 돌아가기</a>
           </div> <!-- end col -->
   
         </div> <!-- end row -->
@@ -157,6 +122,7 @@
 
 <!-- jQuery Scripts -->
 <c:import url="/WEB-INF/views/include/basicIncludeBottom.jsp"></c:import>
-
+<script>
+</script>
 </body>
 </html>

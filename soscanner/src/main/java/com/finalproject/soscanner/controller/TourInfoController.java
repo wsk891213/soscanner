@@ -29,8 +29,9 @@ public class TourInfoController {
 	
 	@RequestMapping("/infoList")
 	public void infoList(TourInfoVO loc, Model model) throws Exception {
-		List<TourInfoVO> lists = tgService.getInfos(loc);
-		model.addAttribute("lists", lists);
+		logger.info("테스트중 테스트 : "+ loc.getsWord());
+			List<TourInfoVO> lists = tgService.getInfos(loc);
+			model.addAttribute("lists", lists);
 	}
 	
 	@RequestMapping("/infoDetail")

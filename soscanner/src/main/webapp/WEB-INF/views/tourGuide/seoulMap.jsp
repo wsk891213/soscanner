@@ -29,10 +29,18 @@
     font-weight: bold;
 }
 
+.mapFrame {
+	height: 700px;
+	width: 90%;
+	padding: 30px;
+	background: black;
+	border-radius: 30px;
+	margin: 10px 65px 65px;
+}
+
 #mapContainer{
-  border: 1px solid dashed #FFF;
-  height:600px; 
-  width: 1140px;
+  height:100%; 
+  width:100%;
 }
 
 </style>
@@ -56,37 +64,32 @@
     </section> 
 <!-- end page title -->
 
-<section class="section-wrap pb-100 blog-single">
+<section class="section-wrap pb-100 blog-single" style="padding-bottom: 5px !important;" >
 	<div class="container relative">
         <div class="row">
           
           <!-- content -->
           <div class="col-sm-12 blog-content">
-
-            <!-- standard post -->
-            <div class="entry-item">
-                  <div class="entry-title">
-                    <h2>지역을 선택해 주세요</h2>
-                  </div>
-                  <ul class="entry-meta bottom-line">
-                  </ul>
-
-                  <div class="entry">
-                    <div class="entry-content" style="width: 100% !important;">
-						<div id="mapContainer">
-							<div id="map" style="width: 100%; height: 100%;"></div>
-						</div>
-                    </div>
-              </div> <!-- end row -->
-
-            </div> <!-- end entry item -->
+			<div class="entry-item">
+				<div class="entry-title">
+					<h1>지역을 선택해 주세요</h1>
+				</div>
+				<ul class="entry-meta bottom-line">
+				</ul>
+				
+			</div>
           </div> <!-- end col -->
   
         </div> <!-- end row -->
 	</div> <!-- end container -->
 </section>
 
-
+<div class="mapFrame">
+	<div id="mapContainer">
+		<div id="map" style="width: 100%; height: 100%;"></div>
+	</div>
+</div>
+<section class="section-wrap-mp services style-2 pb-0 pb-mdm-50" style="padding: 1px !important;"></section>
 <!-- start of footer -->
 <c:import url="/WEB-INF/views/include/footer.jsp"></c:import>
 <!-- end of footer -->
@@ -174,6 +177,7 @@ function displayArea(area) {
     });
     
 }
+
 
 </script>
 </body>

@@ -10,8 +10,15 @@ public class TourInfoVO {
 	private String ti_time;
 	private String ti_lang;
 	private String slocation;
+	private String sWord;
 	
 	
+	public String getsWord() {
+		return sWord;
+	}
+	public void setsWord(String sWord) {
+		this.sWord = sWord;
+	}
 	public String getSlocation() {
 		return slocation;
 	}

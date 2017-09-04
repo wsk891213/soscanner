@@ -8,6 +8,12 @@
 	 WHERE TI_ADDR LIKE '%'||#{slocation}||'%'
 </select>
 
+<select id="getsInfo" resultType="TourInfoVO">
+	SELECT TI_NO, TI_TITLE, TI_OVRVW, TI_ADDR, TI_MAPX, TI_MAPY, TI_TIME, TI_LANG
+	  FROM TB_TOURINFO
+	 WHERE TI_TITLE LIKE '%'||#{sWord}||'%'
+</select>
+
 <select id="getInfo" resultType="TourInfoVO">
 	SELECT TI_NO, TI_TITLE, TI_OVRVW, TI_ADDR, TI_MAPX, TI_MAPY, TI_TIME, TI_LANG
 	  FROM TB_TOURINFO
