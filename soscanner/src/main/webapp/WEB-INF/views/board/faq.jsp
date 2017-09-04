@@ -58,7 +58,7 @@
 <div class="main-wrapper-onepage main oh">
 
  <!-- Page Title -->
-    <section class="page-title text-center" style="background-image: url(/resources/images/sTour.jpg);">
+    <section class="page-title text-center" style="background-image: url(/resources/images/resize-faq-img.jpg);">
       <div class="container relative clearfix">
         <div class="title-holder">
           <div class="title-text">
@@ -78,28 +78,82 @@
 
             <!-- standard post -->
             <div class="entry-item">
-                  <div class="entry-title">
-                    <h2>자주 묻는 질문(FAQ)</h2>
-                  </div>
-                  <ul class="entry-meta bottom-line">
-                  </ul>
+<!--                   <div class="entry-title"> -->
+<!--                     <h2>자주 묻는 질문(FAQ)</h2> -->
+<!--                   </div> -->
+<!--                   <ul class="entry-meta bottom-line"> -->
+<!--                   </ul> -->
 
                   <div class="entry">
                     <div class="entry-content">
 						<div class="boxOuter">
 							<div class="boxInner">
 								<h3 class="accrdMTitle">자주 묻는 질문(FAQ)</h3>
-								<!-- 이부분 -->
+							<c:forEach var="faq" items="${faq}">
 								<ul>
-									<li class="aTitle">질문</li>
-									<li class="aContent">내용</li>
+									<li class="aTitle"><c:out value="${faq.content}" /></li>
+									<li class="aContent"><c:out value="${faq.answer}" /></li>
 								</ul>
-								<!-- 이부분 -->
+							</c:forEach>
 							</div>
+							
+							
+							<!-- Pagination -->
+				            <nav class="pagination clear text-center">
+				              <i class="icon arrow_left"></i>
+				                <a href="javascript:goPage(${pageResult.beginPage - 1})">Prev</a>
+				              <span class="page-numbers current">1</span>
+				                <a href="#">2</a>
+				                <a href="#">3</a>
+				                <span class="pagination-dots">...</span>
+				                <a href="#">10</a>
+				                <a href="#">Next</a>
+				                <i class="icon arrow_right"></i>
+				            </nav>
+							
+							<!-- Pagination -->
+								<c:if test="${pageResult.count != 0}">
+									<ul class="pagination">
+										<li	class="<c:if test="${pageResult.prev eq false}">disabled</c:if>">
+											<a href="<c:if test="${pageResult.prev eq true}">javascript:goPage(${pageResult.beginPage - 1})</c:if>">
+												<i class="icon arrow_left"></i> <span>Prev</span>
+											</a>
+										</li>
+
+										<c:forEach var="i" begin="${pageResult.beginPage}"
+											end="${pageResult.endPage}">
+											<c:choose>
+												<c:when test="${pageResult.pageNo eq i}">
+													<li class="active"><a href="#1">${i}</a></li>
+												</c:when>
+												<c:otherwise>
+													<li><a href="javascript:goPage(${i})">${i}</a></li>
+												</c:otherwise>
+											</c:choose>
+										</c:forEach>
+
+										<li	class="<c:if test="${pageResult.next eq false}">disabled</c:if>">
+											<a href="<c:if test="${pageResult.next eq true}">javascript:goPage(${pageResult.endPage + 1})</c:if>">
+												<span>Next</span> <i class="icon arrow_right"></i>
+											</a>
+										</li>
+									</ul>
+								</c:if>
+							<!-- Pagination -->
+							
+							<!-- Search -->
+							<form action="/faq/faq" method="get" role="form" class="relative">
+								<input type="search" class="searchbox" placeholder="Search">
+								<button type="submit" class="search-button">
+									<i class="icon icon_search"></i>
+								</button>
+							</form>
+							<!-- Search -->
+							
 						</div>
                     </div>
-              </div> <!-- end row -->
-            </div> <!-- end entry item -->
+              	</div> <!-- end row -->
+			</div> <!-- end entry item -->
           </div> <!-- end col -->
   
         </div> <!-- end row -->
@@ -113,10 +167,25 @@
  </div> <!-- end main-wrapper -->
 <c:import url="/WEB-INF/views/include/basicIncludeBottom.jsp"></c:import>
 <script>
+// function goPage(pageNo) {
+//     location.href = "faq?pageNo=" + pageNo;
+//  }
+function goPage(pageNo) {
+	if("${pageResult.prev eq false}") {
+		
+	}
+	else {
+    	location.href = "faq?pageNo=" + pageNo;
+	}
+ }
+
 $(".aTitle").click(function () {
 	if(!$(this).next().is(":visible")){
 		$(".aContent").slideUp();
 		$(this).next().slideDown();
+	}
+	else {
+		$(this).next().slideUp();
 	}
 })
 </script>

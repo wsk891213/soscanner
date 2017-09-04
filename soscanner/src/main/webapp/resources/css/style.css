@@ -2344,7 +2344,7 @@ p {
   border-radius: 0;
   display: block;
   text-align: center;
-  padding-top: 42px;
+/*   padding-top: 42px; */
   border-top: 1px solid #e5e5e5;
 }
 

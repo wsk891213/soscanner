@@ -100,10 +100,8 @@ textarea {
 					html += "<td>" + comment.commentDate + "</td>";
 					html += "<td>";
 
-					html += "<a href='javascript:commentDelete("
-							+ comment.commentNo + ")'>삭제</a>";
-					html += "<a href='javascript:commentUpdateForm("
-							+ comment.commentNo + ")'>수정</a>";
+					html += "<a href='javascript:commentDelete(" + comment.commentNo + ")'>삭제</a>";
+					html += "<a href='javascript:commentUpdateForm(" + comment.commentNo + ")'>수정</a>";
 					html += "</td>";
 					html += "</tr>";
 
@@ -135,33 +133,24 @@ textarea {
 			$("#rForm")
 					.submit(
 							function() {
-								$
-										.ajax(
-												{
-													url : "commentRegist.do",
-													type : "POST",
-													data : {
-														boardNo : '${detail.boardNo}',
-														commentContent : $(
-																"#rForm textarea[name='content']")
-																.val(),
-														commentId : $(
-																"#commentId")
-																.val()
-													},
-													dataType : "json"
-												})
-										.done(
-												function(result) {
-													console.log(result);
+								$.ajax({
+									url : "commentRegist.do",
+									type : "POST",
+									data : {
+										boardNo : '${detail.boardNo}',
+										commentContent : $("#rForm textarea[name='content']").val(),
+										commentId : $("#commentId").val()
+										},
+										dataType : "json"
+										})
+										.done(function(result) {
+											console.log(result);
 													// 입력폼 초기화 작업
 													// 로그인 안한 상태인 경우
 													//if (!'${user.id}') {
 													// 				$("#rForm input[name='userId']").val("");
 													//} 
-													$(
-															"#rForm textarea[name='content']")
-															.val("");
+													$("#rForm textarea[name='content']").val("");
 													makeCommentList(result);
 												});
 
@@ -182,10 +171,8 @@ textarea {
 				html += "<td><textarea class='form-control' name='content'>"
 						+ modContent + "</textarea></td>";
 				html += "<td colspan='2'>"
-				html += "<a href='javascript:commentUpdate(" + commentNo
-						+ ");'>수정</a>";
-				html += "<a href='javascript:commentCancel(" + commentNo
-						+ ")'>취소</a>";
+				html += "<a href='javascript:commentUpdate(" + commentNo + ");'>수정</a>";
+				html += "<a href='javascript:commentCancel(" + commentNo + ")'>취소</a>";
 				html += "</td>"
 				html += "</tr>";
 
