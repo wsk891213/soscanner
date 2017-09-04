@@ -37,6 +37,7 @@
 	   
    }) 
    
+   
    $("#registBtn").click(function (e) {
 	    e.preventDefault();
 	    $('html, body').animate({scrollTop : 1219}, 900);
@@ -131,6 +132,19 @@
 			alert(text);
 		});
 		
+	});
+	$("#signInForm").submit(function (e) {
+		e.preventDefault()
+		var signData = $("#signInForm").serialize();
+		console.log(signData);
+		$.ajax({
+			type: "POST",
+			url: "/user/login",
+			data: signData
+		}).done(function (result) {
+			console.log(result);
+			location.href="/";
+		});
 	})
    
   </script>

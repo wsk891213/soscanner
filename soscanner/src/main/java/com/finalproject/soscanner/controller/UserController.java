@@ -42,29 +42,34 @@ public class UserController {
 	
 	
 	@RequestMapping("/login")
-	public ModelAndView login(UserVO user, HttpServletRequest req) throws Exception {
+	@ResponseBody
+	public String login(UserVO user, HttpServletRequest req) throws Exception {
+		System.out.println(user.getU_email());
+		System.out.println(user.getU_pass());
+		
 		UserVO login = userService.loginChk(user);
-		ModelAndView mav = new ModelAndView();
+		logger.info("로그인");
+		System.out.println("로그인");
+		System.out.println(login);
 		String msg = null;
 		HttpSession session = req.getSession();
 		if (login != null) {
 			session.setAttribute("user", login);
 			
+			System.out.println("로그인 완료");
 			msg = "로그인 되셨습니다.";
-			mav.setViewName("/");
-			mav.addObject("msg",msg);
 		}
 		else {
-			mav.setViewName("/");
+			System.out.println("로그인 실패");
+			logger.info("로그인 실패");
 			msg = "아이디와 비밀번호를 확인해 주세요";
-			mav.addObject("msg", msg);
 		}
-		return mav;
+		return msg;
 	}
 	
 	@RequestMapping("/logout")
-	public String singIn(UserVO user, HttpSession session, HttpServletResponse res, HttpServletRequest req) {
+	public void singIn(HttpServletRequest req) {
+		HttpSession session = req.getSession();
 		session.invalidate();
-		return "redirect:/";
 	}
 }

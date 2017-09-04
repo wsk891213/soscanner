@@ -8,10 +8,11 @@
 		  FROM TB_USER
 	</select>
 	
-	<select id="searchUser" parameterType="String" resultType="UserVO">
+	<select id="searchUser" parameterType="UserVO" resultType="UserVO">
 		SELECT U_UNO, U_EMAIL, U_PASS, U_NATIONALITY, U_LANGUAGE, U_TOKEN
 		  FROM TB_USER
 		 WHERE U_LANGUAGE = #{u_language}
+		 AND U_EMAIL != #{u_email}
 	</select>
 	
 	<insert id="insertUser" parameterType="UserVO">
@@ -22,9 +23,9 @@
 	<select id="loginChk" parameterType="UserVO" resultType="UserVO">
 		SELECT U_UNO, U_EMAIL, U_PASS, U_NATIONALITY, U_LANGUAGE, U_TOKEN
 		  FROM TB_USER
-		 WHERE U_UNO = #{u_uno}
+		 WHERE U_EMAIL = #{u_email}
 		   AND U_PASS = #{u_pass}
 	</select>
-
+	
 
 </mapper>

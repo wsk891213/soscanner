@@ -6,17 +6,8 @@
     <meta charset="utf-8">
     <title>SOSCAN</title>
 <style>
-#containers {
-margin: 50px;
-/* -webkit-box-shadow:0px 0px 30px 10px #9c9c9c ; */
-/* -moz-box-shadow:0px 0px 30px 10px #9c9c9c ; */
-/* box-shadow:0px 0px 30px 10px #9c9c9c ; */
-border-radius:50px;
--moz-border-radius:50px;
--webkit-border-radius:50px;
-}
 
-.section-wrap .container {
+.sos {
 /* 	background: url("/resources/images/post-iloveimg-resized.png"); */
 	box-shadow: 10px 10px 15px 15px gray;
 }
@@ -47,7 +38,7 @@ border-radius:50px;
 
 <!-- 	<img src="/resources/images/post-iloveimg-resized.png"> -->
 <section class="section-wrap pb-100 blog-single">
-	<div class="container relative">
+	<div class="container relative sos">
 		<div class="row"> 
 			<div class="col-sm-12 blog-content">
 				<div class="entry-item">
@@ -83,10 +74,14 @@ border-radius:50px;
 	var sosId = $("#userId").val();
 	$("#helpForm").submit(function (e) {
 		e.preventDefault();
+		console.log("${user.u_language}");
+		console.log(sosId);
+		console.log($("#content").val());
 		$.ajax({
+			type:"POST",
 			url: "helpsend",
 			data: {
-				userId: sosId,
+				u_email: sosId,
 				content: $("#content").val(),
 				u_language: "${user.u_language}"
 			}

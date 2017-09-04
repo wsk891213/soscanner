@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
   <!-- 로딩 이미지 -->
   <div class="loader-mask">
     <div class="loader">
@@ -59,9 +60,20 @@
                   <li>
                     <a href="/board/faq" style="font-size: 20px;">FAQ</a>
                   </li>
-                  <li>
-                    <a href="#" id="loginButton" style="font-size: 20px;">로그인</a>
-                  </li>
+                  <c:choose>
+                  	<c:when test="${user==null}">
+	                  <li>
+	                    <a href="#" id="loginButton" style="font-size: 20px;">로그인</a>
+	                  </li>
+                  	</c:when>
+                  	<c:otherwise>
+					  <li>
+	                    <a href="/user/logout" id="logoutButton" style="font-size: 20px;">로그아웃</a>
+	                  </li>
+					                    	
+                  	</c:otherwise>
+                  </c:choose>
+                  
                   <li class="dropdown">
                     <a href="#" class="dropdown-toggle">언어</a>
                     <ul class="dropdown-menu menu-right">

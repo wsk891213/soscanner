@@ -140,10 +140,9 @@
 			<div class="col-md-6 col-md-offset-3">
 				<form id="signInForm">
 					<input name="u_email" id="u_email" type="text" placeholder="ID">
-					<input name="u_pass" id="u_pass" type="password"
-						placeholder="Password"> <a href="#"
-						class="btn btn-lg btn-dark">로그인</a> <a href="/user/login"
-						id="loginCancelBtn" class="btn btn-lg btn-dark">취소</a><br>
+					<input name="u_pass" id="u_pass" type="password" placeholder="Password">
+					<input type="submit" class="btn btn-lg btn-dark" value="로그인">
+					<a href="#" id="loginCancelBtn" class="btn btn-lg btn-dark">취소</a><br>
 					<br> <a href="#" id="registBtn">회원가입</a>
 				</form>
 			</div>

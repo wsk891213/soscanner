@@ -20,8 +20,8 @@ public class UserServiceImpl implements UserService{
 	}
 
 	@Override
-	public List<UserVO> searchUser(String u_language) throws Exception {
-		return userMapper.searchUser(u_language);
+	public List<UserVO> searchUser(UserVO user) throws Exception {
+		return userMapper.searchUser(user);
 	}
 
 	@Override
