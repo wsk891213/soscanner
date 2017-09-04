@@ -80,26 +80,6 @@
     <script defer>
 
     
-	$("#registForm").submit(function (e) {
-		e.preventDefault();
-		console.log("email : ",$("#u_email").val());
-		var registData = $("#registForm").serialize();
-		console.log("registData : ",registData);
-		$.ajax({
-			type: "POST",
-			url: "/user/signup",
-			data: registData
-		}).done(function (answer) {
-			var text = "비번 불일치";
-			if(answer == "2") {
-				text = "회원가입 완료";
-				$('html, body').animate({scrollTop : 0}, 4000);
-				$("#registAccord").slideUp();
-			}
-			alert(text);
-		});
-		
-	})
     const messaging = firebase.messaging()
   	function requestPermission() {
 	    console.log('Requesting permission...');
@@ -122,7 +102,7 @@
 	    messaging.getToken()
 	    .then(function(currentToken) {
 	        console.log(currentToken);
-	        $("#token").val(currentToken);
+	        $("#u_token").val(currentToken);
 	      
 	    })
 	    .catch(function(err) {
@@ -132,5 +112,25 @@
 	  }
     requestPermission();
    
+	$("#registForm").submit(function (e) {
+		e.preventDefault();
+		console.log("email : ",$("#u_email").val());
+		var registData = $("#registForm").serialize();
+		console.log("registData : ",registData);
+		$.ajax({
+			type: "POST",
+			url: "/user/signup",
+			data: registData
+		}).done(function (answer) {
+			var text = "비번 불일치";
+			if(answer == "2") {
+				text = "회원가입 완료";
+				$('html, body').animate({scrollTop : 0}, 4000);
+				$("#registAccord").slideUp();
+			}
+			alert(text);
+		});
+		
+	})
    
   </script>

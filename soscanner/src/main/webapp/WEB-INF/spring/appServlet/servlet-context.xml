@@ -45,9 +45,7 @@
 	
 		<interceptors>
         <interceptor>
-            <mapping path="/board/*" />
-            <exclude-mapping path="user/*"/>
-            <exclude-mapping path="user/*/*.json"/>
+            <mapping path="/soscan/*" />
             <beans:bean class="com.finalproject.soscanner.filter.SessionInterceptor"></beans:bean>            
         </interceptor>        
     </interceptors>

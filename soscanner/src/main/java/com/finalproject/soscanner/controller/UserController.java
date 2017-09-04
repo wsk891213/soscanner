@@ -32,9 +32,8 @@ public class UserController {
 		logger.info("email : " + user.getU_email());
 		logger.info("pass : " + user.getU_pass());
 		logger.info("token : " + user.getU_token());
-		
 		if(user.getU_pass().equals(user.getU_passChk())) {
-//			userService.insertUser(user);
+			userService.insertUser(user);
 			answer =  "2";
 		}
 		return answer;
@@ -50,21 +49,20 @@ public class UserController {
 		HttpSession session = req.getSession();
 		if (login != null) {
 			session.setAttribute("user", login);
-		
+			
 			msg = "로그인 되셨습니다.";
-			mav.setViewName("user/loginForm");
+			mav.setViewName("/");
 			mav.addObject("msg",msg);
 		}
 		else {
-			mav.setViewName("user/login");
+			mav.setViewName("/");
 			msg = "아이디와 비밀번호를 확인해 주세요";
 			mav.addObject("msg", msg);
-			session.invalidate();
 		}
 		return mav;
 	}
 	
-	@RequestMapping("/singin")
+	@RequestMapping("/logout")
 	public String singIn(UserVO user, HttpSession session, HttpServletResponse res, HttpServletRequest req) {
 		session.invalidate();
 		return "redirect:/";

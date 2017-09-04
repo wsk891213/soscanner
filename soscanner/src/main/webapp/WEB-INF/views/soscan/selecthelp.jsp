@@ -53,7 +53,7 @@
 			<div id="containers">
 				<div class="col-md-6 col-md-offset-3">
 					<form id="registForm">
-			            <input name="Email" id="email" type="text" placeholder="Name" value="${user.userId}">
+			            <input name="helpId" id="helpId" type="text" readonly="readonly" placeholder="Name" value="${user.u_email}">
 			            <textarea placeholder="Textarea" rows="3" style="resize: none;"></textarea>
 			            <a href="#" class="btn btn-lg btn-dark">Send Message</a>
 					</form>
@@ -94,12 +94,11 @@
 			  var database = firebase.database();
 			  
 		$("#aForm").submit(function () {
-			database.ref().child('help/'+'user1/'+$("#userId").val()).set({
+			database.ref().child('help/'+${userId}+'/'+$("#helpId").val()).set({
 				message:$("#content").val(),
 			})
-			console.log($("#userId").val());
+			console.log($("#helpId").val());
 			console.log($("#content").val());
-			$("#userId").val("");
 			$("#content").val("");
 			return false;
 		});

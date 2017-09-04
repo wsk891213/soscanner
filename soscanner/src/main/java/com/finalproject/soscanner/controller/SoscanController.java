@@ -11,6 +11,7 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.client.RestTemplate;
@@ -40,22 +41,16 @@ public class SoscanController {
 		logger.info("chat2 컨트롤러");
 	}
 	
-	@RequestMapping("/token")
-	public void token () {
-		logger.info("token 컨트롤러 ");
-	}
 	
-	@RequestMapping("/message")
-	public void message () {
-		logger.info("message");
-	}
 	@RequestMapping("/helper")
-	public void helper () {
+	public void helper (String sosId, Model model) {
 		logger.info("helper");
+		model.addAttribute("sosId", sosId);
 	}
 	@RequestMapping("/selecthelp")
-	public void selecthelp () {
+	public void selecthelp (String userId, Model model) {
 		logger.info("selecthelp");
+		model.addAttribute("userId", userId);
 	}
 	@RequestMapping("/helpsend")
 	@ResponseBody
@@ -69,7 +64,7 @@ public class SoscanController {
 		
 		restTemplate.getMessageConverters().add(new MappingJackson2HttpMessageConverter());
 		
-		String input = "{ 	\"notification\": {	\"title\" : \""+ userId +"\", \"body\": \"" + content + "\",	\"click_action\": \"http://192.168.0.18:8000/soscan/selecthelp\" }, \"registration_ids\": [\"fY0ySamuyto:APA91bFGA8JPq_vYO2ajmN5aNa3WkvUcjiUY0U6JsvsNTNLkuVSrmagWH7F3SqefQ4F24HizaR3Xx1rEwTUg-13Vo4EJd8RIAmZbNcYQjKsKsZyJ_bGOO0Iid7lIAfV7giGFZk9HEyfn\", \"cXUCkLY4G38:APA91bEQdxCn2FBXHYCgueZTBNcKmB6-MC6JXA6ltDgSmal7oD6uIyId7nXgo7rGLpiR9_peRXyqlPr5-aE0GLjXVf-29qrIiJcaIe7PRthyfC3uZcjiKeDZpuZKwitCbRrqKyI-7Gx0\"] }";
+		String input = "{ 	\"notification\": {	\"title\" : \""+ userId +"\", \"body\": \"" + content + "\",	\"click_action\": \"http://192.168.0.18:8000/soscan/selecthelp?="+userId+"\" }, \"registration_ids\": [\"fY0ySamuyto:APA91bFGA8JPq_vYO2ajmN5aNa3WkvUcjiUY0U6JsvsNTNLkuVSrmagWH7F3SqefQ4F24HizaR3Xx1rEwTUg-13Vo4EJd8RIAmZbNcYQjKsKsZyJ_bGOO0Iid7lIAfV7giGFZk9HEyfn\", \"cXUCkLY4G38:APA91bEQdxCn2FBXHYCgueZTBNcKmB6-MC6JXA6ltDgSmal7oD6uIyId7nXgo7rGLpiR9_peRXyqlPr5-aE0GLjXVf-29qrIiJcaIe7PRthyfC3uZcjiKeDZpuZKwitCbRrqKyI-7Gx0\"] }";
 		
 		
 		System.out.println(input);

@@ -61,7 +61,7 @@ border-radius:50px;
 			<div id="containers">
 				<div class="col-md-6 col-md-offset-3">
 					<form id="helpForm">
-			            <input name="userId" id="userId" type="text" placeholder="Name" value="${user.userId}" readonly="readonly">
+			            <input name="userId" id="userId" type="text" placeholder="Please login" value="${user.u_email}" readonly="readonly">
 			            <textarea placeholder="Textarea" id="content" name="content" rows="3" style="resize: none;"></textarea>
 			            <input type="submit" class="btn btn-lg btn-dark" value="Send Message">
 					</form>
@@ -80,18 +80,19 @@ border-radius:50px;
  </div> <!-- end main-wrapper -->
 <c:import url="/WEB-INF/views/include/basicIncludeBottom.jsp"></c:import>
 <script>
-	
+	var sosId = $("#userId").val();
 	$("#helpForm").submit(function (e) {
 		e.preventDefault();
 		$.ajax({
 			url: "helpsend",
 			data: {
-				userId: $("#userId").val(),
+				userId: sosId,
 				content: $("#content").val()
 			}
-		}).done(function () {
+		}).done(function (result) {
+			console.log(result);
 			alert("도움을 요청하였습니다. 요청 선택페이지로 이동합니다.");
-			location.href="helper";
+			location.href="helper?sosId="+sosId;
 		});
 	});
 	

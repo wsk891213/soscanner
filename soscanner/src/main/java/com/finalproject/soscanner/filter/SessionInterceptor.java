@@ -6,6 +6,8 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
+import com.finalproject.soscanner.vo.UserVO;
+
 public class SessionInterceptor extends HandlerInterceptorAdapter {
 	
 	@Override
@@ -15,10 +17,10 @@ public class SessionInterceptor extends HandlerInterceptorAdapter {
 
 		// Session userid check
 		HttpSession session = request.getSession();
-		String userId = (String) session.getAttribute("userId");
+		UserVO user = (UserVO) session.getAttribute("user");
 
 		// Login false
-		if (null == userId) {
+		if (user == null) {
 //			System.out.println("Interceptor : Session Check Fail");
 //			System.out.println(userId);
 			// main page 로 이동
@@ -29,7 +31,7 @@ public class SessionInterceptor extends HandlerInterceptorAdapter {
 		else {
 //			System.out.println(userId);
 //			System.out.println("Interceptor : Session Check true");
-			return super.preHandle(request, response, handler);
+			return true;
 
 		}
 	}

@@ -115,7 +115,7 @@
 		                <option value="korean">한글</option>
 		                <option value="chinese">중국어</option>
 		            </select>
-					<input name="token" id="token" type="hidden">
+					<input name="u_token" id="u_token" type="hidden">
 					<input type="submit" class="btn btn-lg btn-dark" value="회원가입"> <a href="#" id="RegistCancelBtn" class="btn btn-lg btn-dark">취소</a>
 					<br>
 					<br>
@@ -142,7 +142,7 @@
 					<input name="u_email" id="u_email" type="text" placeholder="ID">
 					<input name="u_pass" id="u_pass" type="password"
 						placeholder="Password"> <a href="#"
-						class="btn btn-lg btn-dark">로그인</a> <a href="#"
+						class="btn btn-lg btn-dark">로그인</a> <a href="/user/login"
 						id="loginCancelBtn" class="btn btn-lg btn-dark">취소</a><br>
 					<br> <a href="#" id="registBtn">회원가입</a>
 				</form>

@@ -79,7 +79,7 @@
 			  firebase.initializeApp(config);
   var database = firebase.database();
   var hDiv = $("#hDiv");
-  var help = database.ref('help/user1/user2');
+  var help = database.ref('help/'+sosId+'/user2');
   
   help.on('value', function (snap) {
 	 console.log(snap.val());
