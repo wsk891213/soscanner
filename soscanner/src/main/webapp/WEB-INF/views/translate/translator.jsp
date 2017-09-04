@@ -120,10 +120,6 @@ label {
 	margin: auto;
 }
 
-
-
-
-
 /* The Modal (background) */
 .modal {
     display: none; /* Hidden by default */
@@ -146,6 +142,36 @@ label {
     padding: 20px;
     border: 1px solid #888;
     width: 30%;
+}
+
+#change {
+	position: relative;
+	height: 600px;
+}
+
+#changebutton {
+	font-size: 50px;
+}
+
+ @media ( max-width: 900px ) {
+ 	#inputtext, #outputtext {
+		width: auto;
+		height: auto;
+	} 
+	#change {
+		width: auto;
+		height: 50px;
+	}
+	#select {
+		width: auto;
+	}
+	.fa-microphone {
+	margin-left: 10px;
+	margin-right: 10px;
+	}
+	#changebutton {
+	font-size: 30px;
+	}
 }
 
 </style>
@@ -189,15 +215,15 @@ label {
 								</label> <span class="fa fa-microphone" id="mic" aria-hidden="true"
 									onclick="eylem()" style="font-size: 30px;"></span></td>
 								<td><span class="fa fa-refresh" aria-hidden="true"
-									onclick="transalte()" style="font-size: 20px;"> Trnaslate</span></td>
+									onclick="transalte()" style="font-size: 20px;"> Translate</span></td>
 							</tr>
 						</table>
 					</div>
 					<textarea id="inputtext"></textarea>
 				</div>
 
-				<div class="col-sm-2" style="position: relative; height: 600px;">
-					<span class="fa fa-exchange fa-3" aria-hidden="true" style="font-size: 50px;" onclick="change()"></span>
+				<div class="col-sm-2" id="change">
+					<span class="fa fa-exchange fa-3" id="changebutton" aria-hidden="true" onclick="change()"></span>
 				</div>
 				<div class="col-sm-5">
 					<label> <span class="plain-select"> <select
@@ -278,8 +304,16 @@ label {
 				input = "zh-CN";
 				break;
 			}
+			if($("#inputtext").val() == ""){
+				alert("글써 새퀴야");
+				return false;
+			}
 			if (input ==  $("#outputtype").val()){
 			    alert("같은 언어끼리는 번역이 불가능합니다.");
+				return false;
+			}
+			if ((input == "en" && $("#outputtype").val() == "zh-CN") || (input == "zh-CN" && $("#outputtype").val() == "en")){
+				 alert("아메리카 짱깨 ㄴㄴ");
 				return false;
 			}
 			$.ajax({
