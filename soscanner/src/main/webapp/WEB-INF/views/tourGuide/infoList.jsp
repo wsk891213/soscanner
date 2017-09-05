@@ -54,7 +54,7 @@
 
               <div class="entry-title">
                 <h2>
-                  <a href="infoDetail?ti_no=${list.ti_no}">${list.ti_title}</a>
+                  <a href="infoDetail?ti_no=${list.ti_no}&slocation=${slocation}&sWord=${sWord}">${list.ti_title}</a>
                 </h2>
               </div>
               <ul class="entry-meta">
@@ -67,7 +67,7 @@
 
                 <div class="entry-content">
                   <p>${list.ti_ovrvw}</p>
-                  <a href="infoDetail?ti_no=${list.ti_no}" class="read-more">더보기</a>
+                  <a href="infoDetail?ti_no=${list.ti_no}&slocation=${slocation}&sWord=${sWord}" class="read-more">더보기</a>
                   <i class="icon arrow_right"></i>
                 </div>
               </div>

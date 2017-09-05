@@ -103,7 +103,16 @@ $(function() {
 						<div class="row">
 							<div class="col-sm-10 col-sm-offset-1">
 								<div class="entry-title" >
-									<a href="#" class="btn btn-lg btn-dark" id="findRoute">길찾기</a>
+									<c:choose>
+									<c:when test="${empty check}">
+									<a href="#" class="btn btn-lg btn-color" id="findRoute1">길찾기</a>
+									<a href="infoList?sWord=${pWord}" class="btn btn-lg btn-dark">목록보기</a>
+									</c:when>
+									<c:otherwise>
+									<a href="#" class="btn btn-lg btn-color" id="findRoute2">길찾기</a>
+									<a href="infoList?slocation=${pWord}" class="btn btn-lg btn-dark">목록보기</a>
+									</c:otherwise>
+									</c:choose>
 								</div>
 							</div>
 						</div>
@@ -123,10 +132,16 @@ $(function() {
 <!-- jQuery Scripts -->
 <c:import url="/WEB-INF/views/include/basicIncludeBottom.jsp"></c:import>
 <script>
-$("#findRoute").click(function () {
+$("#findRoute1").click(function () {
 	var mapX = coords().lon;
 	var mapY = coords().lat;
-	var address = "/tourGuide/findRoute?ti_mapx=" + mapX + "&ti_mapy=" + mapY;
+	var address = "/tourGuide/findRoute?ti_mapx=" + mapX + "&ti_mapy=" + mapY + "&ti_no=${ti_no}&sWord=${pWord}";
+	location.href = address;
+});
+$("#findRoute2").click(function () {
+	var mapX = coords().lon;
+	var mapY = coords().lat;
+	var address = "/tourGuide/findRoute?ti_mapx=" + mapX + "&ti_mapy=" + mapY + "&ti_no=${ti_no}&slocation=${pWord}";
 	location.href = address;
 });
 </script>

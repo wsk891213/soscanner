@@ -6,9 +6,28 @@
     <meta charset="utf-8">
     <title>관광지 정보</title>
 <style>
-#mapContainer {
-	height: 800px;
+.mapFrame {
+	height: 700px;
+	width: 90%;
+	padding: 30px;
+	background: black;
+	border-radius: 30px;
+	margin: 10px 65px 65px;
 }
+
+.mapInfo {
+	background: black;
+	padding: 35px;
+	color: white;
+	border-radius: 30px;
+	font-size: 25px;
+}
+
+#mapContainer, .mapInfo {
+  height:100%; 
+  width:100%;
+}
+
 </style>
 <c:import url="/WEB-INF/views/include/basicIncludeTop.jsp"></c:import> 
 <script src="https://apis.skplanetx.com/tmap/js?version=1&format=javascript&appKey=f9c5ac44-024a-3ddb-9828-c6e7f0d42b86"></script>
@@ -93,13 +112,30 @@ function searchRoute(){
                                         url: urlStr,
                                         format:routeFormat
                                         });
-    var routeLayer = new Tmap.Layer.Vector("route", {protocol:prtcl, strategies:[new Tmap.Strategy.Fixed()]});
+    routeLayer = new Tmap.Layer.Vector("route", {protocol:prtcl, strategies:[new Tmap.Strategy.Fixed()]});
     routeLayer.events.register("featuresadded", routeLayer, onDrawnFeatures);
     map.addLayer(routeLayer);
 }
 //경로 그리기 후 해당영역으로 줌
 function onDrawnFeatures(e){
 	map.zoomToExtent(this.getDataExtent());
+	$(".mapInfo").append("총 소요시간 : 약 " + timeCal(routeLayer.features[0].attributes.totalTime) + "<br>");
+	$(".mapInfo").append("총 거리 : " + parseFloat(routeLayer.features[0].attributes.totalDistance / 1000).toFixed(1) + "Km");
+}
+
+function timeCal(seconds) {
+  var pad = function(x) { return (x < 10) ? "0"+x : x; }
+  if(seconds == 3600) {
+	  return parseInt(seconds / (60*60)) + "시간"
+  }
+  else if(seconds > 3600) {
+	  var min = parseInt(seconds % (60*60));
+	  return parseInt(seconds / (60*60)) + "시간" + pad(parseInt(min / 60)) + "분"
+  }
+  else {
+	  var mins = parseInt(seconds / 60);
+	  return mins + "분"
+  }
 }
 
 getMyLocation();
@@ -123,35 +159,43 @@ getMyLocation();
     </section> 
 <!-- end page title -->
 
-<section class="section-wrap pb-100 blog-single">
-	<div class="container relative">
-        <div class="row">
-          
+<section class="section-wrap pb-100 blog-single" style="padding: 30px 10% !important;">
+	<div class="container relative" style="margin: 0px 5% !important;">
+		<div class="col-md-10" style="height:152.99px;">
+        	<div class="mapInfo">
+        	</div>
+        </div>
+        <div class="col-md-2">
           <!-- content -->
           <div class="col-sm-12 blog-content">
-
             <!-- standard post -->
             <div class="entry-item">
                   <div class="entry-title">
-                    <h2>보행자 경로</h2>
+                  	<c:choose>
+                  	<c:when test="${empty tourInfoVO.slocation}">
+                    <a href="infoDetail?ti_no=${tourInfoVO.ti_no}&sWord=${tourInfoVO.sWord}" class="btn btn-lg btn-dark">돌아가기</a>
+                    <
+                  	</c:when>
+                  	<c:otherwise>
+                    <a href="infoDetail?ti_no=${tourInfoVO.ti_no}&slocation=${tourInfoVO.slocation}" class="btn btn-lg btn-dark">돌아가기</a>
+                  	</c:otherwise>
+                  	</c:choose>
                   </div>
                   <ul class="entry-meta bottom-line">
                   </ul>
-
-                  <div class="entry">
-                    <div class="entry-content" style="width: 100% !important;">
-						<div id="mapContainer">
-							<div id="map_div"></div>
-						</div>
-                    </div>
-              </div> <!-- end row -->
-
             </div> <!-- end entry item -->
           </div> <!-- end col -->
-  
         </div> <!-- end row -->
+        
 	</div> <!-- end container -->
 </section>
+
+<div class="mapFrame">
+	<div id="mapContainer">
+		<div id="map_div"></div>
+	</div>
+</div>
+
 <!-- start of footer -->
 <c:import url="/WEB-INF/views/include/footer.jsp"></c:import>
 <!-- end of footer -->

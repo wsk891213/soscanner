@@ -29,20 +29,32 @@ public class TourInfoController {
 	
 	@RequestMapping("/infoList")
 	public void infoList(TourInfoVO loc, Model model) throws Exception {
-		logger.info("테스트중 테스트 : "+ loc.getsWord());
 			List<TourInfoVO> lists = tgService.getInfos(loc);
 			model.addAttribute("lists", lists);
+			if(loc.getSlocation() != null){
+				model.addAttribute("slocation", loc.getSlocation());
+			}
+			else {
+				model.addAttribute("sWord", loc.getsWord());
+			}
 	}
 	
 	@RequestMapping("/infoDetail")
-	public void infoDetail(@RequestParam("ti_no") int no, Model model) throws Exception {
+	public void infoDetail(@RequestParam("ti_no") int no, TourInfoVO info, Model model) throws Exception {
+		model.addAttribute("ti_no", no);
+		if(info.getsWord() == "" || info.getsWord() == null) {
+			model.addAttribute("check", "check");
+			model.addAttribute("pWord", info.getSlocation());
+		}
+		else{
+			model.addAttribute("pWord", info.getsWord());
+		}
+		
 		model.addAttribute(tgService.getInfo(no));
 	}
 	
 	@RequestMapping("findRoute")
 	public void findRoute(@ModelAttribute TourInfoVO tour, Model model) {
-		logger.info(tour.getTi_mapx());
-		logger.info(tour.getTi_mapy());
 	}
 }
 
