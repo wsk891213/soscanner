@@ -77,9 +77,9 @@
                   <li class="dropdown">
                     <a href="#" class="dropdown-toggle">언어</a>
                     <ul class="dropdown-menu menu-right">
-                      <li><a href="/">영어</a></li>
-                      <li><a href="/">한국어</a></li>
-                      <li><a href="/">중국어</a></li>
+                      <li><a href="/multiLingual?locale=en">영어</a></li>
+                      <li><a href="/multiLingual?locale=ko">한국어</a></li>
+                      <li><a href="/multiLingual?locale=zh">중국어</a></li>
                     </ul>
                   </li>
                   

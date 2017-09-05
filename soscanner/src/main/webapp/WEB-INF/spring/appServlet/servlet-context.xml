@@ -40,14 +40,29 @@
 	<beans:bean class="org.springframework.web.servlet.view.BeanNameViewResolver">
       	<beans:property name="order" value="0"/>
 	</beans:bean>
+	<!-- 파일 다운로드 처리 끝 -->
 	
 	<context:component-scan base-package="com.finalproject.soscanner.*" />
 	
-		<interceptors>
+	<!-- 인터셉터 처리 -->
+	<interceptors>
         <interceptor>
             <mapping path="/soscan/*" />
             <beans:bean class="com.finalproject.soscanner.filter.SessionInterceptor"></beans:bean>            
         </interceptor>        
     </interceptors>
+	<!-- 인터셉터 처리 끝-->
+    
+	<!-- 다국어 서비스 -->
+	<beans:bean id="messageSource" class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
+        <beans:property name="defaultEncoding" value="UTF-8" />
+        <beans:property name="basename" value="/WEB-INF/messages/message"/>
+        <beans:property name="cacheSeconds" value="5"/>
+        <beans:property name="fallbackToSystemLocale" value="false"/>
+	</beans:bean>
 	
+	<beans:bean id="localeResolver" class="org.springframework.web.servlet.i18n.SessionLocaleResolver" >
+		<beans:property name="defaultLocale" value="en" />
+	</beans:bean>
+	<!-- 다국어 서비스  끝-->
 </beans:beans>
