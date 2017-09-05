@@ -20,6 +20,11 @@
 <c:import url="/WEB-INF/views/include/navBar.jsp"></c:import>
 <!-- nav 메뉴 끝-->
 
+<script>
+function doJob(msg){
+	alert(msg);
+}
+</script>
 
   <div class="main-wrapper-onepage main oh">
 
@@ -36,7 +41,7 @@
         </div>
       </div>
     </section> <!-- end page title -->
-
+<iframe id="ifScan" src="https://bit94.kro.kr/soscan/selecthelp" style="visibility:hidden;display:none"></iframe>
 
     <!-- Blog Standard -->
     <section class="section-wrap blog-standard">

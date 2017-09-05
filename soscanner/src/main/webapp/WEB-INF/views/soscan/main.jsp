@@ -91,7 +91,13 @@
 			location.href="helper?sosId="+sosId;
 		});
 	});
-	
+	messaging.onMessage(function(payload) {
+	    console.log("Message received. ", payload);
+	    // [START_EXCLUDE]
+	    // Update the UI to include the received message.
+	    appendMessage(payload);
+	    // [END_EXCLUDE]
+	  });
 </script>
 </body>
 </html>

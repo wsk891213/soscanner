@@ -102,7 +102,7 @@
 	    
 	    messaging.getToken()
 	    .then(function(currentToken) {
-// 	        console.log(currentToken);
+	        console.log(currentToken);
 	        $("#u_token").val(currentToken);
 	      
 	    })
@@ -110,6 +110,13 @@
 // 	      console.log('An error occurred while retrieving token. ', err);
 	      setTokenSentToServer(false);
 	    });
+	    messaging.onMessage(function(payload) {
+	        console.log("Message received. ", payload);
+	        // [START_EXCLUDE]
+	        // Update the UI to include the received message.
+	        appendMessage(payload);
+	        // [END_EXCLUDE]
+	      });
 	  }
     requestPermission();
    
