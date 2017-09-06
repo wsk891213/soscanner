@@ -8,12 +8,13 @@
 <body>
 	<h1>글쓰기</h1>
 	<div>
-		<form action="write" method="post">
+		<form action="write" method="post" enctype="multipart/form-data">
 			제목 : <input type='text' style='resize:none' name='title' /><br> 
 			글쓴이 : <input type='text' style='resize:none' name='writer' /><br>
 			내용 : <br>
-			<textarea style='resize:none' name='content' rows="10" cols="50"></textarea> 
-			<input type="submit" value="등록">
+			<textarea style='resize:none' name='content' rows="10" cols="50"></textarea> <br>
+			<input type="file" name='file'><br>
+			<input type="submit" value="등록"><br>
 		</form>
 		<a href='list'>목록</a>
 	</div>

@@ -1,17 +1,18 @@
 package com.finalproject.soscanner.service;
 
 import java.util.List;
+import java.util.Map;
 
-import com.finalproject.soscanner.vo.PageVO;
 import com.finalproject.soscanner.vo.BoardVO;
 import com.finalproject.soscanner.vo.FaqVO;
+import com.finalproject.soscanner.vo.PageVO;
 
 public interface BoardService {
 	
 	public List<BoardVO> selectBoard(PageVO page) throws Exception;
 	public BoardVO detailBoard(int boardNo) throws Exception;
 	public String deleteBoard(int boardNo) throws Exception;
-	public String insertBoard(BoardVO boardVO) throws Exception;
+	public void insertBoard(Map<String, Object> map) throws Exception;
 	public String updateBoard(BoardVO boardVO) throws Exception;
 	public BoardVO updateFormBoard(int boardNo) throws Exception;
 	// 페이징
