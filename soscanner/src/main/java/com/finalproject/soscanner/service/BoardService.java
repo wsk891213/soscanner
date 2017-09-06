@@ -17,9 +17,10 @@ public interface BoardService {
 	// 페이징
 	public int selectBoradPage(PageVO page) throws Exception;
 	
-	public List<FaqVO> selectFaq(PageVO page) throws Exception;
-	
 	// FAQ
+	public List<FaqVO> selectFaq(PageVO page) throws Exception;
+
+	// FAQ 검색
 	public List<FaqVO> searchList(PageVO searchValue) throws Exception;
 	
 	// 페이징

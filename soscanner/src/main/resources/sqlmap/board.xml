@@ -13,17 +13,17 @@
 	</resultMap>
 
 	<select id="selectBoard" parameterType="PageVO" resultMap="boardMap">
-		  select X.rnum, X.boardNo, X.title, X.regDate, X.viewCount
+		  select X.*
 		    from (
-		  		select ROWNUM as RNUM, A.boardNo, A.title, A.writer, A.regDate, A.viewCount
+		  		select ROWNUM as RNUM, A.*
 		    	from (
-		    		select boardNo, title, writer, regDate, viewCount
+		    		select BOARDNO, TITLE, WRITER, REGDATE, VIEWCOUNT
 		    		from KOR_BOARD
-		   			order by boardNo ) A
+		   			order by REGDATE desc) A
 		   	<![CDATA[
-		   	where RNUM <= #{end}) X
+		   	where ROWNUM <= #{end}) X
 		   	]]>
-		 where X.rnum >= #{begin} 
+		 where X.RNUM >= #{begin} 
 
 <!-- 		select * -->
 <!-- 		  from ( -->
