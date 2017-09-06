@@ -103,9 +103,18 @@ label {
 	font-size: 20px;
 }
 
+.fa-refresh:hover {
+	color: black;
+	font-size: 50px;
+}
+
 .fa-microphone {
 	font-size: 30px;
 	margin-left: 30px;
+}
+
+.fa-microphone:hover {
+	color: black;
 }
 
 .fa-exchange {
@@ -120,28 +129,32 @@ label {
 	margin: auto;
 }
 
+.fa-exchange:hover {
+	color: black;
+}
+
 /* The Modal (background) */
 .modal {
-    display: none; /* Hidden by default */
-    position: fixed; /* Stay in place */
-    z-index: 1; /* Sit on top */
-    padding-top: 100px; /* Location of the box */
-    left: 0;
-    top: 0;
-    width: 100%; /* Full width */
-    height: 100%; /* Full height */
-    overflow: auto; /* Enable scroll if needed */
-    background-color: rgb(0,0,0); /* Fallback color */
-    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+	display: none; /* Hidden by default */
+	position: fixed; /* Stay in place */
+	z-index: 1; /* Sit on top */
+	padding-top: 100px; /* Location of the box */
+	left: 0;
+	top: 0;
+	width: 100%; /* Full width */
+	height: 100%; /* Full height */
+	overflow: auto; /* Enable scroll if needed */
+	background-color: rgb(0, 0, 0); /* Fallback color */
+	background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
 }
 
 /* Modal Content */
 .modal-content {
-    background-color: #fefefe;
-    margin: auto;
-    padding: 20px;
-    border: 1px solid #888;
-    width: 30%;
+	background-color: #fefefe;
+	margin: auto;
+	padding: 20px;
+	border: 1px solid #888;
+	width: 30%;
 }
 
 #change {
@@ -153,11 +166,11 @@ label {
 	font-size: 50px;
 }
 
- @media ( max-width: 900px ) {
- 	#inputtext, #outputtext {
+@media ( max-width : 900px ) {
+	#inputtext, #outputtext {
 		width: auto;
 		height: auto;
-	} 
+	}
 	#change {
 		width: auto;
 		height: 50px;
@@ -166,14 +179,13 @@ label {
 		width: auto;
 	}
 	.fa-microphone {
-	margin-left: 10px;
-	margin-right: 10px;
+		margin-left: 10px;
+		margin-right: 10px;
 	}
 	#changebutton {
-	font-size: 30px;
+		font-size: 30px;
 	}
 }
-
 </style>
 <c:import url="/WEB-INF/views/include/basicIncludeTop.jsp"></c:import>
 </head>
@@ -194,6 +206,7 @@ label {
 			</div>
 		</div>
 	</div>
+
 	</section>
 
 	<section class="section-wrap-mp pb-0">
@@ -205,17 +218,21 @@ label {
 					<div>
 						<table>
 							<tr>
-								<td id="select"><label> <span class="plain-select">
-											<select class="inp" name="input" id="inputtype">
+								<td id="select">
+									<div class="select relative"></div> <label> <span
+										class="plain-select"> <select class="inp" name="input"
+											id="inputtype">
 												<option value="ko-KR">한국어</option>
 												<option value="en-US">영어</option>
 												<option value="cmn-Hans-CN">중국어</option>
 										</select>
 									</span>
 								</label> <span class="fa fa-microphone" id="mic" aria-hidden="true"
-									onclick="eylem()" style="font-size: 30px;"></span></td>
+									onclick="eylem()" style="font-size: 30px;"></span>
+								</td>
 								<td><span class="fa fa-refresh" aria-hidden="true"
-									onclick="transalte()" style="font-size: 20px;"> Translate</span></td>
+									onclick="transalte()" style="font-size: 20px;">
+										Translate</span></td>
 							</tr>
 						</table>
 					</div>
@@ -223,7 +240,8 @@ label {
 				</div>
 
 				<div class="col-sm-2" id="change">
-					<span class="fa fa-exchange fa-3" id="changebutton" aria-hidden="true" onclick="change()"></span>
+					<span class="fa fa-exchange fa-3" id="changebutton"
+						aria-hidden="true" onclick="change()"></span>
 				</div>
 				<div class="col-sm-5">
 					<label> <span class="plain-select"> <select
@@ -233,29 +251,37 @@ label {
 								<option value="zh-CN">중국어</option>
 						</select>
 					</span></label>
-		<textarea id="outputtext" readonly="readonly"></textarea>
+					<textarea id="outputtext" readonly="readonly"></textarea>
 		</form>
 	</div>
 	</div>
 	</div>
 	</section>
-	
+
 	<!-- The Modal -->
-<div id="myModal" class="modal">
+	<div id="myModal" class="modal">
+		<div class="modal-dialog">
+			<!-- Modal content-->
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<h4 class="modal-title">Speak</h4>
+				</div>
+				<div class="modal-body">
+					<img src="../../resources/images/talking.png">
+				</div>
+				<div class="modal-footer"></div>
+			</div>
 
-  <!-- Modal content -->
-  <div class="modal-content">
-  <span class="close">&times;</span>
-    <p>말하세요</p>
-  </div>
+		</div>
 
-</div>
-	
-	
-	
-	
-	
-	
+	</div>
+
+
+
+
+
+
 	<div>
 		<c:import url="/WEB-INF/views/include/footer.jsp" />
 	</div>
@@ -263,12 +289,10 @@ label {
 	<script>
 		var modal = document.getElementById('myModal');
 
-		var btn = document.getElementById("micd");
-		
 		var span = document.getElementsByClassName("close")[0];
-		
+
 		function eylem() {
-			 modal.style.display = "block";
+			modal.style.display = "block";
 			var lang = $("#inputtype").val();
 			var ses = new webkitSpeechRecognition();
 			ses.lang = lang;
@@ -284,15 +308,14 @@ label {
 			ses.start();
 			console.dir(ses);
 			span.onclick = function() {
-			    modal.style.display = "none";
+				modal.style.display = "none";
 			}
 			return false;
 		}
-		
-		
+
 		function transalte() {
 			var input = $("#inputtype").val();
-			
+
 			switch (input) {
 			case "ko-KR":
 				input = "ko";
@@ -304,16 +327,17 @@ label {
 				input = "zh-CN";
 				break;
 			}
-			if($("#inputtext").val() == ""){
+			if ($("#inputtext").val() == "") {
 				alert("글써 새퀴야");
 				return false;
 			}
-			if (input ==  $("#outputtype").val()){
-			    alert("같은 언어끼리는 번역이 불가능합니다.");
+			if (input == $("#outputtype").val()) {
+				alert("같은 언어끼리는 번역이 불가능합니다.");
 				return false;
 			}
-			if ((input == "en" && $("#outputtype").val() == "zh-CN") || (input == "zh-CN" && $("#outputtype").val() == "en")){
-				 alert("아메리카 짱깨 ㄴㄴ");
+			if ((input == "en" && $("#outputtype").val() == "zh-CN")
+					|| (input == "zh-CN" && $("#outputtype").val() == "en")) {
+				alert("아메리카 짱깨 ㄴㄴ");
 				return false;
 			}
 			$.ajax({
@@ -331,27 +355,25 @@ label {
 			})
 
 		}
-		
+
 		function change() {
 			$.ajax({
-				url: '/translate/change',
+				url : '/translate/change',
 				type : 'POST',
 				data : {
 					input : $("#inputtype").val(),
 					output : $("#outputtype").val(),
-					intext: $("#inputtext").val(),
-					outtext: $("#outputtext").val(),
+					intext : $("#inputtext").val(),
+					outtext : $("#outputtext").val(),
 				},
 				datatype : 'text'
 			}).done(function(result) {
-				$("#inputtype").val(result.input); 
+				$("#inputtype").val(result.input);
 				$("#outputtype").val(result.output);
 				$("#inputtext").val(result.intext);
 				$("#outputtext").val(result.outtext);
 			})
 		}
-		
-	
 	</script>
 </body>
 </html>
