@@ -11,13 +11,13 @@
     position: absolute;
     background: #f9f9f9;
     border: 1px solid #888;
-    border-radius: 20px;
+    border-radius: 15px;
     color: black;
     font-size: 20px;
     font-weight: bold;
     text-align: center;
     top: -5px; left: 15px;
-    width: 100px; height: 36px;
+    width: auto; height: 36px;
     padding:2px;
 }
 
@@ -58,7 +58,7 @@
       <div class="container relative clearfix">
         <div class="title-holder">
           <div class="title-text">
-            <h1 class="color-white heading-frame">관광지 정보</h1>
+            <h1 class="color-white heading-frame"><spring:message code="tourGuide.seoulMap.line61"></spring:message></h1>
           </div>
         </div>
       </div>
@@ -98,6 +98,7 @@
 <c:import url="/WEB-INF/views/include/basicIncludeBottom.jsp"></c:import>
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=18cc25ec3391fb888265b35fbb20e3f8"></script>
 <script>
+
 $(document).ready(function(){
 	 
 	  $("#switch").click(function(){
@@ -151,11 +152,26 @@ function displayArea(area) {
     // 다각형에 mouseover 이벤트를 등록하고 이벤트가 발생하면 폴리곤의 채움색을 변경합니다 
     // 지역명을 표시하는 커스텀오버레이를 지도위에 표시합니다
     daum.maps.event.addListener(polygon, 'mouseover', function(mouseEvent) {
+        var enlocations = {종로구: "Jongro", 성동구: "Sungdong", 동작구: "Dongjak", 용산구: "Yongsan", 강동구: "Gangdong", 도봉구: "Dobong", 금천구: "Geumcheon", 은평구: "Eunpyeong", 중랑구: "Jungnang", 강남구: "Gangnam", 마포구: "Mapo", 광진구: "Gwangjin", 서초구: "Seocho", 구로구: "Guro", 송파구: "Songpa", 양천구: "Yangcheon", 노원구: "Nowon", 성북구: "Seongbuk", 강서구: "Gangseo", 관악구: "Gwanak", 강북구: "Gangbuk", 중구: "Jungu", 영등포구: "Yeongdeungpo", 서대문구: "Seodaemun", 동대문구: "Dongdaemun"};
+        var chlocations = {종로구: "钟路区", 성동구: "城东区", 동작구: "铜雀区", 용산구: "龙山区", 강동구: "江东区", 도봉구: "道峰区", 금천구: "衿川区", 은평구: "恩平区", 중랑구: "中浪区", 강남구: "江南区", 마포구: "麻浦区", 광진구: "广津区", 서초구: "瑞草区", 구로구: "九老区", 송파구: "松坡区", 양천구: "阳川区", 노원구: "芦原区", 성북구: "城北区", 강서구: "江西区", 관악구: "冠岳区", 강북구: "江北区", 중구: "中区", 영등포구: "永登浦区", 서대문구: "西大门区 ", 동대문구: "东大门区"};
+        var areaNames;
         polygon.setOptions({fillColor: '#09f'});
-
-        customOverlay.setContent('<div class="area">' + area.name + '</div>');
+        
+        switch ("${locale}") {
+        case "ko":
+        	areaNames = area.name;
+        	break;
+        case "en":
+        	areaNames = enlocations[area.name].toUpperCase();
+        	break;
+        case "zh":
+        	areaNames = chlocations[area.name].toUpperCase();
+        	break;
+        }
+       	customOverlay.setContent('<div class="area">' + areaNames + '</div>');
         customOverlay.setPosition(mouseEvent.latLng); 
         customOverlay.setMap(map);
+        
     });
 
     // 다각형에 mousemove 이벤트를 등록하고 이벤트가 발생하면 커스텀 오버레이의 위치를 변경합니다 
@@ -178,8 +194,6 @@ function displayArea(area) {
     });
     
 }
-
-
 </script>
 </body>
 </html>

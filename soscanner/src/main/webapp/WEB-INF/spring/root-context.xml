@@ -31,5 +31,18 @@
 		<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
 			<property name="basePackage" value="com.finalproject.soscanner.mapper" />
 		</bean>
+		
+		<!-- 다국어 서비스 -->
+		<bean id="messageSource" class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
+	        <property name="defaultEncoding" value="UTF-8" />
+	        <property name="basename" value="/resources/languages/message"/>
+	        <property name="cacheSeconds" value="5"/>
+	        <property name="fallbackToSystemLocale" value="false"/>
+		</bean>
+		
+		<bean id="localeResolver" class="org.springframework.web.servlet.i18n.SessionLocaleResolver" >
+			<property name="defaultLocale" value="en" />
+		</bean>
+	<!-- 다국어 서비스  끝-->
 
 </beans>
