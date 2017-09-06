@@ -9,9 +9,9 @@
 .boxOuter {
 	width: 100%;
 	height: 100%;
-	background: black;
+	background: #051924;
 	border-radius: 30px;
-	padding: 50px;
+	padding: 30px 30px 0px;
 }
 .boxInner {
 	border: 4px solid white;
@@ -19,9 +19,8 @@
 	width: 100%;
 	height: 100%;
 	border-radius: 25px;
-	padding: 80px 10px 80px;
+	padding: 40px 10px 40px;
 }
-
 .accrdMTitle {
 	color: white;
 	text-align: center;
@@ -29,10 +28,10 @@
 	font-size: 30px;
 }
 .aTitle {
-	height: 45px;
+	height: 50px;
 	font-size: 30px;
 	text-indent: 20px;
-	border: 1px solid gray;
+	border: 1px solid #a85e39;
 	
 }
 .aTitle:hover {
@@ -40,14 +39,20 @@
 	color: black;
 }
 .aContent {
-	height: 45px;
+	height: 50px;
 	font-size: 30px;
 	text-indent: 20px;
 	background: white;
 	color: black;
 	display: none;
-	border: 1px solid gray;
+	border: 1px solid #a85e39;
 }
+form {
+	width : 20%;
+	height : 20%;
+	text-align: center;
+}
+
 </style>
 <c:import url="/WEB-INF/views/include/basicIncludeTop.jsp"></c:import>    
 </head>
@@ -97,60 +102,48 @@
 							</c:forEach>
 							</div>
 							
-							
-							<!-- Pagination -->
-				            <nav class="pagination clear text-center">
-				              <i class="icon arrow_left"></i>
-				                <a href="javascript:goPage(${pageResult.beginPage - 1})">Prev</a>
-				              <span class="page-numbers current">1</span>
-				                <a href="#">2</a>
-				                <a href="#">3</a>
-				                <span class="pagination-dots">...</span>
-				                <a href="#">10</a>
-				                <a href="#">Next</a>
-				                <i class="icon arrow_right"></i>
-				            </nav>
-							
-							<!-- Pagination -->
-								<c:if test="${pageResult.count != 0}">
-									<ul class="pagination">
-										<li	class="<c:if test="${pageResult.prev eq false}">disabled</c:if>">
-											<a href="<c:if test="${pageResult.prev eq true}">javascript:goPage(${pageResult.beginPage - 1})</c:if>">
-												<i class="icon arrow_left"></i> <span>Prev</span>
-											</a>
-										</li>
-
-										<c:forEach var="i" begin="${pageResult.beginPage}"
-											end="${pageResult.endPage}">
-											<c:choose>
-												<c:when test="${pageResult.pageNo eq i}">
-													<li class="active"><a href="#1">${i}</a></li>
-												</c:when>
-												<c:otherwise>
-													<li><a href="javascript:goPage(${i})">${i}</a></li>
-												</c:otherwise>
-											</c:choose>
-										</c:forEach>
-
-										<li	class="<c:if test="${pageResult.next eq false}">disabled</c:if>">
-											<a href="<c:if test="${pageResult.next eq true}">javascript:goPage(${pageResult.endPage + 1})</c:if>">
-												<span>Next</span> <i class="icon arrow_right"></i>
-											</a>
-										</li>
-									</ul>
-								</c:if>
-							<!-- Pagination -->
-							
-							<!-- Search -->
-							<form action="/faq/faq" method="get" role="form" class="relative">
-								<input type="search" class="searchbox" placeholder="Search">
-								<button type="submit" class="search-button">
-									<i class="icon icon_search"></i>
-								</button>
-							</form>
-							<!-- Search -->
+						<!-- Search -->
+						<form action="/board/faq" method="get" role="form" class="relative" style="margin: 10px 38% !important;">
+							<input type="search" class="searchbox" style="background:white" placeholder="Search">
+							<button type="submit" class="search-button">
+								<i class="icon icon_search"></i>
+							</button>
+						</form>
+						<!-- Search -->
 							
 						</div>
+						
+						<!-- Pagination -->
+						<c:if test="${pageResult.count != 0}">
+								<nav class="pagination clear text-center">
+									<i class="icon arrow_left"></i>
+									<span class="<c:if test="${pageResult.prev eq false}">disabled</c:if>">
+									<a href="<c:if test="${pageResult.prev eq true}">javascript:goPage(${pageResult.beginPage - 1})</c:if>">
+										Prev
+									</a>
+									</span>
+							  
+								<c:forEach var="i" begin="${pageResult.beginPage}" end="${pageResult.endPage}">
+									<c:choose>
+										<c:when test="${pageResult.pageNo eq i}">
+											<a href="#1">${i}</a>
+										</c:when>
+										<c:otherwise>
+											<a href="javascript:goPage(${i})">${i}</a>
+										</c:otherwise>
+									</c:choose>
+								</c:forEach>
+							
+				                <span class="<c:if test="${pageResult.prev eq false}">disabled</c:if>">
+									<a href="<c:if test="${pageResult.next eq true}">javascript:goPage(${pageResult.endPage + 1})</c:if>">
+										Next
+									</a>
+								</span>
+				                <i class="icon arrow_right"></i>
+				            </nav>
+						</c:if>
+						<!-- Pagination -->
+						
                     </div>
               	</div> <!-- end row -->
 			</div> <!-- end entry item -->
@@ -167,17 +160,10 @@
  </div> <!-- end main-wrapper -->
 <c:import url="/WEB-INF/views/include/basicIncludeBottom.jsp"></c:import>
 <script>
-// function goPage(pageNo) {
-//     location.href = "faq?pageNo=" + pageNo;
-//  }
 function goPage(pageNo) {
-	if("${pageResult.prev eq false}") {
-		
-	}
-	else {
-    	location.href = "faq?pageNo=" + pageNo;
-	}
+    location.href = "faq?pageNo=" + pageNo;
  }
+
 
 $(".aTitle").click(function () {
 	if(!$(this).next().is(":visible")){

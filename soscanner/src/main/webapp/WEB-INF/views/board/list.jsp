@@ -69,7 +69,7 @@
 
 									<div class="entry-content">
 										<p>내용</p>
-										<a href="blog-single.html" class="read-more">더보기</a> <i
+										<a href="detail?boardNo=${EachList.boardNo}" class="read-more">더보기</a> <i
 											class="icon arrow_right"></i>
 									</div>
 								</div>
@@ -120,24 +120,17 @@
 
 					<!-- sidebar -->
 					<div class="col-sm-4 sidebar blog-sidebar">
-
 						<form role="form" class="relative">
 							<input type="search" class="searchbox" placeholder="Search">
 							<button type="submit" class="search-button">
 								<i class="icon icon_search"></i>
 							</button>
 						</form>
-
-						<!-- Categories -->
-						<div class="widget categories">
-							<h3 class="widget-title">Categories</h3>
-							<ul>
-								<li><a href="#">종로구</a></li>
-								<li><a href="#">강남구</a></li>
-								<li><a href="#">중구</a></li>
-								<li><a href="#">영등포구</a></li>
-								<li><a href="#">송파구</a></li>
-							</ul>
+						
+						<div class="writing">
+               				<a href="/board/writeForm">
+								<i class="fa fa-pencil-square-o" aria-hidden="true">글쓰기</i>
+                			</a>
 						</div>
 					</div>
 					<!-- end col -->

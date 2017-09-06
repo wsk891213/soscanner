@@ -13,12 +13,24 @@
 	</resultMap>
 
 	<select id="selectBoard" parameterType="PageVO" resultMap="boardMap">
-		select *
-		  from (
-		  	select ROWNUM as RNUM, BOARDNO,TITLE,WRITER,REGDATE,VIEWCOUNT from KOR_BOARD
-		  	)
-		  where RNUM between #{begin} and #{pageCount}
-		  order by BOARDNO desc
+		  select X.rnum, X.boardNo, X.title, X.regDate, X.viewCount
+		    from (
+		  		select ROWNUM as RNUM, A.boardNo, A.title, A.writer, A.regDate, A.viewCount
+		    	from (
+		    		select boardNo, title, writer, regDate, viewCount
+		    		from KOR_BOARD
+		   			order by boardNo ) A
+		   	<![CDATA[
+		   	where RNUM <= #{end}) X
+		   	]]>
+		 where X.rnum >= #{begin} 
+
+<!-- 		select * -->
+<!-- 		  from ( -->
+<!-- 		  	select ROWNUM as RNUM, BOARDNO,TITLE,WRITER,REGDATE,VIEWCOUNT from KOR_BOARD -->
+<!-- 		  	) -->
+<!-- 		  where RNUM between #{begin} and #{pageCount} -->
+<!-- 		  order by BOARDNO desc -->
 	</select>
 	
 	<select id="selectBoradPage" parameterType="PageVO" resultType="int">
@@ -40,9 +52,9 @@
 	
 	<insert id="insertBoard" parameterType="BoardVO">
 		insert into KOR_BOARD(
-			TITLE, WRITER, CONTENT
+			BOARDNO, TITLE, WRITER, CONTENT
 		) values (
-			#{title}, #{writer}, #{content}
+			KOR_BOARD_SEQ.NEXTVAL, #{title}, #{writer}, #{content}
 		)
 	</insert>
 	
