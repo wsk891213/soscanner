@@ -13,56 +13,88 @@
 	</resultMap>
 
 	<select id="selectBoard" parameterType="PageVO" resultMap="boardMap">
-		  select X.*
-		    from (
-		  		select ROWNUM as RNUM, A.*
-		    	from (
-		    		select BOARDNO, TITLE, WRITER, REGDATE, VIEWCOUNT
-		    		from KOR_BOARD
-		   			order by REGDATE desc) A
+		select X.*
+			from (
+				select ROWNUM as RNUM, A.*
+				  from (
+					select BOARDNO, TITLE, WRITER, REGDATE, VIEWCOUNT
+					  from KOR_BOARD
+					 where	1=1
+					  <if test="searchType != null and searchType == 'sTitle'">
+					   and TITLE LIKE '%'||#{searchText}||'%'
+					  </if>
+					  <if test="searchType != null and searchType == 'sContent'">
+					   and CONTENT LIKE '%'||#{searchText}||'%'
+					  </if>					 
+					  <if test="searchType != null and searchType == 'sWriter'">
+					   and CONTENT LIKE '%'||#{searchText}||'%'
+					  </if>					 
+					 order by REGDATE desc
+				) A
 		   	<![CDATA[
-		   	where ROWNUM <= #{end}) X
+		   	where ROWNUM <= #{end}
+		) X
 		   	]]>
-		 where X.RNUM >= #{begin} 
+		where X.RNUM >= #{begin}
 
-<!-- 		select * -->
-<!-- 		  from ( -->
-<!-- 		  	select ROWNUM as RNUM, BOARDNO,TITLE,WRITER,REGDATE,VIEWCOUNT from KOR_BOARD -->
-<!-- 		  	) -->
-<!-- 		  where RNUM between #{begin} and #{pageCount} -->
-<!-- 		  order by BOARDNO desc -->
+		<!-- select * -->
+		<!-- from ( -->
+		<!-- select ROWNUM as RNUM, BOARDNO,TITLE,WRITER,REGDATE,VIEWCOUNT from 
+			KOR_BOARD -->
+		<!-- ) -->
+		<!-- where RNUM between #{begin} and #{pageCount} -->
+		<!-- order by BOARDNO desc -->
 	</select>
-	
+
+	<select id="selectBoard2" parameterType="PageVO" resultMap="boardMap">
+		select X.*
+			from (
+				select ROWNUM as RNUM, A.*
+				  from (
+					select BOARDNO, TITLE, WRITER, REGDATE, VIEWCOUNT
+					  from KOR_BOARD
+					 where WRITER LIKE '%'||#{searchWriter}||'%'
+						or TITLE LIKE '%'||#{searchTitle}||'%'
+						or CONTENT LIKE '%'||#{searchContent}||'%'
+					 order by REGDATE desc
+				) A
+		   	<![CDATA[
+		   	where ROWNUM <= #{end}
+		) X
+		   	]]>
+		where X.RNUM >= #{begin}
+	</select>
+
 	<select id="selectBoradPage" parameterType="PageVO" resultType="int">
 		select count(*)
-		  from KOR_BOARD
+		from KOR_BOARD
 	</select>
-	
+
 	<select id="detailBoard" parameterType="int" resultMap="boardMap">
 		select *
-		  from KOR_BOARD
-		 where BOARDNO = #{boardNo}
+		from KOR_BOARD
+		where BOARDNO = #{boardNo}
 	</select>
-	
-	<delete id="deleteBoard" parameterType="int" >
+
+	<delete id="deleteBoard" parameterType="int">
 		delete
-		  from KOR_BOARD
-		 where BOARDNO = #{boardNo}
+		from KOR_BOARD
+		where BOARDNO = #{boardNo}
 	</delete>
-	
+
 	<insert id="insertBoard" parameterType="BoardVO">
 		insert into KOR_BOARD(
-			BOARDNO, TITLE, WRITER, CONTENT
+		BOARDNO, TITLE, WRITER, CONTENT
 		) values (
-			KOR_BOARD_SEQ.NEXTVAL, #{title}, #{writer}, #{content}
+		KOR_BOARD_SEQ.NEXTVAL, #{title}, #{writer}, #{content}
 		)
 	</insert>
-	
+
 	<update id="updateBoard" parameterType="BoardVO">
 		update KOR_BOARD
-		   set TITLE = #{title},
-		       CONTENT = #{content}
-		 where BOARDNO = #{boardNo}
+		set TITLE = #{title},
+		CONTENT = #{content}
+		where BOARDNO = #{boardNo}
 	</update>
 
 
@@ -71,18 +103,23 @@
 		<result column="CONTENT" property="content" />
 		<result column="ANSWER" property="answer" />
 	</resultMap>
-	
+
 	<select id="selectFaq" parameterType="PageVO" resultMap="faqMap">
-		select *
-		  from (
-		  	select ROWNUM as RNUM, FAQNO,CONTENT,ANSWER from FAQ
-		  	)
-		  where RNUM between #{begin} and #{pageCount}
-		  order by FAQNO desc
+		select X.*
+		from (
+		select ROWNUM as rnum A.*
+		from (
+		select FAQNO, CONTENT, ANSWER
+		from FAQ
+		) A
+		<![CDATA[
+		where ROWNUM <= #{end}) X
+		]]>
+		where X.RNUM >= #{begin}
 	</select>
-	
+
 	<select id="selectPage" parameterType="PageVO" resultType="int">
 		select count(*)
-		  from FAQ
+		from FAQ
 	</select>
 </mapper>

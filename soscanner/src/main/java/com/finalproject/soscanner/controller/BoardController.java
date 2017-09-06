@@ -2,6 +2,9 @@ package com.finalproject.soscanner.controller;
 
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 //import javax.swing.plaf.synth.SynthSeparatorUI;
 
 //import org.slf4j.Logger;
@@ -25,7 +28,7 @@ import com.finalproject.soscanner.vo.PageVO;
 @RequestMapping("board")
 public class BoardController {
 	
-//	private static final Logger logger = LoggerFactory.getLogger(BoardController.class);
+	private static final Logger logger = LoggerFactory.getLogger(BoardController.class);
 	
 	@Autowired
 	private BoardService boardService;
@@ -41,6 +44,7 @@ public class BoardController {
 	// 게시판
 	@RequestMapping("/list")
 	public void boardList(Model model, PageVO page) throws Exception {
+		System.out.println("page ============>"+page);
 		int pageNo = page.getPageNo();
 		int count = boardService.selectBoradPage(page);
 		model.addAttribute("page", count);
@@ -108,18 +112,18 @@ public class BoardController {
 	// FAQ 
 	@RequestMapping("/faq")
 	public void list(Model model, PageVO page) throws Exception {
-		String searchValue = page.getSearchValue();
 		int pageNo = page.getPageNo();
 		int count = boardService.selectPage(page);
 //		logger.info(searchValue);
 		
-		if (searchValue == null) {
-			model.addAttribute("faq", boardService.selectFaq(page));
-		}
-		else {
-			model.addAttribute("faq", boardService.searchList(page));
-		}
-		model.addAttribute("page", count);
+//		if (searchValue == null) {
+//			model.addAttribute("faq", boardService.selectFaq(page));
+//		}
+//		else {
+//			model.addAttribute("faq", boardService.searchList(page));
+//		}
+		model.addAttribute(page);
 		model.addAttribute("pageResult", new PageResultVO(pageNo, count));
+		model.addAttribute("faq", boardService.selectFaq(page));
 	}
 }

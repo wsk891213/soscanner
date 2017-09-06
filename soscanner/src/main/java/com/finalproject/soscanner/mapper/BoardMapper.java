@@ -10,6 +10,7 @@ public interface BoardMapper {
 	
 	// 게시판 Mapper
 	public List<BoardVO> selectBoard(PageVO page) throws Exception;
+	public List<BoardVO> selectBoard2(PageVO page) throws Exception;
 	public BoardVO detailBoard(int boardNo) throws Exception;
 	public int deleteBoard(int boardNo) throws Exception;
 	public int insertBoard(BoardVO boardVO) throws Exception;
