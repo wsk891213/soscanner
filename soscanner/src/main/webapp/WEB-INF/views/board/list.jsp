@@ -119,14 +119,22 @@
 </script>
 
 					<!-- sidebar -->
+					
 					<div class="col-sm-4 sidebar blog-sidebar">
-						<form role="form" class="relative">
-							<input type="search" class="searchbox" placeholder="Search">
-							<button type="submit" class="search-button">
-								<i class="icon icon_search"></i>
-							</button>
+						<form action="list" id="doSearch" class="form-group">
+								<input type="search" name="searchText" class="searchbox" 
+									placeholder="Search" value="${searchValue}" />
+								<button type="submit" class="search-button">
+									<i class="icon icon_search"></i>
+								</button>
+							<select name="searchType" class="form-control" >
+							 	<option value="sTitle" selected>제목</option>
+							 	<option value="sContent">내용</option>
+							 	<option value="sWriter">글쓴이</option>
+							 	<option value="sAll">전체검색</option>
+							 </select>
 						</form>
-						
+					
 						<div class="writing">
                				<a href="/board/writeForm">
 								<i class="fa fa-pencil-square-o" aria-hidden="true">글쓰기</i>
