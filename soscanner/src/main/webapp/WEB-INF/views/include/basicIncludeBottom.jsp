@@ -23,24 +23,23 @@
    $("#loginButton").click(function (e) {
 	   if($("#registAccord").is(":visible")) {
 		   e.preventDefault();
-		   $('html, body').animate({scrollTop : 1219}, 1000);
+		   $('html, body').animate({scrollTop : $('html, body').height()}, 1000);
 		   $("#registAccord").slideUp();
        }
 	   
 	   if($("#signInAccord").is(":visible")){
-           $("#signInAccord").slideUp(1000);
+		   e.preventDefault();
        } 
 	   else {
        		$("#signInAccord").slideDown();
-       	 	$('html, body').animate({scrollTop : 1043}, 1000);
+       	 	$('html, body').animate({scrollTop : $('html, body').height()}, 1000);
        }
-	   
    }) 
    
    
    $("#registBtn").click(function (e) {
 	    e.preventDefault();
-	    $('html, body').animate({scrollTop : 1219}, 900);
+	    $('html, body').animate({scrollTop : $('html, body').height()}, 900);
 	    $("#signInAccord").slideUp(900);
 	    $("#registAccord").slideDown(1000)
    })
@@ -48,7 +47,7 @@
    
    $("#RegistCancelBtn").click(function (e) {
 	   e.preventDefault();
-	   $('html, body').animate({scrollTop : 1219}, 1000);
+	   $('html, body').animate({scrollTop : $('html, body').height()}, 1000);
 	   $("#registAccord").slideUp();
 	   $("#signInAccord").slideDown();
    })

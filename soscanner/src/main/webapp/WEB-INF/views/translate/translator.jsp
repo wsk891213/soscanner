@@ -199,10 +199,6 @@ label {
 		<div class="title-holder">
 			<div class="title-text">
 				<h1 class="color-white heading-frame">번역기</h1>
-				<ol class="breadcrumb">
-					<li><a href="/">Home</a></li>
-					<li class="active">번역기</li>
-				</ol>
 			</div>
 		</div>
 	</div>
