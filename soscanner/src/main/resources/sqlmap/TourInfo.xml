@@ -6,6 +6,7 @@
 	SELECT TI_NO, TI_TITLE, TI_OVRVW, TI_ADDR, TI_MAPX, TI_MAPY, TI_TIME, TI_LANG
 	  FROM TB_TOURINFO
 	 WHERE TI_ADDR LIKE '%'||#{slocation}||'%'
+	   AND TI_LANG = #{ti_lang}
 </select>
 
 <select id="getsInfo" resultType="TourInfoVO">

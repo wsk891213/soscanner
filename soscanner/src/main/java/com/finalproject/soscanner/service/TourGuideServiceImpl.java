@@ -17,10 +17,12 @@ public class TourGuideServiceImpl implements TourGuideService{
 	@Override
 	public List<TourInfoVO> getInfos(TourInfoVO loc) throws Exception {
 		if(loc.getsWord() == null){
-			return mapper.getInfos(loc.getSlocation());
+			System.out.println(loc.getSlocation());
+			System.out.println(loc.getTi_lang());
+			return mapper.getInfos(loc);
 		}
 		else {
-			return mapper.getsInfo(loc.getsWord());
+			return mapper.getsInfo(loc);
 		}
 	}
 

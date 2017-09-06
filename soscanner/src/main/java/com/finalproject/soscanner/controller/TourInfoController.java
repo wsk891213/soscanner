@@ -31,17 +31,15 @@ public class TourInfoController {
 	@RequestMapping("/seoulMap")
 	public void seoulMap(HttpServletRequest req, Model model) {
 		HttpSession session = req.getSession();
-		String sessionName = SessionLocaleResolver.LOCALE_SESSION_ATTRIBUTE_NAME.toString();
-		System.out.println(sessionName);
 		Locale locale = (Locale)session.getAttribute(SessionLocaleResolver.LOCALE_SESSION_ATTRIBUTE_NAME);
-		//현재 세션에 있는 locale 정보
 		model.addAttribute("locale", locale);
-		System.out.println(locale);
+		System.out.println("서울맵 locale 정보" +locale);
 	}
 	
 	@RequestMapping("/infoList")
-	public void infoList(TourInfoVO loc, Model model) throws Exception {
-			
+	public void infoList(TourInfoVO loc, Model model, Locale locale) throws Exception {
+			//locale 정보
+			loc.setTi_lang(locale.toString());
 			List<TourInfoVO> lists = tgService.getInfos(loc);
 			model.addAttribute("lists", lists);
 			if(loc.getSlocation() != null){

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -39,9 +40,8 @@
                 data-transform_in="z:0;rX:0;rY:0;rZ:0;sX:0.1;sY:0.1;skX:0;skY:0;opacity:0;s:1000;e:Power3.easeOut;" 
                 data-transform_out="opacity:0;sX:0;sY:0;s:1200;e:Power3.easeInOut;"
                 data-start="1000"
-                data-splitout="none">관광정보
+                data-splitout="none"><spring:message code="main.home.line42"/>
               </div>
-            
               
               <div class="tp-caption tp-resizeme"
                 data-x="center"
@@ -52,11 +52,10 @@
                 data-transform_in="z:0;rX:0;rY:0;rZ:0;sX:0;sY:0;skX:0;skY:0;opacity:0;s:1000;e:Power3.easeOut;" 
                 data-transform_out="opacity:0;sX:0;sY:0;s:1200;e:Power3.easeInOut;"
                 data-start="1000"
-                style="z-index: 12; max-width: auto; max-height: auto; white-space: nowrap;"><a href='#' class='btn btn-lg btn-transparent'>Learn More</a>
+                style="z-index: 12; max-width: auto; max-height: auto; white-space: nowrap;"><a href='#' class='btn btn-lg btn-transparent'><spring:message code="main.home.line55"/></a>
               </div>  
             </li> 
             <!-- end slide 1 -->
-
             <!-- SLIDE 2 -->
             <li data-transition="cube"
               data-slotamount="1"
@@ -74,7 +73,7 @@
                 data-transform_in="z:0;rX:0;rY:0;rZ:0;sX:0.1;sY:0.1;skX:0;skY:0;opacity:0;s:1000;e:Power3.easeOut;" 
                 data-transform_out="opacity:0;sX:0;sY:0;s:1200;e:Power3.easeInOut;"
                 data-start="1000"
-                data-splitout="none">SOSCAN
+                data-splitout="none"><spring:message code="main.home.line76"/>
               </div>
 
               <!-- LAYER NR. 3 -->
@@ -87,7 +86,7 @@
                 data-transform_in="z:0;rX:0;rY:0;rZ:0;sX:0;sY:0;skX:0;skY:0;opacity:0;s:1000;e:Power3.easeOut;" 
                 data-transform_out="opacity:0;sX:0;sY:0;s:1200;e:Power3.easeInOut;"
                 data-start="1000"
-                style="z-index: 12; max-width: auto; max-height: auto; white-space: nowrap;"><a href='#' class='btn btn-lg btn-transparent'>Learn More</a>
+                style="z-index: 12; max-width: auto; max-height: auto; white-space: nowrap;"><a href='#' class='btn btn-lg btn-transparent'><spring:message code="main.home.line89"/></a>
               </div>  
             </li> 
             <!-- end slide 2 -->
@@ -109,7 +108,7 @@
                 data-transform_in="z:0;rX:0;rY:0;rZ:0;sX:0.1;sY:0.1;skX:0;skY:0;opacity:0;s:1000;e:Power3.easeOut;" 
                 data-transform_out="opacity:0;sX:0;sY:0;s:1200;e:Power3.easeInOut;"
                 data-start="1000"
-                data-splitout="none" style="color: black;">번역기
+                data-splitout="none" style="color: black;"><spring:message code="main.home.line111"/>
               </div>
 
               <!-- LAYER NR. 3 -->
@@ -122,7 +121,7 @@
                 data-transform_in="z:0;rX:0;rY:0;rZ:0;sX:0;sY:0;skX:0;skY:0;opacity:0;s:1000;e:Power3.easeOut;" 
                 data-transform_out="opacity:0;sX:0;sY:0;s:1200;e:Power3.easeInOut;"
                 data-start="1000"
-                style="z-index: 12; max-width: auto; max-height: auto; white-space: nowrap;"><a href='#' class='btn btn-lg btn-stroke' style="color: black;">Learn More</a>
+                style="z-index: 12; max-width: auto; max-height: auto; white-space: nowrap;"><a href='#' class='btn btn-lg btn-stroke' style="color: black;"><spring:message code="main.home.line124"/></a>
               </div>  
             </li> 
             <!-- end slide 3 -->
@@ -141,8 +140,8 @@
               <i class="fa fa-exclamation-triangle"></i>
             </a>
             <div class="service-item-box">
-              <h3>SOSCAN</h3>
-              <p>Our web design team will spend time with our digital marketing team to ensure the core principles of effective websites.</p>
+              <h3><spring:message code="main.home.line143"/></h3>
+              <p><spring:message code="main.home.line144"/></p>
             </div>
           </div> 
           <!-- end service item -->
@@ -152,8 +151,8 @@
               <i class="fa fa-map-signs"></i>
             </a>
             <div class="service-item-box">
-              <h3>광관지 정보</h3>
-              <p>Our web design team will spend time with our digital marketing team to ensure the core principles of effective websites.</p>
+              <h3><spring:message code="main.home.line154"/></h3>
+              <p><spring:message code="main.home.line155"/></p>
             </div>
           </div> 
           <!-- end service item -->
@@ -163,8 +162,8 @@
               <i class="fa fa-refresh"></i>
             </a>
             <div class="service-item-box">
-              <h3>번역기</h3>
-              <p>Our web design team will spend time with our digital marketing team to ensure the core principles of effective websites.</p>
+              <h3><spring:message code="main.home.line165"/></h3>
+              <p><spring:message code="main.home.line166"/></p>
             </div>
           </div> 
           <!-- end service item -->
@@ -174,8 +173,8 @@
               <i class="fa fa-flag-o"></i>
             </a>
             <div class="service-item-box">
-              <h3>게시판</h3>
-              <p>Our web design team will spend time with our digital marketing team to ensure the core principles of effective websites.</p>
+              <h3><spring:message code="main.home.line176"/></h3>
+              <p><spring:message code="main.home.line177"/></p>
             </div>
           </div> 
           <!-- end service item -->
@@ -185,8 +184,8 @@
               <i class="fa fa-question-circle-o"></i>
             </a>
             <div class="service-item-box">
-              <h3>FAQ</h3>
-              <p>Our web design team will spend time with our digital marketing team to ensure the core principles of effective websites.</p>
+              <h3><spring:message code="main.home.line187"/></h3>
+              <p><spring:message code="main.home.line188"/></p>
             </div>
           </div> 
           <!-- end service item -->
@@ -196,8 +195,8 @@
               <i class="fa fa-language"></i>
             </a>
             <div class="service-item-box">
-              <h3>Language</h3>
-              <p>Our web design team will spend time with our digital marketing team to ensure the core principles of effective websites.</p>
+              <h3><spring:message code="main.home.line198"/></h3>
+              <p><spring:message code="main.home.line199"/></p>
             </div>
           </div> 
           <!-- end service item -->

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -152,7 +153,7 @@ getMyLocation();
       <div class="container relative clearfix">
         <div class="title-holder">
           <div class="title-text">
-            <h1 class="color-white heading-frame">경로안내</h1>
+            <h1 class="color-white heading-frame"><spring:message code="tourGuide.findRoute.line156"/></h1>
           </div>
         </div>
       </div>
@@ -173,11 +174,10 @@ getMyLocation();
                   <div class="entry-title">
                   	<c:choose>
                   	<c:when test="${empty tourInfoVO.slocation}">
-                    <a href="infoDetail?ti_no=${tourInfoVO.ti_no}&sWord=${tourInfoVO.sWord}" class="btn btn-lg btn-dark">돌아가기</a>
-                    <
+                    <a href="infoDetail?ti_no=${tourInfoVO.ti_no}&sWord=${tourInfoVO.sWord}" class="btn btn-lg btn-dark"><spring:message code="tourGuide.findRoute.line177"/></a>
                   	</c:when>
                   	<c:otherwise>
-                    <a href="infoDetail?ti_no=${tourInfoVO.ti_no}&slocation=${tourInfoVO.slocation}" class="btn btn-lg btn-dark">돌아가기</a>
+                    <a href="infoDetail?ti_no=${tourInfoVO.ti_no}&slocation=${tourInfoVO.slocation}" class="btn btn-lg btn-dark"><spring:message code="tourGuide.findRoute.line180"/></a>
                   	</c:otherwise>
                   	</c:choose>
                   </div>

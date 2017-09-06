@@ -20,7 +20,12 @@ public class HomeController {
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
 	
 	@RequestMapping("/")
-	public String home(Locale locale, Model model) {
+	public String home(Locale locale, Model model, HttpServletRequest req) {
+		HttpSession session = req.getSession();
+		Locale sLocale = (Locale)session.getAttribute(SessionLocaleResolver.LOCALE_SESSION_ATTRIBUTE_NAME);
+		if(sLocale == null) {
+		session.setAttribute(SessionLocaleResolver.LOCALE_SESSION_ATTRIBUTE_NAME, Locale.ENGLISH);
+		}
 		return "/main/home";
 	}
 	

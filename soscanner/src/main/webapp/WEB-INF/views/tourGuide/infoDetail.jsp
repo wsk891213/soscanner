@@ -1,11 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <!DOCTYPE html>
 <html>
 <head>
 <title>관광정보</title>
 <c:import url="/WEB-INF/views/include/basicIncludeTop.jsp"></c:import>
-<script language="javascript" src="https://apis.skplanetx.com/tmap/js?version=1&format=javascript&appKey=f9c5ac44-024a-3ddb-9828-c6e7f0d42b86"></script>
+<script language="javascript" src="https://apis.skplanetx.com/tmap/js?version=1&format=javascript&appKey=f9c5ac44-024a-3ddb-9828-c6e7f0d42b86&sensor=false&language=en"></script>
 <script type="text/javascript">
 var map;
 var mapW, mapH;     // 지도의 가로, 세로 크기(Pixel단위) 를 지정 합니다. 
@@ -65,7 +66,7 @@ $(function() {
 		<div class="container relative clearfix">
 			<div class="title-holder">
 				<div class="title-text">
-					<h1 class="color-white heading-frame">관광지 정보</h1>
+					<h1 class="color-white heading-frame"><spring:message code="tourGuide.infoDetail.line69"/></h1>
 				</div>
 			</div>
 		</div>
@@ -105,12 +106,12 @@ $(function() {
 								<div class="entry-title" >
 									<c:choose>
 									<c:when test="${empty check}">
-									<a href="#" class="btn btn-lg btn-color" id="findRoute1">길찾기</a>
-									<a href="infoList?sWord=${pWord}" class="btn btn-lg btn-dark">목록보기</a>
+									<a href="#" class="btn btn-lg btn-color" id="findRoute1"><spring:message code="tourGuide.infoDetail.line109"/></a>
+									<a href="infoList?sWord=${pWord}" class="btn btn-lg btn-dark"><spring:message code="tourGuide.infoDetail.line110"/></a>
 									</c:when>
 									<c:otherwise>
-									<a href="#" class="btn btn-lg btn-color" id="findRoute2">길찾기</a>
-									<a href="infoList?slocation=${pWord}" class="btn btn-lg btn-dark">목록보기</a>
+									<a href="#" class="btn btn-lg btn-color" id="findRoute2"><spring:message code="tourGuide.infoDetail.line113"/></a>
+									<a href="infoList?slocation=${pWord}" class="btn btn-lg btn-dark"><spring:message code="tourGuide.infoDetail.line114"/></a>
 									</c:otherwise>
 									</c:choose>
 								</div>

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
   <!-- 로딩 이미지 -->
   <div class="loader-mask">
     <div class="loader">
@@ -41,45 +42,40 @@
               <div class="collapse navbar-collapse" id="navbar-collapse">
                 
                 <ul class="nav navbar-nav navbar-right">
-
                   <li>
-                    <a href="/" style="font-size: 20px;">Home</a>
+                    <a href="/soscan/main" style="font-size: 20px;"><spring:message code="include.navBar.line45"/></a>
                   </li>
                   <li>
-                    <a href="/soscan/main" style="font-size: 20px;">SOSCAN</a>
+                    <a href="/tourGuide/seoulMap" style="font-size: 20px;"><spring:message code="include.navBar.line48"/></a>
                   </li>
                   <li>
-                    <a href="/tourGuide/seoulMap" style="font-size: 20px;">관광지 정보</a>
+                    <a href="/translate/translator" style="font-size: 20px;"><spring:message code="include.navBar.line51"/></a>
                   </li>
                   <li>
-                    <a href="/translate/translator" style="font-size: 20px;">번역기</a>
+                    <a href="/board/list" style="font-size: 20px;"><spring:message code="include.navBar.line54"/></a>
                   </li>
-                  <li>
-                    <a href="/board/list" style="font-size: 20px;">게시판</a>
-                  </li>
-                  <li>
-                    <a href="/board/faq" style="font-size: 20px;">FAQ</a>
-                  </li>
+                  <%-- <li>
+                    <a href="/board/faq" style="font-size: 20px;"><spring:message code="include.navBar.line57"/></a>
+                  </li> --%>
                   <c:choose>
                   	<c:when test="${user==null}">
 	                  <li>
-	                    <a href="#" id="loginButton" style="font-size: 20px;">로그인</a>
+	                    <a href="#" id="loginButton" style="font-size: 13px;"><spring:message code="include.navBar.line62"/></a>
 	                  </li>
                   	</c:when>
                   	<c:otherwise>
 					  <li>
-	                    <a href="/user/logout" id="logoutButton" style="font-size: 20px;">로그아웃</a>
+	                    <a href="/user/logout" id="logoutButton" style="font-size: 20px;"><spring:message code="include.navBar.line67"/></a>
 	                  </li>
-					                    	
                   	</c:otherwise>
                   </c:choose>
                   
                   <li class="dropdown">
-                    <a href="#" class="dropdown-toggle">언어</a>
+                    <a href="#" class="dropdown-toggle"><spring:message code="include.navBar.line73"/></a>
                     <ul class="dropdown-menu menu-right">
-                      <li><a href="/multiLingual?locale=en">영어</a></li>
-                      <li><a href="/multiLingual?locale=ko">한국어</a></li>
-                      <li><a href="/multiLingual?locale=zh">중국어</a></li>
+                      <li><a href="/multiLingual?locale=en"><spring:message code="include.navBar.line75"/></a></li>
+                      <li><a href="/multiLingual?locale=ko"><spring:message code="include.navBar.line76"/></a></li>
+                      <li><a href="/multiLingual?locale=zh"><spring:message code="include.navBar.line77"/></a></li>
                     </ul>
                   </li>
                   

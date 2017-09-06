@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -21,7 +22,7 @@
       <div class="container relative clearfix">
         <div class="title-holder">
           <div class="title-text">
-            <h1 class="color-white heading-frame">관광지 정보</h1>
+            <h1 class="color-white heading-frame"><spring:message code="tourGuide.infoList.line25"/>  </h1>
           </div>
         </div>
       </div>
@@ -67,7 +68,7 @@
 
                 <div class="entry-content">
                   <p>${list.ti_ovrvw}</p>
-                  <a href="infoDetail?ti_no=${list.ti_no}&slocation=${slocation}&sWord=${sWord}" class="read-more">더보기</a>
+                  <a href="infoDetail?ti_no=${list.ti_no}&slocation=${slocation}&sWord=${sWord}" class="read-more"><spring:message code="tourGuide.infoList.line71"/></a>
                   <i class="icon arrow_right"></i>
                 </div>
               </div>
@@ -78,7 +79,7 @@
             <div class="entry-item">
               <div class="entry-title">
                 <h2>
-                  <a href="blog-single.html">표시할 데이터가 없습니다</a>
+                  <a href="blog-single.html"><spring:message code="tourGuide.infoList.line82"/></a>
                 </h2>
               </div>
             </div>
@@ -92,9 +93,9 @@
                 <blockquote class="blockquote-style-1 text-center mb-0">
                   <i class="fa fa-quote-left"></i>
                   <p>
-                    <a href="blog-single.html">세계는 한 권의 책이다. 여행하지 않는 사람은 그 책의 한 페이지만 읽는 것과 같다.</a>
+                    <a href="blog-single.html"><spring:message code="tourGuide.infoList.line96"/></a>
                   </p>
-                  <span>– 아우구스티누스</span>
+                  <span><spring:message code="tourGuide.infoList.line98"/></span>
                 </blockquote>
               </div>
             </div> <!-- end entry item -->
@@ -103,12 +104,12 @@
           
           <!-- sidebar -->
           <div class="col-sm-4 sidebar blog-sidebar">
-			<h3>원하시는 관광지를 검색 하세요</h3><br>
+			<h3><spring:message code="tourGuide.infoList.line107"/></h3><br>
             <form role="form" class="relative" id="tSearchForm" action="infoList">
               <input type="text" name="sWord" class="searchbox" placeholder="Search">
               <button type="submit" class="search-button"><i class="icon icon_search"></i></button>
             </form><br>
-			<a href="/tourGuide/seoulMap">지도로 돌아가기</a>
+			<a href="/tourGuide/seoulMap"><spring:message code="tourGuide.infoList.line112"/></a>
           </div> <!-- end col -->
   
         </div> <!-- end row -->
