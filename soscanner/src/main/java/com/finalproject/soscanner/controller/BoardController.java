@@ -1,6 +1,10 @@
 package com.finalproject.soscanner.controller;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+
+import javax.servlet.http.HttpServletRequest;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -15,6 +19,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.finalproject.soscanner.service.BoardService;
 import com.finalproject.soscanner.service.CommentService;
@@ -63,9 +69,33 @@ public class BoardController {
 	}
 
 	@RequestMapping("/write")
-	public void write(BoardVO boardVO) throws Exception {
-		boardService.insertBoard(boardVO);
+	public void writer(HttpServletRequest request) throws Exception {
+//		System.out.println("mRequest ======>" + request);
+		
+		
+		MultipartHttpServletRequest mRequest = (MultipartHttpServletRequest)request;
+		
+		BoardVO board = new BoardVO();
+		board.setTitle(mRequest.getParameter("title"));
+		board.setWriter(mRequest.getParameter("writer"));
+		board.setContent(mRequest.getParameter("content"));
+		
+		boardService.insertBoard(board, mRequest);
 	}
+	
+//	@RequestMapping("/write")
+//	public void write(MultipartHttpServletRequest mRequest, RedirectAttributes attr) throws Exception {
+//		Map<String, Object> map = new HashMap<String, Object>();
+//		BoardVO board = new BoardVO();
+//		board.setTitle(mRequest.getParameter("title"));
+//		board.setWriter(mRequest.getParameter("writer"));
+//		board.setContent(mRequest.getParameter("content"));
+//		map.put("board", board);
+//		map.put("mRequest", mRequest);
+//		
+//		boardService.insertBoard(map);
+//	}
+	
 	@RequestMapping("/writeForm")
 	public void writeForm() throws Exception {
 	}

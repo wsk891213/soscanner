@@ -1,16 +1,28 @@
 package com.finalproject.soscanner.service;
 
+import java.io.File;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
+import java.util.UUID;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.finalproject.soscanner.mapper.BoardMapper;
+import com.finalproject.soscanner.util.FileUtils;
 import com.finalproject.soscanner.vo.PageVO;
+
 import com.finalproject.soscanner.vo.BoardVO;
 import com.finalproject.soscanner.vo.FaqVO;
+import com.finalproject.soscanner.vo.FileVO;
 
 @Service("boardService")
 public class BoardServiceImpl implements BoardService {
@@ -86,15 +98,51 @@ public class BoardServiceImpl implements BoardService {
 	}
 
 	@Override
-	public String insertBoard(BoardVO boardVO) throws Exception {
-		int result = boardMapper.insertBoard(boardVO);
-		if (result == 0) {
-			return "fail";
+	public void insertBoard(BoardVO board, MultipartHttpServletRequest mRequest) throws Exception {
+		boardMapper.insertBoard(board);
+		
+		String filePath = "D:/final/file";
+		SimpleDateFormat sdf = new SimpleDateFormat("/yyyy/MM/dd");
+		String datePath = sdf.format(new Date());
+		
+		filePath += datePath;
+		File f = new File(filePath);
+		if (!f.exists()) {
+			f.mkdirs();
 		}
-		else {
-			return "/board/list";
-		}
+		
+		Iterator<String> iter = mRequest.getFileNames();
+		while(iter.hasNext()) {
+			String formFileName = iter.next();
+			MultipartFile mFile = mRequest.getFile(formFileName);
+			String oriName = mFile.getOriginalFilename();
+			if(oriName != null && !oriName.equals("")) {
+			
+				String ext = "";
+				int index = oriName.lastIndexOf(".");
+				if (index != -1) {
+					ext = oriName.substring(index);
+				}
+				long size = mFile.getSize();
+				String sysName = "mlec-" + UUID.randomUUID().toString() + ext;
+				
+				
+				
+				System.out.println(filePath);
+				System.out.println(sysName);
+				mFile.transferTo(new File(filePath + "\\" + sysName));
+				
+				FileVO fileSave = new FileVO();
+				fileSave.setFilePath(datePath);
+				fileSave.setOriName(oriName);
+				fileSave.setSysName(sysName);
+				fileSave.setSize(size);
+				
+				boardMapper.insertFile(fileSave);
+			} 
+		} 
 	}
+
 
 	@Override
 	public String updateBoard(BoardVO boardVO) throws Exception {

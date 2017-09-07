@@ -2,14 +2,13 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.finalproject.soscanner.mapper.BoardMapper">
-
 	<resultMap id="boardMap" type="BoardVO">
-		<result column="BOARDNO" property="boardNo" />
-		<result column="TITLE" property="title" />
-		<result column="CONTENT" property="content" />
-		<result column="WRITER" property="writer" />
-		<result column="REGDATE" property="regDate" />
-		<result column="VIEWCOUNT" property="viewCount" />
+		<result column="B_BOARDNO" property="boardNo" />
+		<result column="B_TITLE" property="title" />
+		<result column="B_CONTENT" property="content" />
+		<result column="B_WRITER" property="writer" />
+		<result column="B_REGDATE" property="regDate" />
+		<result column="B_VIEWCOUNT" property="viewCount" />
 	</resultMap>
 
 	<select id="selectBoard" parameterType="PageVO" resultMap="boardMap">
@@ -17,19 +16,19 @@
 			from (
 				select ROWNUM as RNUM, A.*
 				  from (
-					select BOARDNO, TITLE, WRITER, REGDATE, VIEWCOUNT
-					  from KOR_BOARD
+					select B_BOARDNO, B_TITLE, B_WRITER, B_REGDATE, B_VIEWCOUNT
+					  from TB_BOARD
 					 where	1=1
 					  <if test="searchType != null and searchType == 'sTitle'">
-					   and TITLE LIKE '%'||#{searchText}||'%'
+					   and B_TITLE LIKE '%'||#{searchText}||'%'
 					  </if>
 					  <if test="searchType != null and searchType == 'sContent'">
-					   and CONTENT LIKE '%'||#{searchText}||'%'
+					   and B_CONTENT LIKE '%'||#{searchText}||'%'
 					  </if>					 
 					  <if test="searchType != null and searchType == 'sWriter'">
-					   and CONTENT LIKE '%'||#{searchText}||'%'
+					   and B_WRITER LIKE '%'||#{searchText}||'%'
 					  </if>					 
-					 order by REGDATE desc
+					 order by B_REGDATE desc
 				) A
 		   	<![CDATA[
 		   	where ROWNUM <= #{end}
@@ -51,12 +50,12 @@
 			from (
 				select ROWNUM as RNUM, A.*
 				  from (
-					select BOARDNO, TITLE, WRITER, REGDATE, VIEWCOUNT
-					  from KOR_BOARD
-					 where WRITER LIKE '%'||#{searchWriter}||'%'
-						or TITLE LIKE '%'||#{searchTitle}||'%'
-						or CONTENT LIKE '%'||#{searchContent}||'%'
-					 order by REGDATE desc
+					select B_BOARDNO, B_TITLE, B_WRITER, B_REGDATE, B_VIEWCOUNT
+					  from TB_BOARD
+					 where B_WRITER LIKE '%'||#{searchWriter}||'%'
+						or B_TITLE LIKE '%'||#{searchTitle}||'%'
+						or B_CONTENT LIKE '%'||#{searchContent}||'%'
+					 order by B_REGDATE desc
 				) A
 		   	<![CDATA[
 		   	where ROWNUM <= #{end}
@@ -67,34 +66,46 @@
 
 	<select id="selectBoradPage" parameterType="PageVO" resultType="int">
 		select count(*)
-		from KOR_BOARD
+		from TB_BOARD
 	</select>
 
 	<select id="detailBoard" parameterType="int" resultMap="boardMap">
 		select *
-		from KOR_BOARD
-		where BOARDNO = #{boardNo}
+		from TB_BOARD
+		where B_BOARDNO = #{boardNo}
 	</select>
 
 	<delete id="deleteBoard" parameterType="int">
 		delete
-		from KOR_BOARD
-		where BOARDNO = #{boardNo}
+		from TB_BOARD
+		where B_BOARDNO = #{boardNo}
 	</delete>
 
 	<insert id="insertBoard" parameterType="BoardVO">
-		insert into KOR_BOARD(
-		BOARDNO, TITLE, WRITER, CONTENT
+		insert into TB_BOARD(
+		B_BOARDNO, B_TITLE, B_WRITER, B_CONTENT, U_UNO, B_LANG
 		) values (
-		KOR_BOARD_SEQ.NEXTVAL, #{title}, #{writer}, #{content}
+		BOARD_SEQ.NEXTVAL, #{title}, #{writer}, #{content}, 2, 'KOR'
 		)
 	</insert>
 
+	<!-- 파일 업로드 -->
+	<insert id="insertFile" parameterType="FileVO">
+		<selectKey keyProperty="boardNo" resultType="int" order="BEFORE">
+			SELECT MAX(B_BOARDNO) from TB_BOARD
+		</selectKey>
+			INSERT INTO TB_BOARD_PIC (
+				B_SYSNAME, B_ORINAME, B_FILEPATH, B_SIZE, B_BOARDNO
+			) VALUES (
+				#{sysName}, #{oriName}, #{filePath}, #{size}, #{boardNo}
+			)
+	</insert>
+
 	<update id="updateBoard" parameterType="BoardVO">
-		update KOR_BOARD
-		set TITLE = #{title},
-		CONTENT = #{content}
-		where BOARDNO = #{boardNo}
+		update TB_BOARD
+		set B_TITLE = #{title},
+		B_CONTENT = #{content}
+		where B_BOARDNO = #{boardNo}
 	</update>
 
 

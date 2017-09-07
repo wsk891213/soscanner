@@ -38,6 +38,9 @@ textarea {
 				<td>조회수</td>
 				<td><c:out value="${detail.viewCount}" /></td>
 			</tr>
+<!-- 			<tr> -->
+<!-- 				<td></td> -->
+<!-- 			</tr> -->
 			<tr>
 				<td>내용</td>
 				<td><c:out value="${detail.content}" /></td>

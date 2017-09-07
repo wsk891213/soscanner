@@ -41,6 +41,10 @@
 					<div class="col-sm-8 blog-content">
 
 						<!-- gallery post -->
+					<c:if test="${empty list}">
+						<h3>게시글이 존재하지 않습니다.</h3>
+					</c:if>
+					<c:if test="${!empty list}">
 						<c:forEach var="EachList" items="${list}" varStatus="status">
 							<div class="entry-item">
 								<div class="entry-date hidden-sm hidden-xs">
@@ -68,13 +72,13 @@
 								<div class="entry">
 
 									<div class="entry-content">
-										<p>내용</p>
 										<a href="detail?boardNo=${EachList.boardNo}" class="read-more">더보기</a> <i
 											class="icon arrow_right"></i>
 									</div>
 								</div>
 							</div>
 						</c:forEach>
+					</c:if>
 						<!-- end entry item -->
 
 

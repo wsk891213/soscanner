@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.finalproject.soscanner.vo.BoardVO;
 import com.finalproject.soscanner.vo.FaqVO;
+import com.finalproject.soscanner.vo.FileVO;
 import com.finalproject.soscanner.vo.PageVO;
 
 public interface BoardMapper {
@@ -16,6 +17,10 @@ public interface BoardMapper {
 	public int insertBoard(BoardVO boardVO) throws Exception;
 	public int updateBoard(BoardVO boardVO) throws Exception;
 	public BoardVO updateFormBoard(int boardNo) throws Exception;
+	
+	// 파일업로드
+	public void insertFile(FileVO file) throws Exception;
+	
 	// 페이징
 	public int selectBoradPage(PageVO page) throws Exception;
 	

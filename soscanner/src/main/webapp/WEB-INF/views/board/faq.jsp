@@ -103,7 +103,7 @@ form {
 							</div>
 							
 						<!-- Search -->
-						<form action="/board/faq" method="get" role="form" class="relative" style="margin: 10px 38% !important;">
+						<form action="/board/faq" name="searchValue" method="get" role="form" class="relative" style="margin: 10px 38% !important;">
 							<input type="search" class="searchbox" style="background:white" placeholder="Search">
 							<button type="submit" class="search-button">
 								<i class="icon icon_search"></i>
