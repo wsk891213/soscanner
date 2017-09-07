@@ -20,7 +20,7 @@
 			글쓴이 : <input type='text' style='resize:none' name='writer' /><br>
 			내용 : <br>
 			<textarea id="writeContent" style='resize:none' name='content' rows="10" cols="50"></textarea> <br>
-			<input type="file" name='file'><br>
+			<input type="file" name='attFile'><br>
 			<input id="writeForm" type="submit" value="등록"><br>
 		</form>
 		<a href='list'>목록</a>

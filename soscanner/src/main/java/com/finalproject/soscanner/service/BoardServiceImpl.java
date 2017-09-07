@@ -98,8 +98,8 @@ public class BoardServiceImpl implements BoardService {
 	}
 
 	@Override
-	public void insertBoard(BoardVO board, MultipartHttpServletRequest mRequest) throws Exception {
-		boardMapper.insertBoard(board);
+	public void insertBoard(BoardVO boardVO) throws Exception {
+		boardMapper.insertBoard(boardVO);
 		
 		String filePath = "D:/final/file";
 		SimpleDateFormat sdf = new SimpleDateFormat("/yyyy/MM/dd");

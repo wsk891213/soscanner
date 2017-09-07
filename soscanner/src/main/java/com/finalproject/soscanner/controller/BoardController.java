@@ -18,6 +18,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -68,33 +69,20 @@ public class BoardController {
 		boardService.deleteBoard(boardNo);
 	}
 
-	@RequestMapping("/write")
-	public void writer(HttpServletRequest request) throws Exception {
-//		System.out.println("mRequest ======>" + request);
+	@RequestMapping(value="/write", method=RequestMethod.POST)
+	public void writer(BoardVO boardVO, MultipartHttpServletRequest mRequest) throws Exception {
+		System.out.println("boardVo ======>" + boardVO);
+		System.out.println("boardVo ======>1" + boardVO.getAttFile().getOriginalFilename());
 		
-		
-		MultipartHttpServletRequest mRequest = (MultipartHttpServletRequest)request;
-		
-		BoardVO board = new BoardVO();
-		board.setTitle(mRequest.getParameter("title"));
-		board.setWriter(mRequest.getParameter("writer"));
-		board.setContent(mRequest.getParameter("content"));
-		
-		boardService.insertBoard(board, mRequest);
+//		boardService.insertBoard(boardVO);
 	}
-	
-//	@RequestMapping("/write")
-//	public void write(MultipartHttpServletRequest mRequest, RedirectAttributes attr) throws Exception {
-//		Map<String, Object> map = new HashMap<String, Object>();
+		
+//		MultipartHttpServletRequest mRequest = (MultipartHttpServletRequest)request;
 //		BoardVO board = new BoardVO();
 //		board.setTitle(mRequest.getParameter("title"));
 //		board.setWriter(mRequest.getParameter("writer"));
 //		board.setContent(mRequest.getParameter("content"));
-//		map.put("board", board);
-//		map.put("mRequest", mRequest);
-//		
-//		boardService.insertBoard(map);
-//	}
+//		boardService.insertBoard(board, mRequest);
 	
 	@RequestMapping("/writeForm")
 	public void writeForm() throws Exception {

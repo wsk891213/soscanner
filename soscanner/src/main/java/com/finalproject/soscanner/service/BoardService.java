@@ -14,7 +14,7 @@ public interface BoardService {
 	public List<BoardVO> selectBoard(PageVO page) throws Exception;
 	public BoardVO detailBoard(int boardNo) throws Exception;
 	public String deleteBoard(int boardNo) throws Exception;
-	public void insertBoard(BoardVO board, MultipartHttpServletRequest mRequest) throws Exception;
+	public void insertBoard(BoardVO boardVO) throws Exception;
 	public String updateBoard(BoardVO boardVO) throws Exception;
 	public BoardVO updateFormBoard(int boardNo) throws Exception;
 	// 페이징

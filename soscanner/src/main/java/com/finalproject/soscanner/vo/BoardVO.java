@@ -1,6 +1,9 @@
 package com.finalproject.soscanner.vo;
 
+import java.util.Arrays;
 import java.util.Date;
+
+import org.springframework.web.multipart.MultipartFile;
 
 public class BoardVO {
 	private int boardNo;
@@ -9,14 +12,18 @@ public class BoardVO {
 	private String writer;
 	private Date regDate;
 	private int viewCount;
-	private String[] file;
 	
-	public String[] getFile() {
-		return file;
-	}
-	public void setFile(String[] file) {
-		this.file = file;
-	}
+	
+	private MultipartFile attFile = null;
+	
+//	private String[] file;
+//	
+//	public String[] getFile() {
+//		return file;
+//	}
+//	public void setFile(String[] file) {
+//		this.file = file;
+//	}
 	public int getBoardNo() {
 		return boardNo;
 	}
@@ -52,5 +59,16 @@ public class BoardVO {
 	}
 	public void setViewCount(int viewCount) {
 		this.viewCount = viewCount;
+	}
+//	@Override
+//	public String toString() {
+//		return "BoardVO [boardNo=" + boardNo + ", title=" + title + ", content=" + content + ", writer=" + writer
+//				+ ", regDate=" + regDate + ", viewCount=" + viewCount + ", file=" + Arrays.toString(file) + "]";
+//	}
+	public MultipartFile getAttFile() {
+		return attFile;
+	}
+	public void setAttFile(MultipartFile attFile) {
+		this.attFile = attFile;
 	}
 }
