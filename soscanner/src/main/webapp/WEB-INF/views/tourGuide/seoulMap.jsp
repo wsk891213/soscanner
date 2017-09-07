@@ -181,7 +181,7 @@ function displayArea(area) {
 }
 
 function locLangFilter(loc) {
-	var enLocs = {종로구: "Jongno", 성동구: "Sungdong", 동작구: "Dongjak", 용산구: "Yongsan", 강동구: "Gangdong", 도봉구: "Dobong", 금천구: "Geumcheon", 은평구: "Eunpyeong", 중랑구: "Jungnang", 강남구: "Gangnam", 마포구: "Mapo", 광진구: "Gwangjin", 서초구: "Seocho", 구로구: "Guro", 송파구: "Songpa", 양천구: "Yangcheon", 노원구: "Nowon", 성북구: "Seongbuk", 강서구: "Gangseo", 관악구: "Gwanak", 강북구: "Gangbuk", 중구: "Jungu", 영등포구: "Yeongdeungpo", 서대문구: "Seodaemun", 동대문구: "Dongdaemun"};
+	var enLocs = {종로구: "Jongno", 성동구: "Seongdong", 동작구: "Dongjak", 용산구: "Yongsan", 강동구: "Gangdong", 도봉구: "Dobong", 금천구: "Geumcheon", 은평구: "Eunpyeong", 중랑구: "Jungnang", 강남구: "Gangnam", 마포구: "Mapo", 광진구: "Gwangjin", 서초구: "Seocho", 구로구: "Guro", 송파구: "Songpa", 양천구: "Yangcheon", 노원구: "Nowon", 성북구: "Seongbuk", 강서구: "Gangseo", 관악구: "Gwanak", 강북구: "Gangbuk", 중구: "Jung-gu", 영등포구: "Yeongdeungpo", 서대문구: "Seodaemun", 동대문구: "Dongdaemun"};
     var chLocs = {종로구: "钟路区", 성동구: "城东区", 동작구: "铜雀区", 용산구: "龙山区", 강동구: "江东区", 도봉구: "道峰区", 금천구: "衿川区", 은평구: "恩平区", 중랑구: "中浪区", 강남구: "江南区", 마포구: "麻浦区", 광진구: "广津区", 서초구: "瑞草区", 구로구: "九老区", 송파구: "松坡区", 양천구: "阳川区", 노원구: "芦原区", 성북구: "城北区", 강서구: "江西区", 관악구: "冠岳区", 강북구: "江北区", 중구: "中区", 영등포구: "永登浦区", 서대문구: "西大门区 ", 동대문구: "东大门区"};
 	var result;
 	switch ("${locale}") {

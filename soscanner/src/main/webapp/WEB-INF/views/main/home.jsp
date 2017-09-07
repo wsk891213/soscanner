@@ -30,39 +30,6 @@
               data-delay="5000"
               data-title="The Art of Design">
               <!-- 슬라이드 1 이미지 -->
-              <img src="resources/images/mTour.jpg" alt="" data-bgrepeat="no-repeat" data-bgfit="cover" class="rev-slidebg">
-
-              <!-- LAYER NR. 1 -->
-              <div class="tp-caption hero-text giant_nocaps"
-                data-x="center"
-                data-y="center"
-                data-transform_idle="o:1;s:1500;"
-                data-transform_in="z:0;rX:0;rY:0;rZ:0;sX:0.1;sY:0.1;skX:0;skY:0;opacity:0;s:1000;e:Power3.easeOut;" 
-                data-transform_out="opacity:0;sX:0;sY:0;s:1200;e:Power3.easeInOut;"
-                data-start="1000"
-                data-splitout="none"><spring:message code="main.home.line42"/>
-              </div>
-              
-              <div class="tp-caption tp-resizeme"
-                data-x="center"
-                data-y="center"
-                data-hoffset="0"
-                data-voffset="140" 
-                data-transform_idle="o:1;s:1500;"
-                data-transform_in="z:0;rX:0;rY:0;rZ:0;sX:0;sY:0;skX:0;skY:0;opacity:0;s:1000;e:Power3.easeOut;" 
-                data-transform_out="opacity:0;sX:0;sY:0;s:1200;e:Power3.easeInOut;"
-                data-start="1000"
-                style="z-index: 12; max-width: auto; max-height: auto; white-space: nowrap;"><a href='#' class='btn btn-lg btn-transparent'><spring:message code="main.home.line55"/></a>
-              </div>  
-            </li> 
-            <!-- end slide 1 -->
-            <!-- SLIDE 2 -->
-            <li data-transition="cube"
-              data-slotamount="1"
-              data-masterspeed="1000"
-              data-delay="5000"
-              data-title="Creative &amp; Emotional">
-              <!-- 슬라이드2 이미지 -->
               <img src="resources/images/mSoscan.jpg" alt="" data-bgrepeat="no-repeat" data-bgfit="cover" class="rev-slidebg">
 
               <!-- LAYER NR. 1 -->
@@ -75,6 +42,40 @@
                 data-start="1000"
                 data-splitout="none"><spring:message code="main.home.line76"/>
               </div>
+              
+              <div class="tp-caption tp-resizeme"
+                data-x="center"
+                data-y="center"
+                data-hoffset="0"
+                data-voffset="140" 
+                data-transform_idle="o:1;s:1500;"
+                data-transform_in="z:0;rX:0;rY:0;rZ:0;sX:0;sY:0;skX:0;skY:0;opacity:0;s:1000;e:Power3.easeOut;" 
+                data-transform_out="opacity:0;sX:0;sY:0;s:1200;e:Power3.easeInOut;"
+                data-start="1000"
+                style="z-index: 12; max-width: auto; max-height: auto; white-space: nowrap;"><a href='/soscan/main' class='btn btn-lg btn-transparent'><spring:message code="main.home.line55"/></a>
+              </div>  
+            </li> 
+            <!-- end slide 1 -->
+            <!-- SLIDE 2 -->
+            <li data-transition="cube"
+              data-slotamount="1"
+              data-masterspeed="1000"
+              data-delay="5000"
+              data-title="Creative &amp; Emotional">
+              <!-- 슬라이드2 이미지 -->
+              <img src="resources/images/mTour.jpg" alt="" data-bgrepeat="no-repeat" data-bgfit="cover" class="rev-slidebg">
+              
+			
+              <!-- LAYER NR. 1 -->
+              <div class="tp-caption hero-text giant_nocaps"
+                data-x="center"
+                data-y="center"
+                data-transform_idle="o:1;s:1500;"
+                data-transform_in="z:0;rX:0;rY:0;rZ:0;sX:0.1;sY:0.1;skX:0;skY:0;opacity:0;s:1000;e:Power3.easeOut;" 
+                data-transform_out="opacity:0;sX:0;sY:0;s:1200;e:Power3.easeInOut;"
+                data-start="1000"
+                data-splitout="none"><spring:message code="main.home.line42"/>
+              </div>
 
               <!-- LAYER NR. 3 -->
               <div class="tp-caption tp-resizeme"
@@ -86,7 +87,7 @@
                 data-transform_in="z:0;rX:0;rY:0;rZ:0;sX:0;sY:0;skX:0;skY:0;opacity:0;s:1000;e:Power3.easeOut;" 
                 data-transform_out="opacity:0;sX:0;sY:0;s:1200;e:Power3.easeInOut;"
                 data-start="1000"
-                style="z-index: 12; max-width: auto; max-height: auto; white-space: nowrap;"><a href='#' class='btn btn-lg btn-transparent'><spring:message code="main.home.line89"/></a>
+                style="z-index: 12; max-width: auto; max-height: auto; white-space: nowrap;"><a href='/tourGuide/seoulMap' class='btn btn-lg btn-transparent'><spring:message code="main.home.line89"/></a>
               </div>  
             </li> 
             <!-- end slide 2 -->
@@ -121,7 +122,7 @@
                 data-transform_in="z:0;rX:0;rY:0;rZ:0;sX:0;sY:0;skX:0;skY:0;opacity:0;s:1000;e:Power3.easeOut;" 
                 data-transform_out="opacity:0;sX:0;sY:0;s:1200;e:Power3.easeInOut;"
                 data-start="1000"
-                style="z-index: 12; max-width: auto; max-height: auto; white-space: nowrap;"><a href='#' class='btn btn-lg btn-stroke' style="color: black;"><spring:message code="main.home.line124"/></a>
+                style="z-index: 12; max-width: auto; max-height: auto; white-space: nowrap;"><a href='/translate/translator' class='btn btn-lg btn-stroke' style="color: black;"><spring:message code="main.home.line124"/></a>
               </div>  
             </li> 
             <!-- end slide 3 -->
