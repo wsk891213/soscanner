@@ -33,7 +33,6 @@ public class TourInfoController {
 		HttpSession session = req.getSession();
 		Locale locale = (Locale)session.getAttribute(SessionLocaleResolver.LOCALE_SESSION_ATTRIBUTE_NAME);
 		model.addAttribute("locale", locale);
-		System.out.println("서울맵 locale 정보" +locale);
 	}
 	
 	@RequestMapping("/infoList")
@@ -42,6 +41,7 @@ public class TourInfoController {
 			loc.setTi_lang(locale.toString());
 			List<TourInfoVO> lists = tgService.getInfos(loc);
 			model.addAttribute("lists", lists);
+			
 			if(loc.getSlocation() != null){
 				model.addAttribute("slocation", loc.getSlocation());
 			}
