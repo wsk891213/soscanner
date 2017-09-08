@@ -193,64 +193,72 @@ label {
 	<div>
 		<c:import url="/WEB-INF/views/include/navBar.jsp" />
 	</div>
-	<section class="page-title text-center"
-		style="background-image: url(/resources/images/sTranslate.jpg);">
-	<div class="container relative clearfix">
-		<div class="title-holder">
-			<div class="title-text">
-				<h1 class="color-white heading-frame">번역기</h1>
+	
+	
+	<section class="page-title text-center" style="background-image: url(/resources/images/sTranslate.jpg);">
+		<div class="container relative clearfix">
+			<div class="title-holder">
+				<div class="title-text">
+					<h1 class="color-white heading-frame">번역기</h1>
+				</div>
 			</div>
 		</div>
-	</div>
-
 	</section>
 
 	<section class="section-wrap-mp pb-0">
-	<div class="container">
-		<form id="translate">
-			<div class="row">
-
-				<div class="col-sm-5">
-					<div>
-						<table>
+		
+		<div class="container">
+			
+			<form id="translate">
+				<div class="row">
+					<div class="col-sm-5">
+						<div>
+							<table>
 							<tr>
-								<td id="select">
-									<div class="select relative"></div> <label> <span
-										class="plain-select"> <select class="inp" name="input"
-											id="inputtype">
-												<option value="ko-KR">한국어</option>
-												<option value="en-US">영어</option>
-												<option value="cmn-Hans-CN">중국어</option>
-										</select>
-									</span>
-								</label> <span class="fa fa-microphone" id="mic" aria-hidden="true"
-									onclick="eylem()" style="font-size: 30px;"></span>
-								</td>
-								<td><span class="fa fa-refresh" aria-hidden="true"
-									onclick="transalte()" style="font-size: 20px;">
-										Translate</span></td>
+							<td id="select">
+								<div class="select relative"></div> 
+								<ul class="nav nav-tabs" id="inputtype">
+	           			    	 <li class="active" id="ko-KRi">
+	            		    	  <a  data-toggle="tab" id="ko-KR" >한국어</a>
+	            		    	</li>
+				           	     <li class="" id="en-USi">
+				                  <a data-toggle="tab" id="en-US"  >English</a>
+				                </li>
+				                <li class="" id="cmn-Hans-CNi">
+				                  <a data-toggle="tab" id="cmn-Hans-CN">中國語</a>
+				                </li>
+			        	      </ul>
+								<span class="fa fa-microphone" id="mic" aria-hidden="true" onclick="eylem()" style="font-size: 30px;"></span>
+							</td>
+							<td>
+							<span class="fa fa-refresh" aria-hidden="true" onclick="transalte()" style="font-size: 20px;">Translate</span>
+							</td>
 							</tr>
-						</table>
-					</div>
+							</table>
+						
+						</div>
 					<textarea id="inputtext"></textarea>
-				</div>
+					</div>
 
 				<div class="col-sm-2" id="change">
-					<span class="fa fa-exchange fa-3" id="changebutton"
-						aria-hidden="true" onclick="change()"></span>
+					<span class="fa fa-exchange fa-3" id="changebutton" aria-hidden="true" onclick="change()"></span>
 				</div>
 				<div class="col-sm-5">
-					<label> <span class="plain-select"> <select
-							class="inp" name="output" id="outputtype">
-								<option value="ko">한국어</option>
-								<option value="en" selected="selected">영어</option>
-								<option value="zh-CN">중국어</option>
-						</select>
-					</span></label>
+					<ul class="nav nav-tabs" id="outputtype">
+	           			    	 <li id="koo" class="">
+	            		    	  <a  data-toggle="tab" id="ko">한국어</a>
+	            		    	</li >
+				           	     <li id="eno" class="active"> 
+				                  <a data-toggle="tab" id="en">English</a>
+				                </li >
+				                <li id="zh-CNo" class="">
+				                  <a data-toggle="tab" id="zh-CN">中國語</a>
+				                </li>
+			        	      </ul>
 					<textarea id="outputtext" readonly="readonly"></textarea>
+				</div>
+			</div>
 		</form>
-	</div>
-	</div>
 	</div>
 	</section>
 
@@ -266,13 +274,9 @@ label {
 				<div class="modal-body">
 					<img src="../../resources/images/talking.png">
 				</div>
-				<div class="modal-footer"></div>
 			</div>
-
 		</div>
-
 	</div>
-
 
 
 
@@ -287,9 +291,22 @@ label {
 
 		var span = document.getElementsByClassName("close")[0];
 
+		var input = "ko";
+		
+		$("#ko-KR").on("click", function () {
+			input = "ko"
+		})
+		$("#en-US").on("click", function () {
+			input = "en"
+		})
+		$("#cmn-Hans-CN").on("click", function () {
+			input = "zh-CN"
+		})
+		
 		function eylem() {
 			modal.style.display = "block";
-			var lang = $("#inputtype").val();
+			console.log(input);
+			var lang = input;
 			var ses = new webkitSpeechRecognition();
 			ses.lang = lang;
 			ses.onresult = function(e) {
@@ -308,32 +325,31 @@ label {
 			}
 			return false;
 		}
-
+		
+		var output = "en";
+		$("#ko").on("click", function () {
+			output = "ko"
+		})
+		$("#en").on("click", function () {
+			output = "en"
+		})
+		$("#zh-CN").on("click", function () {
+			output = "zh-CN"
+		})
+		
+		
+		
 		function transalte() {
-			var input = $("#inputtype").val();
-
-			switch (input) {
-			case "ko-KR":
-				input = "ko";
-				break;
-			case "en-US":
-				input = "en";
-				break;
-			case "cmn-Hans-CN":
-				input = "zh-CN";
-				break;
-			}
 			if ($("#inputtext").val() == "") {
-				alert("글써 새퀴야");
+				alert("글을 입력하세요");
 				return false;
 			}
-			if (input == $("#outputtype").val()) {
+			if (input == output) {
 				alert("같은 언어끼리는 번역이 불가능합니다.");
 				return false;
 			}
-			if ((input == "en" && $("#outputtype").val() == "zh-CN")
-					|| (input == "zh-CN" && $("#outputtype").val() == "en")) {
-				alert("아메리카 짱깨 ㄴㄴ");
+			if ((input == "en" && output == "zh-CN") || (input == "zh-CN" && output == "en")) {
+				alert("영어 <-> 중극어는 지원하지않습니다");
 				return false;
 			}
 			$.ajax({
@@ -342,32 +358,75 @@ label {
 				data : {
 					text : $("#inputtext").val(),
 					input : input,
-					output : $("#outputtype").val()
+					output : output
 				},
 				datatype : 'text'
 			}).done(function(result) {
-				console.dir(result);
 				$("#outputtext").val(result);
 			})
 
 		}
 
+		
 		function change() {
+			
+			
 			$.ajax({
 				url : '/translate/change',
 				type : 'POST',
 				data : {
-					input : $("#inputtype").val(),
-					output : $("#outputtype").val(),
+					input : input,
+					output : output,
 					intext : $("#inputtext").val(),
 					outtext : $("#outputtext").val(),
 				},
 				datatype : 'text'
 			}).done(function(result) {
-				$("#inputtype").val(result.input);
-				$("#outputtype").val(result.output);
+				console.log("처음 input: " + input);
+				if (input == "ko"){
+					input = "ko-KR"
+				}
+				if (input == "en"){
+					input = "en-US"
+				}
+				if (input == "zh-CN"){
+					input = "cmn-Hans-CN"
+				}
+				console.log("result.output: " + result.output);
+				var or = "";
+				if (result.output == "ko"){
+					or = "ko-KR"
+				}
+				if (result.output == "en"){
+					or = "en-US"
+				}
+				if (result.output == "zh-CN"){
+					or = "cmn-Hans-CN"
+				}
+				
+				var ii = "#"+ input + "i";
+				console.log("처음 inputtype : " + ii);
+				
+				var oo = "#"+ or + "i";
+				console.log("받아오는 inputtype : " + oo);
+				
+				var oi = "#"+ output + "o";
+				console.log("처음 outputtype : " + oi);
+				
+				var io = "#"+ result.input + "o";
+				console.log("받아오는 outputtype : " + io);
+				
+				$(ii).removeClass("active");
+				$(oi).removeClass("active");
+				$(io).addClass("active");
+				$(oo).addClass("active");
+				input = output;
+				console.log("input type:" + output);
+				output = result.input;
+				console.log("output type:" + output);
 				$("#inputtext").val(result.intext);
 				$("#outputtext").val(result.outtext);
+				
 			})
 		}
 	</script>
