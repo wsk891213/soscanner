@@ -33,6 +33,16 @@ function init() {
     setVariables();
     map = new Tmap.Map({div:'map_div', width:mapW, height:mapH, animation:true}); 
     map.setCenter(LonLat,zoom);
+    var lang = "KO"
+    if("${tourInfoVO.ti_lang}" != "ko") {
+    	if("${tourInfoVO.ti_lang}" == "en") {
+    		lang = "EN";
+    	}
+    	else {
+    		lang = "CN";
+    	}
+    }
+    map.setLanguage(lang,false); // 영문
     addMarker();
 }
 
@@ -66,7 +76,7 @@ $(function() {
 		<div class="container relative clearfix">
 			<div class="title-holder">
 				<div class="title-text">
-					<h1 class="color-white heading-frame"><spring:message code="tourGuide.infoDetail.line69"/></h1>
+					<h1 class="color-white heading-frame"><spring:message code="tourGuide.infoDetail.line79"/></h1>
 				</div>
 			</div>
 		</div>
@@ -106,12 +116,12 @@ $(function() {
 								<div class="entry-title" >
 									<c:choose>
 									<c:when test="${empty check}">
-									<a href="#" class="btn btn-lg btn-color" id="findRoute1"><spring:message code="tourGuide.infoDetail.line109"/></a>
-									<a href="infoList?sWord=${pWord}" class="btn btn-lg btn-dark"><spring:message code="tourGuide.infoDetail.line110"/></a>
+									<a href="#" class="btn btn-lg btn-color" id="findRoute1"><spring:message code="tourGuide.infoDetail.line119"/></a>
+									<a href="infoList?sWord=${pWord}" class="btn btn-lg btn-dark"><spring:message code="tourGuide.infoDetail.line120"/></a>
 									</c:when>
 									<c:otherwise>
-									<a href="#" class="btn btn-lg btn-color" id="findRoute2"><spring:message code="tourGuide.infoDetail.line113"/></a>
-									<a href="infoList?slocation=${pWord}" class="btn btn-lg btn-dark"><spring:message code="tourGuide.infoDetail.line114"/></a>
+									<a href="#" class="btn btn-lg btn-color" id="findRoute2"><spring:message code="tourGuide.infoDetail.line123"/></a>
+									<a href="infoList?slocation=${pWord}" class="btn btn-lg btn-dark"><spring:message code="tourGuide.infoDetail.line124"/></a>
 									</c:otherwise>
 									</c:choose>
 								</div>

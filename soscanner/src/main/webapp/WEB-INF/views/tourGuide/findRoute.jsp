@@ -89,6 +89,16 @@ function initTmap(){
                         transitionEffect:"resize",
                         animation:true
                     }); 
+    var lang = "KO"
+        if("${locale}" != "ko") {
+        	if("${locale}" == "en") {
+        		lang = "EN";
+        	}
+        	else {
+        		lang = "CN";
+        	}
+        }
+    map.setLanguage(lang,false); // 영문
     searchRoute();
 };
 //경로 정보 로드
@@ -120,23 +130,55 @@ function searchRoute(){
 //경로 그리기 후 해당영역으로 줌
 function onDrawnFeatures(e){
 	map.zoomToExtent(this.getDataExtent());
-	$(".mapInfo").append("총 소요시간 : 약 " + timeCal(routeLayer.features[0].attributes.totalTime) + "<br>");
-	$(".mapInfo").append("총 거리 : " + parseFloat(routeLayer.features[0].attributes.totalDistance / 1000).toFixed(1) + "Km");
+	var TimeDetail = "";
+	var lengDetail = "";
+	switch ("${locale}") {
+	case "ko":
+		TimeDetail = "총 소요시간 : 약 ";
+		lengDetail = "총 거리 : ";
+		break;
+	case "en":
+		TimeDetail = "Total Consumption Time : ";
+		lengDetail = "Total Distance : ";
+		break;
+	case "zh":
+		TimeDetail = "总周转时间";
+		lengDetail = "总距离";
+		break;
+	}
+	$(".mapInfo").append(TimeDetail + timeCal(routeLayer.features[0].attributes.totalTime) + "<br>");
+	$(".mapInfo").append(lengDetail + parseFloat(routeLayer.features[0].attributes.totalDistance / 1000).toFixed(1) + " Km");
 }
 
 function timeCal(seconds) {
-  var pad = function(x) { return (x < 10) ? "0"+x : x; }
-  if(seconds == 3600) {
-	  return parseInt(seconds / (60*60)) + "시간"
-  }
-  else if(seconds > 3600) {
-	  var min = parseInt(seconds % (60*60));
-	  return parseInt(seconds / (60*60)) + "시간" + pad(parseInt(min / 60)) + "분"
-  }
-  else {
-	  var mins = parseInt(seconds / 60);
-	  return mins + "분"
-  }
+	var hour = "";
+	var minutes = "";
+	switch ("${locale}") {
+		case "ko":
+			hour = "시간";
+			minutes = "분";
+			break;
+		case "en":
+			hour = " h ";
+			minutes = " min";
+			break;
+		case "zh":
+			hour = "小时";
+			minutes = "分钟";
+			break;
+	}
+	var pad = function(x) { return (x < 10) ? "0"+x : x; }
+	if(seconds == 3600) {
+		return parseInt(seconds / (60*60)) + hour;
+	}
+	else if(seconds > 3600) {
+		var min = parseInt(seconds % (60*60));
+		return parseInt(seconds / (60*60)) + hour + pad(parseInt(min / 60)) + minutes;
+	}
+	else {
+		var mins = parseInt(seconds / 60);
+		return mins + minutes;
+	}
 }
 
 getMyLocation();

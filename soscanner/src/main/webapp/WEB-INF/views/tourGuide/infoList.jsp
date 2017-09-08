@@ -43,7 +43,7 @@
           <c:forEach var="list" items="${lists}" varStatus="status">
             <div class="entry-item">
               <div class="entry-img">
-                <a href="infoDetail?ti_no=${list.ti_no}">
+                <a href="infoDetail?ti_no=${list.ti_no}&slocation=${slocation}&sWord=${sWord}">
                   <img src="/resources/images/blog/post_img_1.jpg" alt="">
                 </a>
               </div>
