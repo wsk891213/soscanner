@@ -81,18 +81,18 @@ label {
 	margin-top: 5px;
 }
 
-#inputtext, #outputtext {
-	width: 460px;
-	height: 500px;
-	border: none;
-	border-radius: 10px;
+#inputtext, #outputtext{
+	width: 100%;
+	height: 400px;
+	/* border: none;
+	border-radius: 10px; */
 	resize: none;
 	padding: 6px;
 	color: black;
 	font-size: 20px;
-	box-shadow: 6px 6px 6px #000;
 	padding: 30px;
 	border: 1px solid black;
+	background-color: white;
 }
 
 #select {
@@ -106,11 +106,6 @@ label {
 .fa-refresh:hover {
 	color: black;
 	font-size: 50px;
-}
-
-.fa-microphone {
-	font-size: 30px;
-	margin-left: 30px;
 }
 
 .fa-microphone:hover {
@@ -127,7 +122,7 @@ label {
 	left: 0;
 	right: 0;
 	margin: auto;
-}
+} 
 
 .fa-exchange:hover {
 	color: black;
@@ -163,13 +158,14 @@ label {
 }
 
 #changebutton {
-	font-size: 50px;
+	font-size: 40px;
+	float: right;
 }
 
 @media ( max-width : 900px ) {
 	#inputtext, #outputtext {
 		width: auto;
-		height: auto;
+		height: 100px;
 	}
 	#change {
 		width: auto;
@@ -185,6 +181,21 @@ label {
 	#changebutton {
 		font-size: 30px;
 	}
+	#modal {
+		width: 92%;
+		margin-left: 15px;
+		margin-bottom: 20px;
+	}
+	#inputtype  > li, #outputtype  > li{
+		width: 33%;
+		text-align: center;
+	}
+}
+
+#modal {
+	border: 1px solid black;
+	border-radius: 10px;
+	background-color: #f4f4f4;
 }
 </style>
 <c:import url="/WEB-INF/views/include/basicIncludeTop.jsp"></c:import>
@@ -193,7 +204,6 @@ label {
 	<div>
 		<c:import url="/WEB-INF/views/include/navBar.jsp" />
 	</div>
-	
 	
 	<section class="page-title text-center" style="background-image: url(/resources/images/sTranslate.jpg);">
 		<div class="container relative clearfix">
@@ -211,51 +221,46 @@ label {
 			
 			<form id="translate">
 				<div class="row">
-					<div class="col-sm-5">
-						<div>
-							<table>
-							<tr>
-							<td id="select">
-								<div class="select relative"></div> 
+					<div class="col-sm-5" id="modal">
+							<div class="modal-header" >
 								<ul class="nav nav-tabs" id="inputtype">
 	           			    	 <li class="active" id="ko-KRi">
 	            		    	  <a  data-toggle="tab" id="ko-KR" >한국어</a>
 	            		    	</li>
 				           	     <li class="" id="en-USi">
-				                  <a data-toggle="tab" id="en-US"  >English</a>
+				                  <a data-toggle="tab" id="en-US" > 영어</a>
 				                </li>
 				                <li class="" id="cmn-Hans-CNi">
-				                  <a data-toggle="tab" id="cmn-Hans-CN">中國語</a>
+				                  <a data-toggle="tab" id="cmn-Hans-CN">중국어</a>
 				                </li>
 			        	      </ul>
-								<span class="fa fa-microphone" id="mic" aria-hidden="true" onclick="eylem()" style="font-size: 30px;"></span>
-							</td>
-							<td>
-							<span class="fa fa-refresh" aria-hidden="true" onclick="transalte()" style="font-size: 20px;">Translate</span>
-							</td>
-							</tr>
-							</table>
-						
-						</div>
-					<textarea id="inputtext"></textarea>
+							</div>
+							<div class="modal-body" contentEditable=true id="inputtext" readonly="readonly"></div>
+							<div class="modal-footer">
+							<span class="fa" id="cicon" aria-hidden="true" onclick="transalte()" style="font-size: 30px; margin-left: 20px; float: right; margin-top: 2px;" >Translate</span>
+							<span class="fa fa-microphone" id="mic" aria-hidden="true" onclick="eylem()" style="font-size: 40px; float: left; " ></span>
+							</div>
 					</div>
 
 				<div class="col-sm-2" id="change">
 					<span class="fa fa-exchange fa-3" id="changebutton" aria-hidden="true" onclick="change()"></span>
 				</div>
-				<div class="col-sm-5">
-					<ul class="nav nav-tabs" id="outputtype">
+				<div class="col-sm-5" id="modal">
+					<div class="modal-header" >
+							<ul class="nav nav-tabs" id="outputtype">
 	           			    	 <li id="koo" class="">
 	            		    	  <a  data-toggle="tab" id="ko">한국어</a>
 	            		    	</li >
 				           	     <li id="eno" class="active"> 
-				                  <a data-toggle="tab" id="en">English</a>
+				                  <a data-toggle="tab" id="en">영어</a>
 				                </li >
 				                <li id="zh-CNo" class="">
-				                  <a data-toggle="tab" id="zh-CN">中國語</a>
+				                  <a data-toggle="tab" id="zh-CN">중국어</a>
 				                </li>
 			        	      </ul>
-					<textarea id="outputtext" readonly="readonly"></textarea>
+					</div>
+					<div class="modal-bdoy" id="outputtext" readonly="readonly"></div>
+					<div class="modal-footer"></div>
 				</div>
 			</div>
 		</form>
@@ -303,6 +308,18 @@ label {
 			input = "zh-CN"
 		})
 		
+		var output = "en";
+		$("#ko").on("click", function () {
+			output = "ko"
+		})
+		$("#en").on("click", function () {
+			output = "en"
+		})
+		$("#zh-CN").on("click", function () {
+			output = "zh-CN"
+		})
+		
+		
 		function eylem() {
 			modal.style.display = "block";
 			console.log(input);
@@ -326,21 +343,8 @@ label {
 			return false;
 		}
 		
-		var output = "en";
-		$("#ko").on("click", function () {
-			output = "ko"
-		})
-		$("#en").on("click", function () {
-			output = "en"
-		})
-		$("#zh-CN").on("click", function () {
-			output = "zh-CN"
-		})
-		
-		
-		
 		function transalte() {
-			if ($("#inputtext").val() == "") {
+			if ($("#inputtext").html() == "") {
 				alert("글을 입력하세요");
 				return false;
 			}
@@ -356,13 +360,13 @@ label {
 				url : '/translate/translateok',
 				type : 'POST',
 				data : {
-					text : $("#inputtext").val(),
+					text : $("#inputtext").html(),
 					input : input,
 					output : output
 				},
 				datatype : 'text'
 			}).done(function(result) {
-				$("#outputtext").val(result);
+				$("#outputtext").html(result);
 			})
 
 		}
@@ -377,8 +381,8 @@ label {
 				data : {
 					input : input,
 					output : output,
-					intext : $("#inputtext").val(),
-					outtext : $("#outputtext").val(),
+					intext : $("#inputtext").html(),
+					outtext : $("#outputtext").html(),
 				},
 				datatype : 'text'
 			}).done(function(result) {
@@ -424,8 +428,8 @@ label {
 				console.log("input type:" + output);
 				output = result.input;
 				console.log("output type:" + output);
-				$("#inputtext").val(result.intext);
-				$("#outputtext").val(result.outtext);
+				$("#inputtext").html(result.intext);
+				$("#outputtext").html(result.outtext);
 				
 			})
 		}
