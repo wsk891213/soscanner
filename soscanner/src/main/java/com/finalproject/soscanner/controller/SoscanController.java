@@ -1,8 +1,5 @@
 package com.finalproject.soscanner.controller;
 
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.request;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.request;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,13 +10,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
-import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.client.RestTemplate;
 
@@ -52,9 +47,12 @@ public class SoscanController {
 	}
 
 	@RequestMapping("/helper")
-	public void helper(String sosId, Model model) {
+	public void helper(String sId, String hId, Model model) {
 		logger.info("helper");
-		model.addAttribute("sosId", sosId);
+		System.out.println("sid: " + sId);
+		System.out.println("hid: " + hId);
+		model.addAttribute("sId", sId);
+		model.addAttribute("hId", hId);
 	}
 
 	@RequestMapping("/selecthelp")

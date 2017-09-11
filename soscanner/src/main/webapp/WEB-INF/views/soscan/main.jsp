@@ -75,7 +75,6 @@
 	$("#helpForm").submit(function (e) {
 		e.preventDefault();
 		console.log("${user.u_language}");
-		console.log(sosId);
 		console.log($("#content").val());
 		$.ajax({
 			type:"POST",
@@ -88,7 +87,7 @@
 		}).done(function (result) {
 			console.log(result);
 			alert("도움을 요청하였습니다. 요청 선택페이지로 이동합니다.");
-			location.href="helper?sosId="+sosId;
+			location.href="helper?sId="+sosId;
 		});
 	});
 	messaging.onMessage(function(payload) {

@@ -13,15 +13,15 @@
     
     <nav class="navbar navbar-static-top">
       <div class="navigation">
-        <div class="container relative">
+        <div class="container relative" style="margin-left: 5%;">
 
           <form method="get" class="search-wrap">
             <input type="search" class="form-control" placeholder="Type &amp; Hit Enter">
           </form>
 
-          <div class="row">
+          <div class="row" style="width: auto;">
 
-            <div class="navbar-header">
+            <div class="navbar-header" style="width: 10%;">
               <!-- Logo -->
               <div class="logo-container">
                 <div class="logo-wrap">
@@ -38,7 +38,7 @@
               </button>
             </div> <!-- end navbar-header -->
 
-            <div class="col-md-9 nav-wrap right">
+            <div class="col-md-9 nav-wrap right" style="width: auto; margin-left: 2%">
               <div class="collapse navbar-collapse" id="navbar-collapse">
                 
                 <ul class="nav navbar-nav navbar-right">
@@ -65,7 +65,7 @@
                   	</c:when>
                   	<c:otherwise>
 					  <li>
-	                    <a href="/user/logout" id="logoutButton" style="font-size: 20px;"><spring:message code="include.navBar.line67"/></a>
+	                    <a href="/user/logout" id="logoutButton" style="font-size: 13px;"><spring:message code="include.navBar.line67"/></a>
 	                  </li>
                   	</c:otherwise>
                   </c:choose>
@@ -78,7 +78,16 @@
                       <li><a href="/multiLingual?locale=zh"><spring:message code="include.navBar.line77"/></a></li>
                     </ul>
                   </li>
-                  
+                  <c:if test="${user != null}">
+                  <li style="height: 90px; width: auto; padding: 20px 0px;">
+					<div style="margin-top: 8px;">
+						<img style="width: 30px; height: 30px; " src="/resources/images/noimages.png">
+						
+						<a href="/user/updateuser?user=${user}" style="color: black;">${user.u_email }</a>
+						
+					</div>
+                  </li>
+                  </c:if>
                 </ul> <!-- end menu -->
                 
               </div> <!-- end collapse -->

@@ -51,11 +51,13 @@
 
 				<div id="containers">
 					<div class="col-md-6 col-md-offset-3">
-						<form id="aForm">
+						<form id="aForm" action="helper">
 							<input name="helpId" id="helpId" type="text" readonly="readonly"
 								placeholder="Name" value="${user.u_email}">
 							<textarea placeholder="Textarea" rows="3" style="resize: none;"
 								id="content"></textarea>
+							<input type="hidden" id="sId" value="${sosId}">
+							<input type="hidden" id="hId" value="${user.u_email}">
 							<input type="submit" class="btn btn-lg btn-dark"
 								value="Send Message">
 						</form>
@@ -80,7 +82,7 @@
 	<script src="https://www.gstatic.com/firebasejs/4.3.0/firebase.js"></script>
 	<!-- 	<script src="/resources/js/chat.js"></script> -->
 	<script>
-		var config = {
+	var config = {
 			apiKey : "AIzaSyCCz1QBgdGHOMtDsNBuVdP0vV4AEzMWSwQ",
 			authDomain : "fmc-test-1efbc.firebaseapp.com",
 			databaseURL : "https://fmc-test-1efbc.firebaseio.com",
@@ -91,24 +93,32 @@
 		firebase.initializeApp(config);
 		var database = firebase.database();
 
-		var sosId = '${sosId}';
-		var helpId = $("#helpId").val();
+		var sosId = $("#sId").val();
+		var helpId = $("#hId").val();
 		var sId = sosId.split("@")[0];
 		var hId = helpId.split("@")[0];
 		$("#aForm").submit(function(e) {
 			console.log(sId);
 			console.log(hId);
 			console.log($("#content").val());
-
+			$("#sId").val(sId);
+			$("#hId").val(hId);
+			
 			e.preventDefault();
 			database.ref().child('help/' + sId + '/' + hId).set({
 				message : $("#content").val()
 			})
 			$("#content").val("");
-
+			$.ajax({
+				url: "helper",
+				data: {
+					sId: sId
+				}
+				
+			});
 		});
 
-		parent.doJob("AAAAAAAAAAAAA");
 	</script>
+	
 </body>
 </html>

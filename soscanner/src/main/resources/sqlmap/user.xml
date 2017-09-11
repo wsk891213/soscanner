@@ -16,7 +16,10 @@
 	</select>
 	
 	<insert id="insertUser" parameterType="UserVO">
-		INSERT INTO TB_USER (U_UNO, U_EMAIL, U_PASS, U_NATIONALITY, U_LANGUAGE, U_TOKEN)
+		<selectKey resultType="int" keyProperty="u_uno" order="AFTER">
+	         SELECT SEQ_U_UNO.NEXTVAL FROM DUAL
+	    </selectKey> 
+		INSERT INTO TB_USER (u_uno, u_email, u_pass, u_nationality, u_language, u_token)
 		VALUES (SEQ_U_UNO.NEXTVAL, #{u_email}, #{u_pass}, #{u_nationality}, #{u_language}, #{u_token})
 	</insert>
 	
@@ -27,5 +30,22 @@
 		   AND U_PASS = #{u_pass}
 	</select>
 	
-
+	<select id="oneUser" parameterType="string" resultType="UserVO">	
+		SELECT U_UNO, U_EMAIL, U_PASS, U_NATIONALITY, U_LANGUAGE, U_TOKEN
+		  FROM TB_USER
+		 WHERE U_EMAIL LIKE  #{id}||'%'
+	</select>
+	
+	<insert id="userPicInsert" parameterType="UserPicVO">
+		INSERT INTO TB_USER_PIC (UP_NO, U_UNO, U_SYSNAME, U_PATH)
+		VALUES (SEQ_UP_NO.NEXTVAL, #{u_uNo}, #{u_sysName}, #{u_path})
+	</insert>
+	
+	<select id="selectUserPic" parameterType="int" resultType="UserPicVO">
+		SELECT UP_NO, U_UNO, U_SYSNAME, U_PATH
+		  FROM TB_USER_PIC
+		 WHERE U_UNO = #{u_uNo}
+	</select>
+	
+	
 </mapper>

@@ -27,6 +27,11 @@ public class UserVO {
 	public String getU_email() {
 		return u_email;
 	}
+	@Override
+	public String toString() {
+		return "UserVO [u_uno=" + u_uno + ", u_email=" + u_email + ", u_pass=" + u_pass + ", u_passChk=" + u_passChk
+				+ ", u_nationality=" + u_nationality + ", u_language=" + u_language + ", u_token=" + u_token + "]";
+	}
 	public void setU_email(String u_email) {
 		this.u_email = u_email;
 	}
