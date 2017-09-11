@@ -130,6 +130,9 @@ label {
 .fa-exchange:hover {
 	color: black;
 }
+.fa-trash:hover {
+	color: black;
+}
 #cicon:hover {
 	color: black;
 }
@@ -207,10 +210,6 @@ label {
 	background-color: #f4f4f4;
 }
 
-
-
-
-
 </style>
 <c:import url="/WEB-INF/views/include/basicIncludeTop.jsp"></c:import>
 </head>
@@ -251,12 +250,10 @@ label {
 							</div>
 							<div class="modal-body" contentEditable=true id="inputtext" readonly="readonly"></div>
 							<div class="modal-footer">
-							<span class="fa" id="cicon" aria-hidden="true" onclick="transalte()" style="font-size: 30px; margin-left: 20px; float: right; margin-top: 2px;" >
-							Translate</span>
-							<span class="fa fa-microphone" id="mic" aria-hidden="true" onclick="eylem()" style="font-size: 40px; float: left; "><div id="micdiv"></div></span>
+							<span class="fa" id="cicon" aria-hidden="true" onclick="transalte()" style="font-size: 30px; margin-left: 20px; float: right; margin-top: 2px;" >Translate</span>
+							<span class="fa fa-microphone" id="mic" aria-hidden="true" onclick="eylem()" style="font-size: 40px; float: left;"></span>
 							</div>
 					</div>
-
 
 				<div class="col-sm-2" id="change">
 					<span class="fa fa-exchange fa-3" id="changebutton" aria-hidden="true" onclick="change()"></span>
@@ -276,57 +273,22 @@ label {
 			        	      </ul>
 					</div>
 					<div class="modal-bdoy" id="outputtext" readonly="readonly"></div>
-					<div class="modal-footer"></div>
+					<div class="modal-footer">
+						<span class="fa fa-trash" id="trash" aria-hidden="true" onclick="clean()" style="font-size: 40px; float: right;"></span>
+					</div>
 				</div>
 			</div>
 		</form>
 	</div>
 	</section>
-
-	<!-- The Modal -->
-	<!-- 
-	<div id="myModal" class="modal">
-		<div class="modal-dialog">
-			Modal content
-			<div class="modal-content">
-				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal">&times;</button>
-					<h4 class="modal-title">Speak</h4>
-				</div>
-				<div class="modal-body">
-					<img src="../../resources/images/talking.png">
-				</div>
-			</div>
-		</div>
-	</div>
-	 -->
-
 	<div>
 		<c:import url="/WEB-INF/views/include/footer.jsp" />
 	</div>
 	<c:import url="/WEB-INF/views/include/basicIncludeBottom.jsp"></c:import>
 	<script>
-		$(function () {
-	 	   $('[data-toggle="popover"]').popover()
-	 	 })
-	
-		var modal = document.getElementById('myModal');
-
-		var span = document.getElementsByClassName("close")[0];
-
 		var input = "ko";
-		
-		$("#ko-KR").on("click", function () {
-			input = "ko"
-		})
-		$("#en-US").on("click", function () {
-			input = "en"
-		})
-		$("#cmn-Hans-CN").on("click", function () {
-			input = "zh-CN"
-		})
-		
 		var output = "en";
+		
 		$("#ko").on("click", function () {
 			output = "ko"
 		})
@@ -337,51 +299,98 @@ label {
 			output = "zh-CN"
 		})
 		
-			//팝오버
-			$(document).ready(function(){
-			 $('#mic').popover({
-		            trigger: "click",
-		            html: true,
-		            content: '<a class="close">&times;</a><br><div id = \"image"><img src = "../../resources/images/talking.png" style="width:100px;" /><br>말하세요</div>',
-		            placement:'top'
-				}).click(function(e) {
-				    $(this).popover('toggle');
-				    e.stopPropagation();
-				});
-			 	$(document).on("click", ".close" , function(){
-			        $(this).parents(".popover").popover('hide');
-			    });
-			});
-		
+		//팝오버
+		$(function () {
+			$('[data-toggle="popover"]').popover()
+	 	})
+		$('#mic').popover({
+		        trigger: "hover",
+		        content: '음성인식',
+		        placement:'top'
+		});
+		$('#cicon').popover({
+		        trigger: "hover",
+		        content: '번역',
+		        placement:'top'
+		});
+		$('#changebutton').popover({
+		        trigger: "hover",
+		        content: '양쪽값 변경',
+		        placement:'top'
+		});
+		$('#trash').popover({
+		        trigger: "hover",
+		        content: '비우기',
+		        placement:'top'
+		});
+		$('#mic').popover({
+		        trigger: "click",
+		        html: true,
+		        content: '<div><img src = "../../resources/images/talking.png" /><br>말하세요</div>',
+		        placement:'top'
+		}).click(function(e) {
+		    $(this).popover('toggle');
+		    e.stopPropagation();
+		});
+		//음성인식
 		function eylem() {
-			//음성인식
-			console.log(input);
+		
+			if (input == "ko"){
+				input = "ko-KR"
+			}
+			if (input == "en"){
+				input = "en-US"
+			}
+			if (input == "zh-CN"){
+				input = "cmn-Hans-CN"
+			}
+			
 			var lang = input;
 			var ses = new webkitSpeechRecognition();
 			ses.lang = lang;
-			ses.continuous = false;
-			ses.interimResults = false;
-		 
-			ses.onend = function (e) {
-				alert("다시 말하세요");
-				$(".popover-content").popover('hide');
-			};
+		 	var con = 0;
 			
 			ses.onresult = function(e) {
 				if (event.results.length > 0) {
 					sonuc = event.results[event.results.length - 1];
 					if (sonuc.isFinal) {
-						$("#inputtext").val(sonuc[0].transcript);
+						$("#inputtext").html(sonuc[0].transcript);
+						con++;
+						console.log(con);
 					}
-					//modal.style.display = "none";
-					$(this).parents(".popover").popover('hide');
+					$("#mic").popover('hide');
 				}
 			}
+			ses.onend = function (e) {
+				$("#mic").popover('hide');
+				if(con == 0){
+					alert("인식되지 않았습니다.다시 시도해주세요");
+				}
+			};
 			ses.start();
 			return false;
 		}
 		
+		// 번역
 		function transalte() {
+			var inputtext = $("#inputtext").html();
+			console.log(inputtext);
+			console.dir(inputtext);
+			if (input == "ko-KR"){
+				input = "ko"
+			}
+			if (input == "en-US"){
+				input = "en"
+			}
+			if (input == "cmn-Hans-CN"){
+				input = "zh-CN"
+			}
+			if($("#inputtext").html().indexOf("<") != -1){
+				alert("엔터키는 사용할수 없습니다.");
+				$("#inputtext").html("");
+				return false;
+			}
+			
 			if ($("#inputtext").html() == "") {
 				alert("글을 입력하세요");
 				return false;
@@ -398,7 +407,7 @@ label {
 				url : '/translate/translateok',
 				type : 'POST',
 				data : {
-					text : $("#inputtext").html(),
+					text : inputtext,
 					input : input,
 					output : output
 				},
@@ -409,10 +418,8 @@ label {
 
 		}
 
-		
+		//양옆 변환
 		function change() {
-			
-			
 			$.ajax({
 				url : '/translate/change',
 				type : 'POST',
@@ -424,7 +431,6 @@ label {
 				},
 				datatype : 'text'
 			}).done(function(result) {
-				console.log("처음 input: " + input);
 				if (input == "ko"){
 					input = "ko-KR"
 				}
@@ -434,7 +440,7 @@ label {
 				if (input == "zh-CN"){
 					input = "cmn-Hans-CN"
 				}
-				console.log("result.output: " + result.output);
+				
 				var or = "";
 				if (result.output == "ko"){
 					or = "ko-KR"
@@ -461,6 +467,11 @@ label {
 				$("#outputtext").html(result.outtext);
 				
 			})
+		}
+		
+		function clean() {
+			$("#inputtext").html("");
+			$("#outputtext").html("");
 		}
 	</script>
 </body>
