@@ -20,4 +20,8 @@ public interface UserMapper {
 	
 	public UserPicVO selectUserPic (int u_uNo) throws Exception;
 	
+	public void userUpdate (UserVO user) throws Exception;
+	
+	public int userUpdatePic (UserPicVO pic) throws Exception;
+	
 }

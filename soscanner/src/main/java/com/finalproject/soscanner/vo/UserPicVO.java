@@ -16,7 +16,7 @@ public class UserPicVO {
 	public int getU_uno() {
 		return u_uno;
 	}
-	public void setU_uNo(int u_uno) {
+	public void setU_uno(int u_uno) {
 		this.u_uno = u_uno;
 	}
 	public String getU_sysName() {

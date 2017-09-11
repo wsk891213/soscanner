@@ -152,5 +152,5 @@
 			location.href="/";
 		});
 	})
-   
+   console.log("${userPic.u_path}");
   </script>

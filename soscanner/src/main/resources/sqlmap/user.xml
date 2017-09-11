@@ -16,11 +16,11 @@
 	</select>
 	
 	<insert id="insertUser" parameterType="UserVO">
-		<selectKey resultType="int" keyProperty="u_uno" order="AFTER">
+		<selectKey resultType="integer" keyProperty="u_uno" order="BEFORE">
 	         SELECT SEQ_U_UNO.NEXTVAL FROM DUAL
 	    </selectKey> 
 		INSERT INTO TB_USER (u_uno, u_email, u_pass, u_nationality, u_language, u_token)
-		VALUES (SEQ_U_UNO.NEXTVAL, #{u_email}, #{u_pass}, #{u_nationality}, #{u_language}, #{u_token})
+		VALUES (#{u_uno}, #{u_email}, #{u_pass}, #{u_nationality}, #{u_language}, #{u_token})
 	</insert>
 	
 	<select id="loginChk" parameterType="UserVO" resultType="UserVO">
@@ -38,14 +38,28 @@
 	
 	<insert id="userPicInsert" parameterType="UserPicVO">
 		INSERT INTO TB_USER_PIC (UP_NO, U_UNO, U_SYSNAME, U_PATH)
-		VALUES (SEQ_UP_NO.NEXTVAL, #{u_uNo}, #{u_sysName}, #{u_path})
+		VALUES (SEQ_UP_NO.NEXTVAL, #{u_uno}, #{u_sysName}, #{u_path})
 	</insert>
 	
 	<select id="selectUserPic" parameterType="int" resultType="UserPicVO">
 		SELECT UP_NO, U_UNO, U_SYSNAME, U_PATH
 		  FROM TB_USER_PIC
-		 WHERE U_UNO = #{u_uNo}
+		 WHERE U_UNO = #{u_uno}
 	</select>
 	
+	<update id="userUpdate" parameterType="UserVO">
+		UPDATE TB_USER
+		   SET u_pass = #{u_pass},
+		       u_nationality = #{u_nationality},
+		       u_language = #{u_language}
+		 WHERE u_uno = #{u_uno}
+			
+	</update>
+	<update id="userUpdatePic" parameterType="UserPicVO">
+		UPDATE TB_USER_PIC
+		   SET u_sysname = #{u_sysName},
+		       u_path = #{u_path}
+		 where u_uno = #{u_uno}
+	</update>
 	
 </mapper>

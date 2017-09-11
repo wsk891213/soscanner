@@ -21,4 +21,7 @@ public interface UserService {
 	
 	public UserPicVO selectUserPic (int u_uNo) throws Exception;
 	
+	public void userUpdate (UserVO user) throws Exception;
+	
+	public void userUpdatePic (UserPicVO pic) throws Exception;
 }

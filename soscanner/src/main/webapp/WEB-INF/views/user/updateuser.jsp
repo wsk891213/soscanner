@@ -148,11 +148,12 @@
 						        <input type="file" name="image" id="image" />
 						    </p>
 						    <div id="image_preview">
-						        <img src="#" style="height: 150px; width: 150px;"/>
+						        <img src="${userPic.u_path}" style="height: 150px; width: 150px;"/>
 						        <br />
 						        <a href="#">Remove</a>
 						    </div>
 							<br><br>
+							<input name="u_uno" type="hidden" value="${user.u_uno }">
 							<input name="u_email" id="u_email" type="text" readonly="readonly" placeholder="Email" value="${user.u_email}">
 							<input name="u_pass" id="u_pass" type="password" placeholder="Password">
 							<input name="u_passChk" id="u_passChk" type="password" placeholder="Password Check">
@@ -280,16 +281,23 @@
 		
 		
 		$("#updateForm").submit(function (e) {
+			var formData = new FormData($("#updateForm")[0]);
+			formData.forEach(function (e) {
+				console.log(e);
+			})
 			e.preventDefault();
-			console.log($("#picFile").val());
 // 			console.log("serialize : ",updateData);
 			$.ajax({
+				type: "post",
 				url: "updateForm",
-				data: {
-					user: $("#updateForm").serialize(),
-					path: $("#picFile").val()
-				}
-			})
+				data: formData,
+				processData: false,
+				contentType: false
+			}).done(function () {
+				alert("수정이 완료되었습니다");
+				location.href="/";
+			});
+			console.log($("#image").val());
 		});
 		 /** 
 	    onchange event handler for the file input field.

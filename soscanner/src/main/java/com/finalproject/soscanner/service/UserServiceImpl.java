@@ -32,10 +32,10 @@ public class UserServiceImpl implements UserService{
 	@Override
 	@Transactional
 	public void insertUser(UserVO user) throws Exception {
-		System.out.println("service" + user.toString());
-		logger.info("insertUser 들어옴");
-		userPicInsert(user);
 		userMapper.insertUser(user);
+		System.out.println("service" + user.toString());
+		logger.info("insertUser 들어옴" + user.getU_uno());
+		userPicInsert(user);
 	}
 
 	@Override
@@ -52,9 +52,9 @@ public class UserServiceImpl implements UserService{
 		int index = oriName.lastIndexOf(".");
 		String ext = oriName.substring(index);
 		String systemName = "hm" + UUID.randomUUID().toString() + ext;
-		pic.setU_path("C:\\Users\\bit\\Desktop\\soscanner\\soscanner\\src\\main\\webapp\\resources\\images\\noimages.png");
+		pic.setU_path("/resources/images/noimages.png");
 		pic.setU_sysName(systemName);
-		pic.setU_uNo(user.getU_uno());
+		pic.setU_uno(user.getU_uno());
 		System.out.println("service" + pic.toString());
 		userMapper.userPicInsert(pic);
 	}
@@ -69,6 +69,18 @@ public class UserServiceImpl implements UserService{
 	public UserPicVO selectUserPic(int u_uNo) throws Exception {
 
 		return userMapper.selectUserPic(u_uNo);
+	}
+
+	@Override
+	public void userUpdate(UserVO user) throws Exception {
+		userMapper.userUpdate(user);
+	}
+
+	@Override
+	public void userUpdatePic(UserPicVO pic) throws Exception {
+		logger.info("Update 들어옴");
+		int update = userMapper.userUpdatePic(pic);
+		
 	}
 
 

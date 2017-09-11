@@ -81,12 +81,21 @@
                   <c:if test="${user != null}">
                   <li style="height: 90px; width: auto; padding: 20px 0px;">
 					<div style="margin-top: 8px;">
-						<img style="width: 30px; height: 30px; " src="/resources/images/noimages.png">
+						<img style="width: 30px; height: 30px; " src="${userPic.u_path}">
 						
 						<a href="/user/updateuser?user=${user}" style="color: black;">${user.u_email }</a>
 						
+						
+						
+						
+						
+						
+						
+						
+						
+						
 					</div>
-                  </li>
+                  </li> 
                   </c:if>
                 </ul> <!-- end menu -->
                 

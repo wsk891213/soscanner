@@ -1,7 +1,12 @@
 package com.finalproject.soscanner.controller;
 
+import java.io.File;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
 import java.util.UUID;
 
+import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -14,6 +19,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.finalproject.soscanner.service.UserService;
@@ -70,8 +77,9 @@ public class UserController {
 		String msg = null;
 		HttpSession session = req.getSession();
 		if (login != null) {
+			UserPicVO pic = userService.selectUserPic(login.getU_uno());
 			session.setAttribute("user", login);
-			
+			session.setAttribute("userPic", pic);
 			System.out.println("로그인 완료");
 			msg = "로그인 되셨습니다.";
 		}
@@ -90,12 +98,14 @@ public class UserController {
 	}
 	@RequestMapping("/user")
 	@ResponseBody
-	public UserVO userPic (String id) throws Exception {
+	public Map<String, Object> userPic (String id) throws Exception {
 		System.out.println(id);
-		
+		Map<String, Object> map = new HashMap<String, Object>();
 		UserVO user = userService.oneUser(id);
+		map.put("user", user);
 		System.out.println(user.toString());
-		return user;
+		map.put("userPic", userService.selectUserPic(user.getU_uno()));
+		return map;
 	}
 	@RequestMapping("/userPic")
 	@ResponseBody
@@ -113,10 +123,37 @@ public class UserController {
 	
 	@RequestMapping("/updateForm")
 	@ResponseBody
-	public void updateForm (UserVO user, String path) throws Exception {
-		System.out.println("user : "+user.toString());
-		System.out.println("path : "+path);
-	}
+	public void updateForm (MultipartHttpServletRequest multi, UserVO user, HttpSession session) throws Exception {
+		logger.info("업데이트 폼 들어옴");
+		userService.userUpdate(user);
+		session.removeAttribute("userPic");
+		UserPicVO pic = new UserPicVO();
+		String root = multi.getSession().getServletContext().getRealPath("/");
+		logger.info("root : "+ root);
+		MultipartFile mFile = multi.getFile("image");
+	    String path =root+"resources/images/upload";
+	    logger.info("path : " + path);
+	    String oriName = mFile.getOriginalFilename();
+	    String ext = "";
+	    int index = oriName.lastIndexOf(".");
+	    if(index != -1) {
+	    	ext = oriName.substring(index);
+	    	
+	    }
+	    String sysName = "hm" + UUID.randomUUID().toString()+ext;
+	    String realPath = "/resources/images/upload/"+sysName;
+	    String pathUp = path + "/" + sysName;
+		
+	    mFile.transferTo(new File(pathUp));
+         
+	    pic.setU_sysName(sysName);
+	    pic.setU_path(realPath);
+	    pic.setU_uno(user.getU_uno());
+	    session.setAttribute("userPic", pic);
+	    userService.userUpdatePic(pic);
+    }
+
+
 	
 	
 	

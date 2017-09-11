@@ -117,8 +117,8 @@
 										var html = '';
 										html += '<div style="float: left; box-sizing: border-box; margin-right: 10px;">';
 										html += '<div class="entry-item">';
-										html += '<div class="entry-date hidden-sm hidden-xs" style="padding: 0px 4px;">';
-										html += '<img id="userPic"></img>';
+										html += '<div class="entry-date hidden-sm hidden-xs sy" style="padding: 0px;">';
+										html += '<img id="userPic" style="height: 65px; width: 71px;"></img>';
 										html += '</div>';
 										html += '<div class="entry-title">';
 										html += '<h2>';
@@ -142,13 +142,9 @@
 											url: "/user/user",
 											data: {id : ssi}
 										}).done(function (result) {
-											console.log(result.u_uno);
-											$.ajax({
-												url:"/user/userPic",
-												data: {u_uNo: result.u_uno}
-											}).done(function (result) {
-												console.log(result);
-											});
+											console.log(result.user);
+											console.log(result.userPic);
+											$("#userPic").attr("src", result.userPic.u_path);
 										});
 										
 									});
