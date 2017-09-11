@@ -288,7 +288,15 @@ label {
 	<script>
 		var input = "ko";
 		var output = "en";
-		
+		$("#ko-KR").on("click", function () {
+			input = "ko"
+		})
+		$("#en-US").on("click", function () {
+			input = "en"
+		})
+		$("#cmn-Hans-CN").on("click", function () {
+			input = "zh-CN"
+		})
 		$("#ko").on("click", function () {
 			output = "ko"
 		})
@@ -327,6 +335,7 @@ label {
 		    $(this).popover('toggle');
 		    e.stopPropagation();
 		});
+		
 		//음성인식
 		function eylem() {
 		
@@ -368,9 +377,9 @@ label {
 		
 		// 번역
 		function transalte() {
+			console.log(input);
+			console.log(output);
 			var inputtext = $("#inputtext").html();
-			console.log(inputtext);
-			console.dir(inputtext);
 			if (input == "ko-KR"){
 				input = "ko"
 			}
