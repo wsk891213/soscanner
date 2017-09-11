@@ -303,11 +303,6 @@ label {
 		$(function () {
 			$('[data-toggle="popover"]').popover()
 	 	})
-		$('#mic').popover({
-		        trigger: "hover",
-		        content: '음성인식',
-		        placement:'top'
-		});
 		$('#cicon').popover({
 		        trigger: "hover",
 		        content: '번역',
@@ -326,7 +321,7 @@ label {
 		$('#mic').popover({
 		        trigger: "click",
 		        html: true,
-		        content: '<div><img src = "../../resources/images/talking.png" /><br>말하세요</div>',
+		        content: '<div><img src = "../../resources/images/talking.png" style="width: 100px;"/><br>말하세요</div>',
 		        placement:'top'
 		}).click(function(e) {
 		    $(this).popover('toggle');
@@ -364,7 +359,7 @@ label {
 			ses.onend = function (e) {
 				$("#mic").popover('hide');
 				if(con == 0){
-					alert("인식되지 않았습니다.다시 시도해주세요");
+					alert("인식되지 않았습니다. \n다시 시도해주세요");
 				}
 			};
 			ses.start();
