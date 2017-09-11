@@ -6,6 +6,9 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <style>
 .plain-select {
 	display: inline-block;
@@ -127,6 +130,9 @@ label {
 .fa-exchange:hover {
 	color: black;
 }
+#cicon:hover {
+	color: black;
+}
 
 /* The Modal (background) */
 .modal {
@@ -190,6 +196,9 @@ label {
 		width: 33%;
 		text-align: center;
 	}
+	#cicon, .fa-microphone{
+		font-size: 20px;
+	}
 }
 
 #modal {
@@ -197,6 +206,11 @@ label {
 	border-radius: 10px;
 	background-color: #f4f4f4;
 }
+
+
+
+
+
 </style>
 <c:import url="/WEB-INF/views/include/basicIncludeTop.jsp"></c:import>
 </head>
@@ -214,7 +228,7 @@ label {
 			</div>
 		</div>
 	</section>
-
+	
 	<section class="section-wrap-mp pb-0">
 		
 		<div class="container">
@@ -237,10 +251,12 @@ label {
 							</div>
 							<div class="modal-body" contentEditable=true id="inputtext" readonly="readonly"></div>
 							<div class="modal-footer">
-							<span class="fa" id="cicon" aria-hidden="true" onclick="transalte()" style="font-size: 30px; margin-left: 20px; float: right; margin-top: 2px;" >Translate</span>
-							<span class="fa fa-microphone" id="mic" aria-hidden="true" onclick="eylem()" style="font-size: 40px; float: left; " ></span>
+							<span class="fa" id="cicon" aria-hidden="true" onclick="transalte()" style="font-size: 30px; margin-left: 20px; float: right; margin-top: 2px;" >
+							Translate</span>
+							<span class="fa fa-microphone" id="mic" aria-hidden="true" onclick="eylem()" style="font-size: 40px; float: left; "><div id="micdiv"></div></span>
 							</div>
 					</div>
+
 
 				<div class="col-sm-2" id="change">
 					<span class="fa fa-exchange fa-3" id="changebutton" aria-hidden="true" onclick="change()"></span>
@@ -268,9 +284,10 @@ label {
 	</section>
 
 	<!-- The Modal -->
+	<!-- 
 	<div id="myModal" class="modal">
 		<div class="modal-dialog">
-			<!-- Modal content-->
+			Modal content
 			<div class="modal-content">
 				<div class="modal-header">
 					<button type="button" class="close" data-dismiss="modal">&times;</button>
@@ -282,16 +299,17 @@ label {
 			</div>
 		</div>
 	</div>
-
-
-
-
+	 -->
 
 	<div>
 		<c:import url="/WEB-INF/views/include/footer.jsp" />
 	</div>
 	<c:import url="/WEB-INF/views/include/basicIncludeBottom.jsp"></c:import>
 	<script>
+		$(function () {
+	 	   $('[data-toggle="popover"]').popover()
+	 	 })
+	
 		var modal = document.getElementById('myModal');
 
 		var span = document.getElementsByClassName("close")[0];
@@ -319,27 +337,47 @@ label {
 			output = "zh-CN"
 		})
 		
+			//팝오버
+			$(document).ready(function(){
+			 $('#mic').popover({
+		            trigger: "click",
+		            html: true,
+		            content: '<a class="close">&times;</a><br><div id = \"image"><img src = "../../resources/images/talking.png" style="width:100px;" /><br>말하세요</div>',
+		            placement:'top'
+				}).click(function(e) {
+				    $(this).popover('toggle');
+				    e.stopPropagation();
+				});
+			 	$(document).on("click", ".close" , function(){
+			        $(this).parents(".popover").popover('hide');
+			    });
+			});
 		
 		function eylem() {
-			modal.style.display = "block";
+			//음성인식
 			console.log(input);
 			var lang = input;
 			var ses = new webkitSpeechRecognition();
 			ses.lang = lang;
+			ses.continuous = false;
+			ses.interimResults = false;
+		 
+			ses.onend = function (e) {
+				alert("다시 말하세요");
+				$(".popover-content").popover('hide');
+			};
+			
 			ses.onresult = function(e) {
 				if (event.results.length > 0) {
 					sonuc = event.results[event.results.length - 1];
 					if (sonuc.isFinal) {
 						$("#inputtext").val(sonuc[0].transcript);
 					}
-					modal.style.display = "none";
+					//modal.style.display = "none";
+					$(this).parents(".popover").popover('hide');
 				}
 			}
 			ses.start();
-			console.dir(ses);
-			span.onclick = function() {
-				modal.style.display = "none";
-			}
 			return false;
 		}
 		
@@ -409,25 +447,16 @@ label {
 				}
 				
 				var ii = "#"+ input + "i";
-				console.log("처음 inputtype : " + ii);
-				
 				var oo = "#"+ or + "i";
-				console.log("받아오는 inputtype : " + oo);
-				
 				var oi = "#"+ output + "o";
-				console.log("처음 outputtype : " + oi);
-				
 				var io = "#"+ result.input + "o";
-				console.log("받아오는 outputtype : " + io);
 				
 				$(ii).removeClass("active");
 				$(oi).removeClass("active");
 				$(io).addClass("active");
 				$(oo).addClass("active");
 				input = output;
-				console.log("input type:" + output);
 				output = result.input;
-				console.log("output type:" + output);
 				$("#inputtext").html(result.intext);
 				$("#outputtext").html(result.outtext);
 				
