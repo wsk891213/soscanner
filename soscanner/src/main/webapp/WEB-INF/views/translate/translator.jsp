@@ -6,9 +6,6 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <style>
 .plain-select {
 	display: inline-block;
@@ -210,6 +207,18 @@ label {
 	background-color: #f4f4f4;
 }
 
+/* .popover fade top in {
+	top: 354px !important;
+	left: -7px;
+	display: block;
+} */
+
+
+ 
+
+
+
+
 </style>
 <c:import url="/WEB-INF/views/include/basicIncludeTop.jsp"></c:import>
 </head>
@@ -249,9 +258,13 @@ label {
 			        	      </ul>
 							</div>
 							<div class="modal-body" contentEditable=true id="inputtext" readonly="readonly"></div>
+							
+							
+							
 							<div class="modal-footer">
-							<span class="fa" id="cicon" aria-hidden="true" onclick="transalte()" style="font-size: 30px; margin-left: 20px; float: right; margin-top: 2px;" >Translate</span>
-							<span class="fa fa-microphone" id="mic" aria-hidden="true" onclick="eylem()" style="font-size: 40px; float: left;"></span>
+							<span class="fa" id="cicon" aria-hidden="true" onclick="transalte()" style="font-size: 30px; margin-left: 20px; float: right; margin-top: 2px;" >번역</span>
+							<span class="fa fa-microphone" id="mic" aria-hidden="true" onclick="eylem()" style="font-size: 40px; float: left;">							
+							</span>
 							</div>
 					</div>
 
@@ -311,11 +324,6 @@ label {
 		$(function () {
 			$('[data-toggle="popover"]').popover()
 	 	})
-		$('#cicon').popover({
-		        trigger: "hover",
-		        content: '번역',
-		        placement:'top'
-		});
 		$('#changebutton').popover({
 		        trigger: "hover",
 		        content: '양쪽값 변경',
@@ -329,16 +337,16 @@ label {
 		$('#mic').popover({
 		        trigger: "click",
 		        html: true,
-		        content: '<div><img src = "../../resources/images/talking.png" style="width: 100px;"/><br>말하세요</div>',
+		        content: '<div style=\'width:100px; height:120px;float:left;\'><img src = "../../resources/images/talking.png" style="position:relative;height=80px;width:80px;"/><br><h3>말하세요</h3></div>',
 		        placement:'top'
 		}).click(function(e) {
 		    $(this).popover('toggle');
 		    e.stopPropagation();
+		    e.preventDefault();
 		});
 		
 		//음성인식
 		function eylem() {
-		
 			if (input == "ko"){
 				input = "ko-KR"
 			}
@@ -424,6 +432,26 @@ label {
 
 		//양옆 변환
 		function change() {
+			// 음성인식후 바로 양옆 변환시 오류
+			if (input == "ko-KR"){
+				input = "ko"
+			}
+			if (input == "en-US"){
+				input = "en"
+			}
+			if (input == "cmn-Hans-CN"){
+				input = "zh-CN"
+			}
+			if (output == "ko-KR"){
+				output = "ko"
+			}
+			if (output == "en-US"){
+				output = "en"
+			}
+			if (output == "cmn-Hans-CN"){
+				output = "zh-CN"
+			}
+			
 			$.ajax({
 				url : '/translate/change',
 				type : 'POST',
