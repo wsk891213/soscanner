@@ -1,7 +1,7 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
+<!DOCTYPE>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -231,7 +231,7 @@ label {
 		<div class="container relative clearfix">
 			<div class="title-holder">
 				<div class="title-text">
-					<h1 class="color-white heading-frame">번역기</h1>
+					<h1 class="color-white heading-frame"><spring:message code="translate.translator.line234"/></h1>
 				</div>
 			</div>
 		</div>
@@ -247,13 +247,13 @@ label {
 							<div class="modal-header" >
 								<ul class="nav nav-tabs" id="inputtype">
 	           			    	 <li class="active" id="ko-KRi">
-	            		    	  <a  data-toggle="tab" id="ko-KR" >한국어</a>
+	            		    	  <a  data-toggle="tab" id="ko-KR" ><spring:message code="translate.translator.line250"/></a>
 	            		    	</li>
 				           	     <li class="" id="en-USi">
-				                  <a data-toggle="tab" id="en-US" > 영어</a>
+				                  <a data-toggle="tab" id="en-US" ><spring:message code="translate.translator.line253"/></a>
 				                </li>
 				                <li class="" id="cmn-Hans-CNi">
-				                  <a data-toggle="tab" id="cmn-Hans-CN">중국어</a>
+				                  <a data-toggle="tab" id="cmn-Hans-CN"><spring:message code="translate.translator.line256"/></a>
 				                </li>
 			        	      </ul>
 							</div>
@@ -262,7 +262,7 @@ label {
 							
 							
 							<div class="modal-footer">
-							<span class="fa" id="cicon" aria-hidden="true" onclick="transalte()" style="font-size: 30px; margin-left: 20px; float: right; margin-top: 2px;" >번역</span>
+							<span class="fa" id="cicon" aria-hidden="true" onclick="transalte()" style="font-size: 30px; margin-left: 20px; float: right; margin-top: 2px;" ><spring:message code="translate.translator.line265"/></span>
 							<span class="fa fa-microphone" id="mic" aria-hidden="true" onclick="eylem()" style="font-size: 40px; float: left;">							
 							</span>
 							</div>
@@ -275,13 +275,13 @@ label {
 					<div class="modal-header" >
 							<ul class="nav nav-tabs" id="outputtype">
 	           			    	 <li id="koo" class="">
-	            		    	  <a  data-toggle="tab" id="ko">한국어</a>
+	            		    	  <a  data-toggle="tab" id="ko"><spring:message code="translate.translator.line278"/></a>
 	            		    	</li >
 				           	     <li id="eno" class="active"> 
-				                  <a data-toggle="tab" id="en">영어</a>
+				                  <a data-toggle="tab" id="en"><spring:message code="translate.translator.line281"/></a>
 				                </li >
 				                <li id="zh-CNo" class="">
-				                  <a data-toggle="tab" id="zh-CN">중국어</a>
+				                  <a data-toggle="tab" id="zh-CN"><spring:message code="translate.translator.line284"/></a>
 				                </li>
 			        	      </ul>
 					</div>
