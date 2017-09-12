@@ -13,7 +13,7 @@
     
     <nav class="navbar navbar-static-top">
       <div class="navigation">
-        <div class="container relative" style="margin-left: 5%;">
+        <div class="container relative">
 
           <form method="get" class="search-wrap">
             <input type="search" class="form-control" placeholder="Type &amp; Hit Enter">
@@ -21,15 +21,18 @@
 
           <div class="row" style="width: auto;">
 
-            <div class="navbar-header" style="width: 10%;">
+            <div class="navbar-header">
               <!-- Logo -->
               <div class="logo-container">
-                <div class="logo-wrap">
-                  <a href="/">
-                    <img class="logo" src="/resources/images/logo_dark.png" alt="logo">
+                <div class="logo-wrap" s>
+                  <a href="/" >
+                    <img class="logo" src="/resources/images/Logo.png" alt="logo"    style="height: 50px;">
                   </a>
                 </div>
               </div>
+              
+              
+              
               <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse">
                 <span class="sr-only">Toggle navigation</span>
                 <span class="icon-bar"></span>
@@ -38,8 +41,9 @@
               </button>
             </div> <!-- end navbar-header -->
 
-            <div class="col-md-9 nav-wrap right" style="width: auto; margin-left: 2%">
-              <div class="collapse navbar-collapse" id="navbar-collapse">
+                <div class="col-md-9 nav-wrap right">
+              <div class="navbar-collapse collapse in" id="navbar-collapse" style="max-height: 867px;" aria-expanded="true">
+                
                 
                 <ul class="nav navbar-nav navbar-right">
                   <li>
@@ -84,15 +88,6 @@
 						<img style="width: 30px; height: 30px; " src="${userPic.u_path}">
 						
 						<a href="/user/updateuser?user=${user}" style="color: black;">${user.u_email }</a>
-						
-						
-						
-						
-						
-						
-						
-						
-						
 						
 					</div>
                   </li> 
