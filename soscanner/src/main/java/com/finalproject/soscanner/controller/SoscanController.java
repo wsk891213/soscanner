@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.client.RestTemplate;
 
 import com.finalproject.soscanner.service.UserService;
+import com.finalproject.soscanner.vo.UserPicVO;
 import com.finalproject.soscanner.vo.UserVO;
 
 import oracle.jdbc.proxy.annotation.Post;
@@ -37,8 +38,11 @@ public class SoscanController {
 	}
 
 	@RequestMapping("/chat")
-	public void chat() {
-		logger.info("chat 컨트롤러");
+	public void chat(String opponent, Model model) throws Exception {
+		System.out.println("opponent : " + opponent);
+		UserVO user = userService.oneUser(opponent);
+		model.addAttribute("nextUser",user);
+		model.addAttribute("nextUserPic", userService.selectUserPic(user.getU_uno()));
 	}
 
 	@RequestMapping("/chat2")

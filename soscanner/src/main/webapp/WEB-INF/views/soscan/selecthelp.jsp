@@ -116,6 +116,7 @@
 				}
 				
 			});
+			location.href="chat?opponent="+sId;
 		});
 
 	</script>

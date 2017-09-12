@@ -99,30 +99,32 @@
 		var ssId = $("#sId").val();
 		var sosId = ssId.split("@")[0];
 		var help = database.ref('help/' + sosId);
-		console.log("help : ", help);
-		console.log(sosId);
-		var ssi
+// 		console.log("help : ", help);
+// 		console.log(sosId);
+		var ssi;
 		help.once('value',function(snap) {
 							console.log(snap);
 							var sId = '';
 							snap.forEach(function(childSnapshot) {
 										var childData = childSnapshot.val();
+										console.log(childSnapshot.key);
 										// 							console.log("child : ", sId);
 										// 							console.log("child : ", childData);
+										var id = childSnapshot.key;
 										$("#hId").val(childSnapshot.key);
-										console.log("data : ", childSnapshot.key);
-										console.log("씨발 : ", snap.val());
+// 										console.log("data : ", childSnapshot.key);
+// 										console.log("씨발 : ", snap.val());
 										ssi = childSnapshot.key;
-										console.log("homin : ", snap.val()[ssi].message);
+// 										console.log("homin : ", snap.val()[ssi].message);
 										var html = '';
 										html += '<div style="float: left; box-sizing: border-box; margin-right: 10px;">';
 										html += '<div class="entry-item">';
 										html += '<div class="entry-date hidden-sm hidden-xs sy" style="padding: 0px;">';
-										html += '<img id="userPic" style="height: 65px; width: 71px;"></img>';
+										html += '<img name="userPic" id="userPic'+id+'" style="height: 65px; width: 71px;"></img>';
 										html += '</div>';
 										html += '<div class="entry-title">';
 										html += '<h2>';
-										html += '<a href="#" id="helpId">'+ ssi + '</a>';
+										html += '<a href="#" id="helpId'+id+'"></a>';
 										html += '</h2>';
 										html += '</div>';
 										html += '<ul class="entry-meta">';
@@ -132,22 +134,23 @@
 												+ '</a>';
 										html += '</li>';
 										html += '</ul>';
-										html += '&emsp;&emsp;<button onclick="chat()" id="'+ssi+'")>채팅하기</button>';
+										html += '&emsp;&emsp;<a id="chat'+id+'" >채팅하기</a>';
 										html += '</div>';
 										html += '</div>';
-										hDiv.innerHTML += html;
-										console.log($("#helpId").html());	
 										
+// 										console.log("재댤호");
 										$.ajax({
 											url: "/user/user",
 											data: {id : ssi}
 										}).done(function (result) {
 											console.log(result.user);
 											console.log(result.userPic);
-											$("#userPic").attr("src", result.userPic.u_path);
+											$("#helpId"+id).html(result.user.u_email);
+											$("#userPic"+id).attr("src", result.userPic.u_path);
+											$("#chat"+id).attr("href", "chat?user=${user}&userPic=${userPic}&opponent="+id+"");
 										});
-										
-									});
+										hDiv.innerHTML += html;
+								});
 						});
 		function deleteUser(result) {
 // 			alert(result);
@@ -159,7 +162,7 @@
 			location.reload();
 		});
 		function chat(result) {
-			alert(this.val());
+			
 		}
 	</script>
 

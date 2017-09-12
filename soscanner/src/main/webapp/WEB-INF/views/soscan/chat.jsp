@@ -7,12 +7,26 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet"	href="/resources/css/chat.css"> 
+<c:import url="/WEB-INF/views/include/basicIncludeTop.jsp"></c:import>
 </head>
 <body>
+<c:import url="/WEB-INF/views/include/navBar.jsp"></c:import>
+<div class="main-wrapper-onepage main oh">
+		<!-- Page Title -->
+		<section class="page-title text-center"	style="background-image: url(/resources/images/newsospic.jpg);">
+		<div class="container relative clearfix">
+			<div class="title-holder">
+				<div class="title-text">
+					<h1 class="color-white heading-frame">SOSCAN</h1>
+				</div>
+			</div>
+		</div>
+		</section>
 <div class="chat">
   <div class="chat_header">
-    <img class="chat_avatar" src="http://www.naturaloil.ph/wp-content/uploads/2015/11/John_Doe.jpg"></img>JOHN DOE
+    <img class="chat_avatar" src="${nextUserPic.u_path }">chat</img>
   </div>
+  
   <div class="chat_s">
   </div>
   <div class="chat_input">
@@ -21,80 +35,59 @@
   </div>
   
 </div>
-<input type="hidden" id="userId" value="user1">
-<input type="hidden" id="fromId" value="user2">
+<input type="hidden" id="userId" value="${user.u_email }">
+<input type="hidden" id="fromId" value="${nextUser.u_email}">
 <!-- 	<h1 id="welcome"></h1> -->
 <!-- 	<input id="message" type="text"><button onclick="sendMessage();">보내기</button> -->
 	
 <!-- 	<div id="chat"></div> -->
 <!-- 	<input type="hidden" id="name" > -->
 	
+	<c:import url="/WEB-INF/views/include/footer.jsp"></c:import>
+	</div>
+		<c:import url="/WEB-INF/views/include/basicIncludeBottom.jsp"></c:import>
 	
-	
-	
-	<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 	<script defer src="https://www.gstatic.com/firebasejs/4.3.0/firebase-app.js"></script>
 	<script defer src="https://www.gstatic.com/firebasejs/4.3.0/firebase-database.js"></script>
-	<script defer src="https://www.gstatic.com/firebasejs/4.3.0/firebase.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/4.3.0/firebase.js"></script>
 <!-- 	<script src="/resources/js/chat.js"></script> -->
 	<script>
 
-	  var config = {
-			    apiKey: "AIzaSyCCz1QBgdGHOMtDsNBuVdP0vV4AEzMWSwQ",
-			    authDomain: "fmc-test-1efbc.firebaseapp.com",
-			    databaseURL: "https://fmc-test-1efbc.firebaseio.com",
-			    projectId: "fmc-test-1efbc",
-			    storageBucket: "fmc-test-1efbc.appspot.com",
-			    messagingSenderId: "117555202324"
-			  };
-			  firebase.initializeApp(config);
-			  var database = firebase.database();
-// 		var provider = new firebase.auth.FacebookAuthProvider();
-// 		provider.addScope('user_birthday');
-// 		provider.setCustomParameters({
-// 			  'display': 'popup'
-// 		});
-// 		firebase.auth().signInWithPopup(provider).then(function(result) {
-// 			  // This gives you a Facebook Access Token. You can use it to access the Facebook API.
-// 			  var token = result.credential.accessToken;
-// 			  // The signed-in user info.
-// 			  var user = result.user;
-// 			  console.log("token1",token);
-// 			  welcome.innerHTML = result.additionalUserInfo.profile.first_name + " 님 환영합니다.";
-// 			  $("#name").val(result.additionalUserInfo.profile.first_name);
-// 			  console.log(result.additionalUserInfo.profile);
-// 			  // ...
-			  
-// 			}).catch(function(error) {
-// 			  // Handle Errors here.
-// 			  var errorCode = error.code;
-// 			  var errorMessage = error.message;
-// 			  // The email of the user's account used.
-// 			  var email = error.email;
-// 			  // The firebase.auth.AuthCredential type that was used.
-// 			  var credential = error.credential;
-// 			  // ...
-// 			});
-			 
-		
-		function add() {
-			document.getElementsByClassName('chat_s')[0].innerHTML += '<div class="chat_bubble-2">' + $(".chat_text").val() + '</div>';
-			writeMessage($(".chat_text").val());
-			$(".chat_text").val("");
-		}
-		function writeMessage(content){
-			database.ref().child('message/'+$("#userId").val()).set({
-				message:content
-			})
-		}
-		var formref = database.ref().child('message/'+$("#fromId").val());
-		formref.on('child_changed', function(snap) {
-			document.getElementsByClassName('chat_s')[0].innerHTML += '<div class="chat_bubble-1">' + snap.val() + '</div>';
-			console.log(snap);
-		});
-		formref.on('child_added', function (snap) {
-			document.getElementsByClassName('chat_s')[0].innerHTML += '<div class="chat_bubble-1">' + snap.val() + '</div>';
-		});
+	var config = {
+			apiKey : "AIzaSyCCz1QBgdGHOMtDsNBuVdP0vV4AEzMWSwQ",
+			authDomain : "fmc-test-1efbc.firebaseapp.com",
+			databaseURL : "https://fmc-test-1efbc.firebaseio.com",
+			projectId : "fmc-test-1efbc",
+			storageBucket : "fmc-test-1efbc.appspot.com",
+			messagingSenderId : "117555202324"
+		};
+		firebase.initializeApp(config);
+		var database = firebase.database();
+	  var userId = $("#userId").val();
+	  var uId = userId.split("@")[0];
+	  var formId = $("#fromId").val();
+	  var fId = formId = formId.split("@")[0];
+	  function add() {
+	 	document.getElementsByClassName('chat_s')[0].innerHTML += '<div class="chat_bubble-2">' + $(".chat_text").val() + '</div>';
+	 	document.getElementsByClassName('chat_s')[0].innerHTML += '<img style="float: right; width: 40px; height: 40px;" src="${userPic.u_path}"><span style="float: right;">${user.u_email}</span></img><br><br>';
+		writeMessage($(".chat_text").val());
+		$(".chat_text").val("");
+	  }
+	  function writeMessage(content){
+		database.ref().child('message/'+uId).set({
+			message:content
+		})
+      }
+	  var formref = database.ref().child('message/'+fId);
+	  formref.on('child_changed', function(snap) {
+	 	document.getElementsByClassName('chat_s')[0].innerHTML += '<div class="chat_bubble-1">' + snap.val() + '</div>';
+	 	document.getElementsByClassName('chat_s')[0].innerHTML += '<img style="float: left; width: 40px; height: 40px;" src="${nextUserPic.u_path}"><span style="float: left;">${nextUser.u_email}</span></img><br><br>';
+		console.log(snap);
+	  });
+	  formref.on('child_added', function (snap) {
+		document.getElementsByClassName('chat_s')[0].innerHTML += '<div class="chat_bubble-1">' + snap.val() + '</div>';
+		document.getElementsByClassName('chat_s')[0].innerHTML += '<img style="float: left; width: 40px; height: 40px;" src="${nextUserPic.u_path}"><span style="float: left;">${nextUser.u_email}</span></img><br><br>';
+	  });
 	</script>
 </body>
 </html>
