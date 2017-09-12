@@ -142,8 +142,8 @@ function onDrawnFeatures(e){
 		lengDetail = "Total Distance : ";
 		break;
 	case "zh":
-		TimeDetail = "总周转时间";
-		lengDetail = "总距离";
+		TimeDetail = "总周转时间: ";
+		lengDetail = "总距离: ";
 		break;
 	}
 	$(".mapInfo").append(TimeDetail + timeCal(routeLayer.features[0].attributes.totalTime) + "<br>");

@@ -44,7 +44,7 @@
             <div class="entry-item">
               <div class="entry-img">
                 <a href="infoDetail?ti_no=${list.ti_no}&slocation=${slocation}&sWord=${sWord}">
-                  <img src="/resources/images/blog/post_img_1.jpg" alt="">
+                  <img src="/resources/fileFolder/tour_files/${list.ti_pic}.jpg" alt="">
                 </a>
               </div>
 

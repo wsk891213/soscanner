@@ -182,17 +182,6 @@
 
           <div class="col-md-4 service-item">
             <a href="#">
-              <i class="fa fa-question-circle-o"></i>
-            </a>
-            <div class="service-item-box">
-              <h3><spring:message code="main.home.line187"/></h3>
-              <p><spring:message code="main.home.line188"/></p>
-            </div>
-          </div> 
-          <!-- end service item -->
-
-          <div class="col-md-4 service-item">
-            <a href="#">
               <i class="fa fa-language"></i>
             </a>
             <div class="service-item-box">

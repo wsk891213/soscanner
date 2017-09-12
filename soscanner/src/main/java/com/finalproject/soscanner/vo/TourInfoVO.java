@@ -9,10 +9,17 @@ public class TourInfoVO {
 	private String ti_mapy;
 	private String ti_time;
 	private String ti_lang;
+	private String ti_pic;
 	private String slocation;
 	private String sWord;
 	
 	
+	public String getTi_pic() {
+		return ti_pic;
+	}
+	public void setTi_pic(String ti_pic) {
+		this.ti_pic = ti_pic;
+	}
 	public String getsWord() {
 		return sWord;
 	}

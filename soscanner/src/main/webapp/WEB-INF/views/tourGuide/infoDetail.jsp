@@ -92,7 +92,7 @@ $(function() {
 					<!-- standard post -->
 					<div class="entry-item">
 						<div class="entry-img">
-							<img src="/resources/images/blog/single_post_img.jpg" alt="">
+							<img src="/resources/fileFolder/tour_files/${tourInfoVO.ti_pic}.jpg" alt="">
 						</div>
 						<div class="row">
 							<div class="col-sm-10 col-sm-offset-1">
