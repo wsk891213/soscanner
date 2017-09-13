@@ -83,13 +83,10 @@
                   </c:choose>
                   
                   <c:if test="${user != null}">
-                  <li style="height: 90px; width: auto; padding: 20px 5px;">
-					<div style="margin-top: 8px;">
-						<img style="width: 30px; height: 30px; " src="${userPic.u_path}">
+                  <li>
 						
-						<a href="/user/updateuser?user=${user}" style="color: black;">${user.u_email }</a>
+					<a href="/user/updateuser?user=${user}" style="color: black;"><img style="width: 35px; height: 35px; " src="${userPic.u_path}">&nbsp;${user.u_email }</a>
 						
-					</div>
                   </li> 
                   </c:if>
                 </ul> <!-- end menu -->
