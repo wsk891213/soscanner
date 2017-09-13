@@ -376,7 +376,11 @@ label {
 			ses.onend = function (e) {
 				$("#mic").popover('hide');
 				if(con == 0){
-					alert("인식되지 않았습니다. \n다시 시도해주세요");
+					swal(
+						'Error',
+						'인식되지 않았습니다. \n다시 시도해주세요',
+						'error'
+					)
 				}
 			};
 			ses.start();
@@ -398,21 +402,40 @@ label {
 				input = "zh-CN"
 			}
 			if($("#inputtext").html().indexOf("<") != -1){
-				alert("엔터키는 사용할수 없습니다.");
+				swal(
+					'Error',
+					'엔터키는 사용할수 없습니다.',
+					'error'
+				)
 				$("#inputtext").html("");
 				return false;
 			}
 			
+			
+			
+			
 			if ($("#inputtext").html() == "") {
-				alert("글을 입력하세요");
+				swal(
+						'Error',
+						'글을 입력하세요.',
+						'error'
+					)
 				return false;
 			}
 			if (input == output) {
-				alert("같은 언어끼리는 번역이 불가능합니다.");
+				swal(
+						'Error',
+						'같은 언어끼리는 번역이 불가능합니다.',
+						'error'
+					)
 				return false;
 			}
 			if ((input == "en" && output == "zh-CN") || (input == "zh-CN" && output == "en")) {
-				alert("영어 <-> 중극어는 지원하지않습니다");
+				swal(
+						'Error',
+						'영어 <-> 중국어는 지원하지않습니다',
+						'error'
+					)
 				return false;
 			}
 			$.ajax({

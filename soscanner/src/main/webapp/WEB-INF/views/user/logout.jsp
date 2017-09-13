@@ -9,9 +9,12 @@
 </head>
 <body>
  <script>
- 	alert("로그아웃 하셨습니다.");
+ 	swal(
+			'Logout',
+			'로그아웃 하셨습니다.',
+			'success'
+		)
  	location.href="/";
- 	
  </script>
 </body>
 </html>

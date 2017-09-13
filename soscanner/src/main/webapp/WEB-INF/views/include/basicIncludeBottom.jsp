@@ -142,7 +142,12 @@
 			    $("#u_pass").val("");
 			    $("#u_passChk").val("");
 			}
-			alert(text);
+			swal(
+					'가입성공',
+					text,
+					'success'
+			)
+			//alert(text);
 		});
 		
 	});

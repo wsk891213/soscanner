@@ -26,3 +26,7 @@
 <link rel="apple-touch-icon" sizes="114x114" href="/resources/images/apple-touch-icon-114x114.png">
 
 <script src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous"></script>
+<script src="/resources/sweetalert/sweetalert.min.js"></script> 
+<link rel="stylesheet" href="/resources/sweetalert/sweetalert.css">
+
+
