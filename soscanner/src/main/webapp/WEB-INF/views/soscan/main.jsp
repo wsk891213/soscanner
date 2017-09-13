@@ -9,7 +9,11 @@
 
 .sos {
 /* 	background: url("/resources/images/post-iloveimg-resized.png"); */
-	box-shadow: 10px 10px 15px 15px gray;
+	box-shadow: 10px 10px gray;
+	width: 700px !important;
+	background-color: #f4f4f4;
+	border: 1px solid;
+	border-radius: 10px;
 }
 
 .back {
@@ -102,7 +106,7 @@
 </html>
 
 
-
+<!-- https://www.html5rocks.com/ko/tutorials/webrtc/basics/#toc-where   webrtc   -->
 
 
 

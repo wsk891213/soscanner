@@ -7,9 +7,13 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>SOScan</title>
 <style>
-.section-wrap .container {
-	/* 	background: url("/resources/images/post-iloveimg-resized.png"); */
-	box-shadow: 10px 10px 15px 15px gray;
+.sos {
+/* 	background: url("/resources/images/post-iloveimg-resized.png"); */
+	box-shadow: 10px 10px gray;
+	width: 700px !important;
+	background-color: #f4f4f4;
+	border: 1px solid;
+	border-radius: 10px;
 }
 </style>
 <!-- <script src="https://www.gstatic.com/firebasejs/4.2.0/firebase.js"></script> -->
@@ -23,8 +27,7 @@
 	<div class="main-wrapper-onepage main oh">
 
 		<!-- Page Title -->
-		<section class="page-title text-center"
-			style="background-image: url(/resources/images/newsospic.jpg);">
+		<section class="page-title text-center"	style="background-image: url(/resources/images/newsospic.jpg);">
 		<div class="container relative clearfix">
 			<div class="title-holder">
 				<div class="title-text">
@@ -37,7 +40,7 @@
 
 		<!-- 	<img src="/resources/images/post-iloveimg-resized.png"> -->
 		<section class="section-wrap pb-100 blog-single">
-		<div class="container relative">
+		<div class="container relative sos">
 			<div class="row">
 				<div class="col-sm-12 blog-content">
 					<div class="entry-item">
