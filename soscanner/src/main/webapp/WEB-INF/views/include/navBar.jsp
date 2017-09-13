@@ -13,7 +13,7 @@
     
     <nav class="navbar navbar-static-top">
       <div class="navigation">
-        <div class="container relative">
+        <div class="container relative" style="width: 90% !important;">
 
           <form method="get" class="search-wrap">
             <input type="search" class="form-control" placeholder="Type &amp; Hit Enter">
@@ -61,6 +61,14 @@
                   <%-- <li>
                     <a href="/board/faq" style="font-size: 20px;"><spring:message code="include.navBar.line57"/></a>
                   </li> --%>
+                  <li class="dropdown">
+                    <a href="#" class="dropdown-toggle"><spring:message code="include.navBar.line73"/></a>
+                    <ul class="dropdown-menu menu-right">
+                      <li><a href="/multiLingual?locale=en"><spring:message code="include.navBar.line75"/></a></li>
+                      <li><a href="/multiLingual?locale=ko"><spring:message code="include.navBar.line76"/></a></li>
+                      <li><a href="/multiLingual?locale=zh"><spring:message code="include.navBar.line77"/></a></li>
+                    </ul>
+                  </li>
                   <c:choose>
                   	<c:when test="${user==null}">
 	                  <li>
@@ -74,16 +82,8 @@
                   	</c:otherwise>
                   </c:choose>
                   
-                  <li class="dropdown">
-                    <a href="#" class="dropdown-toggle"><spring:message code="include.navBar.line73"/></a>
-                    <ul class="dropdown-menu menu-right">
-                      <li><a href="/multiLingual?locale=en"><spring:message code="include.navBar.line75"/></a></li>
-                      <li><a href="/multiLingual?locale=ko"><spring:message code="include.navBar.line76"/></a></li>
-                      <li><a href="/multiLingual?locale=zh"><spring:message code="include.navBar.line77"/></a></li>
-                    </ul>
-                  </li>
                   <c:if test="${user != null}">
-                  <li style="height: 90px; width: auto; padding: 20px 0px;">
+                  <li style="height: 90px; width: auto; padding: 20px 5px;">
 					<div style="margin-top: 8px;">
 						<img style="width: 30px; height: 30px; " src="${userPic.u_path}">
 						

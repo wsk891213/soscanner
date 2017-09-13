@@ -50,6 +50,9 @@
 	   $('html, body').animate({scrollTop : $('html, body').height()}, 1000);
 	   $("#registAccord").slideUp();
 	   $("#signInAccord").slideDown();
+	   $("#u_email").val("");
+	   $("#u_pass").val("");
+	   $("#u_passChk").val("");
    })
     $("#loginCancelBtn").click(function (e) {
        e.preventDefault();
@@ -132,8 +135,12 @@
 			var text = "비번 불일치";
 			if(answer == "2") {
 				text = "회원가입 완료";
-				$('html, body').animate({scrollTop : 0}, 4000);
-				$("#registAccord").slideUp();
+				$('html, body').animate({scrollTop : $('html, body').height()}, 1000);
+			    $("#registAccord").slideUp();
+			    $("#signInAccord").slideDown();
+			    $("#u_email").val("");
+			    $("#u_pass").val("");
+			    $("#u_passChk").val("");
 			}
 			alert(text);
 		});
@@ -152,5 +159,8 @@
 			location.href="/";
 		});
 	})
-   console.log("${userPic.u_path}");
   </script>
+  
+  
+  
+  

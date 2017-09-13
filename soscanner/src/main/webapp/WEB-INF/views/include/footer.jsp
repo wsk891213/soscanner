@@ -1,13 +1,13 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"	pageEncoding="UTF-8"%>
+<%@ taglib  prefix="spring" uri="http://www.springframework.org/tags"%>
 
 <!-- register Form start -->
 <section id="registAccord" class="section-wrap process"
-	style="background-image: url(/resources/images/process_bg.jpg); display: none;">
+	style="background-image: url(/resources/images/loginBG.png); display: none;">
 	<div class="container">
 		<div class="row heading">
 			<div class="col-md-6 col-md-offset-3">
-				<h2 class="text-center color-white bottom-line">회원가입</h2>
+				<h2 class="text-center color-white bottom-line"><spring:message code="include.footer.line10"/></h2>
 			</div>
 		</div>
 		<div class="row">
@@ -15,7 +15,7 @@
 				<form id="registForm" method="post">
 					<input name="u_email" id="u_email" type="text" placeholder="Email">
 					<input name="u_pass" id="u_pass" type="password" placeholder="Password">
-					<input name="u_passChk" id="u_passChk" type="password" placeholder="Password Check">
+					<input name="u_passChk" id="u_passChk" type="password" placeholder="Confirm Password">
 	    			<select name="u_nationality" id="u_nationality" >
    						<option value="Argentina">Argentina</option>
    						<option value="Australia">Australia</option>
@@ -111,12 +111,13 @@
    					</select>
    					
 					<select name="u_language" id="u_language">
-		                <option selected="selected" value="english">영어</option>
-		                <option value="korean">한글</option>
-		                <option value="chinese">중국어</option>
+		                <option selected="selected" value="english"><spring:message code="include.footer.line114"/></option>
+		                <option value="korean"><spring:message code="include.footer.line115"/></option>
+		                <option value="chinese"><spring:message code="include.footer.line116"/></option>
 		            </select>
 					<input name="u_token" id="u_token" type="hidden">
-					<input type="submit" class="btn btn-lg btn-dark" value="회원가입"> <a href="#" id="RegistCancelBtn" class="btn btn-lg btn-dark">취소</a>
+					<input type="submit" class="btn btn-lg btn-dark" value="<spring:message code="include.footer.line119"/>">
+					<a href="#" id="RegistCancelBtn" class="btn btn-lg btn-dark"><spring:message code="include.footer.line120"/></a>
 					<br>
 					<br>
 				</form>
@@ -129,11 +130,11 @@
 
 <!-- Sign In Form Accordion start-->
 <section id="signInAccord" class="section-wrap process"
-	style="background-image: url(/resources/images/process_bg.jpg); display: none;">
+	style="background-image: url(/resources/images/loginBG.png); display: none;">
 	<div class="container">
 		<div class="row heading">
 			<div class="col-md-6 col-md-offset-3">
-				<h2 class="text-center color-white bottom-line">로그인</h2>
+				<h2 class="text-center color-white bottom-line"><spring:message code="include.footer.line137"/></h2>
 			</div>
 		</div>
 		<div class="row">
@@ -141,9 +142,9 @@
 				<form id="signInForm">
 					<input name="u_email" id="u_email" type="text" placeholder="ID">
 					<input name="u_pass" id="u_pass" type="password" placeholder="Password">
-					<input type="submit" class="btn btn-lg btn-dark" value="로그인">
-					<a href="#" id="loginCancelBtn" class="btn btn-lg btn-dark">취소</a><br>
-					<br> <a href="#" id="registBtn">회원가입</a>
+					<input type="submit" class="btn btn-lg btn-dark" value="<spring:message code='include.footer.line145'/>">
+					<a href="#" id="loginCancelBtn" class="btn btn-lg btn-dark"><spring:message code="include.footer.line146"/></a><br>
+					<br> <a href="#" id="registBtn"><spring:message code="include.footer.line147"/></a>
 				</form>
 			</div>
 		</div>
