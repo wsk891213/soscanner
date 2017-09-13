@@ -17,6 +17,10 @@ public interface BoardService {
 	public void insertBoard(BoardVO boardVO, MultipartHttpServletRequest mRequest) throws Exception;
 	public String updateBoard(BoardVO boardVO) throws Exception;
 	public BoardVO updateFormBoard(int boardNo) throws Exception;
+	
+	// 댓글 갯수
+	public int selectCommCount(int boardNo) throws Exception;
+	
 	// 페이징
 	public int selectBoradPage(PageVO page) throws Exception;
 	

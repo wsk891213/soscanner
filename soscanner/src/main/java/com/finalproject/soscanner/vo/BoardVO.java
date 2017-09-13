@@ -13,6 +13,7 @@ public class BoardVO {
 	private Date regDate;
 	private int viewCount;
 	private String lang;
+	private int commCount;
 	
 	
 	private MultipartFile attFile = null;
@@ -59,6 +60,12 @@ public class BoardVO {
 	public void setLang(String lang) {
 		this.lang = lang;
 	}
+	public int getCommCount() {
+		return commCount;
+	}
+	public void setCommCount(int commCount) {
+		this.commCount = commCount;
+	}
 //	@Override
 //	public String toString() {
 //		return "BoardVO [boardNo=" + boardNo + ", title=" + title + ", content=" + content + ", writer=" + writer
@@ -70,6 +77,4 @@ public class BoardVO {
 	public void setAttFile(MultipartFile attFile) {
 		this.attFile = attFile;
 	}
-	
-	
 }

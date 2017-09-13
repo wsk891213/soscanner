@@ -58,15 +58,18 @@
 									</h2>
 								</div>
 								<ul class="entry-meta">
-									<li class="entry-date"><a href="#"><fmt:formatDate
-												value="${EachList.regDate}" pattern="yyyy-MM-dd" /></a></li>
-									<li class="entry-author">by <a href="blog-single.html"><c:out
-												value="${EachList.writer}" /></a>
+									<li class="entry-date"><a href="#">
+										<fmt:formatDate	value="${EachList.regDate}" pattern="yyyy-MM-dd" />
+									</a></li>
+									<li class="entry-author">
+										by <a href="blog-single.html"><c:out value="${EachList.writer}" /></a>
 									</li>
-									<li><a href="blog-single.html" class="entry-comments">댓글</a>
-									</li>
-									<li class="entry-category"><a href="#"><c:out
-												value="${EachList.viewCount}" /></a></li>
+									<li><a href="blog-single.html" class="entry-comments">
+										댓글 <c:out value="${EachList.commCount}" />
+									</a></li>
+									<li class="entry-category"><a href="#">
+										조회수 <c:out value="${EachList.viewCount}" />
+									</a></li>
 								</ul>
 
 								<div class="entry">

@@ -20,6 +20,9 @@ public interface BoardMapper {
 	public int updateBoard(BoardVO boardVO) throws Exception;
 	public BoardVO updateFormBoard(int boardNo) throws Exception;
 	
+	// 댓글
+	public int selectCommCount(int boardNo) throws Exception;
+	
 	// 파일업로드
 	public void insertFile(FileVO file) throws Exception;
 	

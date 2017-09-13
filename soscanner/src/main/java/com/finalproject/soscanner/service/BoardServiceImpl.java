@@ -161,6 +161,12 @@ public class BoardServiceImpl implements BoardService {
 	}
 	
 	
+	// 댓글
+	@Override
+	public int selectCommCount(int boardNo) throws Exception {
+		return boardMapper.selectCommCount(boardNo);
+	}
+	
 	
 	// FAQ
 	@Override

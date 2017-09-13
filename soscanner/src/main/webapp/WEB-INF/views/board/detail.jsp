@@ -18,43 +18,34 @@ textarea {
 </head>
 <body>
 	<c:import url="/WEB-INF/views/include/navBar.jsp"></c:import>
-	<div>
-		<table>
-			<tr>
-				<td>글번호</td>
-				<td><c:out value="${detail.boardNo}" /></td>
-			</tr>
-			<tr>
-				<td>제목</td>
-				<td><c:out value="${detail.title}" /></td>
-				<td>날짜</td>
-				<td><fmt:formatDate value="${detail.regDate}" /></td>
-			</tr>
-			<tr>
-				<td>글쓴이</td>
-				<td><c:out value="${detail.writer}" /></td>
-			</tr>
-			<tr>
-				<td>조회수</td>
-				<td><c:out value="${detail.viewCount}" /></td>
-			</tr>
-<!-- 			<tr> -->
-<!-- 				<td></td> -->
-<!-- 			</tr> -->
-			<tr>
-				<td>내용</td>
-				<td><c:out value="${detail.content}" /></td>
-			</tr>
-
-			<tr>
-				<td><a href="updateForm?boardNo=${detail.boardNo}">수정</a></td>
-				<td><a href="delete?boardNo=${detail.boardNo}">삭제</a></td>
-			</tr>
-			<tr>
-				<td><a href="list">목록</a></td>
-			</tr>
-		</table>
-
+	<div class="row">
+		<div class="col-sm-10 col-sm-offset-1">
+			<table>
+				<tr>
+					<td>제목</td>
+					<td><h2><c:out value="${detail.title}" /></h2></td>
+				</tr>
+				<tr>
+					<td><c:out value="${detail.boardNo}" /> | </td>
+					<td><fmt:formatDate value="${detail.regDate}" /> | </td>
+					<td>by <c:out value="${detail.writer}" /> | </td>
+					<td><c:out value="${detail.viewCount}" /></td>
+				</tr>
+				<tr>
+					<td>내용</td>
+					<td><c:out value="${detail.content}" /></td>
+				</tr>
+	
+				<tr>
+					<td><a href="updateForm?boardNo=${detail.boardNo}">수정</a></td>
+					<td><a href="delete?boardNo=${detail.boardNo}">삭제</a></td>
+				</tr>
+				<tr>
+					<td><a href="list">목록</a></td>
+				</tr>
+			</table>
+		</div>
+		
 		<table id="commentList">
 		</table>
 

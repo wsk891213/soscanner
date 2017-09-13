@@ -10,6 +10,7 @@
 		<result column="B_REGDATE" 		property="regDate" />
 		<result column="B_VIEWCOUNT" 	property="viewCount" />
 		<result column="B_LANG" 		property="lang" />
+		<result column="B_COMMCOUNT"	property="commCount" />
 	</resultMap>
 
 	<select id="selectBoard" parameterType="PageVO" resultMap="boardMap">
@@ -22,6 +23,9 @@
 					, B_WRITER
 					, B_REGDATE
 					, B_VIEWCOUNT
+					, (select count(*)
+						from TB_BOARD_COMM
+					   where B_BOARDNO = B_BOARDNO) AS B_COMMCOUNT
 					  from TB_BOARD
 					 where	1=1
 					  <if test="searchType != null and searchType == 'sTitle'">
@@ -40,6 +44,12 @@
 		) X
 		   	]]>
 		where X.RNUM >= #{begin}
+	</select>
+
+	<select id="selectCommCount" parameterType="int" resultType="int">
+		select count(*)
+		  from TB_BOARD_COMM
+		 where B_BOARDNO = #{boardNo}
 	</select>
 
 	<select id="selectBoard2" parameterType="PageVO" resultMap="boardMap">
@@ -102,9 +112,9 @@
 
 	<update id="updateBoard" parameterType="BoardVO">
 		update TB_BOARD
-		set B_TITLE = #{title},
-		B_CONTENT = #{content}
-		where B_BOARDNO = #{boardNo}
+		   set B_TITLE = #{title},
+			   B_CONTENT = #{content}
+		 where B_BOARDNO = #{boardNo}
 	</update>
 
 
