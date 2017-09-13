@@ -53,8 +53,8 @@
 
 								<div class="entry-title">
 									<h2>
-										<a href="detail?boardNo=${EachList.boardNo}"><c:out
-												value="${EachList.title}" /></a>
+										<a href="detail?boardNo=${EachList.boardNo}">
+										<c:out value="${EachList.title}" /></a>
 									</h2>
 								</div>
 								<ul class="entry-meta">

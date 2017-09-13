@@ -18,7 +18,7 @@ public interface BoardService {
 	public String updateBoard(BoardVO boardVO) throws Exception;
 	public BoardVO updateFormBoard(int boardNo) throws Exception;
 	
-	// 댓글 갯수
+	// 댓글 갯수 
 	public int selectCommCount(int boardNo) throws Exception;
 	
 	// 페이징

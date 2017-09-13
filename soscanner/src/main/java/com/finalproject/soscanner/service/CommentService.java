@@ -10,5 +10,4 @@ public interface CommentService {
 	public List<CommentVO> deleteComm(CommentVO comm) throws Exception;
 	public List<CommentVO> updateComm(CommentVO comm) throws Exception;
 	
-	public int selectCount(int boardNo) throws Exception;
 }

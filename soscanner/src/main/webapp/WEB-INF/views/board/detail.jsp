@@ -22,7 +22,6 @@ textarea {
 		<div class="col-sm-10 col-sm-offset-1">
 			<table>
 				<tr>
-					<td>제목</td>
 					<td><h2><c:out value="${detail.title}" /></h2></td>
 				</tr>
 				<tr>

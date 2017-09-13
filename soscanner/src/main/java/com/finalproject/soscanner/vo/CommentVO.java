@@ -39,4 +39,5 @@ public class CommentVO {
 	public void setBoardNo(int boardNo) {
 		this.boardNo = boardNo;
 	}
+	
 }

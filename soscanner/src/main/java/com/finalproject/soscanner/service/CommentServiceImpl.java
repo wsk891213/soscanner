@@ -37,9 +37,4 @@ public class CommentServiceImpl implements CommentService {
 		return commentMapper.selectComm(comm.getBoardNo());
 	}
 
-	@Override
-	public int selectCount(int boardNo) throws Exception {
-		return commentMapper.selectCount(boardNo);
-	}
-
 }

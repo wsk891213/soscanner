@@ -37,5 +37,4 @@ public class FileVO {
 	public void setBoardNo(int boardNo) {
 		this.boardNo = boardNo;
 	}
-	
 }

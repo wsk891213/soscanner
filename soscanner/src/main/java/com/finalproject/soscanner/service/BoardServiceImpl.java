@@ -167,7 +167,6 @@ public class BoardServiceImpl implements BoardService {
 		return boardMapper.selectCommCount(boardNo);
 	}
 	
-	
 	// FAQ
 	@Override
 	public List<FaqVO> selectFaq(PageVO page) throws Exception {

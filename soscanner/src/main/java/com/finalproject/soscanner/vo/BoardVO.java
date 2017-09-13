@@ -15,7 +15,6 @@ public class BoardVO {
 	private String lang;
 	private int commCount;
 	
-	
 	private MultipartFile attFile = null;
 	
 	public int getBoardNo() {
