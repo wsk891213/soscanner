@@ -71,10 +71,12 @@ public class BoardController {
 
 	@RequestMapping(value="/write", method=RequestMethod.POST)
 	public void writer(BoardVO boardVO, MultipartHttpServletRequest mRequest) throws Exception {
-		System.out.println("boardVo ======>" + boardVO);
-		System.out.println("boardVo ======>1" + boardVO.getAttFile().getOriginalFilename());
+		System.out.println("boardVo title ======>" + boardVO.getTitle());
+		System.out.println("boardVo content ======>" + boardVO.getContent());
+		System.out.println("boardVo writer ======>" + boardVO.getWriter());
+		System.out.println("boardVo file ======>" + boardVO.getAttFile().getOriginalFilename());
 		
-//		boardService.insertBoard(boardVO);
+		boardService.insertBoard(boardVO, mRequest);
 	}
 		
 //		MultipartHttpServletRequest mRequest = (MultipartHttpServletRequest)request;

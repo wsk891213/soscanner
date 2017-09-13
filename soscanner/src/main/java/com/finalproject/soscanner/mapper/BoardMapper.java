@@ -2,6 +2,8 @@ package com.finalproject.soscanner.mapper;
 
 import java.util.List;
 
+import org.springframework.web.multipart.MultipartHttpServletRequest;
+
 import com.finalproject.soscanner.vo.BoardVO;
 import com.finalproject.soscanner.vo.FaqVO;
 import com.finalproject.soscanner.vo.FileVO;

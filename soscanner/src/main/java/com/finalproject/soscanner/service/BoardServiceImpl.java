@@ -98,10 +98,10 @@ public class BoardServiceImpl implements BoardService {
 	}
 
 	@Override
-	public void insertBoard(BoardVO boardVO) throws Exception {
+	public void insertBoard(BoardVO boardVO, MultipartHttpServletRequest mRequest) throws Exception {
 		boardMapper.insertBoard(boardVO);
 		
-		String filePath = "D:/final/file";
+		String filePath = "D:/soscanner/soscanner/src/main/webapp/WEB-INF/file";
 		SimpleDateFormat sdf = new SimpleDateFormat("/yyyy/MM/dd");
 		String datePath = sdf.format(new Date());
 		
@@ -133,10 +133,10 @@ public class BoardServiceImpl implements BoardService {
 				mFile.transferTo(new File(filePath + "\\" + sysName));
 				
 				FileVO fileSave = new FileVO();
-				fileSave.setFilePath(datePath);
-				fileSave.setOriName(oriName);
-				fileSave.setSysName(sysName);
-				fileSave.setSize(size);
+				fileSave.setB_FILEPATH(datePath);
+				fileSave.setB_ORINAME(oriName);
+				fileSave.setB_SYSNAME(sysName);
+				fileSave.setB_SIZE(size);
 				
 				boardMapper.insertFile(fileSave);
 			} 

@@ -1,42 +1,35 @@
 package com.finalproject.soscanner.vo;
 
 public class FileVO {
-	private int fileNo;
-	private String sysName;
-	private String oriName;
-	private String filePath;
-	private long size;
+	private String B_SYSNAME;
+	private String B_ORINAME;
+	private String B_FILEPATH;
+	private long B_SIZE;
 	private int boardNo;
 	
-	public int getFileNo() {
-		return fileNo;
+	public String getB_SYSNAME() {
+		return B_SYSNAME;
 	}
-	public void setFileNo(int fileNo) {
-		this.fileNo = fileNo;
+	public void setB_SYSNAME(String b_SYSNAME) {
+		B_SYSNAME = b_SYSNAME;
 	}
-	public String getSysName() {
-		return sysName;
+	public String getB_ORINAME() {
+		return B_ORINAME;
 	}
-	public void setSysName(String sysName) {
-		this.sysName = sysName;
+	public void setB_ORINAME(String b_ORINAME) {
+		B_ORINAME = b_ORINAME;
 	}
-	public String getOriName() {
-		return oriName;
+	public String getB_FILEPATH() {
+		return B_FILEPATH;
 	}
-	public void setOriName(String oriName) {
-		this.oriName = oriName;
+	public void setB_FILEPATH(String b_FILEPATH) {
+		B_FILEPATH = b_FILEPATH;
 	}
-	public String getFilePath() {
-		return filePath;
+	public long getB_SIZE() {
+		return B_SIZE;
 	}
-	public void setFilePath(String filePath) {
-		this.filePath = filePath;
-	}
-	public long getSize() {
-		return size;
-	}
-	public void setSize(long size) {
-		this.size = size;
+	public void setB_SIZE(long b_SIZE) {
+		B_SIZE = b_SIZE;
 	}
 	public int getBoardNo() {
 		return boardNo;
@@ -44,6 +37,5 @@ public class FileVO {
 	public void setBoardNo(int boardNo) {
 		this.boardNo = boardNo;
 	}
-
 	
 }
