@@ -12,6 +12,7 @@ public class BoardVO {
 	private String writer;
 	private Date regDate;
 	private int viewCount;
+	private String lang;
 	
 	
 	private MultipartFile attFile = null;
@@ -52,6 +53,12 @@ public class BoardVO {
 	public void setViewCount(int viewCount) {
 		this.viewCount = viewCount;
 	}
+	public String getLang() {
+		return lang;
+	}
+	public void setLang(String lang) {
+		this.lang = lang;
+	}
 //	@Override
 //	public String toString() {
 //		return "BoardVO [boardNo=" + boardNo + ", title=" + title + ", content=" + content + ", writer=" + writer
@@ -63,4 +70,6 @@ public class BoardVO {
 	public void setAttFile(MultipartFile attFile) {
 		this.attFile = attFile;
 	}
+	
+	
 }

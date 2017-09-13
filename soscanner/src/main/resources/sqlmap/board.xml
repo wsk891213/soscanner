@@ -9,6 +9,7 @@
 		<result column="B_WRITER" property="writer" />
 		<result column="B_REGDATE" property="regDate" />
 		<result column="B_VIEWCOUNT" property="viewCount" />
+		<result column="B_LANG" property="lang" />
 	</resultMap>
 
 	<select id="selectBoard" parameterType="PageVO" resultMap="boardMap">
@@ -79,10 +80,10 @@
 
 	<insert id="insertBoard" parameterType="com.finalproject.soscanner.vo.BoardVO">
 		insert into TB_BOARD(
-			B_BOARDNO, B_TITLE, B_WRITER, B_CONTENT
+			B_BOARDNO, B_TITLE, B_WRITER, B_CONTENT, B_LANG
 			
 		) values (
-			TB_BOARD_SEQ.NEXTVAL, #{title}, #{writer}, #{content}
+			TB_BOARD_SEQ.NEXTVAL, #{title}, #{writer}, #{content}, 'KOR'
 		)
 	</insert>
 	
