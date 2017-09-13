@@ -3,13 +3,13 @@
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.finalproject.soscanner.mapper.BoardMapper">
 	<resultMap id="boardMap" type="BoardVO">
-		<result column="B_BOARDNO" property="boardNo" />
-		<result column="B_TITLE" property="title" />
-		<result column="B_CONTENT" property="content" />
-		<result column="B_WRITER" property="writer" />
-		<result column="B_REGDATE" property="regDate" />
-		<result column="B_VIEWCOUNT" property="viewCount" />
-		<result column="B_LANG" property="lang" />
+		<result column="B_BOARDNO" 		property="boardNo" />
+		<result column="B_TITLE" 		property="title" />
+		<result column="B_CONTENT" 		property="content" />
+		<result column="B_WRITER" 		property="writer" />
+		<result column="B_REGDATE" 		property="regDate" />
+		<result column="B_VIEWCOUNT" 	property="viewCount" />
+		<result column="B_LANG" 		property="lang" />
 	</resultMap>
 
 	<select id="selectBoard" parameterType="PageVO" resultMap="boardMap">

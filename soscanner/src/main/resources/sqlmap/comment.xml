@@ -3,38 +3,38 @@
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.finalproject.soscanner.mapper.CommentMapper">
 	<resultMap id="commentMap" type="CommentVO">
-		<result column="COMMENTNO;     " property="commentNo" />
-		<result column="COMMENTID;     " property="commentId" />
-		<result column="COMMENTCONTENT;" property="commentContent" />
-		<result column="COMMENTDATE;   " property="commentDate" />
-		<result column="BOARDNO;       " property="boardNo" />
+		<result column="B_COMMNO" 			property="commentNo" />
+		<result column="B_WRITER" 			property="commentId" />
+		<result column="B_COMMCONTENT" 		property="commentContent" />
+		<result column="B_COMMREGDATE"		property="commentDate" />
+		<result column="B_BOARDNO" 			property="boardNo" />
 	</resultMap>
 	
 	<select id="selectComm" parameterType="int" resultMap="commentMap">
 		select *
-		  from KOR_BOARD_COMMENT
-		 where BOARDNO = #{boardNo}
-		 order by COMMENTNO
+		  from TB_BOARD_COMM
+		 where B_BOARDNO = #{boardNo}
+		 order by B_COMMNO
 	</select>
 	
 	<insert id="insertComm" parameterType="CommentVO">
-		insert into KOR_BOARD_COMMENT(
-			COMMENTNO, COMMENTID, COMMENTCONTENT, BOARDNO
+		insert into TB_BOARD_COMM(
+			B_COMMNO, B_WRITER, B_COMMCONTENT, B_BOARDNO
 		) values (
-			KOR_BOARD_COMMENT_SEQ.NEXTVAL, #{commentId}, #{commentContent}, #{boardNo}
+			TB_BOARD_COMM_SEQ.NEXTVAL, #{commentId}, #{commentContent}, #{boardNo}
 		)
 	</insert>
 	
 	<delete id="deleteComm" parameterType="int">
 		delete
-		  from KOR_BOARD_COMMENT
-		 where COMMENTNO = #{commentNo}
+		  from TB_BOARD_COMM
+		 where B_COMMNO = #{commentNo}
 	</delete>
 	
 	<update id="updateComm" parameterType="CommentVO">
-		update KOR_BOARD_COMMENT
-		   set COMMENTCONTENT = #{commentContent}
-		 where COMMENTNO = #{commentNo}
+		update TB_BOARD_COMM
+		   set B_COMMCONTENT = #{commentContent}
+		 where B_COMMNO = #{commentNo}
 	</update>
 	
 </mapper>
