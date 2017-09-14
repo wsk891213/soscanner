@@ -103,14 +103,6 @@ label {
 	font-size: 20px;
 }
 
-.fa-refresh:hover {
-	color: black;
-	font-size: 50px;
-}
-
-.fa-microphone:hover {
-	color: black;
-}
 
 .fa-exchange {
 	width: 50px;
@@ -122,16 +114,25 @@ label {
 	left: 0;
 	right: 0;
 	margin: auto;
-} 
+}
+
+.fa-refresh:hover {
+	color: gray;
+	font-size: 50px;
+}
+
+.fa-microphone:hover {
+	color: red;
+}
 
 .fa-exchange:hover {
-	color: black;
+	color: gray;
 }
 .fa-trash:hover {
-	color: black;
+	color: gray;
 }
 #cicon:hover {
-	color: black;
+	color: gray;
 }
 
 /* The Modal (background) */
@@ -207,18 +208,6 @@ label {
 	background-color: #f4f4f4;
 }
 
-/* .popover fade top in {
-	top: 354px !important;
-	left: -7px;
-	display: block;
-} */
-
-
- 
-
-
-
-
 </style>
 <c:import url="/WEB-INF/views/include/basicIncludeTop.jsp"></c:import>
 </head>
@@ -262,14 +251,20 @@ label {
 							
 							
 							<div class="modal-footer">
-							<span class="fa" id="cicon" aria-hidden="true" onclick="transalte()" style="font-size: 30px; margin-left: 20px; float: right; margin-top: 2px;" ><spring:message code="translate.translator.line265"/></span>
-							<span class="fa fa-microphone" id="mic" aria-hidden="true" onclick="eylem()" style="font-size: 40px; float: left;">							
+							<label for="mic" style="float: left;"> 
+							<span class="fa fa-microphone" id="mic" aria-hidden="true" onclick="eylem()" style="font-size: 40px;">							
+							</label>
+							<label for="cicon" style="float: right;">
+							<span class="fa" id="cicon" aria-hidden="true" onclick="transalte()" style="font-size: 30px; margin-left: 20px; margin-top: 2px;" ><spring:message code="translate.translator.line265"/></span>
+							</label>
 							</span>
 							</div>
 					</div>
 
 				<div class="col-sm-2" id="change">
+					<label for="changebutton">
 					<span class="fa fa-exchange fa-3" id="changebutton" aria-hidden="true" onclick="change()"></span>
+					</label>
 				</div>
 				<div class="col-sm-5" id="modal">
 					<div class="modal-header" >
@@ -287,7 +282,9 @@ label {
 					</div>
 					<div class="modal-bdoy" id="outputtext" readonly="readonly"></div>
 					<div class="modal-footer">
+						<label for="trash">
 						<span class="fa fa-trash" id="trash" aria-hidden="true" onclick="clean()" style="font-size: 40px; float: right;"></span>
+						</label>
 					</div>
 				</div>
 			</div>
@@ -320,10 +317,17 @@ label {
 			output = "zh-CN"
 		})
 		
+		
+		
 		//팝오버
 		$(function () {
 			$('[data-toggle="popover"]').popover()
 	 	})
+		$('#cicon').popover({
+		        trigger: "hover",
+		        content: '번역',
+		        placement:'top'
+		});
 		$('#changebutton').popover({
 		        trigger: "hover",
 		        content: '양쪽값 변경',
@@ -334,6 +338,7 @@ label {
 		        content: '비우기',
 		        placement:'top'
 		});
+		
 		$('#mic').popover({
 		        trigger: "click",
 		        html: true,
