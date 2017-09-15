@@ -228,6 +228,9 @@ label {
 	
 	<section class="section-wrap-mp pb-0">
 		
+		
+		
+		
 		<div class="container">
 			
 			<form id="translate">
@@ -255,7 +258,7 @@ label {
 							<span class="fa fa-microphone" id="mic" aria-hidden="true" onclick="eylem()" style="font-size: 40px;">							
 							</label>
 							<label for="cicon" style="float: right;">
-							<span class="fa" id="cicon" aria-hidden="true" onclick="transalte()" style="font-size: 30px; margin-left: 20px; margin-top: 2px;" ><spring:message code="translate.translator.line265"/></span>
+							<span class="fa" id="cicon" aria-hidden="true" onclick="transalte()" style="font-size: 25px; margin-left: 20px; margin-top: 2px;" ><spring:message code="translate.translator.line265"/></span>
 							</label>
 							</span>
 							</div>
