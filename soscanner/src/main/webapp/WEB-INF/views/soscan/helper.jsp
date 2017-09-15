@@ -147,7 +147,7 @@
 											console.log(result.userPic);
 											$("#helpId"+id).html(result.user.u_email);
 											$("#userPic"+id).attr("src", result.userPic.u_path);
-											$("#chat"+id).attr("href", "chat?user=${user}&userPic=${userPic}&opponent="+id+"");
+											$("#chat"+id).attr("href", "chat?opponent="+id+"");
 										});
 										hDiv.innerHTML += html;
 								});

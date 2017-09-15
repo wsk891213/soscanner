@@ -95,7 +95,9 @@
 					'도움을 요청하였습니다. 요청 선택페이지로 이동합니다.',
 					'warning'
 				)
-			location.href="helper?sId="+sosId;
+			setTimeout(function () {
+				location.href="helper?sId="+sosId;
+			}, 2000);
 		});
 	});
 	messaging.onMessage(function(payload) {

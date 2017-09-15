@@ -22,18 +22,29 @@
 			</div>
 		</div>
 		</section>
-<div class="chat">
+		<br><br><br>
+	<iframe id="fVideo" src="https://appr.tc/r/300921670" frameborder="0" width="500px;" height="500px;" style="float: right; margin-right: 40px;">   
+	</iframe>
+<div class="chat" style="margin-top: 0px !important;">
   <div class="chat_header">
-    <img class="chat_avatar" src="${nextUserPic.u_path }">chat</img>
+  
+  
+  
+	<a href="#" id="closeBtn">
+	  	<img class="chat_avatar" src="/resources/images/closebtn.png">
+	</a>  
+  	<a href="#" id="videoChat">
+	  	<img class="chat_avatar" src="/resources/images/VideoLogo.jpg" >
+  	</a>
+    <span>chat</span>
   </div>
   
-  <div class="chat_s">
+  <div class="chat_s" style="margin: 0px !important; width: auto !important; ">
   </div>
   <div class="chat_input">
     <input placeholder="Type here..." class="chat_text" onkeypress="if(event.keyCode === 13){add()}">
     <button onclick="add()" class="chat_submit fa fa-send">send</button>
   </div>
-  
 </div>
 <input type="hidden" id="userId" value="${user.u_email }">
 <input type="hidden" id="fromId" value="${nextUser.u_email}">
@@ -52,7 +63,14 @@
 	<script src="https://www.gstatic.com/firebasejs/4.3.0/firebase.js"></script>
 <!-- 	<script src="/resources/js/chat.js"></script> -->
 	<script>
-
+	(function () {
+		$("#fVideo").hide();
+	})();
+	
+	$("#videoChat").click(function (e) {
+		e.preventDefault();
+		$("#fVideo").show();
+	});
 	var config = {
 			apiKey : "AIzaSyCCz1QBgdGHOMtDsNBuVdP0vV4AEzMWSwQ",
 			authDomain : "fmc-test-1efbc.firebaseapp.com",
@@ -69,7 +87,7 @@
 	  var fId = formId = formId.split("@")[0];
 	  function add() {
 	 	document.getElementsByClassName('chat_s')[0].innerHTML += '<div class="chat_bubble-2">' + $(".chat_text").val() + '</div>';
-	 	document.getElementsByClassName('chat_s')[0].innerHTML += '<img style="float: right; width: 40px; height: 40px;" src="${userPic.u_path}"><span style="float: right;">${user.u_email}</span></img><br><br>';
+	 	document.getElementsByClassName('chat_s')[0].innerHTML += '<img style=" margin-left: 300px; float: right; width: 40px; height: 40px; border-radius: 20px;" src="${userPic.u_path}"><span style=" margin-left: 300px; float: right;">${user.u_email}</span></img><br><br>';
 		writeMessage($(".chat_text").val());
 		$(".chat_text").val("");
 	  }
@@ -81,13 +99,45 @@
 	  var formref = database.ref().child('message/'+fId);
 	  formref.on('child_changed', function(snap) {
 	 	document.getElementsByClassName('chat_s')[0].innerHTML += '<div class="chat_bubble-1">' + snap.val() + '</div>';
-	 	document.getElementsByClassName('chat_s')[0].innerHTML += '<img style="float: left; width: 40px; height: 40px;" src="${nextUserPic.u_path}"><span style="float: left;">${nextUser.u_email}</span></img><br><br>';
+	 	document.getElementsByClassName('chat_s')[0].innerHTML += '<img style="float: left; width: 40px; height: 40px; border-radius: 20px;" src="${nextUserPic.u_path}"><span style="float: left;">${nextUser.u_email}</span></img><br><br>';
 		console.log(snap);
 	  });
 	  formref.on('child_added', function (snap) {
 		document.getElementsByClassName('chat_s')[0].innerHTML += '<div class="chat_bubble-1">' + snap.val() + '</div>';
-		document.getElementsByClassName('chat_s')[0].innerHTML += '<img style="float: left; width: 40px; height: 40px;" src="${nextUserPic.u_path}"><span style="float: left;">${nextUser.u_email}</span></img><br><br>';
+		document.getElementsByClassName('chat_s')[0].innerHTML += '<img style="float: left; width: 40px; height: 40px; border-radius: 20px;" src="${nextUserPic.u_path}"><span style="float: left;">${nextUser.u_email}</span></img><br><br>';
 	  });
+	  
+	  $("#closeBtn").click(function () {
+		  
+	  var help = database.ref('help/');
+	  help.once('value', function (e) {
+		  e.forEach(function (a) {
+			  console.log(uId == a.key);
+			  if(uId === a.key){
+			  swal(
+						'info',
+						'전페이지로 이동합니다.',
+						'info'
+					)
+					setInterval(function () {
+						window.history.back();	  
+				}, 1500);
+			  }
+			  else {
+				  database.ref('/message').remove();
+				  swal(
+							'info',
+							'메인페이지로 이동합니다.',
+							'info'
+						)
+				  setInterval(function () {
+					location.href="/";
+				}, 2000);
+			  }
+		  })
+	  })
+	  })
+	  
 	</script>
 </body>
 </html>
