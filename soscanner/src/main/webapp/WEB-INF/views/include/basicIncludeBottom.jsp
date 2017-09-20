@@ -114,9 +114,11 @@
 	    });
 	    messaging.onMessage(function(payload) {
 	        console.log("Message received. ", payload);
+	        console.log("Message received. ", payload.notification);
+	        alert("내용 : " +payload.notification.body);
+	        location.href = payload.notification.click_action;
 	        // [START_EXCLUDE]
 	        // Update the UI to include the received message.
-	        appendMessage(payload);
 	        // [END_EXCLUDE]
 	      });
 	  }

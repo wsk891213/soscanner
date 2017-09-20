@@ -27,7 +27,7 @@
 	<script>
 		
 	</script>
-
+	
 	<div class="main-wrapper-onepage main oh">
 
 		<!-- Page Title -->
@@ -52,10 +52,10 @@
 				<div class="row">
 					<!-- content -->
 					<!-- 여기에 스타일 15%된거 변경해서 중간으로 맞춰야함 -->
-					<div class="col-sm-8 blog-content" style="margin-left: 15%" id="hDiv">
-						<h2 class="intro-heading heading-frame">Please choose someoneto help you</h2>
-						<input id="reset" class="btn btn-lg btn-dark" type="button" value="새로고침">&emsp;&emsp;&emsp;&emsp;&emsp; <input id="cBtn" type="button" onclick="deleteUser();" class="btn btn-lg btn-dark" value="질문완료">
-						<br><br>
+					<div class="col-sm-8 blog-content" style="margin-left: 15%; padding: 15px !important"  id="hDiv">
+						<h2 class="intro-heading heading-frame" style="margin-left: 15px;">Please choose someone to help you</h2>
+						&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<input id="reset" class="btn btn-lg btn-dark" type="button" value="새로고침">&emsp;&emsp;&emsp;&emsp;&emsp; <input id="cBtn" type="button" onclick="deleteUser();" class="btn btn-lg btn-dark" value="질문완료">
+						<br><br><br><br>
 					</div>
 					<!-- end col -->
 
@@ -117,7 +117,7 @@
 										ssi = childSnapshot.key;
 // 										console.log("homin : ", snap.val()[ssi].message);
 										var html = '';
-										html += '<div style="float: left; box-sizing: border-box; margin-right: 10px;">';
+										html += '<div style="float: left; box-sizing: border-box; margin-right: 10px; margin-left: 100px;">';
 										html += '<div class="entry-item">';
 										html += '<div class="entry-date hidden-sm hidden-xs sy" style="padding: 0px;">';
 										html += '<img name="userPic" id="userPic'+id+'" style="height: 65px; width: 71px;"></img>';

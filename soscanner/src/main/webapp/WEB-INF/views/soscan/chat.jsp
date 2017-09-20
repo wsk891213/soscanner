@@ -43,7 +43,7 @@
   </div>
   <div class="chat_input">
     <input placeholder="Type here..." class="chat_text" onkeypress="if(event.keyCode === 13){add()}">
-    <button onclick="add()" class="chat_submit fa fa-send">send</button>
+    <button onclick="add()" class="chat_submit fa fa-send" style="font-size: 12px; margin: 5px 2px 10px 0px !important;">send</button>
   </div>
 </div>
 <input type="hidden" id="userId" value="${user.u_email }">
@@ -87,7 +87,7 @@
 	  var fId = formId = formId.split("@")[0];
 	  function add() {
 	 	document.getElementsByClassName('chat_s')[0].innerHTML += '<div class="chat_bubble-2">' + $(".chat_text").val() + '</div>';
-	 	document.getElementsByClassName('chat_s')[0].innerHTML += '<img style=" margin-left: 300px; float: right; width: 40px; height: 40px; border-radius: 20px;" src="${userPic.u_path}"><span style=" margin-left: 300px; float: right;">${user.u_email}</span></img><br><br>';
+	 	document.getElementsByClassName('chat_s')[0].innerHTML += '<img style=" margin-left: 300px; float: right; width: 40px; height: 40px; border-radius: 20px;" src="${userPic.u_path}"><span style=" margin-left: 300px; margin-bottom:5px; float: right;">${user.u_email}</span><br><br></img>';
 		writeMessage($(".chat_text").val());
 		$(".chat_text").val("");
 	  }

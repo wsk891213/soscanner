@@ -58,7 +58,7 @@
 					<form id="helpForm">
 			            <input name="userId" id="userId" type="text" placeholder="Please login" value="${user.u_email}" readonly="readonly">
 			            <textarea placeholder="Textarea" id="content" name="content" rows="3" style="resize: none;"></textarea>
-			            <input type="submit" class="btn btn-lg btn-dark" value="Send Message">
+			            <input type="submit" class="btn btn-lg btn-dark" value="Send Message" style="margin-left: 20%;">
 					</form>
 					<br>
 	          	</div>

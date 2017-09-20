@@ -12,6 +12,6 @@ body{height:100%;margin:0;padding:0;}
 .chat_bubble-1,.chat_bubble-2{padding:10px;margin:13px 17px;width:200px;font-size:14px}
 .chat_bubble-1{border:1px solid teal;border-radius:12px 12px 12px 0}
 .chat_bubble-2{border:1px solid grey;border-radius:12px 12px 0 12px;margin-left:160px}
-.chat_s{max-height:calc(75vh - 86px - 29px); overflow:auto; padding:15px 0 0; height: auto; width: 300px;}
+.chat_s{max-height:calc(75vh - 86px - 29px); overflow:auto; padding:15px 10px; height: auto; width: 300px;}
 ::-webkit-scrollbar{width:13px}
 ::-webkit-scrollbar-thumb{border-radius:10px;-webkit-box-shadow:inset 0 0 0 4px #fff;background:rgba(0,0,0,0.2)}
