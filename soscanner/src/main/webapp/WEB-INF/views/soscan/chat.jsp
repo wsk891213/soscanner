@@ -112,8 +112,10 @@
 	  var help = database.ref('help/');
 	  help.once('value', function (e) {
 		  e.forEach(function (a) {
+			  console.log('uId : '+uId);
+			  console.log('a.key : '+a.key);
 			  console.log(uId == a.key);
-			  if(uId === a.key){
+			  if(uId == a.key){
 			  swal(
 						'info',
 						'전페이지로 이동합니다.',

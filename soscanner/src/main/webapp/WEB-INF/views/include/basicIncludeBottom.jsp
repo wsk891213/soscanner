@@ -115,8 +115,14 @@
 	    messaging.onMessage(function(payload) {
 	        console.log("Message received. ", payload);
 	        console.log("Message received. ", payload.notification);
-	        alert("내용 : " +payload.notification.body);
-	        location.href = payload.notification.click_action;
+	        swal(
+	        		'help sos',
+	        		payload.notification.body,
+	        		'warning'
+	        );
+	        setTimeout(function () {
+		        location.href = payload.notification.click_action;
+			}, 2000);
 	        // [START_EXCLUDE]
 	        // Update the UI to include the received message.
 	        // [END_EXCLUDE]

@@ -156,7 +156,7 @@
 // 			alert(result);
 			console.log(result);
 			database.ref('/help/' + sosId + '/').remove();
-			location.href = "helper";
+			location.href = "/";
 		}
 		$("#reset").click(function (){
 			location.reload();
