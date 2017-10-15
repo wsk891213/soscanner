@@ -2,26 +2,20 @@ package com.finalproject.soscanner.controller;
 
 import java.io.File;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.Map;
 import java.util.UUID;
 
-import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
-import org.springframework.web.servlet.ModelAndView;
 
 import com.finalproject.soscanner.service.UserService;
 import com.finalproject.soscanner.vo.UserPicVO;
@@ -38,8 +32,6 @@ public class UserController {
 	@RequestMapping(value="/signup", produces = "application/text; charset=utf8")
 	@ResponseBody
 	public String singUp(UserVO user) throws Exception{
-		String answer = "1";
-		logger.info("singUp 컨트롤러");
 //		String oriName = "noimages.png";
 //		int index = oriName.lastIndexOf(".");
 //		String ext = oriName.substring(index);
@@ -49,18 +41,22 @@ public class UserController {
 //		pic.setU_path("C:\\Users\\bit\\Desktop\\soscanner\\soscanner\\src\\main\\webapp\\resources\\images\\noimages.png");
 //		pic.setU_sysName(systemName);
 //		pic.setU_uNo(user.getU_uno());
-		System.out.println(user.toString());
 //		System.out.println(pic.toString());	
 		
-//		logger.info("email : " + user.getU_email());
-//		logger.info("pass : " + user.getU_pass());
-//		logger.info("token : " + user.getU_token());
-		if(user.getU_pass().equals(user.getU_passChk())) {
-			userService.insertUser(user);
-			answer =  "2";
-		}
-		return answer;
+		String returnWord = "";
+		UserVO Ucheck = userService.oneUser(user.getU_email());
 		
+		if(Ucheck != null) {
+			if(Ucheck.getU_email().equals(user.getU_email())) {
+				returnWord =  "1";
+			}
+		}
+		else {
+			userService.insertUser(user);
+			returnWord =  "2";
+		}
+		
+		return returnWord;
 	}
 	
 	

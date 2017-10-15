@@ -132,37 +132,56 @@
    
 	$("#registForm").submit(function (e) {
 		e.preventDefault();
-// 		console.log("email : ",$("#u_email").val());
-		var registData = $("#registForm").serialize();
-// 		console.log("registData : ",registData);
+		if($('#u_email').val().indexOf("@") == -1) {
+			alert("이메일 주소를 확인해 주세요");
+			return false;
+		}
+		if($('#u_pass').val() != $('#u_passChk').val()) {
+			alert("비밀번호를 확인해 주세요");
+			return false;
+		}
+		
 		$.ajax({
 			type: "POST",
 			url: "/user/signup",
-			data: registData
-		}).done(function (answer) {
-			var text = "비번 불일치";
-			if(answer == "2") {
-				text = "회원가입 완료";
+			data: $("#registForm").serialize()
+		}).done(function (result) {
+			if(result == "1") {
+				swal(
+						'회원가입 실패',
+						'이미 존재하는 회원입니다',
+						'warning'
+				)
+			}
+			else {
 				$('html, body').animate({scrollTop : $('html, body').height()}, 1000);
 			    $("#registAccord").slideUp();
 			    $("#signInAccord").slideDown();
 			    $("#u_email").val("");
 			    $("#u_pass").val("");
 			    $("#u_passChk").val("");
+				swal(
+						'회원가입 성공',
+						'회원가입에 성공하였습니다',
+						'success'
+				)
 			}
-			swal(
-					'가입성공',
-					text,
-					'success'
-			)
-			//alert(text);
+			
 		});
-		
 	});
+	
 	$("#signInForm").submit(function (e) {
-		e.preventDefault()
+		e.preventDefault();
+		if($('#u_emailLogin').val().indexOf("@") == -1) {
+			alert("이메일 주소를 확인해 주세요");
+			return false;
+		}
+		if($('#u_passLogin').val() == "") {
+			alert("비밀번호를 입력해  주세요");
+			return false;
+		}
+		
 		var signData = $("#signInForm").serialize();
-		console.log(signData);
 		$.ajax({
 			type: "POST",
 			url: "/user/login",

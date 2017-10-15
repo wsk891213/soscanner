@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -23,7 +23,7 @@
 		</div>
 		</section>
 		<br><br><br>
-	<iframe id="fVideo" src="https://appr.tc/r/300921670" frameborder="0" width="500px;" height="500px;" style="float: right; margin-right: 40px;">   
+	<iframe id="fVideo" src="https://appr.tc/r/300921670" width="1200px;" height="760px;"  style="float: right; margin-right: 40px;">   
 	</iframe>
 <div class="chat" style="margin-top: 0px !important;">
   <div class="chat_header">

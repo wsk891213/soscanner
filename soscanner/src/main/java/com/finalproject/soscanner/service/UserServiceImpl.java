@@ -61,7 +61,6 @@ public class UserServiceImpl implements UserService{
 
 	@Override
 	public UserVO oneUser(String id) throws Exception {
-		
 		return userMapper.oneUser(id);
 	}
 

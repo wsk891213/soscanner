@@ -17,7 +17,7 @@ public class ServiceWokerController {
 	@ResponseBody
 	public String serviceWoker() throws Exception {
 		logger.info("서비스워커");
-		String path="C:\\Users\\bit\\Desktop\\soscanner\\soscanner\\src\\main\\webapp\\resources\\firebase-messaging-sw.js";
+		String path="C:\\finalproject\\soscanner\\src\\main\\webapp\\resources\\firebase-messaging-sw.js";
 		StringBuilder sb = new StringBuilder();
 		String strLine;
 		

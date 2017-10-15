@@ -1,7 +1,7 @@
 @charset "UTF-8";
 @import "https://fonts.googleapis.com/css?family=Montserrat";
 body{height:100%;margin:0;padding:0;}
-.chat{width:400px;height:80vh;box-shadow:0 0 30px -5px grey;margin:10vh calc(50vw - 200px);background:#fafafa;position:relative;font-family:'Montserrat',sans-serif}
+.chat{width:400px;height:80vh;box-shadow:0 0 30px -5px grey;margin:10%;background:#fafafa;position:relative;font-family:'Montserrat',sans-serif}
 .chat_header{padding:15px;border-bottom:4px solid teal;background:#f0f0f0;color:teal}
 .chat_status{font-size:11px;margin:4px 0 -4px}
 .chat_avatar{float:right;width:42px;border-radius:50%;margin-top:-3px}

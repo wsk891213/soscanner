@@ -140,8 +140,8 @@
 		<div class="row">
 			<div class="col-md-6 col-md-offset-3">
 				<form id="signInForm">
-					<input name="u_email" id="u_email" type="text" placeholder="ID">
-					<input name="u_pass" id="u_pass" type="password" placeholder="Password">
+					<input name="u_email" id="u_emailLogin" type="text" placeholder="ID">
+					<input name="u_pass" id="u_passLogin" type="password" placeholder="Password">
 					<input type="submit" class="btn btn-lg btn-dark" value="<spring:message code='include.footer.line145'/>">
 					<a href="#" id="loginCancelBtn" class="btn btn-lg btn-dark"><spring:message code="include.footer.line146"/></a><br>
 					<br> <a href="#" id="registBtn"><spring:message code="include.footer.line147"/></a>
